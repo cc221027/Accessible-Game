@@ -45,10 +45,11 @@ public class MenuButtons : MonoBehaviour
         }
     }
 
-    private void LoadScene(string sceneName)
+    private static void LoadScene(string sceneName)
     {
         if (!string.IsNullOrEmpty(sceneName) && GameManager.Instance != null)
         {
+            if (CharacterSelection.Instance != null) {CharacterSelection.Instance.ResetSelection();}
             GameManager.Instance.LoadScene(sceneName);
         }
         else
