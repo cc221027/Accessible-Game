@@ -7,9 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    private int SelectedCharacterIndex { get; set; } = -1;
+    public int SelectedCharacterIndex { get; private set; } = -1;
     
-    private int SelectedTrackIndex { get; set; } = -1;
+    public int SelectedTrackIndex { get; private set; } = -1;
 
     [SerializeField] private List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] private List<string> trackSceneNames = new List<string>(); 
