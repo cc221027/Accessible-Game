@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Character Selection.unity
     guid: dc0b69a711ac31b4bb374c6cf73ca9d1
+  - enabled: 1
+    path: Assets/Scenes/Track Selection.unity
+    guid: 07499b5e028177649ac7583737b40c71
   m_configObjects: {}

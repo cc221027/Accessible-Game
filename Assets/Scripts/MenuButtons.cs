@@ -12,6 +12,8 @@ public class MenuButtons : MonoBehaviour
         LoadCharacterSelection,
         LoadRaceTrack1,
         QuitGame,
+        ReturnToTrackSelection,
+        ReturnToMainMenu
     }
 
     [SerializeField] private ButtonAction action;
@@ -33,13 +35,21 @@ public class MenuButtons : MonoBehaviour
                 LoadScene("Main Menu");
                 break;
             case ButtonAction.LoadCharacterSelection:
-                LoadScene("Character Selection");
+                LoadScene("Track Selection");
                 break;
             case ButtonAction.LoadRaceTrack1:
                 LoadScene("Main Menu");
                 break;
             case ButtonAction.QuitGame:
                 Application.Quit();
+                break;
+            case ButtonAction.ReturnToTrackSelection:
+                GameManager.Instance.ResetSelection();
+                LoadScene("Track Selection");
+                break;
+            case ButtonAction.ReturnToMainMenu:
+                GameManager.Instance.ResetSelection();
+                LoadScene("Main Menu");
                 break;
             
         }
@@ -49,7 +59,6 @@ public class MenuButtons : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(sceneName) && GameManager.Instance != null)
         {
-            if (CharacterSelection.Instance != null) {CharacterSelection.Instance.ResetSelection();}
             GameManager.Instance.LoadScene(sceneName);
         }
         else
