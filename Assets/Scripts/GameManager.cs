@@ -7,13 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public int SelectedCharacterIndex { get; private set; } = -1;
+    private int SelectedCharacterIndex { get; set; } = -1;
     
-    public int SelectedTrackIndex { get; private set; } = -1;
+    private int SelectedTrackIndex { get; set; } = -1;
 
-    // List to track enemies
-    public List<CompetitorsBehaviour> Competitors { get; private set; } = new List<CompetitorsBehaviour>();
-    
+    [SerializeField] private List<GameObject> allCharacters = new List<GameObject>();
+    [SerializeField] private List<string> trackSceneNames = new List<string>(); 
     private void Awake()
     {
         if (Instance == null)
@@ -35,6 +34,7 @@ public class GameManager : MonoBehaviour
     public void SelectCharacter(int index)
     {
         SelectedCharacterIndex = index;
+        SceneManager.LoadScene(trackSceneNames[SelectedTrackIndex]);
         Debug.Log("Character " + index + " selected");
     }
     public void SelectTrack(int index)
@@ -49,6 +49,11 @@ public class GameManager : MonoBehaviour
         SelectedCharacterIndex = -1;
         SelectedTrackIndex = -1;
         Debug.Log("Reset Selection");
+    }
+    
+    public void SpawnSelectedCharacter(Vector3 spawnPosition, Quaternion spawnRotation)
+    {
+        Instantiate(allCharacters[SelectedCharacterIndex], spawnPosition, spawnRotation);
     }
     
 }

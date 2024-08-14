@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Result Scene.unity
     guid: 8f5fcf3d5b73b3c4b8a3f4d4ac1e6696
   - enabled: 1
-    path: Assets/Scenes/Race Tracks/Race Track 1.unity
+    path: Assets/Scenes/Race Tracks/Track1.unity
     guid: c4a598e48de361647940be1629c6ae14
   - enabled: 1
     path: Assets/Scenes/Character Selection.unity

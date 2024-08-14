@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Racer2 : CharacterData
+public class TrackManager : MonoBehaviour
 {
+    [SerializeField] private int laps;
+    [SerializeField] private Vector3 startingPoint;
+    
     // Start is called before the first frame update
     void Start()
     {
-        index = 1;
-        characterName = "Racer2";
+        
     }
 
     // Update is called once per frame
