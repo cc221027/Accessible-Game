@@ -55,5 +55,9 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(allCharacters[SelectedCharacterIndex], spawnPosition, spawnRotation);
     }
+    public void SpawnOpponents(int index, Vector3 spawnPosition, Quaternion spawnRotation)
+    {
+        Instantiate(allCharacters[index], spawnPosition, spawnRotation);
+    }
     
 }
