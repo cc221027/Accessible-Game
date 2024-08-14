@@ -38,7 +38,7 @@ public class RaceSelection : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.SelectTrack(_characterIndex);
+            GameManager.Instance.SelectTrack(_trackIndex);
         }
     }
     private void SelectCharacter()

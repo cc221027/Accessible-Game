@@ -50,7 +50,7 @@ MonoBehaviour:
   - {fileID: 6394364294505844813, guid: a16fa32be64a78941952a418312c684c, type: 3}
   - {fileID: 1019704794437721390, guid: e5840a9253a14ae45ae58275be6f3e19, type: 3}
   trackSceneNames:
-  - Track1
-  - Track2
-  - Track3
-  - Track4
+  - Track 1
+  - Track 2
+  - Track 3
+  - Track 4

@@ -44,3 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543a377315d5bc0448722505ff5e63ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laps: 2
+  lapText: {fileID: 0}
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
