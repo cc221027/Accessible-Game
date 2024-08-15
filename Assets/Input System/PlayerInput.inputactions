@@ -27,9 +27,27 @@
                     "name": "Decelerate",
                     "type": "Value",
                     "id": "a6182837-144e-4a9e-8984-0f44ad1e0648",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "6904b156-aaa4-4391-89b0-98c6eed4e462",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Drift",
+                    "type": "Value",
+                    "id": "53a604c7-cdaa-4f9d-965b-6e320320d93a",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "Hold",
                     "initialStateCheck": true
                 }
             ],
@@ -64,6 +82,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Decelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "426fcb2a-53ab-4952-ab65-1a7709639d0c",
+                    "path": "<DualSenseGamepadHID>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "967dba87-561f-48a8-bf02-26e2577132e2",
+                    "path": "<DualSenseGamepadHID>/buttonSouth",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drift",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

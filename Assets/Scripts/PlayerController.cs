@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private float _steerInputValue;
     private float _accelerationInputValue;
     private float _decelerateValue;
+    private bool _isJumping = false;
+    private bool _isGrounded = true;
 
     private void Awake()
     {
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private void OnSteer(InputValue value)
     {
         _steerInputValue = value.Get<float>();
+    
     }
 
     private void OnAccelerate(InputValue value)
@@ -35,31 +38,37 @@ public class PlayerController : MonoBehaviour
         _decelerateValue = value.Get<float>();
     }
 
+    private void OnJump(InputValue value)
+    {
+        if (!_isJumping)
+        {
+            _rb.AddForce(transform.up*5, ForceMode.Impulse);
+            _isJumping = true;
+            _isGrounded = false;
+        }
+    }
+    
     private void MoveLogic()
     {
-
         float decelerationForce = _decelerateValue*20;
         float accelerationForce = _accelerationInputValue*20;
-        Vector3 currentVelocity = _rb.velocity;
+        float currentSpeed  = _rb.velocity.magnitude;
         
-        // If decelerating, reduce the forward velocity
-        if (_decelerateValue > 0 && currentVelocity.magnitude > 0)
-        {
-            // Calculate the deceleration force in the direction of the velocity
-            float decelerationMagnitude = Mathf.Min(decelerationForce, _rb.velocity.magnitude);
-            Vector3 decelerationVector = -_rb.velocity.normalized * decelerationMagnitude;
-            _rb.AddForce(decelerationVector, ForceMode.Acceleration);
-        } 
-        else
-        {
-            _rb.AddForce(transform.forward * (accelerationForce - decelerationForce), ForceMode.Acceleration);
-        }
-        float currentSpeed = currentVelocity.magnitude;
-        float rotationAmount = _steerInputValue * 
-                               (100f * Mathf.Lerp(1f, 0.6f, Mathf.Clamp01(currentSpeed / 30f))) * 
-                               Time.fixedDeltaTime;
+        _rb.AddForce(transform.forward * (accelerationForce - decelerationForce), ForceMode.Acceleration);
+        
+        float rotationAmount = _steerInputValue * 80f  * Time.fixedDeltaTime;
+        //* Mathf.Lerp(1f, 0.6f, Mathf.Clamp01(currentSpeed / 30f)))
         transform.Rotate(0, rotationAmount, 0);
         
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            _isGrounded = true;
+            _isJumping = false;
+        }
     }
 
     private void FixedUpdate()

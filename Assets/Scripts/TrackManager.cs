@@ -10,7 +10,8 @@ public class TrackManager : MonoBehaviour
     [SerializeField] private TextMeshPro lapText;
     [SerializeField] private List<Transform> spawnPoints; // List of spawn points for player and opponents
     
-    void Start()
+    public int Laps => laps;
+    void Awake()
     {
         SpawnCarts();
     }
@@ -32,6 +33,14 @@ public class TrackManager : MonoBehaviour
                     opponentIndex++;
                 }
             }
+    }
+    
+    public void EndRace(CharacterData winner)
+    {
+        // Stop the race and announce the winner
+        Debug.Log($"{winner.characterName} has won the race!");
+
+        // Implement race-end logic here, such as stopping all cars, displaying the winner, etc.
     }
     
     
