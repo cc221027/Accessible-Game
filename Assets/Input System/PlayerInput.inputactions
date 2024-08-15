@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Slow",
+                    "name": "Decelerate",
                     "type": "Value",
                     "id": "a6182837-144e-4a9e-8984-0f44ad1e0648",
                     "expectedControlType": "Button",
@@ -63,7 +63,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Slow",
+                    "action": "Decelerate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

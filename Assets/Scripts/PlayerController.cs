@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     private float _steerInputValue;
     private float _accelerationInputValue;
+    private float _decelerateValue;
 
     private void Awake()
     {
@@ -29,16 +30,34 @@ public class PlayerController : MonoBehaviour
         _accelerationInputValue = value.Get<float>();
     }
 
+    private void OnDecelerate(InputValue value)
+    {
+        _decelerateValue = value.Get<float>();
+    }
+
     private void MoveLogic()
     {
-        // Calculate the desired force direction in local space
-        Vector3 movement = transform.forward * (_accelerationInputValue * 20);
 
-        _rb.AddForce(movement, ForceMode.Acceleration);
-        Debug.Log(_rb.velocity.magnitude);
-
-        // Rotate the object
-        float rotationAmount = _steerInputValue * 100 * Time.fixedDeltaTime;
+        float decelerationForce = _decelerateValue*20;
+        float accelerationForce = _accelerationInputValue*20;
+        Vector3 currentVelocity = _rb.velocity;
+        
+        // If decelerating, reduce the forward velocity
+        if (_decelerateValue > 0 && currentVelocity.magnitude > 0)
+        {
+            // Calculate the deceleration force in the direction of the velocity
+            float decelerationMagnitude = Mathf.Min(decelerationForce, _rb.velocity.magnitude);
+            Vector3 decelerationVector = -_rb.velocity.normalized * decelerationMagnitude;
+            _rb.AddForce(decelerationVector, ForceMode.Acceleration);
+        } 
+        else
+        {
+            _rb.AddForce(transform.forward * (accelerationForce - decelerationForce), ForceMode.Acceleration);
+        }
+        float currentSpeed = currentVelocity.magnitude;
+        float rotationAmount = _steerInputValue * 
+                               (100f * Mathf.Lerp(1f, 0.6f, Mathf.Clamp01(currentSpeed / 30f))) * 
+                               Time.fixedDeltaTime;
         transform.Rotate(0, rotationAmount, 0);
         
     }
