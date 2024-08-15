@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -10,9 +11,10 @@ public class GameManager : MonoBehaviour
     public int SelectedCharacterIndex { get; private set; } = -1;
     
     public int SelectedTrackIndex { get; private set; } = -1;
-
+    
     [SerializeField] private List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] private List<string> trackSceneNames = new List<string>(); 
+    
     private void Awake()
     {
         if (Instance == null)
@@ -53,11 +55,34 @@ public class GameManager : MonoBehaviour
     
     public void SpawnSelectedCharacter(Vector3 spawnPosition, Quaternion spawnRotation)
     {
-        Instantiate(allCharacters[SelectedCharacterIndex], spawnPosition, spawnRotation);
+       GameObject player = Instantiate(allCharacters[SelectedCharacterIndex], spawnPosition, spawnRotation);
+
+       if (Camera.main != null)
+       {
+           Camera.main.transform.SetParent(player.transform);
+
+           // Adjust the camera's position and rotation relative to the player
+           Camera.main.transform.localPosition = new Vector3(0, 5, -10); // Example offset
+           Camera.main.transform.localRotation = Quaternion.identity;
+       }
     }
     public void SpawnOpponents(int index, Vector3 spawnPosition, Quaternion spawnRotation)
     {
-        Instantiate(allCharacters[index], spawnPosition, spawnRotation);
+        GameObject opponent = Instantiate(allCharacters[index], spawnPosition, spawnRotation);
+        
+        // Disable the PlayerInput component if it exists
+        PlayerInput playerInput = opponent.GetComponent<PlayerInput>();
+        if (playerInput != null)
+        {
+            playerInput.enabled = false;
+        }
+
+        // Disable the PlayerController script if it exists
+        PlayerController playerController = opponent.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
     }
     
 }

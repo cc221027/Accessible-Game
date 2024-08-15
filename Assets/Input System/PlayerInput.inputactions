@@ -9,7 +9,7 @@
                     "name": "Steer",
                     "type": "Value",
                     "id": "20250632-f05e-4ef0-8477-64a4c20a3065",
-                    "expectedControlType": "Stick",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -22,13 +22,22 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Slow",
+                    "type": "Value",
+                    "id": "a6182837-144e-4a9e-8984-0f44ad1e0648",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "eb51b75f-7fa0-4122-8175-ff97f03a3184",
-                    "path": "<DualSenseGamepadHID>/leftStick",
+                    "path": "<DualSenseGamepadHID>/leftStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -44,6 +53,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Accelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21152c0d-6e72-4190-9d2f-0908b1525809",
+                    "path": "<DualSenseGamepadHID>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

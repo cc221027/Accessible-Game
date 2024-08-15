@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 9112453267764488961}
   - component: {fileID: 3004248057813017972}
   - component: {fileID: -1927515214341652775}
-  - component: {fileID: -378880886088422739}
   - component: {fileID: -5979319671065519806}
+  - component: {fileID: -8902565840796640724}
   m_Layer: 0
   m_Name: Racer3
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.591812, y: -16.41196, z: 70.82288}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 6, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -135,9 +135,22 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &-378880886088422739
+--- !u!114 &-5979319671065519806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6394364294505844813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3a0a56f9969994183900927b507113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 500
+--- !u!114 &-8902565840796640724
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,17 +180,3 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerDriving
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &-5979319671065519806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6394364294505844813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd3a0a56f9969994183900927b507113, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: -1927515214341652775}
-  speed: 500

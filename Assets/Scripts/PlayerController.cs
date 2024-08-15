@@ -4,19 +4,24 @@ using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rb;
+    private Rigidbody _rb;
     [SerializeField] private float speed;
-    private Vector2 _steerInputValue;
+    private float _steerInputValue;
     private float _accelerationInputValue;
+
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
 
     private void OnSteer(InputValue value)
     {
-        _steerInputValue = value.Get<Vector2>();
+        _steerInputValue = value.Get<float>();
     }
 
     private void OnAccelerate(InputValue value)
@@ -26,10 +31,15 @@ public class PlayerController : MonoBehaviour
 
     private void MoveLogic()
     {
-        rb.AddForce(0, 0, _accelerationInputValue * 300);
-        
-        Vector2 result = new Vector2(_steerInputValue.x, 0 )* (speed * Time.fixedDeltaTime);
-        rb.velocity = result;
+        // Calculate the desired force direction in local space
+        Vector3 movement = transform.forward * (_accelerationInputValue * 20);
+
+        _rb.AddForce(movement, ForceMode.Acceleration);
+        Debug.Log(_rb.velocity.magnitude);
+
+        // Rotate the object
+        float rotationAmount = _steerInputValue * 100 * Time.fixedDeltaTime;
+        transform.Rotate(0, rotationAmount, 0);
         
     }
 
