@@ -1292,10 +1292,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkPoints:
-  - {fileID: 1610001264}
-  - {fileID: 801502894}
-  - {fileID: 698236593}
-  - {fileID: 485802753}
+  - {fileID: 1610001266}
+  - {fileID: 801502896}
+  - {fileID: 698236595}
+  - {fileID: 485802755}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

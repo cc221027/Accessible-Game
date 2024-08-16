@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CharacterData: MonoBehaviour
 {
     public int index;
     public string characterName;
-    private int _checkPointsReached = 0;
-    private int _completedLaps = 0;
+    public int checkPointsReached = 0;
+    public int completedLaps = 0;
     private bool _readyToFinishLap;
     private int _maxSpeed;
     
@@ -21,10 +22,10 @@ public class CharacterData: MonoBehaviour
     {
         if (_readyToFinishLap)
         {
-            _completedLaps++;
+            completedLaps++;
             _readyToFinishLap = false;
         }
-        if (_completedLaps >= _trackManager.Laps)
+        if (completedLaps >= _trackManager.Laps)
         {
             _trackManager.EndRace(this);
         }
@@ -32,10 +33,11 @@ public class CharacterData: MonoBehaviour
 
     public void ReachedCheckPoint()
     {
-        _checkPointsReached++;
-        if (_checkPointsReached >= _trackManager.checkPointsCountRef)
+        checkPointsReached++;
+        if (checkPointsReached >= _trackManager.checkPointsCountRef)
         {
             _readyToFinishLap = true;
+            checkPointsReached = 0;
         }
     }
 }

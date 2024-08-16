@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,7 +18,9 @@ public class GameManager : MonoBehaviour
     public float currentPlayerSpeed;
     
     [SerializeField] private List<GameObject> allCharacters = new List<GameObject>();
-    [SerializeField] private List<string> trackSceneNames = new List<string>(); 
+    [SerializeField] private List<string> trackSceneNames = new List<string>();
+
+    public List<Transform> checkPoints = new List<Transform>();
     
     private void Awake()
     {
@@ -66,6 +69,12 @@ public class GameManager : MonoBehaviour
            // Adjust the camera's position and rotation relative to the player
            Camera.main.transform.localPosition = new Vector3(0, 5, -10); // Example offset
            Camera.main.transform.localRotation = Quaternion.identity;
+       }
+       
+       CompetitorsBehaviour competitorsBehaviour = player.GetComponent<CompetitorsBehaviour>();
+       if (competitorsBehaviour != null)
+       {
+           competitorsBehaviour.enabled = false;
        }
     }
     public void SpawnOpponents(int index, Vector3 spawnPosition, Quaternion spawnRotation)

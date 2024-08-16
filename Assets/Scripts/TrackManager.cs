@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class TrackManager : MonoBehaviour
 {
+    public static TrackManager Instance;
+    
     [SerializeField] private int laps;
     [SerializeField] private TextMeshPro lapText;
     [SerializeField] private TextMeshProUGUI playerSpeedText;
@@ -16,6 +18,7 @@ public class TrackManager : MonoBehaviour
     public int checkPointsCountRef => checkPointCount;
     void Awake()
     {
+        Instance = this;
         SpawnCarts();
     }
 
@@ -38,6 +41,12 @@ public class TrackManager : MonoBehaviour
                 }
             }
     }
+
+    public void FinishLap(CharacterData character)
+    {
+        character.CompleteLap();
+    }
+  
     
     public void EndRace(CharacterData winner)
     {

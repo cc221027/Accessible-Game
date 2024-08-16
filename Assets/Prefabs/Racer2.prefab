@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -8609047440369882806}
   - component: {fileID: -4485809521087819796}
   - component: {fileID: 4994874462172881274}
+  - component: {fileID: -2177859346499741779}
   m_Layer: 0
   m_Name: Racer2
   m_TagString: Untagged
@@ -148,6 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3a0a56f9969994183900927b507113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rb: {fileID: 0}
+  _isJumping: 0
+  _isGrounded: 0
+  _gameManagerRef: {fileID: 0}
   speed: 500
 --- !u!114 &-4485809521087819796
 MonoBehaviour:
@@ -193,3 +198,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 2
   characterName: Racer2
+--- !u!114 &-2177859346499741779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195130143873652074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f013cefb90a322146b1bfcaa3ff9da71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb: {fileID: 0}
+  _isJumping: 0
+  _isGrounded: 0
+  _gameManagerRef: {fileID: 0}
+  checkpoints: []
+  checkpointRadius: 10
+  aiSpeed: 30

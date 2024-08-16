@@ -9,23 +9,12 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : VehicleBehaviour
 {
-    private Rigidbody _rb;
     [SerializeField] private float speed;
     private float _steerInputValue;
     private float _accelerationInputValue;
     private float _decelerateValue;
     private float _driftValue;
-    private bool _isJumping;
-    private bool _isGrounded = true;
-    private GameManager _gameManagerRef;
-
-    private void Awake()
-    {
-        _rb = GetComponent<Rigidbody>();
-        _gameManagerRef = GameManager.Instance;
-        
-    }
-
+    
     private void OnSteer(InputValue value)
     {
         _steerInputValue = value.Get<float>();
@@ -55,7 +44,7 @@ public class PlayerController : VehicleBehaviour
         _isGrounded = false;
     }
     
-    private void MoveLogic()
+    public override  void MoveLogic()
     {
         float decelerationForce = _decelerateValue*20;
         float accelerationForce = _accelerationInputValue*20;
@@ -81,17 +70,4 @@ public class PlayerController : VehicleBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            _isGrounded = true;
-            _isJumping = false;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        MoveLogic();
-    }
 }

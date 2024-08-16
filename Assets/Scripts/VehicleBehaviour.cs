@@ -8,17 +8,17 @@ using Vector3 = UnityEngine.Vector3;
 
 public class VehicleBehaviour : MonoBehaviour
 {
-    private Rigidbody _rb;
-    [SerializeField] private float speed;
-    private float _steerInputValue;
-    private float _accelerationInputValue;
-    private float _decelerateValue;
-    private float _driftValue;
-    private bool _isJumping;
-    private bool _isGrounded;
-    private GameManager _gameManagerRef;
+    public Rigidbody _rb;
+    // [SerializeField] private float speed;
+    // private float _steerInputValue;
+    // private float _accelerationInputValue;
+    // private float _decelerateValue;
+    // private float _driftValue;
+    public bool _isJumping;
+    public bool _isGrounded;
+    public GameManager _gameManagerRef;
 
-    private void Awake()
+    public void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _gameManagerRef = GameManager.Instance;
@@ -33,7 +33,7 @@ public class VehicleBehaviour : MonoBehaviour
         _isGrounded = false;
     }
     
-    private void MoveLogic()
+    public virtual void MoveLogic()
     {
     }
 
