@@ -9,13 +9,11 @@ public class LapTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         CharacterData character = other.GetComponent<CharacterData>();
-        if (character != null)
+        if (character == null) return;
+        character.CompleteLap();
+        foreach (var checkPoint in checkPoints)
         {
-            character.CompleteLap();
-            foreach (var checkPoint in checkPoints)
-            {
-                checkPoint.GetComponent<CheckPointTrigger>().checkPointChecked = false;
-            }
+            checkPoint.GetComponent<CheckPointTrigger>().checkPointChecked = false;
         }
     }
 

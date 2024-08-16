@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CompetitorsBehaviour : MonoBehaviour
+public class CompetitorsBehaviour : VehicleBehaviour
 {
     // Start is called before the first frame update
     void Start()

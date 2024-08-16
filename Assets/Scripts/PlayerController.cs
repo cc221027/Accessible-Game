@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using Vector3 = UnityEngine.Vector3;
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : VehicleBehaviour
 {
     private Rigidbody _rb;
     [SerializeField] private float speed;
