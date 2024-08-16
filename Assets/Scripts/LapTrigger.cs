@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class LapTrigger : MonoBehaviour
 {
+    [SerializeField] private List<GameObject> checkPoints;
+    
     private void OnTriggerEnter(Collider other)
     {
         CharacterData character = other.GetComponent<CharacterData>();
         if (character != null)
         {
             character.CompleteLap();
+            foreach (var checkPoint in checkPoints)
+            {
+                checkPoint.GetComponent<CheckPointTrigger>().checkPointChecked = false;
+            }
         }
     }
 

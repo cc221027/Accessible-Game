@@ -9,9 +9,11 @@ public class TrackManager : MonoBehaviour
     [SerializeField] private int laps;
     [SerializeField] private TextMeshPro lapText;
     [SerializeField] private TextMeshProUGUI playerSpeedText;
-    [SerializeField] private List<Transform> spawnPoints; // List of spawn points for player and opponents
-    
+    [SerializeField] private List<Transform> spawnPoints;
+    private int checkPointCount;    
     public int Laps => laps;
+
+    public int checkPointsCountRef => checkPointCount;
     void Awake()
     {
         SpawnCarts();
