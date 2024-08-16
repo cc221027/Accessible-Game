@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int SelectedTrackIndex { get; private set; } = -1;
 
     public string winner;
+
+    public float currentPlayerSpeed;
     
     [SerializeField] private List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] private List<string> trackSceneNames = new List<string>(); 

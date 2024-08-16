@@ -14,12 +14,16 @@ public class PlayerController : MonoBehaviour
     private float _steerInputValue;
     private float _accelerationInputValue;
     private float _decelerateValue;
+    private float _driftValue;
     private bool _isJumping;
     private bool _isGrounded = true;
+    private GameManager _gameManagerRef;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _gameManagerRef = GameManager.Instance;
+        
     }
 
     private void OnSteer(InputValue value)
@@ -38,6 +42,11 @@ public class PlayerController : MonoBehaviour
         _decelerateValue = value.Get<float>();
     }
 
+    private void OnDrift(InputValue value)
+    {
+        _driftValue = value.Get<float>();
+    }
+
     private void OnJump(InputValue value)
     {
         if (_isJumping) return;
@@ -51,25 +60,23 @@ public class PlayerController : MonoBehaviour
         float decelerationForce = _decelerateValue*20;
         float accelerationForce = _accelerationInputValue*20;
         float currentSpeed = _rb.velocity.magnitude;
+        bool isDrifting = _driftValue > 0;
+        
+        // Drifting logic
+        float driftFactor = isDrifting ? 0.5f : 1f; // Reduces acceleration during drift
+        float rotationAmount = _steerInputValue * 80f * driftFactor * Time.fixedDeltaTime;
+
+        _gameManagerRef.currentPlayerSpeed = currentSpeed;
         
         if (_decelerateValue > 0)
         {
-            if (Vector3.Dot(transform.forward, _rb.velocity) > 0)
-            {
-                _rb.AddForce(-_rb.velocity.normalized * Mathf.Min(decelerationForce, currentSpeed), ForceMode.Acceleration);
-            }
-            else
-            {
-                _rb.AddForce(-transform.forward * decelerationForce, ForceMode.Acceleration);
-            }
+            _rb.AddForce(-_rb.velocity.normalized * Mathf.Min(decelerationForce, currentSpeed), ForceMode.Acceleration);
         }
         else
         {
-            _rb.AddForce(transform.forward * accelerationForce, ForceMode.Acceleration);
+            _rb.AddForce(transform.forward * (accelerationForce * driftFactor), ForceMode.Acceleration);
         }
-        
-        float rotationAmount = _steerInputValue * 80f  * Time.fixedDeltaTime;
-        //* Mathf.Lerp(1f, 0.6f, Mathf.Clamp01(currentSpeed / 30f)))
+
         transform.Rotate(0, rotationAmount, 0);
         
     }

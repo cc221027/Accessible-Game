@@ -8,6 +8,7 @@ public class TrackManager : MonoBehaviour
 {
     [SerializeField] private int laps;
     [SerializeField] private TextMeshPro lapText;
+    [SerializeField] private TextMeshProUGUI playerSpeedText;
     [SerializeField] private List<Transform> spawnPoints; // List of spawn points for player and opponents
     
     public int Laps => laps;
@@ -18,6 +19,7 @@ public class TrackManager : MonoBehaviour
 
     private void Update()
     {
+        playerSpeedText.text = Mathf.FloorToInt(GameManager.Instance.currentPlayerSpeed).ToString();
     }
 
     void SpawnCarts()
