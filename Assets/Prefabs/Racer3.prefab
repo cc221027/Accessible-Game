@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -1927515214341652775}
   - component: {fileID: -5979319671065519806}
   - component: {fileID: -8902565840796640724}
+  - component: {fileID: -7442017299753999210}
   m_Layer: 0
   m_Name: Racer3
   m_TagString: Untagged
@@ -180,3 +181,17 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerDriving
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-7442017299753999210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6394364294505844813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef6f045c7821fd49abb75f4e084037d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 3
+  characterName: Racer3

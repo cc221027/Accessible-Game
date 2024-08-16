@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public int SelectedCharacterIndex { get; private set; } = -1;
     
     public int SelectedTrackIndex { get; private set; } = -1;
+
+    public string winner;
     
     [SerializeField] private List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] private List<string> trackSceneNames = new List<string>(); 
@@ -43,14 +45,12 @@ public class GameManager : MonoBehaviour
     {
         SelectedTrackIndex = index;
         SceneManager.LoadScene("Character Selection");
-        Debug.Log("Track " + index + " selected");
 
     }
     public void ResetSelection()
     {
         SelectedCharacterIndex = -1;
         SelectedTrackIndex = -1;
-        Debug.Log("Reset Selection");
     }
     
     public void SpawnSelectedCharacter(Vector3 spawnPosition, Quaternion spawnRotation)

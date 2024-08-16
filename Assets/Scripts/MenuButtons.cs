@@ -10,7 +10,6 @@ public class MenuButtons : MonoBehaviour
     {
         LoadMainMenu,
         LoadCharacterSelection,
-        LoadRaceTrack1,
         QuitGame,
         ReturnToTrackSelection,
         ReturnToMainMenu
@@ -36,9 +35,6 @@ public class MenuButtons : MonoBehaviour
                 break;
             case ButtonAction.LoadCharacterSelection:
                 LoadScene("Track Selection");
-                break;
-            case ButtonAction.LoadRaceTrack1:
-                LoadScene("Main Menu");
                 break;
             case ButtonAction.QuitGame:
                 Application.Quit();

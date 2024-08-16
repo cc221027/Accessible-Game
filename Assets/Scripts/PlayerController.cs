@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private float _steerInputValue;
     private float _accelerationInputValue;
     private float _decelerateValue;
-    private bool _isJumping = false;
+    private bool _isJumping;
     private bool _isGrounded = true;
 
     private void Awake()
@@ -40,21 +40,33 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
-        if (!_isJumping)
-        {
-            _rb.AddForce(transform.up*5, ForceMode.Impulse);
-            _isJumping = true;
-            _isGrounded = false;
-        }
+        if (_isJumping) return;
+        _rb.AddForce(transform.up*5, ForceMode.Impulse);
+        _isJumping = true;
+        _isGrounded = false;
     }
     
     private void MoveLogic()
     {
         float decelerationForce = _decelerateValue*20;
         float accelerationForce = _accelerationInputValue*20;
-        float currentSpeed  = _rb.velocity.magnitude;
+        float currentSpeed = _rb.velocity.magnitude;
         
-        _rb.AddForce(transform.forward * (accelerationForce - decelerationForce), ForceMode.Acceleration);
+        if (_decelerateValue > 0)
+        {
+            if (Vector3.Dot(transform.forward, _rb.velocity) > 0)
+            {
+                _rb.AddForce(-_rb.velocity.normalized * Mathf.Min(decelerationForce, currentSpeed), ForceMode.Acceleration);
+            }
+            else
+            {
+                _rb.AddForce(-transform.forward * decelerationForce, ForceMode.Acceleration);
+            }
+        }
+        else
+        {
+            _rb.AddForce(transform.forward * accelerationForce, ForceMode.Acceleration);
+        }
         
         float rotationAmount = _steerInputValue * 80f  * Time.fixedDeltaTime;
         //* Mathf.Lerp(1f, 0.6f, Mathf.Clamp01(currentSpeed / 30f)))

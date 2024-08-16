@@ -39,7 +39,8 @@ public class TrackManager : MonoBehaviour
     {
         // Stop the race and announce the winner
         Debug.Log($"{winner.characterName} has won the race!");
-
+        GameManager.Instance.winner = winner.characterName;
+        GameManager.Instance.LoadScene("Result Scene");
         // Implement race-end logic here, such as stopping all cars, displaying the winner, etc.
     }
     
