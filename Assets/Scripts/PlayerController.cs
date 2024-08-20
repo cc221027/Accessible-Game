@@ -37,10 +37,14 @@ public class PlayerController : VehicleBehaviour
 
     private void OnJump(InputValue value)
     {
-        if (_isJumping) return;
-        _rb.AddForce(transform.up * 5, ForceMode.Impulse);
-        _isJumping = true;
-        _isGrounded = false;
+        if (movementEnabled)
+        {
+            if (_isJumping) return;
+            _rb.AddForce(transform.up * 5, ForceMode.Impulse);
+            _isJumping = true;
+            _isGrounded = false;
+        }
+        
     }
 
     public override void MoveLogic()

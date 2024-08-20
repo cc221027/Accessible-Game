@@ -4,7 +4,6 @@ using UnityEngine;
 public class CompetitorsBehaviour : VehicleBehaviour
 {
     public List<Transform> checkpoints = new List<Transform>();  // List of checkpoint transforms
-    public float checkpointRadius = 5f;  // Radius to consider checkpoint reached
     public float aiSpeed;  // Speed of the AI
     private Vector3 _direction;
     
@@ -16,6 +15,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
     public override void MoveLogic()
     {
+        
         CharacterData characterData = GetComponent<CharacterData>();
         int characterCheckPoints = characterData.checkPointsReached;
     
@@ -26,11 +26,6 @@ public class CompetitorsBehaviour : VehicleBehaviour
         {
             _direction = (checkpoints[characterCheckPoints].position - transform.position).normalized;
         }
-    
-       
-
-        
-
         _rb.velocity = _direction * aiSpeed;  // Move towards the checkpoint
     }
 

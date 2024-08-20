@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public int currentPlayerCheckPoints;
     public int currentPlayerLap = 0;
     
-    [SerializeField] private List<GameObject> allCharacters = new List<GameObject>();
+    [SerializeField] public List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] private List<string> trackSceneNames = new List<string>();
 
     public List<Transform> checkPoints = new List<Transform>();
@@ -61,53 +61,9 @@ public class GameManager : MonoBehaviour
         SelectedTrackIndex = -1;
     }
     
-    public void SpawnSelectedCharacter(Vector3 spawnPosition, Quaternion spawnRotation)
-    {
-       GameObject player = Instantiate(allCharacters[SelectedCharacterIndex], spawnPosition, spawnRotation);
-
-       player.tag = "Player";
-       
-       if (Camera.main != null)
-       {
-           Camera.main.transform.SetParent(player.transform);
-
-           // Adjust the camera's position and rotation relative to the player
-           Camera.main.transform.localPosition = new Vector3(0, 5, -10); // Example offset
-           Camera.main.transform.localRotation = Quaternion.identity;
-       }
-       
-       CompetitorsBehaviour competitorsBehaviour = player.GetComponent<CompetitorsBehaviour>();
-       if (competitorsBehaviour != null)
-       {
-           competitorsBehaviour.enabled = false;
-       }
-    }
-    public void SpawnOpponents(int index, Vector3 spawnPosition, Quaternion spawnRotation)
-    {
-        GameObject opponent = Instantiate(allCharacters[index], spawnPosition, spawnRotation);
-        
-        // Disable the PlayerInput component if it exists
-        PlayerInput playerInput = opponent.GetComponent<PlayerInput>();
-        if (playerInput != null)
-        {
-            playerInput.enabled = false;
-        }
-
-        // Disable the PlayerController script if it exists
-        PlayerController playerController = opponent.GetComponent<PlayerController>();
-        if (playerController != null)
-        {
-            playerController.enabled = false;
-        }
-    }
     
-    public void EnableCharacterMovement()
-    {
-        // Enable movement for all characters
-        foreach (var character in allCharacters) // assuming you keep track of all characters
-        {
-            character.GetComponent<VehicleBehaviour>().EnableMovement(); // Ensure each character has a method to enable movement
-        }
-    }
+    
+    
+    
     
 }

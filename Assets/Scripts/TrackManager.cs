@@ -3,17 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TrackManager : MonoBehaviour
 {
     public static TrackManager Instance;
     
-    [SerializeField] private int laps;
     [SerializeField] private TextMeshProUGUI lapText;
     [SerializeField] private TextMeshProUGUI lapTextHeader;
+    [SerializeField] private TextMeshProUGUI countDownTimerText;
+    [SerializeField] private TextMeshProUGUI placementText;
+    [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI playerSpeedText;
     [SerializeField] private List<Transform> spawnPoints;
-    [SerializeField] private int checkPointCount;    
+    
+    [SerializeField] private int checkPointCount;
+    [SerializeField] private int laps;
+    private int _countDownTimer = 5;
     public int Laps => laps;
 
     public int checkPointsCountRef => checkPointCount;
@@ -21,12 +27,14 @@ public class TrackManager : MonoBehaviour
     {
         Instance = this;
         StartRace();
+        StartCoroutine(CountDownToStart());
     }
 
     private void Update()
     {
         playerSpeedText.text = Mathf.FloorToInt(GameManager.Instance.currentPlayerSpeed).ToString();
         lapText.text = GameManager.Instance.currentPlayerLap + " / " + laps;
+       
     }
 
     private void StartRace()
@@ -36,27 +44,80 @@ public class TrackManager : MonoBehaviour
 
     void SpawnCarts()
     {
-            GameManager.Instance.SpawnSelectedCharacter(spawnPoints[0].position, spawnPoints[0].rotation);
+            SpawnSelectedCharacter(spawnPoints[0].position, spawnPoints[0].rotation);
 
             int opponentIndex = 0;
             for (int i = 0; i < spawnPoints.Count; i++)
             {
                 if (i != GameManager.Instance.SelectedCharacterIndex && opponentIndex < spawnPoints.Count - 1)
                 {
-                    GameManager.Instance.SpawnOpponents(i, spawnPoints[opponentIndex + 1].position, spawnPoints[opponentIndex + 1].rotation);
+                    SpawnOpponents(i, spawnPoints[opponentIndex + 1].position, spawnPoints[opponentIndex + 1].rotation);
                     opponentIndex++;
                 }
             }
-            StartCoroutine(DelayStartMovement(5f));
-            
+    }
+    
+    public void SpawnSelectedCharacter(Vector3 spawnPosition, Quaternion spawnRotation)
+    {
+        GameObject player = Instantiate(GameManager.Instance.allCharacters[GameManager.Instance.SelectedCharacterIndex], spawnPosition, spawnRotation);
+
+        player.tag = "Player";
+       
+        if (Camera.main != null)
+        {
+            Camera.main.transform.SetParent(player.transform);
+
+            // Adjust the camera's position and rotation relative to the player
+            Camera.main.transform.localPosition = new Vector3(0, 5, -10); // Example offset
+            Camera.main.transform.localRotation = Quaternion.identity;
+        }
+       
+        CompetitorsBehaviour competitorsBehaviour = player.GetComponent<CompetitorsBehaviour>();
+        Destroy(competitorsBehaviour);
+       
+        StartCoroutine(DelayStartMovement(5f, player));
+
+    }
+    
+    public void SpawnOpponents(int index, Vector3 spawnPosition, Quaternion spawnRotation)
+    {
+        GameObject opponent = Instantiate(GameManager.Instance.allCharacters[index], spawnPosition, spawnRotation);
+        
+        // Disable the PlayerInput component if it exists
+        PlayerInput playerInput = opponent.GetComponent<PlayerInput>();
+        Destroy(playerInput);
+
+        // Disable the PlayerController script if it exists
+        PlayerController playerController = opponent.GetComponent<PlayerController>();
+        Destroy(playerController);
+
+        StartCoroutine(DelayStartMovement(5f, opponent));
+    }
+
+    private IEnumerator CountDownToStart()
+    {
+        while (_countDownTimer > 0)
+        {
+            Debug.Log(_countDownTimer);
+            countDownTimerText.text = _countDownTimer.ToString();
+            yield return new WaitForSeconds(1);
+            _countDownTimer--;
+        }
+
+        countDownTimerText.text = "GO!";
+        yield return new WaitForSeconds(1);
+        countDownTimerText.enabled = false;
+    }
+    private IEnumerator DelayStartMovement(float delay, GameObject character)
+    {
+        yield return new WaitForSeconds(delay);
+        character.GetComponent<VehicleBehaviour>().EnableMovement();
     }
 
     public void FinishLap(CharacterData character, List<Transform> checkPoints)
     {
         character.CompleteLap(checkPoints);
-       
     }
-  
     
     public void EndRace(CharacterData winner)
     {
@@ -65,15 +126,7 @@ public class TrackManager : MonoBehaviour
         GameManager.Instance.winner = winner.characterName;
         GameManager.Instance.LoadScene("Result Scene");
         GameManager.Instance.currentPlayerLap = 0;
-        // Implement race-end logic here, such as stopping all cars, displaying the winner, etc.
     }
     
-    private IEnumerator DelayStartMovement(float delay)
-    {
-        // Wait for the specified amount of time
-        yield return new WaitForSeconds(delay);
-    
-        // Notify all characters to start moving
-        GameManager.Instance.EnableCharacterMovement();
-    }
+   
 }

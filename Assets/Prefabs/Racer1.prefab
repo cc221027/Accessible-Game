@@ -153,6 +153,7 @@ MonoBehaviour:
   _isJumping: 0
   _isGrounded: 0
   _gameManagerRef: {fileID: 0}
+  movementEnabled: 0
   speed: 500
 --- !u!114 &3834147490763161895
 MonoBehaviour:
@@ -198,6 +199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 1
   characterName: Racer1
+  checkPointsReached: 0
+  completedLaps: 0
 --- !u!114 &-2355172182135342908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +217,6 @@ MonoBehaviour:
   _isJumping: 0
   _isGrounded: 0
   _gameManagerRef: {fileID: 0}
+  movementEnabled: 0
   checkpoints: []
-  checkpointRadius: 10
   aiSpeed: 30
