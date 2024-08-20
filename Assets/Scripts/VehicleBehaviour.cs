@@ -17,22 +17,24 @@ public class VehicleBehaviour : MonoBehaviour
     public bool _isJumping;
     public bool _isGrounded;
     public GameManager _gameManagerRef;
+    public bool movementEnabled = false;
 
     public void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _rb.drag = 0.1f;
         _gameManagerRef = GameManager.Instance;
-        
+
     }
     
     private void OnJump(InputValue value)
     {
         if (_isJumping) return;
-        _rb.AddForce(transform.up*5, ForceMode.Impulse);
+        _rb.AddForce(transform.up*2, ForceMode.Impulse);
         _isJumping = true;
         _isGrounded = false;
     }
-    
+
     public virtual void MoveLogic()
     {
     }
@@ -46,8 +48,16 @@ public class VehicleBehaviour : MonoBehaviour
         }
     }
 
+    public void EnableMovement()
+    {
+        movementEnabled = true;
+    }
+
     private void FixedUpdate()
     {
-        MoveLogic();
+        if (movementEnabled)
+        {
+            MoveLogic();
+        }
     }
 }

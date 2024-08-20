@@ -6,15 +6,15 @@ using UnityEngine.Serialization;
 
 public class CheckPointTrigger : MonoBehaviour
 {
-    public bool checkPointChecked;
+    public List<String> playersChecked;
 
     private void OnTriggerEnter(Collider other)
     {
         CharacterData character = other.GetComponent<CharacterData>();
-        if (character != null)
+        if (character != null && !playersChecked.Contains(character.name))
         {
             character.ReachedCheckPoint();
-            checkPointChecked = true;
+            playersChecked.Add(character.name);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -18,12 +19,19 @@ public class CharacterData: MonoBehaviour
         _trackManager = FindObjectOfType<TrackManager>();
     }
     
-    public void CompleteLap()
+    public void CompleteLap(List<Transform> checkPoints)
     {
         if (_readyToFinishLap)
         {
             completedLaps++;
             _readyToFinishLap = false;
+            checkPointsReached = 0;
+            if (CompareTag("Player")) {GameManager.Instance.currentPlayerLap++;}
+
+            foreach (var checkPoint in checkPoints)
+            {
+                checkPoint.GetComponent<CheckPointTrigger>().playersChecked.Remove(name);
+            }
         }
         if (completedLaps >= _trackManager.Laps)
         {
@@ -34,10 +42,10 @@ public class CharacterData: MonoBehaviour
     public void ReachedCheckPoint()
     {
         checkPointsReached++;
+        Debug.Log("CHECKPOINT REACHED");
         if (checkPointsReached >= _trackManager.checkPointsCountRef)
         {
             _readyToFinishLap = true;
-            checkPointsReached = 0;
         }
     }
 }

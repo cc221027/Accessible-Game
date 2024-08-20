@@ -16,11 +16,14 @@ public class GameManager : MonoBehaviour
     public string winner;
 
     public float currentPlayerSpeed;
+    public int currentPlayerCheckPoints;
+    public int currentPlayerLap = 0;
     
     [SerializeField] private List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] private List<string> trackSceneNames = new List<string>();
 
     public List<Transform> checkPoints = new List<Transform>();
+    public Transform lapCheckPoint;
     
     private void Awake()
     {
@@ -62,6 +65,8 @@ public class GameManager : MonoBehaviour
     {
        GameObject player = Instantiate(allCharacters[SelectedCharacterIndex], spawnPosition, spawnRotation);
 
+       player.tag = "Player";
+       
        if (Camera.main != null)
        {
            Camera.main.transform.SetParent(player.transform);
@@ -93,6 +98,15 @@ public class GameManager : MonoBehaviour
         if (playerController != null)
         {
             playerController.enabled = false;
+        }
+    }
+    
+    public void EnableCharacterMovement()
+    {
+        // Enable movement for all characters
+        foreach (var character in allCharacters) // assuming you keep track of all characters
+        {
+            character.GetComponent<VehicleBehaviour>().EnableMovement(); // Ensure each character has a method to enable movement
         }
     }
     
