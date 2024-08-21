@@ -57,6 +57,10 @@ public class VehicleBehaviour : MonoBehaviour
                 speedReduced = true;
             }
         }
+        else if (other.gameObject.CompareTag("Item"))
+        {
+            other.gameObject.GetComponent<ItemPickupContainer>().GetRandomItem(transform.position, transform.rotation);
+        }
     }
 
     public void EnableMovement()
