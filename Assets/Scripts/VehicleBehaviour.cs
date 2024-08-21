@@ -20,6 +20,7 @@ public class VehicleBehaviour : MonoBehaviour
     
     public int maxSpeed = 50;
     public int jumpingPower = 5;
+    public GameObject inventoryItem;
 
     public void Awake()
     {
@@ -57,10 +58,20 @@ public class VehicleBehaviour : MonoBehaviour
                 speedReduced = true;
             }
         }
-        else if (other.gameObject.CompareTag("Item"))
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        if (other.CompareTag("Item") && inventoryItem == null)
         {
-            other.gameObject.GetComponent<ItemPickupContainer>().GetRandomItem(transform.position, transform.rotation);
+            other.gameObject.GetComponent<ItemPickupContainer>().GetRandomItem(gameObject, transform.position, transform.rotation);
         }
+    }
+
+    public virtual void UseItem()
+    {
+        
     }
 
     public void EnableMovement()

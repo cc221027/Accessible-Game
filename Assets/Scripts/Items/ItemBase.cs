@@ -11,7 +11,7 @@ public class ItemBase : MonoBehaviour
     private float _lastUsedTime;
     
     
-    public virtual void OnPickup()
+    public void OnPickup()
     {
         Debug.Log(itemName + " picked up!");
         // Additional logic like adding to inventory
@@ -24,6 +24,7 @@ public class ItemBase : MonoBehaviour
     
     public virtual void UseItem()
     {
+        
         Debug.Log(itemName + " used!");
     }
 }

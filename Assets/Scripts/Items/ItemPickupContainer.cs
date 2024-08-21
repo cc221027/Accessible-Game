@@ -1,13 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ItemPickupContainer : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> items;
-    public void GetRandomItem(Vector3 position, Quaternion rotation)
+    [SerializeField] private List<GameObject> items = new List<GameObject>();
+    
+    private Renderer[] _renderers;
+    private Collider[] _colliders;
+
+    private void Awake()
     {
-        GameObject item = Instantiate(items[Random.Range(0, items.Count)], position, rotation);
+        // Cache the Renderer and Collider components
+        _renderers = GetComponentsInChildren<Renderer>();
+        _colliders = GetComponentsInChildren<Collider>();
+    }
+
+    public void GetRandomItem(GameObject player, Vector3 position, Quaternion rotation)
+    {
+        GameObject item = Instantiate(items[Random.Range(0, items.Count)], new Vector3(position.x + 5, position.y + 3, position.z), rotation);
+        item.transform.SetParent(player.transform);
         item.GetComponent<ItemBase>().OnPickup();
+        player.GetComponent<VehicleBehaviour>().inventoryItem = item;
+        
+        StartCoroutine(ResetItemBox());
+    }
+
+    private IEnumerator ResetItemBox()
+    {
+        foreach (var visuals in _renderers) { visuals.enabled = false; }
+        foreach (var coll in _colliders) { coll.enabled = false; }
+        
+        yield return new WaitForSeconds(3);
+        
+        foreach (var visuals in _renderers) { visuals.enabled = true; }
+        foreach (var coll in _colliders) { coll.enabled = true; }
+
     }
 }

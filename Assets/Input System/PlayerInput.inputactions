@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ItemUse",
+                    "type": "Value",
+                    "id": "06b7d310-67bd-4dde-ab34-300cea3f753c",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -104,6 +113,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Drift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67e3a747-7098-4cca-b62b-d63a47c53c34",
+                    "path": "<DualSenseGamepadHID>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ItemUse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

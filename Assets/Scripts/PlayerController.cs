@@ -11,6 +11,8 @@ public class PlayerController : VehicleBehaviour
     private float _accelerationInputValue;
     private float _decelerateValue;
     private float _driftValue;
+    private float _itemUseValue;
+    
     private bool _isDrifting;
     private bool _driftEnded;
     private float _driftSteerLock;
@@ -44,6 +46,11 @@ public class PlayerController : VehicleBehaviour
             _isJumping = true;
             _isGrounded = false;
         }
+    }
+
+    private void OnItemUse(InputValue value)
+    {
+        _itemUseValue = value.Get<float>();
     }
 
     public override void MoveLogic()
@@ -97,5 +104,15 @@ public class PlayerController : VehicleBehaviour
         float rotationAmount = _steerInputValue * 80f * rotationMultiplier * Time.fixedDeltaTime;
 
         transform.Rotate(0, rotationAmount, 0);
+        
+        UseItem();
+    }
+
+    public override void UseItem()
+    {
+        if (_itemUseValue > 0 && inventoryItem != null)
+        {
+            Debug.Log("PLAYER USED ITEM");
+        }
     }
 }

@@ -33,6 +33,15 @@ public class CompetitorsBehaviour : VehicleBehaviour
         {
             _rb.AddForce(_direction * _aiSpeed * characterRef.characterAcceleration, ForceMode.Acceleration);
         }
+        UseItem();
+    }
+
+    public override void UseItem()
+    {
+        if (inventoryItem != null)
+        {
+            Debug.Log("COMPETITOR USED ITEM!");
+        }
     }
 
 }
