@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Racer2 : CharacterData
+public class ItemBase : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        index = 1;
-        characterName = "Racer2";
-        baseCharacterAcceleration = 1.2f;
-        characterWeight = 3f;
-        characterAcceleration = baseCharacterAcceleration;
-
+        
     }
 
     // Update is called once per frame

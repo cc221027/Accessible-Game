@@ -1,32 +1,38 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CompetitorsBehaviour : VehicleBehaviour
 {
     public List<Transform> checkpoints = new List<Transform>();  // List of checkpoint transforms
-    public float aiSpeed;  // Speed of the AI
+    private float _aiSpeed;  // Speed of the AI
     private Vector3 _direction;
+    private int _characterCheckpoints;
     
 
+    
     private void Start()
     {
         checkpoints = _gameManagerRef.checkPoints;
+        _aiSpeed = Random.Range(20, 31);
     }
 
     public override void MoveLogic()
     {
-        
-        CharacterData characterData = GetComponent<CharacterData>();
-        int characterCheckPoints = characterData.checkPointsReached;
+        _characterCheckpoints = characterRef.checkPointsReached;
     
-        if (characterCheckPoints >= checkpoints.Count)
+        if (_characterCheckpoints >= checkpoints.Count)
         { _direction = (_gameManagerRef.lapCheckPoint.position - transform.position).normalized;;
         }
         else
         {
-            _direction = (checkpoints[characterCheckPoints].position - transform.position).normalized;
+            _direction = (checkpoints[_characterCheckpoints].position - transform.position).normalized;
         }
-        _rb.velocity = _direction * aiSpeed;  // Move towards the checkpoint
+        if (_rb.velocity.magnitude <= maxSpeed)
+        {
+            _rb.AddForce(_direction * _aiSpeed * characterRef.characterAcceleration, ForceMode.Acceleration);
+        }
     }
 
 }

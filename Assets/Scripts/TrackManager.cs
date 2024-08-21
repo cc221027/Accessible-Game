@@ -98,7 +98,6 @@ public class TrackManager : MonoBehaviour
     {
         while (_countDownTimer > 0)
         {
-            Debug.Log(_countDownTimer);
             countDownTimerText.text = _countDownTimer.ToString();
             yield return new WaitForSeconds(1);
             _countDownTimer--;

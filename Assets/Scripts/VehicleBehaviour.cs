@@ -12,17 +12,23 @@ public class VehicleBehaviour : MonoBehaviour
     public Rigidbody _rb;
     public bool _isJumping;
     public bool _isGrounded;
+    public bool speedReduced = false;
     public GameManager _gameManagerRef;
+    public CharacterData characterRef;
     public bool movementEnabled;
+
+    
+    public int maxSpeed = 50;
+    public int jumpingPower = 5;
 
     public void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _rb.drag = 0.1f;
         _gameManagerRef = GameManager.Instance;
+        characterRef = GetComponent<CharacterData>();
         movementEnabled = false;
     }
-
 
     public virtual void MoveLogic()
     {
@@ -30,15 +36,32 @@ public class VehicleBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Road"))
         {
             _isGrounded = true;
             _isJumping = false;
+            if (speedReduced)
+            {
+                characterRef.characterAcceleration = characterRef.baseCharacterAcceleration;
+                speedReduced = false;
+            }
+        }
+        else if (other.gameObject.CompareTag("Offroad"))
+        {
+            _isGrounded = true;
+            _isJumping = false;
+
+            if (!speedReduced)
+            {
+                characterRef.characterAcceleration *= 0.8f;
+                speedReduced = true;
+            }
         }
     }
 
     public void EnableMovement()
     {
+        _rb.mass = characterRef.characterWeight;
         movementEnabled = true;
     }
 

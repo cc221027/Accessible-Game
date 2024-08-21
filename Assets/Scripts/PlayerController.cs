@@ -40,21 +40,20 @@ public class PlayerController : VehicleBehaviour
         if (movementEnabled)
         {
             if (_isJumping) return;
-            _rb.AddForce(transform.up * 5, ForceMode.Impulse);
+            _rb.AddForce(transform.up * jumpingPower, ForceMode.Impulse);
             _isJumping = true;
             _isGrounded = false;
         }
-        
     }
 
     public override void MoveLogic()
     {
         float decelerationForce = _decelerateValue * 20;
-        float accelerationForce = _accelerationInputValue * 20;
+        float accelerationForce = _accelerationInputValue * 20 * characterRef.characterAcceleration;
         float currentSpeed = _rb.velocity.magnitude;
         _isDrifting = _driftValue > 0;
 
-        _gameManagerRef.currentPlayerSpeed = currentSpeed;
+        _gameManagerRef.currentPlayerSpeed = Mathf.RoundToInt(currentSpeed);
 
         if (_isDrifting && _isGrounded && currentSpeed >= 10)
         {
@@ -84,11 +83,11 @@ public class PlayerController : VehicleBehaviour
             
             _driftSteerLock = 0;
             
-            if (_decelerateValue > 0)
+            if (_decelerateValue > 0 && currentSpeed <= maxSpeed)
             {
                 _rb.AddForce(-_rb.velocity.normalized * Mathf.Min(decelerationForce, currentSpeed), ForceMode.Acceleration);
             }
-            else
+            else if(currentSpeed <= maxSpeed)
             {
                 _rb.AddForce(transform.forward * accelerationForce, ForceMode.Acceleration);
             }

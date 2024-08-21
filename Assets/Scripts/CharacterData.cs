@@ -6,11 +6,15 @@ using UnityEngine.Serialization;
 public class CharacterData: MonoBehaviour
 {
     public int index;
+    
     public string characterName;
+    public float baseCharacterAcceleration;
+    public float characterAcceleration;
+    public float characterWeight;
+    
     public int checkPointsReached = 0;
     public int completedLaps = 0;
     private bool _readyToFinishLap;
-    private int _maxSpeed;
     
     private TrackManager _trackManager;
 
@@ -19,6 +23,7 @@ public class CharacterData: MonoBehaviour
         _trackManager = FindObjectOfType<TrackManager>();
     }
     
+
     public void CompleteLap(List<Transform> checkPoints)
     {
         if (_readyToFinishLap)
@@ -42,7 +47,6 @@ public class CharacterData: MonoBehaviour
     public void ReachedCheckPoint()
     {
         checkPointsReached++;
-        Debug.Log("CHECKPOINT REACHED");
         if (checkPointsReached >= _trackManager.checkPointsCountRef)
         {
             _readyToFinishLap = true;

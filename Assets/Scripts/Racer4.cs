@@ -9,6 +9,10 @@ public class Racer4 : CharacterData
     {
         index = 3;
         characterName = "Racer4";
+        baseCharacterAcceleration = 1.2f;
+        characterWeight = 4f;
+        characterAcceleration = baseCharacterAcceleration;
+
     }
 
     // Update is called once per frame
