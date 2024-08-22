@@ -14,7 +14,6 @@ public class ItemBase : MonoBehaviour
     public void OnPickup()
     {
         Debug.Log(itemName + " picked up!");
-        // Additional logic like adding to inventory
     }
     
     public bool CanUseItem()
@@ -22,9 +21,8 @@ public class ItemBase : MonoBehaviour
         return Time.time >= _lastUsedTime + cooldownTime;
     }
     
-    public virtual void UseItem()
+    public virtual void UseItem(GameObject player)
     {
         
-        Debug.Log(itemName + " used!");
     }
 }

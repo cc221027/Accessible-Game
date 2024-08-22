@@ -11,8 +11,15 @@ public class ItemSpeedboost : ItemBase
     }
 
     // Update is called once per frame
-    public override void UseItem()
+    public override void UseItem(GameObject player)
     {
-        
+        StartCoroutine(SpeedBoost(player));
+    }
+
+    private IEnumerator SpeedBoost(GameObject player)
+    {
+        player.GetComponent<CharacterData>().characterAcceleration *= 2;
+        yield return new WaitForSeconds(1.5f);
+        player.GetComponent<CharacterData>().characterAcceleration = player.GetComponent<CharacterData>().baseCharacterAcceleration;
     }
 }

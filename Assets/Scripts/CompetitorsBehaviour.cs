@@ -33,15 +33,25 @@ public class CompetitorsBehaviour : VehicleBehaviour
         {
             _rb.AddForce(_direction * _aiSpeed * characterRef.characterAcceleration, ForceMode.Acceleration);
         }
-        UseItem();
+        if (ShouldUseItem())
+        {
+            UseItem();
+        }
     }
 
     public override void UseItem()
     {
-        if (inventoryItem != null)
+        if (inventoryItem)
         {
-            Debug.Log("COMPETITOR USED ITEM!");
+            inventoryItem.GetComponent<ItemBase>().UseItem(gameObject);
+            inventoryItem = null;
         }
+    }
+    
+    private bool ShouldUseItem()
+    {
+        // Logic to determine if UseItem should be called
+        return true; // Replace with actual condition
     }
 
 }

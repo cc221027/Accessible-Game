@@ -113,6 +113,7 @@ public class PlayerController : VehicleBehaviour
         if (_itemUseValue > 0 && inventoryItem != null)
         {
             Debug.Log("PLAYER USED ITEM");
+            inventoryItem = null;
         }
     }
 }
