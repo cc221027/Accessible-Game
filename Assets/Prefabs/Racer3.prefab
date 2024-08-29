@@ -33,8 +33,8 @@ Transform:
   m_GameObject: {fileID: 6394364294505844813}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.591812, y: -16.41196, z: 70.82288}
-  m_LocalScale: {x: 6, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -154,8 +154,13 @@ MonoBehaviour:
   _rb: {fileID: 0}
   _isJumping: 0
   _isGrounded: 0
+  speedReduced: 0
   _gameManagerRef: {fileID: 0}
-  speed: 500
+  characterRef: {fileID: 0}
+  movementEnabled: 0
+  maxSpeed: 50
+  jumpingPower: 50
+  inventoryItem: {fileID: 0}
 --- !u!114 &-8902565840796640724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +205,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 3
   characterName: Racer3
+  baseCharacterAcceleration: 0
+  characterAcceleration: 0
+  characterWeight: 0
+  checkPointsReached: 0
+  completedLaps: 0
 --- !u!114 &-3997875083352217917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +225,11 @@ MonoBehaviour:
   _rb: {fileID: 0}
   _isJumping: 0
   _isGrounded: 0
+  speedReduced: 0
   _gameManagerRef: {fileID: 0}
+  characterRef: {fileID: 0}
+  movementEnabled: 0
+  maxSpeed: 50
+  jumpingPower: 50
+  inventoryItem: {fileID: 0}
   checkpoints: []
-  checkpointRadius: 10
-  aiSpeed: 30

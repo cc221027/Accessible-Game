@@ -21,6 +21,9 @@ public class TrackManager : MonoBehaviour
     [SerializeField] private int laps;
     private int _countDownTimer = 5;
     public int Laps => laps;
+    
+    public List<Transform> checkPoints = new List<Transform>();
+    public Transform lapCheckPoint;
 
     public int checkPointsCountRef => checkPointCount;
     void Awake()

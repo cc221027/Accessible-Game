@@ -6,11 +6,11 @@ using UnityEngine;
 public class LapTrigger : MonoBehaviour
 {
     [SerializeField] private List<Transform> checkPoints;
-
-    private void Awake()
+    
+    private void Start()
     {
-        GameManager.Instance.checkPoints = checkPoints;
-        GameManager.Instance.lapCheckPoint = transform;
+        TrackManager.Instance.checkPoints = checkPoints;
+        TrackManager.Instance.lapCheckPoint = transform;    
     }
 
     private void OnTriggerEnter(Collider other)
@@ -18,7 +18,6 @@ public class LapTrigger : MonoBehaviour
         CharacterData character = other.GetComponent<CharacterData>();
         if (character == null) return;
         TrackManager.Instance.FinishLap(character, checkPoints);
-        
     }
 
 }

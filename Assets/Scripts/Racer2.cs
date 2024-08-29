@@ -15,9 +15,4 @@ public class Racer2 : CharacterData
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

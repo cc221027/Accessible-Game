@@ -16,14 +16,12 @@ public class GameManager : MonoBehaviour
     public string winner;
 
     public float currentPlayerSpeed;
-    public int currentPlayerCheckPoints;
     public int currentPlayerLap = 0;
     
     [SerializeField] public List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] private List<string> trackSceneNames = new List<string>();
 
-    public List<Transform> checkPoints = new List<Transform>();
-    public Transform lapCheckPoint;
+    
     
     private void Awake()
     {
@@ -47,7 +45,6 @@ public class GameManager : MonoBehaviour
     {
         SelectedCharacterIndex = index;
         SceneManager.LoadScene(trackSceneNames[SelectedTrackIndex]);
-        Debug.Log("Character " + index + " selected");
     }
     public void SelectTrack(int index)
     {

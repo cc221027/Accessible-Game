@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ItemSpeedboost : ItemBase
 {
+    private VehicleBehaviour _vehicleRef;
+    private CharacterData _characterRef;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -13,13 +16,18 @@ public class ItemSpeedboost : ItemBase
     // Update is called once per frame
     public override void UseItem(GameObject player)
     {
-        StartCoroutine(SpeedBoost(player));
+        _vehicleRef = player.GetComponent<VehicleBehaviour>();
+        _characterRef = player.GetComponent<CharacterData>();
+        StartCoroutine(SpeedBoost());
     }
 
-    private IEnumerator SpeedBoost(GameObject player)
+    private IEnumerator SpeedBoost()
     {
-        player.GetComponent<CharacterData>().characterAcceleration *= 2;
+        _vehicleRef.maxSpeed = 80;
+        _characterRef.characterAcceleration *= 4;
         yield return new WaitForSeconds(1.5f);
-        player.GetComponent<CharacterData>().characterAcceleration = player.GetComponent<CharacterData>().baseCharacterAcceleration;
+        _vehicleRef.maxSpeed = 50;
+        _characterRef.characterAcceleration = _characterRef.baseCharacterAcceleration;
+        Destroy(gameObject);
     }
 }

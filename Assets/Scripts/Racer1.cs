@@ -13,5 +13,4 @@ public class Racer1 : CharacterData
         characterWeight = 5f;
         characterAcceleration = baseCharacterAcceleration;
     }
-    
 }

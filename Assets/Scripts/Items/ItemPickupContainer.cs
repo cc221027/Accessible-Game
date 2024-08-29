@@ -19,9 +19,9 @@ public class ItemPickupContainer : MonoBehaviour
         _colliders = GetComponentsInChildren<Collider>();
     }
 
-    public void GetRandomItem(GameObject player, Vector3 position, Quaternion rotation)
+    public void GetRandomItem(GameObject player)
     {
-        GameObject item = Instantiate(items[Random.Range(0, items.Count)], new Vector3(position.x + 5, position.y + 3, position.z), rotation);
+        GameObject item = Instantiate(items[Random.Range(0, items.Count)], player.transform.position + (player.transform.right * 2) + player.transform.up, player.transform.rotation);
         item.transform.SetParent(player.transform);
         item.GetComponent<ItemBase>().OnPickup();
         player.GetComponent<VehicleBehaviour>().inventoryItem = item;

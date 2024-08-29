@@ -1,12 +1,12 @@
 using System;
 using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Debug = UnityEngine.Debug;
 
 public class PlayerController : VehicleBehaviour
 {
-    [SerializeField] private float speed;
     private float _steerInputValue;
     private float _accelerationInputValue;
     private float _decelerateValue;
@@ -16,9 +16,16 @@ public class PlayerController : VehicleBehaviour
     private bool _isDrifting;
     private bool _driftEnded;
     private float _driftSteerLock;
+    
+    private PlayerInput _playerInput;
+
+    private void Start()
+    {
+        _playerInput = GetComponent<PlayerInput>();
+    }
+
     private void OnSteer(InputValue value)
     {
-     
         _steerInputValue = value.Get<float>();
     }
 
@@ -41,16 +48,14 @@ public class PlayerController : VehicleBehaviour
     {
         if (movementEnabled)
         {
-            if (_isJumping) return;
-            _rb.AddForce(transform.up * jumpingPower, ForceMode.Impulse);
-            _isJumping = true;
-            _isGrounded = false;
+            Jump();
         }
     }
 
     private void OnItemUse(InputValue value)
     {
         _itemUseValue = value.Get<float>();
+        UseItem();
     }
 
     public override void MoveLogic()
@@ -64,8 +69,12 @@ public class PlayerController : VehicleBehaviour
 
         if (_isDrifting && _isGrounded && currentSpeed >= 10)
         {
-            Vector3 targetVelocity = transform.forward * accelerationForce;
-            _rb.velocity = Vector3.Lerp(_rb.velocity, targetVelocity * 5, Time.fixedDeltaTime);
+            if (_steerInputValue != 0)
+            {
+                Vector3 targetVelocity = transform.forward * accelerationForce;
+                _rb.velocity = Vector3.Lerp(_rb.velocity, targetVelocity * 5, Time.fixedDeltaTime);
+            }
+            
             
             if (_driftSteerLock == 0)
             {
@@ -76,17 +85,19 @@ public class PlayerController : VehicleBehaviour
             if (_driftSteerLock < 0)
             {
                 _steerInputValue = Mathf.Lerp(_steerInputValue, Mathf.Clamp(_steerInputValue, -1f, -0.3f), 0.7f);
+               
             }
             else if (_driftSteerLock > 0)
             {
                 _steerInputValue = Mathf.Lerp(_steerInputValue, Mathf.Clamp(_steerInputValue, 0.3f, 1f), 0.7f);
             }
-
         }
         else
         {
-            if (_steerInputValue is >= -0.3f and <= -0.298f) {_steerInputValue = 1f; } 
-            else if (_steerInputValue is >= 0.298f and <= 0.3f) {_steerInputValue = -1f; }
+            if (_driftSteerLock != 0)
+            {
+                _steerInputValue = _playerInput.actions["Steer"].ReadValue<float>();
+            }
             
             _driftSteerLock = 0;
             
@@ -104,15 +115,13 @@ public class PlayerController : VehicleBehaviour
         float rotationAmount = _steerInputValue * 80f * rotationMultiplier * Time.fixedDeltaTime;
 
         transform.Rotate(0, rotationAmount, 0);
-        
-        UseItem();
     }
 
     public override void UseItem()
     {
         if (_itemUseValue > 0 && inventoryItem != null)
         {
-            Debug.Log("PLAYER USED ITEM");
+            inventoryItem.GetComponent<ItemBase>().UseItem(gameObject);
             inventoryItem = null;
         }
     }

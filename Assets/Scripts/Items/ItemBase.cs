@@ -13,7 +13,6 @@ public class ItemBase : MonoBehaviour
     
     public void OnPickup()
     {
-        Debug.Log(itemName + " picked up!");
     }
     
     public bool CanUseItem()

@@ -9,24 +9,26 @@ using Vector3 = UnityEngine.Vector3;
 
 public class VehicleBehaviour : MonoBehaviour
 {
-    public Rigidbody _rb;
-    public bool _isJumping;
-    public bool _isGrounded;
-    public bool speedReduced = false;
-    public GameManager _gameManagerRef;
-    public CharacterData characterRef;
-    public bool movementEnabled;
+    [HideInInspector] public Rigidbody _rb;
+    [HideInInspector] public bool _isJumping;
+    [HideInInspector] public bool _isGrounded;
+    [HideInInspector] public bool speedReduced = false;
+    [HideInInspector] public GameManager _gameManagerRef;
+    [HideInInspector] public TrackManager trackManagerRef;
+    [HideInInspector] public CharacterData characterRef;
+    [HideInInspector] public bool movementEnabled;
 
     
-    public int maxSpeed = 50;
-    public int jumpingPower = 5;
-    public GameObject inventoryItem;
+    [HideInInspector] public int maxSpeed = 50;
+    [HideInInspector] public int jumpingPower = 50;
+    [HideInInspector] public GameObject inventoryItem;
 
     public void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _rb.drag = 0.1f;
         _gameManagerRef = GameManager.Instance;
+        trackManagerRef = TrackManager.Instance;
         characterRef = GetComponent<CharacterData>();
         movementEnabled = false;
     }
@@ -65,7 +67,7 @@ public class VehicleBehaviour : MonoBehaviour
         
         if (other.CompareTag("Item") && inventoryItem == null)
         {
-            other.gameObject.GetComponent<ItemPickupContainer>().GetRandomItem(gameObject, transform.position, transform.rotation);
+            other.gameObject.GetComponent<ItemPickupContainer>().GetRandomItem(gameObject);
         }
     }
 
@@ -87,5 +89,13 @@ public class VehicleBehaviour : MonoBehaviour
             MoveLogic();
 
         }
+    }
+
+    protected void Jump()
+    {
+        if (_isJumping) return;
+        _rb.AddForce(transform.up * jumpingPower, ForceMode.Impulse);
+        _isJumping = true;
+        _isGrounded = false;
     }
 }
