@@ -70,13 +70,15 @@ public class TrackManager : MonoBehaviour
         {
             Camera.main.transform.SetParent(player.transform);
 
-            // Adjust the camera's position and rotation relative to the player
             Camera.main.transform.localPosition = new Vector3(0, 5, -10); // Example offset
             Camera.main.transform.localRotation = Quaternion.identity;
         }
        
         CompetitorsBehaviour competitorsBehaviour = player.GetComponent<CompetitorsBehaviour>();
         Destroy(competitorsBehaviour);
+
+        EnemyFOV enemyFOV = player.GetComponent<EnemyFOV>();
+        Destroy(enemyFOV);
        
         StartCoroutine(DelayStartMovement(5f, player));
 

@@ -50,10 +50,8 @@ MonoBehaviour:
   placementText: {fileID: 0}
   timeText: {fileID: 0}
   playerSpeedText: {fileID: 0}
-  spawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  spawnPoints: []
   checkPointCount: 0
-  laps: 2
+  laps: 0
+  checkPoints: []
+  lapCheckPoint: {fileID: 0}

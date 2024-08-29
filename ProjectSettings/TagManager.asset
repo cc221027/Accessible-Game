@@ -9,6 +9,7 @@ TagManager:
   - Offroad
   - Item
   - Item Wall
+  - Road Corner
   layers:
   - Default
   - TransparentFX

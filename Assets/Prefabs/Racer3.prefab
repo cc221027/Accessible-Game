@@ -1,5 +1,71 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1753358890364881724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2036966922927205041}
+  - component: {fileID: 8492396332663933396}
+  - component: {fileID: 464559593656151738}
+  m_Layer: 0
+  m_Name: FieldOfView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2036966922927205041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753358890364881724}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1395747043065051666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8492396332663933396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753358890364881724}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.3405368, y: 1, z: 50}
+  m_Center: {x: 0, y: 0, z: 15}
+--- !u!114 &464559593656151738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753358890364881724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b549a1f3af01fe04a824000ae96b442d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6394364294505844813
 GameObject:
   m_ObjectHideFlags: 0
@@ -17,6 +83,7 @@ GameObject:
   - component: {fileID: -8902565840796640724}
   - component: {fileID: -7442017299753999210}
   - component: {fileID: -3997875083352217917}
+  - component: {fileID: 9026137950534079103}
   m_Layer: 0
   m_Name: Racer3
   m_TagString: Untagged
@@ -36,7 +103,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2036966922927205041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6376254771695306388
@@ -156,6 +224,7 @@ MonoBehaviour:
   _isGrounded: 0
   speedReduced: 0
   _gameManagerRef: {fileID: 0}
+  trackManagerRef: {fileID: 0}
   characterRef: {fileID: 0}
   movementEnabled: 0
   maxSpeed: 50
@@ -227,9 +296,24 @@ MonoBehaviour:
   _isGrounded: 0
   speedReduced: 0
   _gameManagerRef: {fileID: 0}
+  trackManagerRef: {fileID: 0}
   characterRef: {fileID: 0}
   movementEnabled: 0
   maxSpeed: 50
   jumpingPower: 50
   inventoryItem: {fileID: 0}
   checkpoints: []
+  itemInSight: {fileID: 0}
+  foundItem: 0
+--- !u!114 &9026137950534079103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6394364294505844813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b549a1f3af01fe04a824000ae96b442d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

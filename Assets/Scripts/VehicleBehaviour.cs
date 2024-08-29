@@ -91,7 +91,7 @@ public class VehicleBehaviour : MonoBehaviour
         }
     }
 
-    protected void Jump()
+    public void Jump()
     {
         if (_isJumping) return;
         _rb.AddForce(transform.up * jumpingPower, ForceMode.Impulse);

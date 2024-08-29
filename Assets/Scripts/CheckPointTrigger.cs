@@ -13,8 +13,24 @@ public class CheckPointTrigger : MonoBehaviour
         CharacterData character = other.GetComponent<CharacterData>();
         if (character != null && !playersChecked.Contains(character.name))
         {
-            character.ReachedCheckPoint();
-            playersChecked.Add(character.name);
+            string objectName = gameObject.name; 
+            int checkpointNumber;
+            
+            string numberPart = objectName.Replace("Checkpoint (", "").Replace(")", "");
+
+            if (int.TryParse(numberPart, out checkpointNumber))
+            {
+                Debug.Log("Character checkpoint reached: " + character.checkPointsReached);
+                Debug.Log("Checkpoint number: " + checkpointNumber);
+            
+                if (character.checkPointsReached == checkpointNumber)
+                {
+                    character.ReachedCheckPoint();
+                    playersChecked.Add(character.name);
+                }
+            }   
         }
     }
+
+
 }
