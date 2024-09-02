@@ -64,8 +64,7 @@ public class VehicleBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.CompareTag("Item") && inventoryItem == null)
+        if (other.CompareTag("Item") && inventoryItem == null && Vector3.Distance(gameObject.transform.position, other.transform.position) <= 5)
         {
             other.gameObject.GetComponent<ItemPickupContainer>().GetRandomItem(gameObject);
         }

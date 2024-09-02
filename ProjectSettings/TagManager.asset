@@ -10,6 +10,7 @@ TagManager:
   - Item
   - Item Wall
   - Road Corner
+  - Obstacle
   layers:
   - Default
   - TransparentFX

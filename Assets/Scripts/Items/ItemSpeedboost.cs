@@ -23,8 +23,8 @@ public class ItemSpeedboost : ItemBase
 
     private IEnumerator SpeedBoost()
     {
-        _vehicleRef.maxSpeed = 80;
-        _characterRef.characterAcceleration *= 4;
+        _vehicleRef.maxSpeed = 65;
+        _characterRef.characterAcceleration *= 2;
         yield return new WaitForSeconds(1.5f);
         _vehicleRef.maxSpeed = 50;
         _characterRef.characterAcceleration = _characterRef.baseCharacterAcceleration;

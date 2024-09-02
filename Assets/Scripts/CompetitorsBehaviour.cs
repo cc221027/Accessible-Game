@@ -11,29 +11,23 @@ public class CompetitorsBehaviour : VehicleBehaviour
     private float _aiSpeed; // Speed of the AI
     private Vector3 _direction;
     public int _characterCheckpoints;
+
+    public bool isNearCorner;
     
     public Transform itemInSight = null;
-    public bool foundItem;
-
-
-    private readonly Collider[] _results = new Collider[100]; // Adjust size as needed
-
-
     private void Start()
     {
         checkpoints = trackManagerRef.checkPoints;
-        _aiSpeed = Random.Range(15, 26);
+        _aiSpeed = Random.Range(18, 23);
     }
 
     public override void MoveLogic()
     {
         Vector3 direction;
 
-        // Randomize the checkpoint position
-        float randomOffset = Random.Range(-5f, 5f); // Adjust the range as needed
+        float randomOffset = Random.Range(-5f, 5f);
 
-        if (itemInSight != null &&
-            Vector3.Dot(transform.forward, (itemInSight.position - transform.position).normalized) < 0)
+        if (itemInSight != null)
         {
             direction = (itemInSight.position - transform.position).normalized;
             if (Vector3.Distance(transform.position, itemInSight.position) <= 20)
@@ -68,9 +62,19 @@ public class CompetitorsBehaviour : VehicleBehaviour
         {
             _rb.AddForce(transform.forward * _aiSpeed * characterRef.characterAcceleration, ForceMode.Acceleration);
         }
+        if (_rb.velocity.magnitude > 20 && isNearCorner)
+        {
+            _rb.AddForce(-_rb.velocity.normalized * 50, ForceMode.Acceleration);
+        }
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 5);
+        Vector3 flatDirection = new Vector3(direction.x, 0, direction.z);
 
+        if (flatDirection.magnitude > 0)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(flatDirection);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5);
+        }
         if (ShouldUseItem())
         {
             UseItem();
@@ -88,21 +92,13 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
     private bool ShouldUseItem()
     {
-        if (maxSpeed == 25)
-        {
-            return false;
-        }
-        else
-        {
+        if (!isNearCorner || inventoryItem.GetComponent<ItemBase>().itemName != "Speedboost")
+        {            
             return true;
         }
+        return false;
     }
-
-    public void SlowDown()
-    {
-        Vector3 opposingForce = -transform.forward * _aiSpeed; // Apply an opposing force
-        _rb.AddForce(opposingForce, ForceMode.Acceleration);
-    }
+    
 }
         
     
