@@ -92,9 +92,12 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
     private bool ShouldUseItem()
     {
-        if (!isNearCorner || inventoryItem.GetComponent<ItemBase>().itemName != "Speedboost")
-        {            
-            return true;
+        if (!isNearCorner && inventoryItem)
+        {
+            if (inventoryItem.GetComponent<ItemBase>().itemName != "Speedboost")
+            {
+                return true;
+            }
         }
         return false;
     }

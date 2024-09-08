@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,6 +25,9 @@ public class TrackManager : MonoBehaviour
     
     public List<Transform> checkPoints = new List<Transform>();
     public Transform lapCheckPoint;
+    
+    private bool _raceStarted = false;
+    private float _raceTimer = 0f;
 
     public int checkPointsCountRef => checkPointCount;
     void Awake()
@@ -37,6 +41,16 @@ public class TrackManager : MonoBehaviour
     {
         playerSpeedText.text = Mathf.FloorToInt(GameManager.Instance.currentPlayerSpeed).ToString();
         lapText.text = GameManager.Instance.currentPlayerLap + " / " + laps;
+        
+        if (_raceStarted)
+        {
+            _raceTimer += Time.deltaTime;
+            int minutes = Mathf.FloorToInt(_raceTimer / 60F);
+            int seconds = Mathf.FloorToInt(_raceTimer % 60F);
+            int milliseconds = Mathf.FloorToInt((_raceTimer * 1000F) % 1000F);  // Convert the fractional part to milliseconds
+            string timeFormatted = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
+            timeText.text = timeFormatted;
+        }
        
     }
 
@@ -109,6 +123,7 @@ public class TrackManager : MonoBehaviour
         }
 
         countDownTimerText.text = "GO!";
+        StartTimer();
         yield return new WaitForSeconds(1);
         countDownTimerText.enabled = false;
     }
@@ -118,13 +133,20 @@ public class TrackManager : MonoBehaviour
         character.GetComponent<VehicleBehaviour>().EnableMovement();
     }
 
+    private void StartTimer()
+    {
+        _raceStarted = true;
+    }
+
     public void FinishLap(CharacterData character, List<Transform> checkPoints)
     {
         character.CompleteLap(checkPoints);
+        
     }
     
     public void EndRace(CharacterData winner)
     {
+        _raceStarted = false;
         // Stop the race and announce the winner
         Debug.Log($"{winner.characterName} has won the race!");
         GameManager.Instance.winner = winner.characterName;
