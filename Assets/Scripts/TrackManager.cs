@@ -93,7 +93,10 @@ public class TrackManager : MonoBehaviour
 
         EnemyFOV enemyFOV = player.GetComponent<EnemyFOV>();
         Destroy(enemyFOV);
-       
+
+        Transform fieldOfViewTransform = player.transform.Find("FieldOfView");
+        Destroy(fieldOfViewTransform.gameObject);
+        
         StartCoroutine(DelayStartMovement(5f, player));
 
     }

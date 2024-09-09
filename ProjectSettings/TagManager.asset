@@ -11,6 +11,8 @@ TagManager:
   - Item Wall
   - Road Corner
   - Obstacle
+  - LeftOffroad
+  - RightOffroad
   layers:
   - Default
   - TransparentFX

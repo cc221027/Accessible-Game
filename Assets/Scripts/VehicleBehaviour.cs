@@ -23,6 +23,8 @@ public class VehicleBehaviour : MonoBehaviour
     [HideInInspector] public int jumpingPower = 50;
     [HideInInspector] public GameObject inventoryItem;
 
+   
+
     public void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -69,6 +71,8 @@ public class VehicleBehaviour : MonoBehaviour
             other.gameObject.GetComponent<ItemPickupContainer>().GetRandomItem(gameObject);
         }
     }
+
+   
 
     public virtual void UseItem()
     {

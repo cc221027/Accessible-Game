@@ -19,9 +19,19 @@ public class PlayerController : VehicleBehaviour
     
     private PlayerInput _playerInput;
 
+    private Gamepad _gamepad;
+    
+    private float _rangeToLeftOffroad;
+    private float _rangeToRightOffroad;
+    
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
+        _gamepad = Gamepad.current;
+    }
+
+    private void Update()
+    {
     }
 
     private void OnSteer(InputValue value)
@@ -124,5 +134,26 @@ public class PlayerController : VehicleBehaviour
             inventoryItem.GetComponent<ItemBase>().UseItem(gameObject);
             inventoryItem = null;
         }
+    }
+    
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("LeftOffroad"))
+        {
+            Gamepad.current.SetMotorSpeeds(0.1f, 0);
+        }
+        if (other.CompareTag("RightOffroad"))
+        {
+            Gamepad.current.SetMotorSpeeds(0, 0.1f);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("LeftOffroad") || other.CompareTag("RightOffroad"))
+        {
+            Gamepad.current.SetMotorSpeeds(0, 0);
+        }
+
     }
 }
