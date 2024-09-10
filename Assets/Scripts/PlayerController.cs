@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Diagnostics;
+using System.Linq;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -39,95 +41,113 @@ public class PlayerController : VehicleBehaviour
     }
 
     private void Update()
+{
+    if (_spline == null) return;
+
+    Vector3 closestPoint = GetClosestPointOnSpline();
+    
+    Vector3 splineForward = GetSplineForwardDirection(closestPoint);
+    Vector3 splineRight = new Vector3(splineForward.z, 0, -splineForward.x).normalized;
+
+    Vector3 playerPosXZ = new Vector3(transform.position.x, 0, transform.position.z);
+    Vector3 closestPointXZ = new Vector3(closestPoint.x, 0, closestPoint.z);
+
+    Vector3 splineToPlayer = playerPosXZ - closestPointXZ;
+    float side = Vector3.Dot(splineRight, splineToPlayer);
+
+    // Calculate the angle to the next knot
+    float angleToNextKnot = GetAngleToNextKnot(closestPoint, closestPointXZ, playerPosXZ, transform);
+
+    // Motor speeds based on side
+    if (side > 0)
     {
-        if (_spline != null)
+        Gamepad.current.SetMotorSpeeds(0, Mathf.Clamp(side / 30f, 0, 1));
+        if (angleToNextKnot <= 6)
         {
-            // Get the closest point on the spline to the player's position
-            Vector3 closestPointToPlayer = ClosestPointOnSpline();
-
-            // Calculate the horizontal direction vector of the spline
-            Vector3 splineForward = GetSplineForwardDirection(closestPointToPlayer);
-            Vector3 splineForwardXZ = new Vector3(splineForward.x, 0, splineForward.z).normalized;
-
-            // Calculate the horizontal direction vector from the closest point to the player
-            Vector3 playerPositionXZ = new Vector3(transform.position.x, 0, transform.position.z);
-            Vector3 closestPointXZ = new Vector3(closestPointToPlayer.x, 0, closestPointToPlayer.z);
-            Vector3 splineToPlayer = (playerPositionXZ - closestPointXZ).normalized;
-
-            // Calculate the cross product to determine the side (left or right)
-            float side = Vector3.Cross(splineForwardXZ, splineToPlayer).y;
-
-            Debug.Log(side);
-
-            // Determine the position relative to the spline
-            if (side > 0)
-            {
-                Debug.Log("Player is on the right of the spline point.");
-            }
-            else if (side < 0)
-            {
-                Debug.Log("Player is on the left of the spline point.");
-            }
-            else
-            {
-                Debug.Log("Player is directly in line with the spline point.");
-            }
+            Debug.Log(angleToNextKnot);
+            StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Left));
         }
     }
-
-    private Vector3 ClosestPointOnSpline()
+    else if (side < 0)
     {
-        if (_spline == null) return Vector3.zero;
-
-        // For an Auto Spline, you need to find the closest point on the spline curve.
-        // This assumes you have a method to get the closest point, or you can compute it.
-        float closestDistance = Mathf.Infinity;
-        Vector3 closestPoint = Vector3.zero;
-
-        // Iterate through the spline's points
-        for (int i = 0; i < _spline.Spline.Count; i++)
+        Gamepad.current.SetMotorSpeeds(Mathf.Clamp(-side / 30f, 0, 1), 0);
+        if (angleToNextKnot <= 6)
         {
-            // Example method to get the spline position; replace as necessary
-            Vector3 splinePoint = _spline.Spline[i].Position;
-
-            // Calculate the distance from the player's position to the spline point
-            float distance = Vector3.Distance(transform.position, splinePoint);
-
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestPoint = splinePoint;
-            }
+            Debug.Log(angleToNextKnot);
+            StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Right));
         }
+    }
+    else
+    {
+        Gamepad.current.SetMotorSpeeds(0, 0);
+    }
+}
 
-        return closestPoint;
+private Vector3 GetClosestPointOnSpline()
+{
+    return _spline.Spline
+        .OrderBy(p => Vector3.Distance(transform.position, p.Position))
+        .First()
+        .Position;
+}
+
+private Vector3 GetSplineForwardDirection(Vector3 point)
+{
+    var closestKnot = _spline.Spline
+        .OrderBy(knot => Vector3.Distance(point, knot.Position))
+        .First();
+
+    int closestIndex = _spline.Spline.IndexOf(closestKnot);
+    BezierKnot nextKnot = (closestIndex + 1 < _spline.Spline.Count) ? _spline.Spline[closestIndex + 1] : _spline.Spline[Mathf.Max(0, closestIndex - 1)];
+
+    return (new Vector3(nextKnot.Position.x, 0, nextKnot.Position.z) - new Vector3(closestKnot.Position.x, 0, closestKnot.Position.z)).normalized;
+}
+
+private float GetAngleToNextKnot(Vector3 point, Vector3 closestPointXZ, Vector3 playerPosXZ, Transform playerTransform)
+{
+    // Find the closest knot and the next knot
+    var closestKnot = _spline.Spline.OrderBy(knot => Vector3.Distance(point, knot.Position)).First();
+    int closestIndex = _spline.Spline.IndexOf(closestKnot);
+    BezierKnot nextKnot = (closestIndex + 1 < _spline.Spline.Count) ? _spline.Spline[closestIndex + 1] : _spline.Spline[Mathf.Max(0, closestIndex - 1)];
+
+    // Compute direction vectors
+    Vector3 directionToNextKnot = new Vector3(nextKnot.Position.x, 0, nextKnot.Position.z) - new Vector3(closestKnot.Position.x, 0, closestKnot.Position.z);
+    Vector3 playerDirection = playerTransform.forward;
+
+    // Compute the angle between the direction to the next knot and the player's current direction
+    float angleToNextKnot = Vector3.Angle(directionToNextKnot, playerDirection);
+
+    return angleToNextKnot;
+}
+
+
+private IEnumerator PulseMotor(Gamepad gamepad, MotorSide side)
+{
+    float duration = 0.1f; // Duration for each pulse
+    
+    switch (side)
+    {
+        case MotorSide.Left:
+            gamepad.SetMotorSpeeds(1, 0);
+            break;
+        case MotorSide.Right:
+            gamepad.SetMotorSpeeds(0, 1);
+            break;
     }
 
-    private Vector3 GetSplineForwardDirection(Vector3 point)
-    {
-        if (_spline == null || _spline.Spline.Count == 0) 
-            return Vector3.forward;
+    yield return new WaitForSeconds(duration);
 
-        BezierKnot closestKnot = _spline.Spline[0]; // Start with the first knot
-        float closestDistance = Vector3.Distance(point, closestKnot.Position);
+    gamepad.SetMotorSpeeds(0, 0);
+}
 
-        // Find the knot closest to the given point
-        foreach (var candidate in _spline.Spline)
-        {
-            float distance = Vector3.Distance(candidate.Position, point);
-            if (distance < closestDistance)  // Find the closest knot
-            {
-                closestDistance = distance;
-                closestKnot = candidate;
-            }
-        }
+private enum MotorSide
+{
+    Left,
+    Right
+}
 
-        // Convert float3 to Vector3 for normalization
-        Vector3 tangentOut = new Vector3(closestKnot.TangentOut.x, closestKnot.TangentOut.y, closestKnot.TangentOut.z);
 
-        // Return the normalized forward direction
-        return tangentOut.normalized;
-    }
+
 
 
 
@@ -233,26 +253,5 @@ public class PlayerController : VehicleBehaviour
             inventoryItem.GetComponent<ItemBase>().UseItem(gameObject);
             inventoryItem = null;
         }
-    }
-    
-    private void OnTriggerStay(Collider other)
-    {
-        //if (other.CompareTag("LeftOffroad"))
-        {
-            //Gamepad.current.SetMotorSpeeds(0.1f, 0);
-        }
-        //if (other.CompareTag("RightOffroad"))
-        {
-          // Gamepad.current.SetMotorSpeeds(0, 0.1f);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("LeftOffroad") || other.CompareTag("RightOffroad"))
-        {
-            Gamepad.current.SetMotorSpeeds(0, 0);
-        }
-
     }
 }
