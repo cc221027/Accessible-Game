@@ -12,11 +12,20 @@ public class ItemPickupContainer : MonoBehaviour
     private Renderer[] _renderers;
     private Collider[] _colliders;
 
+    private AudioSource _pickupContainerHoveringAudio;
+
     private void Awake()
     {
         // Cache the Renderer and Collider components
         _renderers = GetComponentsInChildren<Renderer>();
         _colliders = GetComponentsInChildren<Collider>();
+    }
+
+    private void Start()
+    {
+        _pickupContainerHoveringAudio = GetComponent<AudioSource>();
+        _pickupContainerHoveringAudio.loop = true;
+        _pickupContainerHoveringAudio.Play();
     }
 
     public void GetRandomItem(GameObject player)

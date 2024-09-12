@@ -22,21 +22,33 @@ public class PlayerController : VehicleBehaviour
     private float _driftSteerLock;
     
     private PlayerInput _playerInput;
-
-    private Gamepad _gamepad;
     
     private GameObject _splineGameObject;
     private SplineContainer _spline;
     
     private float _rangeToLeftOffroad;
     private float _rangeToRightOffroad;
+
+    private AudioSource _countdownAudio;
+    private AudioSource _carMotorAudio;
+    private AudioSource _driftingAudio;
     
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
-        _gamepad = Gamepad.current;
         _splineGameObject = GameObject.FindGameObjectWithTag("Spline");
         _spline = _splineGameObject.GetComponent<SplineContainer>();
+
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+
+        if (audioSources.Length >= 2)
+        {
+            _countdownAudio = audioSources[0];
+            _carMotorAudio = audioSources[1];
+            _driftingAudio = audioSources[3];
+        }
+        
+        _countdownAudio.Play();
 
     }
 
@@ -56,24 +68,25 @@ public class PlayerController : VehicleBehaviour
     float side = Vector3.Dot(splineRight, splineToPlayer);
 
     // Calculate the angle to the next knot
-    float angleToNextKnot = GetAngleToNextKnot(closestPoint, closestPointXZ, playerPosXZ, transform);
+    float angleToNextKnot = GetAngleToNextKnot(closestPoint, transform);
+    
 
     // Motor speeds based on side
-    if (side > 0)
+    if (side > 0 && !speedReduced)
     {
         Gamepad.current.SetMotorSpeeds(0, Mathf.Clamp(side / 30f, 0, 1));
-        if (angleToNextKnot <= 6)
+        if (angleToNextKnot >= 10)
         {
-            Debug.Log(angleToNextKnot);
+            Debug.Log(side/30);
             StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Left));
         }
     }
-    else if (side < 0)
+    else if (side < 0 && !speedReduced)
     {
         Gamepad.current.SetMotorSpeeds(Mathf.Clamp(-side / 30f, 0, 1), 0);
-        if (angleToNextKnot <= 6)
+        if (angleToNextKnot >= 10)
         {
-            Debug.Log(angleToNextKnot);
+            Debug.Log(side/30);
             StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Right));
         }
     }
@@ -103,21 +116,19 @@ private Vector3 GetSplineForwardDirection(Vector3 point)
     return (new Vector3(nextKnot.Position.x, 0, nextKnot.Position.z) - new Vector3(closestKnot.Position.x, 0, closestKnot.Position.z)).normalized;
 }
 
-private float GetAngleToNextKnot(Vector3 point, Vector3 closestPointXZ, Vector3 playerPosXZ, Transform playerTransform)
+private float GetAngleToNextKnot(Vector3 point, Transform playerTransform)
 {
     // Find the closest knot and the next knot
     var closestKnot = _spline.Spline.OrderBy(knot => Vector3.Distance(point, knot.Position)).First();
     int closestIndex = _spline.Spline.IndexOf(closestKnot);
-    BezierKnot nextKnot = (closestIndex + 1 < _spline.Spline.Count) ? _spline.Spline[closestIndex + 1] : _spline.Spline[Mathf.Max(0, closestIndex - 1)];
+    BezierKnot nextKnot = (closestIndex + 1 < _spline.Spline.Count) ? _spline.Spline[closestIndex + 1] : _spline.Spline[0];
 
-    // Compute direction vectors
-    Vector3 directionToNextKnot = new Vector3(nextKnot.Position.x, 0, nextKnot.Position.z) - new Vector3(closestKnot.Position.x, 0, closestKnot.Position.z);
-    Vector3 playerDirection = playerTransform.forward;
-
-    // Compute the angle between the direction to the next knot and the player's current direction
-    float angleToNextKnot = Vector3.Angle(directionToNextKnot, playerDirection);
+    Vector3 directionToNextKnot = new Vector3(nextKnot.Position.x, 0, nextKnot.Position.z) - new Vector3(playerTransform.position.x, 0, playerTransform.position.z);
+    Vector3 playerForwardXZ = new Vector3(playerTransform.forward.x, 0, playerTransform.forward.z);
+    float angleToNextKnot = Vector3.Angle(playerForwardXZ, directionToNextKnot.normalized);
 
     return angleToNextKnot;
+
 }
 
 

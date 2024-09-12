@@ -23,7 +23,8 @@ public class VehicleBehaviour : MonoBehaviour
     [HideInInspector] public int jumpingPower = 50;
     [HideInInspector] public GameObject inventoryItem;
 
-   
+    private AudioSource _offroadWarningAudio;
+    private AudioSource _teleportBackAudio;
 
     public void Awake()
     {
@@ -33,6 +34,14 @@ public class VehicleBehaviour : MonoBehaviour
         trackManagerRef = TrackManager.Instance;
         characterRef = GetComponent<CharacterData>();
         movementEnabled = false;
+        
+        AudioSource[] audioSources = GetComponents<AudioSource>(); 
+        
+        if (audioSources.Length >= 2)
+        {
+            _offroadWarningAudio = audioSources[0];
+            _teleportBackAudio = audioSources[1];
+        }
     }
 
     public virtual void MoveLogic()
@@ -60,6 +69,7 @@ public class VehicleBehaviour : MonoBehaviour
             {
                 characterRef.characterAcceleration *= 0.8f;
                 speedReduced = true;
+                StartCoroutine(ReturnToCheckPoint());
             }
         }
     }
@@ -72,6 +82,16 @@ public class VehicleBehaviour : MonoBehaviour
         }
     }
 
+    private IEnumerator ReturnToCheckPoint()
+    {
+        _offroadWarningAudio.Play();
+        yield return new WaitForSeconds(5);
+        if (speedReduced)
+        {
+            //Teleport vehicle back to last checkpoint
+            _teleportBackAudio.Play();
+        }
+    }
    
 
     public virtual void UseItem()

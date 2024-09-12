@@ -8,6 +8,12 @@ public class ItemWall : ItemBase
     // Start is called before the first frame update
     void Start()
     {
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        if (audioSources.Length >= 2)
+        {
+            pickupAudioSource = audioSources[0];
+            useItemAudio = audioSources[1];
+        }        
         itemName = "Wall";
     }
 
@@ -16,14 +22,10 @@ public class ItemWall : ItemBase
         transform.parent = null;
         transform.position = (player.transform.position - (player.transform.forward * 5));
         transform.localScale = new Vector3(6, 3, 1);
+        useItemAudio.Play();
     }
 
     private void OnCollisionEnter(Collision other)
-    {
-        BumpIntoPlayer(other.gameObject);
-    }
-
-    private void BumpIntoPlayer(GameObject player)
     {
         Destroy(gameObject);
     }

@@ -6,6 +6,14 @@ using UnityEngine.UI;
 
 public class MenuButtons : MonoBehaviour
 {
+    private AudioSource _returnButtonAudio;
+    private AudioSource _quitGameAudio;
+
+    private AudioSource _mainMenuAudio;
+    private AudioSource _characterSelectionAudio;
+    private AudioSource _trackSelectionAudio;
+    
+    
     private enum ButtonAction
     {
         LoadMainMenu,
@@ -56,10 +64,6 @@ public class MenuButtons : MonoBehaviour
         if (!string.IsNullOrEmpty(sceneName) && GameManager.Instance != null)
         {
             GameManager.Instance.LoadScene(sceneName);
-        }
-        else
-        {
-            Debug.LogError("Scene name is empty or ScenesManager instance not found!");
         }
     }
 }

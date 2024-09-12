@@ -10,6 +10,12 @@ public class ItemSpeedboost : ItemBase
     // Start is called before the first frame update
     void Start()
     {
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        if (audioSources.Length >= 2)
+        {
+            pickupAudioSource = audioSources[0];
+            useItemAudio = audioSources[1];
+        }        
         itemName = "Speedboost";
     }
 
@@ -18,6 +24,7 @@ public class ItemSpeedboost : ItemBase
     {
         _vehicleRef = player.GetComponent<VehicleBehaviour>();
         _characterRef = player.GetComponent<CharacterData>();
+        useItemAudio.Play();
         StartCoroutine(SpeedBoost());
     }
 

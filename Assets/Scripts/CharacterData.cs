@@ -17,7 +17,7 @@ public class CharacterData: MonoBehaviour
     private bool _readyToFinishLap;
     
     private TrackManager _trackManager;
-
+    
     private void Awake()
     {
         _trackManager = FindObjectOfType<TrackManager>();
