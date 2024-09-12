@@ -5,6 +5,8 @@ using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+using UnityEngine.Splines;
 
 public class TrackManager : MonoBehaviour
 {
@@ -16,31 +18,31 @@ public class TrackManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI placementText;
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI playerSpeedText;
-    [SerializeField] private List<Transform> spawnPoints;
-    
-    [SerializeField] private int checkPointCount;
-    [SerializeField] private int laps;
     private int _countDownTimer = 5;
-    public int Laps => laps;
-    
-    public List<Transform> checkPoints = new List<Transform>();
+    [SerializeField] private List<Transform> spawnPoints;
+
+    public SplineContainer spline;
+
     public Transform lapCheckPoint;
+    public int laps;
     
     private bool _raceStarted = false;
     private float _raceTimer = 0f;
+    public int currentPlayerSpeed;
+    public int currentPlayerLap;
 
-    public int checkPointsCountRef => checkPointCount;
     void Awake()
     {
         Instance = this;
-        StartRace();
+        SpawnCarts();
         StartCoroutine(CountDownToStart());
+        spline = GameObject.FindGameObjectWithTag("Spline").GetComponent<SplineContainer>();
     }
 
     private void Update()
     {
-        playerSpeedText.text = Mathf.FloorToInt(GameManager.Instance.currentPlayerSpeed).ToString();
-        lapText.text = GameManager.Instance.currentPlayerLap + " / " + laps;
+        playerSpeedText.text = Mathf.FloorToInt(currentPlayerSpeed).ToString();
+        lapText.text = currentPlayerLap + " / " + laps;
         
         if (_raceStarted)
         {
@@ -52,11 +54,6 @@ public class TrackManager : MonoBehaviour
             timeText.text = timeFormatted;
         }
        
-    }
-
-    private void StartRace()
-    {
-        SpawnCarts();
     }
 
     void SpawnCarts()
@@ -126,7 +123,7 @@ public class TrackManager : MonoBehaviour
         }
 
         countDownTimerText.text = "GO!";
-        StartTimer();
+        _raceStarted = true;
         yield return new WaitForSeconds(1);
         countDownTimerText.enabled = false;
     }
@@ -135,26 +132,13 @@ public class TrackManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         character.GetComponent<VehicleBehaviour>().EnableMovement();
     }
-
-    private void StartTimer()
-    {
-        _raceStarted = true;
-    }
-
-    public void FinishLap(CharacterData character, List<Transform> checkPoints)
-    {
-        character.CompleteLap(checkPoints);
-        
-    }
     
     public void EndRace(CharacterData winner)
     {
         _raceStarted = false;
-        // Stop the race and announce the winner
-        Debug.Log($"{winner.characterName} has won the race!");
+        currentPlayerLap = 0;
         GameManager.Instance.winner = winner.characterName;
         GameManager.Instance.LoadScene("Result Scene");
-        GameManager.Instance.currentPlayerLap = 0;
     }
     
    

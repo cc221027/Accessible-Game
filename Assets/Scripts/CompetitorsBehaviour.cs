@@ -7,7 +7,6 @@ using Random = UnityEngine.Random;
 
 public class CompetitorsBehaviour : VehicleBehaviour
 {
-    public List<Transform> checkpoints = new List<Transform>(); // List of checkpoint transforms
     private float _aiSpeed; // Speed of the AI
     private Vector3 _direction;
     public int _characterCheckpoints;
@@ -17,7 +16,6 @@ public class CompetitorsBehaviour : VehicleBehaviour
     public Transform itemInSight = null;
     private void Start()
     {
-        checkpoints = trackManagerRef.checkPoints;
         _aiSpeed = Random.Range(18, 23);
     }
 
@@ -42,7 +40,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
             Vector3 checkpointTargetPosition;
 
-            if (_characterCheckpoints >= checkpoints.Count)
+            if (_characterCheckpoints >= trackManagerRef.spline.Spline.Count)
             {
                 checkpointTargetPosition = trackManagerRef.lapCheckPoint.position +
                                            new Vector3(Random.Range(-randomOffset, randomOffset), 0,
@@ -50,9 +48,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
             }
             else
             {
-                checkpointTargetPosition = checkpoints[_characterCheckpoints].position +
-                                           new Vector3(Random.Range(-randomOffset, randomOffset), 0,
-                                               Random.Range(-randomOffset, randomOffset));
+                checkpointTargetPosition = trackManagerRef.spline.Spline[_characterCheckpoints].Position;
             }
 
             direction = (checkpointTargetPosition - transform.position).normalized;

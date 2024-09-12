@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class LapTrigger : MonoBehaviour
 {
-    [SerializeField] private List<Transform> checkPoints;
     
     private void Start()
     {
-        TrackManager.Instance.checkPoints = checkPoints;
         TrackManager.Instance.lapCheckPoint = transform;    
     }
 
@@ -17,7 +15,7 @@ public class LapTrigger : MonoBehaviour
     {
         CharacterData character = other.GetComponent<CharacterData>();
         if (character == null) return;
-        TrackManager.Instance.FinishLap(character, checkPoints);
+        character.CompleteLap();
     }
 
 }

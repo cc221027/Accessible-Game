@@ -5,6 +5,7 @@ using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using Vector3 = UnityEngine.Vector3;
 
 public class VehicleBehaviour : MonoBehaviour
@@ -13,7 +14,6 @@ public class VehicleBehaviour : MonoBehaviour
     [HideInInspector] public bool _isJumping;
     [HideInInspector] public bool _isGrounded;
     [HideInInspector] public bool speedReduced = false;
-    [HideInInspector] public GameManager _gameManagerRef;
     [HideInInspector] public TrackManager trackManagerRef;
     [HideInInspector] public CharacterData characterRef;
     [HideInInspector] public bool movementEnabled;
@@ -30,7 +30,6 @@ public class VehicleBehaviour : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _rb.drag = 0.1f;
-        _gameManagerRef = GameManager.Instance;
         trackManagerRef = TrackManager.Instance;
         characterRef = GetComponent<CharacterData>();
         movementEnabled = false;
@@ -110,7 +109,6 @@ public class VehicleBehaviour : MonoBehaviour
         if (movementEnabled)
         {
             MoveLogic();
-
         }
     }
 

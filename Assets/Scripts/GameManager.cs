@@ -14,15 +14,10 @@ public class GameManager : MonoBehaviour
     public int SelectedTrackIndex { get; private set; } = -1;
 
     public string winner;
-
-    public float currentPlayerSpeed;
-    public int currentPlayerLap = 0;
     
     [SerializeField] public List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] private List<string> trackSceneNames = new List<string>();
 
-    
-    
     private void Awake()
     {
         if (Instance == null)
@@ -57,10 +52,4 @@ public class GameManager : MonoBehaviour
         SelectedCharacterIndex = -1;
         SelectedTrackIndex = -1;
     }
-    
-    
-    
-    
-    
-    
 }

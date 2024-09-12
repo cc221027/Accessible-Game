@@ -24,21 +24,16 @@ public class CharacterData: MonoBehaviour
     }
     
 
-    public void CompleteLap(List<Transform> checkPoints)
+    public void CompleteLap()
     {
         if (_readyToFinishLap)
         {
             completedLaps++;
             _readyToFinishLap = false;
             checkPointsReached = 0;
-            if (CompareTag("Player")) {GameManager.Instance.currentPlayerLap++;}
-
-            foreach (var checkPoint in checkPoints)
-            {
-                checkPoint.GetComponent<CheckPointTrigger>().playersChecked.Remove(name);
-            }
+            if (CompareTag("Player")) {TrackManager.Instance.currentPlayerLap++;}
         }
-        if (completedLaps >= _trackManager.Laps)
+        if (completedLaps >= _trackManager.laps)
         {
             _trackManager.EndRace(this);
         }
@@ -47,7 +42,7 @@ public class CharacterData: MonoBehaviour
     public void ReachedCheckPoint()
     {
         checkPointsReached++;
-        if (checkPointsReached >= _trackManager.checkPointsCountRef)
+        if (checkPointsReached >= _trackManager.spline.Spline.Count)
         {
             _readyToFinishLap = true;
         }
