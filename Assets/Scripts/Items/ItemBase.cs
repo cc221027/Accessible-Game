@@ -15,7 +15,7 @@ public class ItemBase : MonoBehaviour
     public AudioSource useItemAudio;    
     public void OnPickup()
     {
-        pickupAudioSource.Play();
+        //pickupAudioSource.Play();
     }
     
     public bool CanUseItem()

@@ -25,7 +25,7 @@ public class ItemPickupContainer : MonoBehaviour
     {
         _pickupContainerHoveringAudio = GetComponent<AudioSource>();
         _pickupContainerHoveringAudio.loop = true;
-        _pickupContainerHoveringAudio.Play();
+        //_pickupContainerHoveringAudio.Play();
     }
 
     public void GetRandomItem(GameObject player)

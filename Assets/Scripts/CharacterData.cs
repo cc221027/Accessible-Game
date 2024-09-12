@@ -42,7 +42,7 @@ public class CharacterData: MonoBehaviour
     public void ReachedCheckPoint()
     {
         checkPointsReached++;
-        if (checkPointsReached >= _trackManager.spline.Spline.Count)
+        if (checkPointsReached >= _trackManager.spline.Spline.Count/3)
         {
             _readyToFinishLap = true;
         }

@@ -53,7 +53,6 @@ public class TrackManager : MonoBehaviour
             string timeFormatted = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
             timeText.text = timeFormatted;
         }
-       
     }
 
     void SpawnCarts()

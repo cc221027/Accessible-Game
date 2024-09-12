@@ -21,6 +21,11 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
     public override void MoveLogic()
     {
+        if(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position) < 10)
+        {
+            characterRef.ReachedCheckPoint();
+        }
+        
         Vector3 direction;
 
         float randomOffset = Random.Range(-5f, 5f);
@@ -88,9 +93,13 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
     private bool ShouldUseItem()
     {
-        if (!isNearCorner && inventoryItem)
+        if (inventoryItem)
         {
-            if (inventoryItem.GetComponent<ItemBase>().itemName != "Speedboost")
+            if (!isNearCorner && inventoryItem.GetComponent<ItemBase>().itemName == "Speedboost")
+            {
+                return true;    
+            }
+            if(inventoryItem.GetComponent<ItemBase>().itemName != "Speedboost")
             {
                 return true;
             }

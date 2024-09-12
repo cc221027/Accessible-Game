@@ -22,7 +22,7 @@ public class ItemWall : ItemBase
         transform.parent = null;
         transform.position = (player.transform.position - (player.transform.forward * 5));
         transform.localScale = new Vector3(6, 3, 1);
-        useItemAudio.Play();
+        //useItemAudio.Play();
     }
 
     private void OnCollisionEnter(Collision other)

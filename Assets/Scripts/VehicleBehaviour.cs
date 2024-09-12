@@ -83,12 +83,12 @@ public class VehicleBehaviour : MonoBehaviour
 
     private IEnumerator ReturnToCheckPoint()
     {
-        _offroadWarningAudio.Play();
+        //_offroadWarningAudio.Play();
         yield return new WaitForSeconds(5);
         if (speedReduced)
         {
             //Teleport vehicle back to last checkpoint
-            _teleportBackAudio.Play();
+            //_teleportBackAudio.Play();
         }
     }
    

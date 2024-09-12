@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Unity.Mathematics;
@@ -26,6 +27,8 @@ public class PlayerController : VehicleBehaviour
     private PlayerInput _playerInput;
     
     private SplineContainer _spline;
+
+    private List<Transform> _checkedSplines;
     
     private float _rangeToLeftOffroad;
     private float _rangeToRightOffroad;
@@ -48,7 +51,7 @@ public class PlayerController : VehicleBehaviour
             _driftingAudio = audioSources[3];
         }
         
-        _countdownAudio.Play();
+        //_countdownAudio.Play();
 
         _trackManager = TrackManager.Instance;
 
@@ -79,7 +82,6 @@ public class PlayerController : VehicleBehaviour
             Gamepad.current.SetMotorSpeeds(0, Mathf.Clamp(side / 30f, 0, 1));
             if (angleToNextKnot >= 10)
             {
-                Debug.Log(side/30);
                 StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Left));
             }
         }
@@ -88,7 +90,6 @@ public class PlayerController : VehicleBehaviour
             Gamepad.current.SetMotorSpeeds(Mathf.Clamp(-side / 30f, 0, 1), 0);
             if (angleToNextKnot >= 10)
             {
-                Debug.Log(side/30);
                 StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Right));
             }
         }
@@ -207,6 +208,12 @@ public class PlayerController : VehicleBehaviour
         float currentSpeed = _rb.velocity.magnitude;
         _isDrifting = _driftValue > 0;
 
+        
+        if(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position) < 20)
+        {
+            characterRef.ReachedCheckPoint();
+        }
+        
         _trackManager.currentPlayerSpeed = Mathf.RoundToInt(currentSpeed);
 
         if (_isDrifting && _isGrounded && currentSpeed >= 10)

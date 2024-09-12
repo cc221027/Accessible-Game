@@ -24,7 +24,7 @@ public class ItemSpeedboost : ItemBase
     {
         _vehicleRef = player.GetComponent<VehicleBehaviour>();
         _characterRef = player.GetComponent<CharacterData>();
-        useItemAudio.Play();
+        //useItemAudio.Play();
         StartCoroutine(SpeedBoost());
     }
 
