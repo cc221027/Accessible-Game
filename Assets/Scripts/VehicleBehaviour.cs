@@ -56,6 +56,7 @@ public class VehicleBehaviour : MonoBehaviour
             {
                 characterRef.characterAcceleration = characterRef.baseCharacterAcceleration;
                 speedReduced = false;
+                maxSpeed = 50;
             }
         }
         else if (other.gameObject.CompareTag("Offroad"))
@@ -67,6 +68,7 @@ public class VehicleBehaviour : MonoBehaviour
             {
                 characterRef.characterAcceleration *= 0.8f;
                 speedReduced = true;
+                maxSpeed = 25;
                 StartCoroutine(ReturnToCheckPoint());
             }
         }

@@ -34,8 +34,10 @@ public class PlayerController : VehicleBehaviour
     private float _rangeToRightOffroad;
 
     private AudioSource _countdownAudio;
-    private AudioSource _carMotorAudio;
     private AudioSource _driftingAudio;
+    private AudioSource _carMotorAudioStill;
+    private AudioSource _carMotorAudioStart;
+    private AudioSource _carMotorAudioGoing;
     
     private void Start()
     {
@@ -47,11 +49,14 @@ public class PlayerController : VehicleBehaviour
         if (audioSources.Length >= 2)
         {
             _countdownAudio = audioSources[0];
-            _carMotorAudio = audioSources[1];
-            _driftingAudio = audioSources[3];
+            _carMotorAudioStill = audioSources[1];
+            _carMotorAudioStart = audioSources[2];
+            _carMotorAudioGoing = audioSources[3];
+            _driftingAudio = audioSources[4];
         }
         
-        //_countdownAudio.Play();
+        _countdownAudio.Play();
+        _carMotorAudioStill.Play();
 
         _trackManager = TrackManager.Instance;
 
@@ -72,7 +77,6 @@ public class PlayerController : VehicleBehaviour
         Vector3 splineToPlayer = playerPosXZ - closestPointXZ;
         float side = Vector3.Dot(splineRight, splineToPlayer);
 
-        // Calculate the angle to the next knot
         float angleToNextKnot = GetAngleToNextKnot(closestPoint, transform);
         
 
@@ -96,6 +100,13 @@ public class PlayerController : VehicleBehaviour
         else
         {
             Gamepad.current.SetMotorSpeeds(0, 0);
+        }
+        
+        if (_rb.velocity.magnitude == 0 && !_carMotorAudioStill.isPlaying)
+        {
+            _carMotorAudioGoing.Stop();
+            _carMotorAudioStart.Stop();
+            _carMotorAudioStill.Play();
         }
     }
 
@@ -201,6 +212,20 @@ public class PlayerController : VehicleBehaviour
         float currentSpeed = _rb.velocity.magnitude;
         _isDrifting = _driftValue > 0;
 
+       
+        if(currentSpeed !=0 && currentSpeed <= 25 && !_carMotorAudioStart.isPlaying)
+        {
+            _carMotorAudioGoing.Stop();
+            _carMotorAudioStill.Stop();
+            _carMotorAudioStart.Play();
+        }
+        else if (currentSpeed > 25 && !_carMotorAudioGoing.isPlaying)
+        {
+            _carMotorAudioStill.Stop();
+            _carMotorAudioStart.Stop();
+            _carMotorAudioGoing.Play();
+        }
+
 
         foreach (var spline in _spline.Spline)
         {
@@ -256,7 +281,7 @@ public class PlayerController : VehicleBehaviour
             }
         }
 
-        float rotationMultiplier = _isDrifting && _isGrounded ? 1.4f : 0.7f;
+        float rotationMultiplier = _isDrifting && _isGrounded && !speedReduced ? 1.4f : 0.7f;
         float rotationAmount = _steerInputValue * 80f * rotationMultiplier * Time.fixedDeltaTime;
 
         transform.Rotate(0, rotationAmount, 0);
