@@ -32,31 +32,13 @@ public class PlayerController : VehicleBehaviour
     
     private float _rangeToLeftOffroad;
     private float _rangeToRightOffroad;
-
-    private AudioSource _countdownAudio;
-    private AudioSource _driftingAudio;
-    private AudioSource _carMotorAudioStill;
-    private AudioSource _carMotorAudioStart;
-    private AudioSource _carMotorAudioGoing;
     
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
         _spline = GameObject.FindGameObjectWithTag("Spline").GetComponent<SplineContainer>();
-
-        AudioSource[] audioSources = GetComponents<AudioSource>();
-
-        if (audioSources.Length >= 2)
-        {
-            _countdownAudio = audioSources[0];
-            _carMotorAudioStill = audioSources[1];
-            _carMotorAudioStart = audioSources[2];
-            _carMotorAudioGoing = audioSources[3];
-            _driftingAudio = audioSources[4];
-        }
         
-        _countdownAudio.Play();
-        _carMotorAudioStill.Play();
+        countDownAudio.Play();
 
         _trackManager = TrackManager.Instance;
 
@@ -83,31 +65,26 @@ public class PlayerController : VehicleBehaviour
         // Motor speeds based on side
         if (side > 0 && !speedReduced)
         {
-            // Gamepad.current.SetMotorSpeeds(0, Mathf.Clamp(side / 30f, 0, 1));
-            // if (angleToNextKnot >= 10)
-            // {
-            //     StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Left));
-            // }
+            Gamepad.current.SetMotorSpeeds(0, Mathf.Clamp(side / 30f, 0, 1));
+            if (angleToNextKnot >= 10)
+            {
+                StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Left));
+            }
         }
         else if (side < 0 && !speedReduced)
         {
-            // Gamepad.current.SetMotorSpeeds(Mathf.Clamp(-side / 30f, 0, 1), 0);
-            // if (angleToNextKnot >= 10)
-            // {
-            //     StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Right));
-            // }
+            Gamepad.current.SetMotorSpeeds(Mathf.Clamp(-side / 30f, 0, 1), 0);
+            if (angleToNextKnot >= 10)
+            {
+                StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Right));
+            }
         }
         else
         {
             Gamepad.current.SetMotorSpeeds(0, 0);
         }
         
-        if (_rb.velocity.magnitude == 0 && !_carMotorAudioStill.isPlaying)
-        {
-            _carMotorAudioGoing.Stop();
-            _carMotorAudioStart.Stop();
-            _carMotorAudioStill.Play();
-        }
+       
     }
 
     private Vector3 GetClosestPointOnSpline()
@@ -213,18 +190,7 @@ public class PlayerController : VehicleBehaviour
         _isDrifting = _driftValue > 0;
 
        
-        if(currentSpeed !=0 && currentSpeed <= 25 && !_carMotorAudioStart.isPlaying)
-        {
-            _carMotorAudioGoing.Stop();
-            _carMotorAudioStill.Stop();
-            _carMotorAudioStart.Play();
-        }
-        else if (currentSpeed > 25 && !_carMotorAudioGoing.isPlaying)
-        {
-            _carMotorAudioStill.Stop();
-            _carMotorAudioStart.Stop();
-            _carMotorAudioGoing.Play();
-        }
+        
 
 
         foreach (var spline in _spline.Spline)

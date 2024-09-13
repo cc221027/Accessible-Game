@@ -25,6 +25,12 @@ public class VehicleBehaviour : MonoBehaviour
 
     private AudioSource _offroadWarningAudio;
     private AudioSource _teleportBackAudio;
+    
+    private AudioSource _driftingAudio;
+    public AudioSource countDownAudio;
+    private AudioSource _carMotorAudioStill;
+    private AudioSource _carMotorAudioStart;
+    private AudioSource _carMotorAudioGoing;
 
     public void Awake()
     {
@@ -37,9 +43,16 @@ public class VehicleBehaviour : MonoBehaviour
         
         if (audioSources.Length >= 2)
         {
-            _offroadWarningAudio = audioSources[0];
-            _teleportBackAudio = audioSources[1];
+            countDownAudio = audioSources[0];
+            _carMotorAudioStill = audioSources[1];
+            _carMotorAudioStart = audioSources[2];
+            _carMotorAudioGoing = audioSources[3];
+            _driftingAudio = audioSources[4];
+            
+            _offroadWarningAudio = audioSources[5];
+            _teleportBackAudio = audioSources[6];
         }
+        
     }
 
     public virtual void MoveLogic()
@@ -114,6 +127,25 @@ public class VehicleBehaviour : MonoBehaviour
         if (!_isGrounded && _rb.velocity.y < 20)
         {
             _rb.AddForce(Vector3.down * 20f, ForceMode.Acceleration);
+        }
+        
+        if (_rb.velocity.magnitude == 0 && !_carMotorAudioStill.isPlaying)
+        {
+            _carMotorAudioGoing.Stop();
+            _carMotorAudioStart.Stop();
+            _carMotorAudioStill.Play();
+        }
+        else if(_rb.velocity.magnitude !=0 && _rb.velocity.magnitude <= 25 && !_carMotorAudioStart.isPlaying)
+        {
+            _carMotorAudioGoing.Stop();
+            _carMotorAudioStill.Stop();
+            _carMotorAudioStart.Play();
+        }
+        else if (_rb.velocity.magnitude > 25 && !_carMotorAudioGoing.isPlaying)
+        {
+            _carMotorAudioStill.Stop();
+            _carMotorAudioStart.Stop();
+            _carMotorAudioGoing.Play();
         }
     }
 
