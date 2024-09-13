@@ -21,6 +21,8 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
     public override void MoveLogic()
     {
+        _characterCheckpoints = characterRef.checkPointsReached;
+        
         if(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[_characterCheckpoints].Position) < 20)
         {
             characterRef.ReachedCheckPoint();
@@ -41,8 +43,6 @@ public class CompetitorsBehaviour : VehicleBehaviour
         else
         {
             itemInSight = null;
-            _characterCheckpoints = characterRef.checkPointsReached;
-
             Vector3 checkpointTargetPosition;
 
             if (_characterCheckpoints >= trackManagerRef.spline.Spline.Count)
