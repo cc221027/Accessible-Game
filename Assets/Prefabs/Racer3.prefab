@@ -224,13 +224,12 @@ MonoBehaviour:
   _isJumping: 0
   _isGrounded: 0
   speedReduced: 0
-  _gameManagerRef: {fileID: 0}
   trackManagerRef: {fileID: 0}
   characterRef: {fileID: 0}
   movementEnabled: 0
   maxSpeed: 50
-  jumpingPower: 50
   inventoryItem: {fileID: 0}
+  checkedSplines: []
 --- !u!114 &-8902565840796640724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,7 +276,6 @@ MonoBehaviour:
   characterName: Racer3
   baseCharacterAcceleration: 0
   characterAcceleration: 0
-  characterWeight: 0
   checkPointsReached: 0
   completedLaps: 0
 --- !u!114 &-3997875083352217917
@@ -296,14 +294,11 @@ MonoBehaviour:
   _isJumping: 0
   _isGrounded: 0
   speedReduced: 0
-  _gameManagerRef: {fileID: 0}
   trackManagerRef: {fileID: 0}
   characterRef: {fileID: 0}
   movementEnabled: 0
   maxSpeed: 50
-  jumpingPower: 50
   inventoryItem: {fileID: 0}
-  checkpoints: []
   _characterCheckpoints: 0
   isNearCorner: 0
   itemInSight: {fileID: 0}

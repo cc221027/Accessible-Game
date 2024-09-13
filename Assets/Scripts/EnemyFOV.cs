@@ -14,17 +14,26 @@ public class EnemyFOV : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_compBehaviourRef != null)
+        if (other.CompareTag("Item") && Vector3.Dot(transform.forward, (other.transform.position - transform.position).normalized) > 0.7f)
         {
-            HandleTrigger(other);
+            if (_compBehaviourRef.itemInSight == null || Vector3.Distance(transform.position, other.transform.position) < Vector3.Distance(transform.position, _compBehaviourRef.itemInSight.position))
+            {
+                _compBehaviourRef.itemInSight = other.transform;
+            }
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (_compBehaviourRef != null)
+        if ((other.CompareTag("Item Wall") && Vector3.Dot(transform.forward, (other.transform.position - transform.position).normalized) > 0 && Vector3.Distance(transform.position, other.transform.position) <= 15)
+            || (other.CompareTag("Obstacle") && Vector3.Distance(transform.position, other.transform.position) <= 25 && Vector3.Dot(transform.forward, (other.transform.position - transform.position).normalized) > 0.5f))
         {
-            HandleTrigger(other); 
+            _compBehaviourRef.Jump();
+        }
+
+        if (other.CompareTag("Road Corner"))
+        {
+            _compBehaviourRef.isNearCorner = true;
         }
     }
 
@@ -36,29 +45,6 @@ public class EnemyFOV : MonoBehaviour
             {
                 _compBehaviourRef.isNearCorner = false;
             }
-        }
-    }
-
-    private void HandleTrigger(Collider other)
-    {
-        if (other.CompareTag("Item") && Vector3.Dot(transform.forward, (other.transform.position - transform.position).normalized) > 0.7f)
-        {
-            // Only update itemInSight if it's closer or not already set
-            if (_compBehaviourRef.itemInSight == null || Vector3.Distance(transform.position, other.transform.position) < Vector3.Distance(transform.position, _compBehaviourRef.itemInSight.position))
-            {
-                _compBehaviourRef.itemInSight = other.transform;
-            }
-        }
-
-        if ((other.CompareTag("Item Wall") && Vector3.Dot(transform.forward, (other.transform.position - transform.position).normalized) > 0 && Vector3.Distance(transform.position, other.transform.position) <= 15)
-            || (other.CompareTag("Obstacle") && Vector3.Distance(transform.position, other.transform.position) <= 25 && Vector3.Dot(transform.forward, (other.transform.position - transform.position).normalized) > 0.5f))
-        {
-            _compBehaviourRef.Jump();
-        }
-
-        if (other.CompareTag("Road Corner"))
-        {
-            _compBehaviourRef.isNearCorner = true;
         }
     }
 }

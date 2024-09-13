@@ -7,6 +7,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.Splines;
 using Debug = UnityEngine.Debug;
 
@@ -27,8 +28,7 @@ public class PlayerController : VehicleBehaviour
     private PlayerInput _playerInput;
     
     private SplineContainer _spline;
-
-    private List<Transform> _checkedSplines;
+    public List<BezierKnot> checkedSplines;
     
     private float _rangeToLeftOffroad;
     private float _rangeToRightOffroad;
@@ -79,19 +79,19 @@ public class PlayerController : VehicleBehaviour
         // Motor speeds based on side
         if (side > 0 && !speedReduced)
         {
-            Gamepad.current.SetMotorSpeeds(0, Mathf.Clamp(side / 30f, 0, 1));
-            if (angleToNextKnot >= 10)
-            {
-                StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Left));
-            }
+            // Gamepad.current.SetMotorSpeeds(0, Mathf.Clamp(side / 30f, 0, 1));
+            // if (angleToNextKnot >= 10)
+            // {
+            //     StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Left));
+            // }
         }
         else if (side < 0 && !speedReduced)
         {
-            Gamepad.current.SetMotorSpeeds(Mathf.Clamp(-side / 30f, 0, 1), 0);
-            if (angleToNextKnot >= 10)
-            {
-                StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Right));
-            }
+            // Gamepad.current.SetMotorSpeeds(Mathf.Clamp(-side / 30f, 0, 1), 0);
+            // if (angleToNextKnot >= 10)
+            // {
+            //     StartCoroutine(PulseMotor(Gamepad.current, MotorSide.Right));
+            // }
         }
         else
         {
@@ -159,14 +159,7 @@ public class PlayerController : VehicleBehaviour
         Left,
         Right
     }
-
-
-
-
-
-
-
-
+    
     private void OnSteer(InputValue value)
     {
         _steerInputValue = value.Get<float>();
@@ -208,15 +201,19 @@ public class PlayerController : VehicleBehaviour
         float currentSpeed = _rb.velocity.magnitude;
         _isDrifting = _driftValue > 0;
 
-        
-        if(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position) < 20)
+
+        foreach (var spline in _spline.Spline)
         {
-            characterRef.ReachedCheckPoint();
+            if(Vector3.Distance(transform.position,spline.Position) < 20 && !checkedSplines.Contains(spline))
+            {
+                characterRef.ReachedCheckPoint();
+                checkedSplines.Add(spline);
+            }
         }
         
         _trackManager.currentPlayerSpeed = Mathf.RoundToInt(currentSpeed);
 
-        if (_isDrifting && _isGrounded && currentSpeed >= 10)
+        if (_isDrifting && _isGrounded && currentSpeed >= 10 && !speedReduced)
         {
             if (_steerInputValue != 0)
             {
@@ -230,7 +227,6 @@ public class PlayerController : VehicleBehaviour
                 _driftSteerLock = _steerInputValue;
             }
 
-            // Apply clamping based on the locked direction
             if (_driftSteerLock < 0)
             {
                 _steerInputValue = Mathf.Lerp(_steerInputValue, Mathf.Clamp(_steerInputValue, -1f, -0.3f), 0.7f);

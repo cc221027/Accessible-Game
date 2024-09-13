@@ -10,13 +10,13 @@ public class CharacterData: MonoBehaviour
     public string characterName;
     public float baseCharacterAcceleration;
     public float characterAcceleration;
-    public float characterWeight;
     
     public int checkPointsReached = 0;
     public int completedLaps = 0;
     private bool _readyToFinishLap;
     
     private TrackManager _trackManager;
+    private PlayerController _playerController;
     
     private void Awake()
     {
@@ -31,7 +31,12 @@ public class CharacterData: MonoBehaviour
             completedLaps++;
             _readyToFinishLap = false;
             checkPointsReached = 0;
-            if (CompareTag("Player")) {TrackManager.Instance.currentPlayerLap++;}
+            if (CompareTag("Player"))
+            {
+                TrackManager.Instance.currentPlayerLap++;
+                _playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+                _playerController.checkedSplines.Clear();
+            }
         }
         if (completedLaps >= _trackManager.laps)
         {

@@ -21,7 +21,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
     public override void MoveLogic()
     {
-        if(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position) < 10)
+        if(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[_characterCheckpoints].Position) < 20)
         {
             characterRef.ReachedCheckPoint();
         }
@@ -47,9 +47,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
             if (_characterCheckpoints >= trackManagerRef.spline.Spline.Count)
             {
-                checkpointTargetPosition = trackManagerRef.lapCheckPoint.position +
-                                           new Vector3(Random.Range(-randomOffset, randomOffset), 0,
-                                               Random.Range(-randomOffset, randomOffset));
+                checkpointTargetPosition = trackManagerRef.lapCheckPoint.position + new Vector3(Random.Range(-randomOffset, randomOffset), 0, Random.Range(-randomOffset, randomOffset));
             }
             else
             {

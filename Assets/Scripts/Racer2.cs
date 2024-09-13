@@ -10,7 +10,6 @@ public class Racer2 : CharacterData
         index = 1;
         characterName = "Racer2";
         baseCharacterAcceleration = 1.2f;
-        characterWeight = 3f;
         characterAcceleration = baseCharacterAcceleration;
 
     }

@@ -20,7 +20,7 @@ public class VehicleBehaviour : MonoBehaviour
 
     
     [HideInInspector] public int maxSpeed = 50;
-    [HideInInspector] public int jumpingPower = 50;
+    private  int _jumpingPower = 15;
     [HideInInspector] public GameObject inventoryItem;
 
     private AudioSource _offroadWarningAudio;
@@ -29,7 +29,6 @@ public class VehicleBehaviour : MonoBehaviour
     public void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _rb.drag = 0.1f;
         trackManagerRef = TrackManager.Instance;
         characterRef = GetComponent<CharacterData>();
         movementEnabled = false;
@@ -100,7 +99,6 @@ public class VehicleBehaviour : MonoBehaviour
 
     public void EnableMovement()
     {
-        _rb.mass = characterRef.characterWeight;
         movementEnabled = true;
     }
 
@@ -110,12 +108,17 @@ public class VehicleBehaviour : MonoBehaviour
         {
             MoveLogic();
         }
+        
+        if (!_isGrounded && _rb.velocity.y < 20)
+        {
+            _rb.AddForce(Vector3.down * 20f, ForceMode.Acceleration);
+        }
     }
 
     public void Jump()
     {
         if (_isJumping) return;
-        _rb.AddForce(transform.up * jumpingPower, ForceMode.Impulse);
+        _rb.AddForce(transform.up*_jumpingPower, ForceMode.Impulse);
         _isJumping = true;
         _isGrounded = false;
     }
