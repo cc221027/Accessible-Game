@@ -35,6 +35,10 @@ public class PlayerController : VehicleBehaviour
     
     private int _previousPlacement = -1;
 
+    private bool _playedRoundTwoAudio = false;
+    private bool _playedFinalAudio = false;
+    private float _originalVolume = 1.0f;
+
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -66,6 +70,16 @@ public class PlayerController : VehicleBehaviour
         {
             _previousPlacement = characterRef.placement;
             PlayPlacementAudio(characterRef.placement);
+        }
+
+        if (characterRef.completedLaps == 1 && !_playedRoundTwoAudio)
+        {
+            _playedRoundTwoAudio = true;
+            RoundTwo.Play();
+        } else if (characterRef.completedLaps == 2 && !_playedFinalAudio)
+        {
+            _playedFinalAudio = true;
+            FinalLapAudio.Play();
         }
 
         // Motor speeds based on side

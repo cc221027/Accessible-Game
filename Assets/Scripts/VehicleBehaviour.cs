@@ -39,6 +39,10 @@ public class VehicleBehaviour : MonoBehaviour
     protected AudioSource ThirdPlaceAudio;
     protected AudioSource FourthPlaceAudio;
 
+    protected AudioSource RoundTwo;
+    protected AudioSource FinalLapAudio;
+    protected AudioSource[] AudioSources;
+
     public void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -46,26 +50,28 @@ public class VehicleBehaviour : MonoBehaviour
         characterRef = GetComponent<CharacterData>();
         movementEnabled = false;
         
-        AudioSource[] audioSources = GetComponents<AudioSource>(); 
+        AudioSources = GetComponents<AudioSource>(); 
         
-        if (audioSources.Length >= 2)
+        if (AudioSources.Length >= 2)
         {
-            countDownAudio = audioSources[0];
-            _carMotorAudioStill = audioSources[1];
-            _carMotorAudioStart = audioSources[2];
-            _carMotorAudioGoing = audioSources[3];
-            _driftingAudio = audioSources[4];
+            countDownAudio = AudioSources[0];
+            _carMotorAudioStill = AudioSources[1];
+            _carMotorAudioStart = AudioSources[2];
+            _carMotorAudioGoing = AudioSources[3];
+            _driftingAudio = AudioSources[4];
             
-            _offroadWarningAudio = audioSources[5];
-            _teleportBackAudio = audioSources[6];
+            _offroadWarningAudio = AudioSources[5];
+            _teleportBackAudio = AudioSources[6];
 
-            _jumpAudio = audioSources[7];
-            _gearShiftAudio = audioSources[8];
+            _jumpAudio = AudioSources[7];
+            _gearShiftAudio = AudioSources[8];
 
-            FirstPlaceAudio = audioSources[9];
-            SecondPlaceAudio = audioSources[10];
-            ThirdPlaceAudio = audioSources[11];
-            FourthPlaceAudio = audioSources[12];
+            FirstPlaceAudio = AudioSources[9];
+            SecondPlaceAudio = AudioSources[10];
+            ThirdPlaceAudio = AudioSources[11];
+            FourthPlaceAudio = AudioSources[12];
+            RoundTwo = AudioSources[13];
+            FinalLapAudio = AudioSources[14];
 
         }
         
