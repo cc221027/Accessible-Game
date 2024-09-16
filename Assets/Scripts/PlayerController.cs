@@ -66,7 +66,7 @@ public class PlayerController : VehicleBehaviour
 
         float angleToNextKnot = GetAngleToNextKnot(closestPoint, transform);
 
-        if (characterRef.placement != _previousPlacement)
+        if (characterRef.placement != _previousPlacement && movementEnabled)
         {
             _previousPlacement = characterRef.placement;
             PlayPlacementAudio(characterRef.placement);

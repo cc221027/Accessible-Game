@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ItemWall : ItemBase
 {
-    private AudioSource _wallCollisionAudio;
     private void Awake()
     {
         AudioSource[] audioSources = GetComponents<AudioSource>();
@@ -13,7 +12,6 @@ public class ItemWall : ItemBase
         {
             PickupAudioSource = audioSources[0];
             UseItemAudio = audioSources[1];
-            _wallCollisionAudio = audioSources[2];
         }
         
     }
@@ -32,13 +30,6 @@ public class ItemWall : ItemBase
 
     private void OnCollisionEnter(Collision other)
     {
-        _wallCollisionAudio.Play();
-        StartCoroutine(DestroyAfterSound());
-    }
-
-    private IEnumerator DestroyAfterSound()
-    {
-        yield return new WaitUntil(() => !_wallCollisionAudio.isPlaying);
         Destroy(gameObject);
     }
 

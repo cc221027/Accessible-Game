@@ -125,6 +125,8 @@ public class TrackManager : MonoBehaviour
     public void SpawnOpponents(int index, Vector3 spawnPosition, Quaternion spawnRotation)
     {
         GameObject opponent = Instantiate(GameManager.Instance.allCharacters[index], spawnPosition, spawnRotation);
+
+        opponent.tag = "Opponent";
         
         // Disable the PlayerInput component if it exists
         PlayerInput playerInput = opponent.GetComponent<PlayerInput>();

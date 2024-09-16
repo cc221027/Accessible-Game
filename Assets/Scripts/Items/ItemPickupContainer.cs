@@ -13,19 +13,26 @@ public class ItemPickupContainer : MonoBehaviour
     private Collider[] _colliders;
 
     private AudioSource _pickupContainerHoveringAudio;
+    private AudioSource _itemBoxBreaking;
 
     private void Awake()
     {
-        // Cache the Renderer and Collider components
         _renderers = GetComponentsInChildren<Renderer>();
         _colliders = GetComponentsInChildren<Collider>();
     }
 
     private void Start()
     {
-        _pickupContainerHoveringAudio = GetComponent<AudioSource>();
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+
+        if (audioSources.Length >= 2)
+        {
+            _pickupContainerHoveringAudio = audioSources[0];
+            _itemBoxBreaking = audioSources[1];
+        }
+
         _pickupContainerHoveringAudio.loop = true;
-        //_pickupContainerHoveringAudio.Play();
+        _pickupContainerHoveringAudio.Play();
     }
 
     public void GetRandomItem(GameObject player)
@@ -43,7 +50,10 @@ public class ItemPickupContainer : MonoBehaviour
         foreach (var visuals in _renderers) { visuals.enabled = false; }
         foreach (var coll in _colliders) { coll.enabled = false; }
         
+        _pickupContainerHoveringAudio.Stop();
+        _itemBoxBreaking.Play();
         yield return new WaitForSeconds(3);
+        _pickupContainerHoveringAudio.Play();
         
         foreach (var visuals in _renderers) { visuals.enabled = true; }
         foreach (var coll in _colliders) { coll.enabled = true; }

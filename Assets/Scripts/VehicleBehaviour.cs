@@ -41,7 +41,8 @@ public class VehicleBehaviour : MonoBehaviour
 
     protected AudioSource RoundTwo;
     protected AudioSource FinalLapAudio;
-    protected AudioSource[] AudioSources;
+    protected AudioSource CollisionAudio;
+    private AudioSource[] _audioSources;
 
     public void Awake()
     {
@@ -50,28 +51,30 @@ public class VehicleBehaviour : MonoBehaviour
         characterRef = GetComponent<CharacterData>();
         movementEnabled = false;
         
-        AudioSources = GetComponents<AudioSource>(); 
+        _audioSources = GetComponents<AudioSource>(); 
         
-        if (AudioSources.Length >= 2)
+        if (_audioSources.Length >= 2)
         {
-            countDownAudio = AudioSources[0];
-            _carMotorAudioStill = AudioSources[1];
-            _carMotorAudioStart = AudioSources[2];
-            _carMotorAudioGoing = AudioSources[3];
-            _driftingAudio = AudioSources[4];
+            countDownAudio = _audioSources[0];
+            _carMotorAudioStill = _audioSources[1];
+            _carMotorAudioStart = _audioSources[2];
+            _carMotorAudioGoing = _audioSources[3];
+            _driftingAudio = _audioSources[4];
             
-            _offroadWarningAudio = AudioSources[5];
-            _teleportBackAudio = AudioSources[6];
+            _offroadWarningAudio = _audioSources[5];
+            _teleportBackAudio = _audioSources[6];
 
-            _jumpAudio = AudioSources[7];
-            _gearShiftAudio = AudioSources[8];
+            _jumpAudio = _audioSources[7];
+            _gearShiftAudio = _audioSources[8];
 
-            FirstPlaceAudio = AudioSources[9];
-            SecondPlaceAudio = AudioSources[10];
-            ThirdPlaceAudio = AudioSources[11];
-            FourthPlaceAudio = AudioSources[12];
-            RoundTwo = AudioSources[13];
-            FinalLapAudio = AudioSources[14];
+            FirstPlaceAudio = _audioSources[9];
+            SecondPlaceAudio = _audioSources[10];
+            ThirdPlaceAudio = _audioSources[11];
+            FourthPlaceAudio = _audioSources[12];
+            RoundTwo = _audioSources[13];
+            FinalLapAudio = _audioSources[14];
+
+            CollisionAudio = _audioSources[15];
 
         }
         
@@ -106,6 +109,9 @@ public class VehicleBehaviour : MonoBehaviour
                 maxSpeed = 25;
                 StartCoroutine(ReturnToCheckPoint());
             }
+        } else if (other.gameObject.CompareTag("Obstacle") || other.gameObject.CompareTag("Item Wall") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Opponent"))
+        {
+            CollisionAudio.Play();
         }
     }
 
@@ -116,6 +122,7 @@ public class VehicleBehaviour : MonoBehaviour
             other.gameObject.GetComponent<ItemPickupContainer>().GetRandomItem(gameObject);
         }
     }
+    
 
     private IEnumerator ReturnToCheckPoint()
     {
