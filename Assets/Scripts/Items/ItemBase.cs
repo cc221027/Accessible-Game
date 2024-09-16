@@ -8,19 +8,20 @@ public class ItemBase : MonoBehaviour
 {
     public string itemName;
     
-    public float cooldownTime;
+    protected float CooldownTime;
     private float _lastUsedTime;
 
-    public AudioSource pickupAudioSource;
-    public AudioSource useItemAudio;    
+    protected AudioSource PickupAudioSource;
+    protected AudioSource UseItemAudio;
+
     public void OnPickup()
     {
-        //pickupAudioSource.Play();
+        PickupAudioSource.Play();
     }
     
     public bool CanUseItem()
     {
-        return Time.time >= _lastUsedTime + cooldownTime;
+        return Time.time >= _lastUsedTime + CooldownTime;
     }
     
     public virtual void UseItem(GameObject player)

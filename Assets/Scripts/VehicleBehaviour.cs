@@ -31,6 +31,13 @@ public class VehicleBehaviour : MonoBehaviour
     private AudioSource _carMotorAudioStill;
     private AudioSource _carMotorAudioStart;
     private AudioSource _carMotorAudioGoing;
+    private AudioSource _jumpAudio;
+    private AudioSource _gearShiftAudio;
+    
+    protected AudioSource FirstPlaceAudio;
+    protected AudioSource SecondPlaceAudio;
+    protected AudioSource ThirdPlaceAudio;
+    protected AudioSource FourthPlaceAudio;
 
     public void Awake()
     {
@@ -51,6 +58,15 @@ public class VehicleBehaviour : MonoBehaviour
             
             _offroadWarningAudio = audioSources[5];
             _teleportBackAudio = audioSources[6];
+
+            _jumpAudio = audioSources[7];
+            _gearShiftAudio = audioSources[8];
+
+            FirstPlaceAudio = audioSources[9];
+            SecondPlaceAudio = audioSources[10];
+            ThirdPlaceAudio = audioSources[11];
+            FourthPlaceAudio = audioSources[12];
+
         }
         
     }
@@ -129,23 +145,28 @@ public class VehicleBehaviour : MonoBehaviour
             _rb.AddForce(Vector3.down * 20f, ForceMode.Acceleration);
         }
         
-        if (_rb.velocity.magnitude == 0 && !_carMotorAudioStill.isPlaying)
+        if (_rb.velocity.magnitude == 0 && !_carMotorAudioStill.isPlaying && !_gearShiftAudio.isPlaying)
         {
             _carMotorAudioGoing.Stop();
             _carMotorAudioStart.Stop();
+            _gearShiftAudio.Play();
             _carMotorAudioStill.Play();
+            
         }
-        else if(_rb.velocity.magnitude !=0 && _rb.velocity.magnitude <= 25 && !_carMotorAudioStart.isPlaying)
+        else if(_rb.velocity.magnitude !=0 && _rb.velocity.magnitude <= 25 && !_carMotorAudioStart.isPlaying && !_gearShiftAudio.isPlaying)
         {
             _carMotorAudioGoing.Stop();
             _carMotorAudioStill.Stop();
+            _gearShiftAudio.Play();
             _carMotorAudioStart.Play();
         }
-        else if (_rb.velocity.magnitude > 25 && !_carMotorAudioGoing.isPlaying)
+        else if (_rb.velocity.magnitude > 25 && !_carMotorAudioGoing.isPlaying && !_gearShiftAudio.isPlaying)
         {
             _carMotorAudioStill.Stop();
             _carMotorAudioStart.Stop();
+            _gearShiftAudio.Play(); 
             _carMotorAudioGoing.Play();
+            
         }
     }
 
@@ -155,5 +176,7 @@ public class VehicleBehaviour : MonoBehaviour
         _rb.AddForce(transform.up*_jumpingPower, ForceMode.Impulse);
         _isJumping = true;
         _isGrounded = false;
+        
+        _jumpAudio.Play();
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -43,13 +44,37 @@ public class TrackManager : MonoBehaviour
     {
         playerSpeedText.text = Mathf.FloorToInt(currentPlayerSpeed).ToString();
         lapText.text = currentPlayerLap + " / " + laps;
+
+
+        List<CharacterData> racers = FindObjectsOfType<CharacterData>().ToList();
+
+        racers.Sort((r1, r2) => 
+        {
+            int lapComparison = r2.completedLaps.CompareTo(r1.completedLaps);
+            if (lapComparison != 0) return lapComparison;
+            
+            Vector3 nextCheckpointPosition = spline.Spline[Math.Max(r1.checkPointsReached, r2.checkPointsReached) % spline.Spline.Count].Position;
+            
+            float r1DistanceToNextCheckpoint = Vector3.Distance(r1.transform.position, nextCheckpointPosition);
+            float r2DistanceToNextCheckpoint = Vector3.Distance(r2.transform.position, nextCheckpointPosition);
+            
+            return r1DistanceToNextCheckpoint.CompareTo(r2DistanceToNextCheckpoint);
+        });
+
+        for (int i = 0; i < racers.Count; i++)
+        {
+            racers[i].placement = i + 1;
+        }
+
+
+        placementText.text = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterData>().placement + ".";
         
         if (_raceStarted)
         {
             _raceTimer += Time.deltaTime;
             int minutes = Mathf.FloorToInt(_raceTimer / 60F);
             int seconds = Mathf.FloorToInt(_raceTimer % 60F);
-            int milliseconds = Mathf.FloorToInt((_raceTimer * 1000F) % 1000F);  // Convert the fractional part to milliseconds
+            int milliseconds = Mathf.FloorToInt((_raceTimer * 1000F) % 1000F);
             string timeFormatted = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
             timeText.text = timeFormatted;
         }

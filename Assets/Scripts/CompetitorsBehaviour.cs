@@ -9,7 +9,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
 {
     private float _aiSpeed; // Speed of the AI
     private Vector3 _direction;
-    public int _characterCheckpoints;
+    public int characterCheckpoints;
 
     public bool isNearCorner;
     
@@ -21,10 +21,10 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
     public override void MoveLogic()
     {
-        _characterCheckpoints = characterRef.checkPointsReached;
+        characterCheckpoints = characterRef.checkPointsReached;
         
-        if(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[_characterCheckpoints % trackManagerRef.spline.Spline.Count].Position) < 25)
-        {
+        if(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[characterCheckpoints % trackManagerRef.spline.Spline.Count].Position) < 25)
+        {   
             characterRef.ReachedCheckPoint();
         }
         
@@ -45,13 +45,13 @@ public class CompetitorsBehaviour : VehicleBehaviour
             itemInSight = null;
             Vector3 checkpointTargetPosition;
 
-            if (_characterCheckpoints >= trackManagerRef.spline.Spline.Count)
+            if (characterCheckpoints >= trackManagerRef.spline.Spline.Count)
             {
                 checkpointTargetPosition = trackManagerRef.lapCheckPoint.position + new Vector3(Random.Range(-randomOffset, randomOffset), 0, Random.Range(-randomOffset, randomOffset));
             }
             else
             {
-                checkpointTargetPosition = trackManagerRef.spline.Spline[_characterCheckpoints].Position;
+                checkpointTargetPosition = trackManagerRef.spline.Spline[characterCheckpoints].Position;
             }
 
             direction = (checkpointTargetPosition - transform.position).normalized;

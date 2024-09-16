@@ -10,6 +10,7 @@ public class CharacterData: MonoBehaviour
     public string characterName;
     public float baseCharacterAcceleration;
     public float characterAcceleration;
+    public int placement;
     
     public int checkPointsReached = 0;
     public int completedLaps = 0;

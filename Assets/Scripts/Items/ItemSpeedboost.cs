@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,31 +7,32 @@ public class ItemSpeedboost : ItemBase
 {
     private VehicleBehaviour _vehicleRef;
     private CharacterData _characterRef;
-    
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         AudioSource[] audioSources = GetComponents<AudioSource>();
         if (audioSources.Length >= 2)
         {
-            pickupAudioSource = audioSources[0];
-            useItemAudio = audioSources[1];
-        }        
-        itemName = "Speedboost";
+            PickupAudioSource = audioSources[0];
+            UseItemAudio = audioSources[1];
+        }  
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        itemName = "Speedboost";
+    }
     public override void UseItem(GameObject player)
     {
         _vehicleRef = player.GetComponent<VehicleBehaviour>();
         _characterRef = player.GetComponent<CharacterData>();
-        //useItemAudio.Play();
+        UseItemAudio.Play();
         StartCoroutine(SpeedBoost());
     }
 
     private IEnumerator SpeedBoost()
     {
-        _vehicleRef.maxSpeed = 65;
+        _vehicleRef.maxSpeed = 60;
         _characterRef.characterAcceleration *= 2;
         yield return new WaitForSeconds(1.5f);
         _vehicleRef.maxSpeed = 50;

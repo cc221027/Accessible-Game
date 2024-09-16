@@ -14,34 +14,35 @@ using Debug = UnityEngine.Debug;
 public class PlayerController : VehicleBehaviour
 {
     private TrackManager _trackManager;
-    
+
     private float _steerInputValue;
     private float _accelerationInputValue;
     private float _decelerateValue;
     private float _driftValue;
     private float _itemUseValue;
-    
+
     private bool _isDrifting;
     private bool _driftEnded;
     private float _driftSteerLock;
-    
+
     private PlayerInput _playerInput;
-    
+
     private SplineContainer _spline;
     public List<BezierKnot> checkedSplines;
-    
+
     private float _rangeToLeftOffroad;
     private float _rangeToRightOffroad;
     
+    private int _previousPlacement = -1;
+
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
         _spline = GameObject.FindGameObjectWithTag("Spline").GetComponent<SplineContainer>();
-        
+
         countDownAudio.Play();
 
         _trackManager = TrackManager.Instance;
-
     }
 
     private void Update()
@@ -49,7 +50,7 @@ public class PlayerController : VehicleBehaviour
         if (_spline == null) return;
 
         Vector3 closestPoint = GetClosestPointOnSpline();
-        
+
         Vector3 splineForward = GetSplineForwardDirection(closestPoint);
         Vector3 splineRight = new Vector3(splineForward.z, 0, -splineForward.x).normalized;
 
@@ -60,7 +61,12 @@ public class PlayerController : VehicleBehaviour
         float side = Vector3.Dot(splineRight, splineToPlayer);
 
         float angleToNextKnot = GetAngleToNextKnot(closestPoint, transform);
-        
+
+        if (characterRef.placement != _previousPlacement)
+        {
+            _previousPlacement = characterRef.placement;
+            PlayPlacementAudio(characterRef.placement);
+        }
 
         // Motor speeds based on side
         if (side > 0 && !speedReduced)
@@ -83,8 +89,8 @@ public class PlayerController : VehicleBehaviour
         {
             Gamepad.current.SetMotorSpeeds(0, 0);
         }
-        
-       
+
+
     }
 
     private Vector3 GetClosestPointOnSpline()
@@ -102,9 +108,12 @@ public class PlayerController : VehicleBehaviour
             .First();
 
         int closestIndex = _spline.Spline.IndexOf(closestKnot);
-        BezierKnot nextKnot = (closestIndex + 1 < _spline.Spline.Count) ? _spline.Spline[closestIndex + 1] : _spline.Spline[Mathf.Max(0, closestIndex - 1)];
+        BezierKnot nextKnot = (closestIndex + 1 < _spline.Spline.Count)
+            ? _spline.Spline[closestIndex + 1]
+            : _spline.Spline[Mathf.Max(0, closestIndex - 1)];
 
-        return (new Vector3(nextKnot.Position.x, 0, nextKnot.Position.z) - new Vector3(closestKnot.Position.x, 0, closestKnot.Position.z)).normalized;
+        return (new Vector3(nextKnot.Position.x, 0, nextKnot.Position.z) -
+                new Vector3(closestKnot.Position.x, 0, closestKnot.Position.z)).normalized;
     }
 
     private float GetAngleToNextKnot(Vector3 point, Transform playerTransform)
@@ -112,9 +121,12 @@ public class PlayerController : VehicleBehaviour
         // Find the closest knot and the next knot
         var closestKnot = _spline.Spline.OrderBy(knot => Vector3.Distance(point, knot.Position)).First();
         int closestIndex = _spline.Spline.IndexOf(closestKnot);
-        BezierKnot nextKnot = (closestIndex + 1 < _spline.Spline.Count) ? _spline.Spline[closestIndex + 1] : _spline.Spline[0];
+        BezierKnot nextKnot = (closestIndex + 1 < _spline.Spline.Count)
+            ? _spline.Spline[closestIndex + 1]
+            : _spline.Spline[0];
 
-        Vector3 directionToNextKnot = new Vector3(nextKnot.Position.x, 0, nextKnot.Position.z) - new Vector3(playerTransform.position.x, 0, playerTransform.position.z);
+        Vector3 directionToNextKnot = new Vector3(nextKnot.Position.x, 0, nextKnot.Position.z) -
+                                      new Vector3(playerTransform.position.x, 0, playerTransform.position.z);
         Vector3 playerForwardXZ = new Vector3(playerTransform.forward.x, 0, playerTransform.forward.z);
         float angleToNextKnot = Vector3.Angle(playerForwardXZ, directionToNextKnot.normalized);
 
@@ -126,7 +138,7 @@ public class PlayerController : VehicleBehaviour
     private IEnumerator PulseMotor(Gamepad gamepad, MotorSide side)
     {
         float duration = 0.1f; // Duration for each pulse
-        
+
         switch (side)
         {
             case MotorSide.Left:
@@ -147,7 +159,7 @@ public class PlayerController : VehicleBehaviour
         Left,
         Right
     }
-    
+
     private void OnSteer(InputValue value)
     {
         _steerInputValue = value.Get<float>();
@@ -189,19 +201,19 @@ public class PlayerController : VehicleBehaviour
         float currentSpeed = _rb.velocity.magnitude;
         _isDrifting = _driftValue > 0;
 
-       
-        
+
+
 
 
         foreach (var spline in _spline.Spline)
         {
-            if(Vector3.Distance(transform.position,spline.Position) < 20 && !checkedSplines.Contains(spline))
+            if (Vector3.Distance(transform.position, spline.Position) < 20 && !checkedSplines.Contains(spline))
             {
                 characterRef.ReachedCheckPoint();
                 checkedSplines.Add(spline);
             }
         }
-        
+
         _trackManager.currentPlayerSpeed = Mathf.RoundToInt(currentSpeed);
 
         if (_isDrifting && _isGrounded && currentSpeed >= 10 && !speedReduced)
@@ -211,8 +223,8 @@ public class PlayerController : VehicleBehaviour
                 Vector3 targetVelocity = transform.forward * accelerationForce;
                 _rb.velocity = Vector3.Lerp(_rb.velocity, targetVelocity * 5, Time.fixedDeltaTime);
             }
-            
-            
+
+
             if (_driftSteerLock == 0)
             {
                 _driftSteerLock = _steerInputValue;
@@ -221,7 +233,7 @@ public class PlayerController : VehicleBehaviour
             if (_driftSteerLock < 0)
             {
                 _steerInputValue = Mathf.Lerp(_steerInputValue, Mathf.Clamp(_steerInputValue, -1f, -0.3f), 0.7f);
-               
+
             }
             else if (_driftSteerLock > 0)
             {
@@ -234,14 +246,15 @@ public class PlayerController : VehicleBehaviour
             {
                 _steerInputValue = _playerInput.actions["Steer"].ReadValue<float>();
             }
-            
+
             _driftSteerLock = 0;
-            
+
             if (_decelerateValue > 0 && currentSpeed <= maxSpeed)
             {
-                _rb.AddForce(-_rb.velocity.normalized * Mathf.Min(decelerationForce, currentSpeed), ForceMode.Acceleration);
+                _rb.AddForce(-_rb.velocity.normalized * Mathf.Min(decelerationForce, currentSpeed),
+                    ForceMode.Acceleration);
             }
-            else if(currentSpeed <= maxSpeed)
+            else if (currentSpeed <= maxSpeed)
             {
                 _rb.AddForce(transform.forward * accelerationForce, ForceMode.Acceleration);
             }
@@ -260,5 +273,40 @@ public class PlayerController : VehicleBehaviour
             inventoryItem.GetComponent<ItemBase>().UseItem(gameObject);
             inventoryItem = null;
         }
+    }
+
+    private void PlayPlacementAudio(int placement)
+    {
+
+        switch (placement)
+        {
+            case 1:
+                SecondPlaceAudio.Stop();
+                ThirdPlaceAudio.Stop();
+                FourthPlaceAudio.Stop();
+                FirstPlaceAudio.Play();
+                break;
+            case 2:
+                FirstPlaceAudio.Stop();
+                ThirdPlaceAudio.Stop();
+                FourthPlaceAudio.Stop();
+                SecondPlaceAudio.Play();
+                break;
+            case 3:
+                FirstPlaceAudio.Stop();
+                SecondPlaceAudio.Stop();
+                FourthPlaceAudio.Stop();
+                ThirdPlaceAudio.Play();
+                break;
+            case 4:
+                FirstPlaceAudio.Stop();
+                SecondPlaceAudio.Stop();
+                ThirdPlaceAudio.Stop();
+                FourthPlaceAudio.Play();
+                break;
+            default:
+                return;
+        }
+        
     }
 }
