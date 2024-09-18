@@ -163,6 +163,11 @@ public class TrackManager : MonoBehaviour
     {
         _raceStarted = false;
         currentPlayerLap = 0;
+        int minutes = Mathf.FloorToInt(_raceTimer / 60F);
+        int seconds = Mathf.FloorToInt(_raceTimer % 60F);
+        int milliseconds = Mathf.FloorToInt((_raceTimer * 1000F) % 1000F);
+        string timeFormatted = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
+        GameManager.Instance.endTime = timeFormatted;
         GameManager.Instance.winner = winner.characterName;
         GameManager.Instance.LoadScene("Result Scene");
     }
