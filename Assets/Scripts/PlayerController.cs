@@ -54,17 +54,17 @@ public class PlayerController : VehicleBehaviour
     {
         float playerKnotSide = GetKnotSide();
         
-        Debug.Log(playerKnotSide);
-        
         var gamepad = Gamepad.current;
+        
+        Debug.Log(playerKnotSide);
 
         if (gamepad is IDualMotorRumble haptics)
         {
-            if (playerKnotSide < 0)
+            if (playerKnotSide > 0)
             {
                 haptics.SetMotorSpeeds(0, 0.004f); 
             }
-            else if (playerKnotSide > 0)
+            else if (playerKnotSide < 0)
             {
                 haptics.SetMotorSpeeds(0.004f, 0);  
             }
@@ -97,25 +97,23 @@ public class PlayerController : VehicleBehaviour
         return _spline.Spline.OrderBy(p => Vector3.Distance(transform.position, p.Position)).First().Position;
     }
 
-    private Vector3 GetSplineForwardDirection(Vector3 closestKnot)
+    private Vector3 GetKnotOfInterest(Vector3 closestKnot)
     {
         int closestIndex = _spline.Spline.IndexOf(_spline.Spline.OrderBy(p => Vector3.Distance(transform.position, p.Position)).First());
-        BezierKnot nextKnot = _spline.Spline[(closestIndex + 1) % _spline.Spline.Count]; // Loop around
+        BezierKnot nextKnot = _spline.Spline[(closestIndex + 1) % _spline.Spline.Count];
 
         Vector3 nextKnotPosition = new Vector3(nextKnot.Position.x, nextKnot.Position.y, nextKnot.Position.z);
         
-        return (nextKnotPosition - closestKnot).normalized;
+        //return ((nextKnotPosition + closestKnot) / 2) - transform.position;
+        return ((nextKnotPosition - closestKnot));
     }
 
     private float GetKnotSide()
     {
         Vector3 closestKnot = GetClosestKnotPosition();
-        Vector3 splineForward = GetSplineForwardDirection(closestKnot);
-        Vector3 splineRight = new Vector3(splineForward.z, 0, -splineForward.x).normalized;
-
-        Vector3 playerForwardXZ = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
+        Vector3 knotOfInterest = GetKnotOfInterest(closestKnot);
         
-        return Vector3.Dot(splineRight, playerForwardXZ);
+        return Vector3.Dot( knotOfInterest.normalized,  transform.right);
     }
 
 
