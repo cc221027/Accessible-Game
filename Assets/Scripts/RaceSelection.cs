@@ -1,10 +1,14 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Vector2 = System.Numerics.Vector2;
 
-public class RaceSelection : MonoBehaviour
+public class RaceSelection : MonoBehaviour, ICancelHandler
 {
     private int _characterIndex;
     private int _trackIndex;
@@ -16,36 +20,105 @@ public class RaceSelection : MonoBehaviour
     }
 
     [SerializeField] private Type type;
-    
-    // Start is called before the first frame update
+
+    [Header("UI Elements")] 
+    private Vector3 _initialPosition;
+    [SerializeField] private Transform selectedButtonTargetPosition;
+    [SerializeField] private GameObject infoPanel;
+    [SerializeField] private GameObject readyText;
+    [SerializeField] private GameObject[] disabledObjects;
+
+    private Button _selectedButton;
+    private bool _isHighlighted = false;
+
     void Start()
     {
+        _initialPosition = transform.position;
         switch (type)
         {
             case Type.Track:
                 _trackIndex = transform.GetSiblingIndex();
-                GetComponent<Button>().onClick.AddListener(SelectTrack);
+                GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Track));
                 break;
             case Type.Character:
                 _characterIndex = transform.GetSiblingIndex();
-                GetComponent<Button>().onClick.AddListener(SelectCharacter);
+                GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Character));
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
     }
-    private void SelectTrack()
+
+    private void HandleSelection(Type selectionType)
     {
-        if (GameManager.Instance != null)
+        if (!_isHighlighted)
         {
-            GameManager.Instance.SelectTrack(_trackIndex);
+            _selectedButton = GetComponent<Button>();
+            MoveButtonToHighlight();
+            
+            ShowInfoPanel();
+            
+            _isHighlighted = true;
+        }
+        else
+        {
+            ConfirmSelection(selectionType);
         }
     }
-    private void SelectCharacter()
+
+    private void ConfirmSelection(Type selectionType)
     {
-        if (GameManager.Instance != null)
+        if (selectionType == Type.Track)
         {
+            GameManager.Instance.SelectTrack(_trackIndex); 
+            
+        }else if (selectionType == Type.Character) 
+        { 
             GameManager.Instance.SelectCharacter(_characterIndex);
         }
+        _isHighlighted = false;
+    }
+
+    private void MoveButtonToHighlight()
+    {
+        transform.position = selectedButtonTargetPosition.position;
+    }
+
+    private void ShowInfoPanel()
+    {
+        infoPanel.SetActive(true);
+        readyText.SetActive(true);
+        foreach (var element in disabledObjects)
+        {
+            element.SetActive(false);
+        }
+    }
+
+    public void OnCancel(BaseEventData eventData)
+    {
+        if (_isHighlighted)
+        {
+            infoPanel.SetActive(false);
+            readyText.SetActive(false);
+            foreach (var element in disabledObjects)
+            {
+                element.SetActive(true);
+            }
+            transform.position = _initialPosition;
+            _isHighlighted = false;
+        }
+        else
+        {
+            if (SceneManager.GetActiveScene().name == "Character Selection")
+            {
+                GameManager.Instance.ResetSelection();
+                SceneManager.LoadScene("Track Selection");
+            } else if (SceneManager.GetActiveScene().name == "Track Selection")
+            {
+                SceneManager.LoadScene("Main Menu");
+            }
+        }
+        
+       
     }
 }

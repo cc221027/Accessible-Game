@@ -35,7 +35,7 @@ GameObject:
   - component: {fileID: -7821839773484831746}
   - component: {fileID: 7783516983484241348}
   m_Layer: 0
-  m_Name: Racer4
+  m_Name: Stella
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1883,7 +1883,7 @@ GameObject:
   - component: {fileID: 2570457053312878546}
   - component: {fileID: 1485311141345628192}
   - component: {fileID: 6048896843671322650}
-  - component: {fileID: 4116845534236526066}
+  - component: {fileID: 1411050123618116976}
   m_Layer: 0
   m_Name: BL_Wheel.002
   m_TagString: Untagged
@@ -1899,8 +1899,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2607780098471509648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8388996, y: 0.31174153, z: -1.4142826}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.0017, y: 0.31174153, z: -1.4142826}
+  m_LocalScale: {x: 6.0253, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 424515675506442418}
@@ -1956,8 +1956,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4116845534236526066
-MeshCollider:
+--- !u!65 &1411050123618116976
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1974,10 +1974,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8547770568594024456, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.31972432, y: 0.6631682, z: 3.34771}
+  m_Center: {x: -0.006733179, y: 0, z: 1.3422707}
 --- !u!1 &3603162599467519518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,7 +1988,6 @@ GameObject:
   - component: {fileID: 7983110141910488180}
   - component: {fileID: 672672462084797376}
   - component: {fileID: 8289340260817127981}
-  - component: {fileID: 8109259805112800882}
   m_Layer: 0
   m_Name: FR_Wheel.002
   m_TagString: Untagged
@@ -2062,28 +2060,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8109259805112800882
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3603162599467519518}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7302677864264432399, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
 --- !u!1 &7233896909363241413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,7 +2071,6 @@ GameObject:
   - component: {fileID: 1164830841719826820}
   - component: {fileID: 6597307086958194474}
   - component: {fileID: 3628968667302644992}
-  - component: {fileID: 7981752935470352382}
   m_Layer: 0
   m_Name: FL_Wheel.002
   m_TagString: Untagged
@@ -2168,28 +2143,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7981752935470352382
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7233896909363241413}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8547770568594024456, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
 --- !u!1 &8176657642405370834
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,7 +2154,6 @@ GameObject:
   - component: {fileID: 963483028179970324}
   - component: {fileID: 2493920909210808528}
   - component: {fileID: 8726913239453204260}
-  - component: {fileID: 40664193490903120}
   m_Layer: 0
   m_Name: BR_Wheel.002
   m_TagString: Untagged
@@ -2274,25 +2226,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &40664193490903120
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8176657642405370834}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7302677864264432399, guid: 67cc45dda15375e4888e52bddff60955, type: 3}

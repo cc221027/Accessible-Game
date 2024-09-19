@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3790408733571146154}
   - component: {fileID: 4999039223183416474}
   - component: {fileID: 1805249409100950783}
-  - component: {fileID: 5609766894594541136}
   m_Layer: 0
   m_Name: BR_Wheel.005
   m_TagString: Untagged
@@ -84,28 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5609766894594541136
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170075267814215028}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2488868095558117755, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
 --- !u!1 &3434346841780935884
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +94,6 @@ GameObject:
   - component: {fileID: 8082653205934808318}
   - component: {fileID: 4261658942978224046}
   - component: {fileID: 1208930431945214040}
-  - component: {fileID: 4402934448849902460}
   m_Layer: 0
   m_Name: BL_Wheel.005
   m_TagString: Untagged
@@ -190,28 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4402934448849902460
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3434346841780935884}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3035921978905498287, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
 --- !u!1 &5195130143873652074
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +201,7 @@ GameObject:
   - component: {fileID: 6994183569261086005}
   - component: {fileID: 8882275418499410667}
   m_Layer: 0
-  m_Name: Racer2
+  m_Name: Officer Jenkins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2029,7 +1983,7 @@ GameObject:
   - component: {fileID: 896807982032661321}
   - component: {fileID: 3715444272447882637}
   - component: {fileID: 8519236080557294969}
-  - component: {fileID: 256230173372285122}
+  - component: {fileID: 5871428366896818578}
   m_Layer: 0
   m_Name: FL_Wheel.005
   m_TagString: Untagged
@@ -2045,8 +1999,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6582859275207379380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8407421, y: 0.3801309, z: 1.424}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.025, y: 0.3801309, z: 1.424}
+  m_LocalScale: {x: 5.7761, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1230332449934226937}
@@ -2102,8 +2056,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &256230173372285122
-MeshCollider:
+--- !u!65 &5871428366896818578
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2120,10 +2074,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3035921978905498287, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.34593576, y: 0.7992698, z: 3.8946285}
+  m_Center: {x: -0.008293322, y: 0, z: -1.5476785}
 --- !u!1 &6866633809419923736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,7 +2088,6 @@ GameObject:
   - component: {fileID: 3492208779296599771}
   - component: {fileID: 6759024541692066322}
   - component: {fileID: 380781615306467096}
-  - component: {fileID: 7526247332813871709}
   m_Layer: 0
   m_Name: FR_Wheel.005
   m_TagString: Untagged
@@ -2208,28 +2160,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7526247332813871709
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6866633809419923736}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2488868095558117755, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
 --- !u!1 &9203565770698148013
 GameObject:
   m_ObjectHideFlags: 0

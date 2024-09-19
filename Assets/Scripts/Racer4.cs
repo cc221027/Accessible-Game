@@ -8,7 +8,7 @@ public class Racer4 : CharacterData
     void Start()
     {
         index = 3;
-        characterName = "Racer4";
+        characterName = "Stella";
         baseCharacterAcceleration = 1.2f;
         characterAcceleration = baseCharacterAcceleration;
 
