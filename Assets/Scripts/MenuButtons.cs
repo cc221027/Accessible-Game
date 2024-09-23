@@ -54,6 +54,7 @@ public class MenuButtons : MonoBehaviour, ISelectHandler
     public void OnSelect(BaseEventData data)
     {
         gameObject.GetComponent<UAP_BaseElement>().SelectItem();
+        GameManager.Instance.StopReadingUI();
     }
 
 }

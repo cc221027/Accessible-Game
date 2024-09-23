@@ -1747,7 +1747,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press Down Button to Select
+  m_Hint: Press down button to select. Press right button to cancel. Press in right
+    stick for info.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -2192,7 +2193,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press Down Button to Select
+  m_Hint: Press down button to select. Press right button to cancel. Press in right
+    stick for info.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1

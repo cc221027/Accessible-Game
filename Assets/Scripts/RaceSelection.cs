@@ -5,10 +5,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 using Vector2 = System.Numerics.Vector2;
 
-public class RaceSelection : MonoBehaviour, ICancelHandler
+public class RaceSelection : MonoBehaviour, ICancelHandler, ISelectHandler
 {
     private int _characterIndex;
     private int _trackIndex;
@@ -22,18 +23,11 @@ public class RaceSelection : MonoBehaviour, ICancelHandler
     [SerializeField] private Type type;
 
     [Header("UI Elements")] 
-    private Vector3 _initialPosition;
-    [SerializeField] private Transform selectedButtonTargetPosition;
     [SerializeField] private GameObject infoPanel;
-    [SerializeField] private GameObject readyText;
     [SerializeField] private GameObject[] disabledObjects;
-
-    private Button _selectedButton;
-    private bool _isHighlighted = false;
-
+    
     void Start()
     {
-        _initialPosition = transform.position;
         switch (type)
         {
             case Type.Track:
@@ -51,19 +45,7 @@ public class RaceSelection : MonoBehaviour, ICancelHandler
 
     private void HandleSelection(Type selectionType)
     {
-        if (!_isHighlighted)
-        {
-            _selectedButton = GetComponent<Button>();
-            MoveButtonToHighlight();
-            
-            ShowInfoPanel();
-            
-            _isHighlighted = true;
-        }
-        else
-        {
-            ConfirmSelection(selectionType);
-        }
+        ConfirmSelection(selectionType);
     }
 
     private void ConfirmSelection(Type selectionType)
@@ -76,49 +58,30 @@ public class RaceSelection : MonoBehaviour, ICancelHandler
         { 
             GameManager.Instance.SelectCharacter(_characterIndex);
         }
-        _isHighlighted = false;
     }
-
-    private void MoveButtonToHighlight()
-    {
-        transform.position = selectedButtonTargetPosition.position;
-    }
-
+    
     private void ShowInfoPanel()
     {
         infoPanel.SetActive(true);
-        readyText.SetActive(true);
         foreach (var element in disabledObjects)
         {
             element.SetActive(false);
         }
     }
 
+    public void OnSelect(BaseEventData eventData)
+    {
+        ShowInfoPanel();
+    }
     public void OnCancel(BaseEventData eventData)
     {
-        if (_isHighlighted)
+        if (SceneManager.GetActiveScene().name == "Character Selection")
         {
-            infoPanel.SetActive(false);
-            readyText.SetActive(false);
-            foreach (var element in disabledObjects)
-            {
-                element.SetActive(true);
-            }
-            transform.position = _initialPosition;
-            _isHighlighted = false;
-        }
-        else
+            GameManager.Instance.ResetSelection();
+            SceneManager.LoadScene("Track Selection");
+        } else if (SceneManager.GetActiveScene().name == "Track Selection") 
         {
-            if (SceneManager.GetActiveScene().name == "Character Selection")
-            {
-                GameManager.Instance.ResetSelection();
-                SceneManager.LoadScene("Track Selection");
-            } else if (SceneManager.GetActiveScene().name == "Track Selection")
-            {
-                SceneManager.LoadScene("Main Menu");
-            }
+            SceneManager.LoadScene("Main Menu");
         }
-        
-       
     }
 }

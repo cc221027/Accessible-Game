@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public int SelectedTrackIndex { get; private set; } = -1;
 
     private bool _readScreenPressed;
+    private bool _stopReading = false;
 
     public string winner;
     public string endTime;
@@ -38,10 +39,6 @@ public class GameManager : MonoBehaviour
 
      
         
-    }
-
-    private void Update()
-    {
     }
 
     public void LoadScene(string sceneName)
@@ -66,22 +63,31 @@ public class GameManager : MonoBehaviour
         SelectedTrackIndex = -1;
     }
     
-    private void OnReadUI(InputValue value)
+    public void OnReadUI()
     {
+        _stopReading = false; // Reset the flag
         StartCoroutine(ReadUIElements());
+    }
+
+    public void StopReadingUI()
+    {
+        _stopReading = true;  
+        StopCoroutine(ReadUIElements());
+        
     }
 
     private IEnumerator ReadUIElements()
     {
         UAP_BaseElement[] uiElements = FindObjectsOfType<UAP_BaseElement>();
-
         UAP_BaseElement[] sortedElements = uiElements.OrderBy(element => element.m_ManualPositionOrder).ToArray();
 
         foreach (UAP_BaseElement element in sortedElements)
         {
+            if (_stopReading) 
+                yield break; 
+
             element.SelectItem();
-            
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.5f); 
         }
     }
 
