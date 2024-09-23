@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -13,6 +15,8 @@ public class GameManager : MonoBehaviour
     public int SelectedCharacterIndex { get; private set; } = -1;
     
     public int SelectedTrackIndex { get; private set; } = -1;
+
+    private bool _readScreenPressed;
 
     public string winner;
     public string endTime;
@@ -31,8 +35,15 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+     
+        
     }
-    
+
+    private void Update()
+    {
+    }
+
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
@@ -54,5 +65,26 @@ public class GameManager : MonoBehaviour
         SelectedCharacterIndex = -1;
         SelectedTrackIndex = -1;
     }
+    
+    private void OnReadUI(InputValue value)
+    {
+        StartCoroutine(ReadUIElements());
+    }
+
+    private IEnumerator ReadUIElements()
+    {
+        UAP_BaseElement[] uiElements = FindObjectsOfType<UAP_BaseElement>();
+
+        UAP_BaseElement[] sortedElements = uiElements.OrderBy(element => element.m_ManualPositionOrder).ToArray();
+
+        foreach (UAP_BaseElement element in sortedElements)
+        {
+            element.SelectItem();
+            
+            yield return new WaitForSeconds(1.5f);
+        }
+    }
+
+
     
 }
