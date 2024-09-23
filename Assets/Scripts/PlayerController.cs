@@ -62,11 +62,11 @@ public class PlayerController : VehicleBehaviour
         {
             if (playerKnotSide > 0)
             {
-                haptics.SetMotorSpeeds(0, 0.004f); 
+                haptics.SetMotorSpeeds(0.004f, 0); 
             }
             else if (playerKnotSide < 0)
             {
-                haptics.SetMotorSpeeds(0.004f, 0);  
+                haptics.SetMotorSpeeds(0, 0.004f);  
             }
             else
             {
@@ -104,8 +104,7 @@ public class PlayerController : VehicleBehaviour
 
         Vector3 nextKnotPosition = new Vector3(nextKnot.Position.x, nextKnot.Position.y, nextKnot.Position.z);
         
-        //return ((nextKnotPosition + closestKnot) / 2) - transform.position;
-        return ((nextKnotPosition - closestKnot));
+        return (closestKnot - nextKnotPosition);
     }
 
     private float GetKnotSide()
