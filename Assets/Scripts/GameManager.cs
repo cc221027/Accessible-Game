@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -21,9 +22,11 @@ public class GameManager : MonoBehaviour
 
     public string winner;
     public string endTime;
-
-    public int ttsVolume;
-    public int sfxVolume;
+    
+    public float sfxVolume = 100f;
+    public float musicVolume = 100f;
+    public float ttsVolume = 100f;
+    public float hapticsVolume = 100f;
     
     [SerializeField] public List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] private List<string> trackSceneNames = new List<string>();
@@ -39,8 +42,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-     
         
     }
 
@@ -65,10 +66,9 @@ public class GameManager : MonoBehaviour
         SelectedCharacterIndex = -1;
         SelectedTrackIndex = -1;
     }
-    
     public void OnReadUI()
     {
-        _stopReading = false; // Reset the flag
+        _stopReading = false;
         StartCoroutine(ReadUIElements());
     }
 

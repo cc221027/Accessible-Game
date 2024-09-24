@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -18,7 +19,13 @@ public class ItemBase : MonoBehaviour
     {
         PickupAudioSource.Play();
     }
-    
+
+    private void Update()
+    {
+        PickupAudioSource.volume = GameManager.Instance.sfxVolume / 100;
+        UseItemAudio.volume = GameManager.Instance.sfxVolume / 100;
+    }
+
     public bool CanUseItem()
     {
         return Time.time >= _lastUsedTime + CooldownTime;

@@ -1,0 +1,97 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
+{
+   
+    [SerializeField] private GameObject panelRef;
+    [SerializeField] private GameObject firstElementToHighlight;
+    [SerializeField] private GameObject[] uiToDisable;
+
+    private Slider _slider;
+    
+    private enum Type
+    {
+        None,
+        SliderSfx,
+        SliderMusic,
+        SliderTts,
+        SliderHaptics
+    }
+
+    [SerializeField] private Type type;
+
+    private void Start()
+    {
+        if (type == Type.SliderSfx || type == Type.SliderMusic || type == Type.SliderTts ||type == Type.SliderHaptics)
+        {
+            _slider = gameObject.GetComponent<Slider>();
+            
+            switch (type)
+            {
+                case Type.SliderSfx:
+                    _slider.value = GameManager.Instance.sfxVolume;
+                    Debug.Log(_slider.value);
+                    break;
+                case Type.SliderMusic:
+                    _slider.value = GameManager.Instance.musicVolume;
+                    break;
+                case Type.SliderTts:
+                    _slider.value = GameManager.Instance.ttsVolume;
+                    break;
+                case Type.SliderHaptics:
+                    _slider.value = GameManager.Instance.hapticsVolume;
+                    break;
+            }
+            _slider.onValueChanged.AddListener(delegate {SliderValueChanged();});
+        }
+    }
+
+    public void HandleButtonClick()
+    {
+        if (uiToDisable.Length > 0) { foreach (var element in uiToDisable) { element.SetActive(false); } }
+        panelRef.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(firstElementToHighlight);
+    }
+
+    public void OnCancel(BaseEventData eventData)
+    {
+        if (uiToDisable.Length > 0) { foreach (var element in uiToDisable) { element.SetActive(true); } }
+        panelRef.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(firstElementToHighlight);
+    }
+
+    private void SliderValueChanged()
+    {
+        switch (type)
+        {
+            case Type.SliderSfx:
+                GameManager.Instance.sfxVolume = _slider.value;
+                
+                break;
+            case Type.SliderMusic:
+                GameManager.Instance.musicVolume = _slider.value;
+                break;
+            case Type.SliderTts:
+                GameManager.Instance.ttsVolume = _slider.value;
+                FindObjectOfType<UAP_AccessibilityManager>().m_WindowsTTSVolume = (int)_slider.value;
+                break;
+            case Type.SliderHaptics:
+                GameManager.Instance.hapticsVolume = _slider.value;
+                break;
+        }
+        gameObject.GetComponent<UAP_BaseElement>().SelectItem(true);
+        GameManager.Instance.StopReadingUI();
+    }
+    
+    public void OnSelect(BaseEventData data)
+    {
+        gameObject.GetComponent<UAP_BaseElement>().SelectItem();
+        GameManager.Instance.StopReadingUI();
+    }
+
+}

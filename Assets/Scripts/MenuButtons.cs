@@ -22,7 +22,6 @@ public class MenuButtons : MonoBehaviour, ISelectHandler
         Button button = GetComponent<Button>();
         
         button.onClick.AddListener(HandleButtonClick);
-       
     }
 
     private void HandleButtonClick()

@@ -51,7 +51,7 @@ public class VehicleBehaviour : MonoBehaviour
         characterRef = GetComponent<CharacterData>();
         movementEnabled = false;
         
-        _audioSources = GetComponents<AudioSource>(); 
+        _audioSources = GetComponents<AudioSource>();
         
         if (_audioSources.Length >= 2)
         {
@@ -180,6 +180,11 @@ public class VehicleBehaviour : MonoBehaviour
             _gearShiftAudio.Play(); 
             _carMotorAudioGoing.Play();
             
+        }
+        
+        foreach (var audioSource in _audioSources)
+        {
+            audioSource.volume = GameManager.Instance.sfxVolume/100;
         }
     }
 

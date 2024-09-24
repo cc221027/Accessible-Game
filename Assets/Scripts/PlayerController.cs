@@ -62,11 +62,11 @@ public class PlayerController : VehicleBehaviour
         {
             if (playerKnotSide > 0)
             {
-                haptics.SetMotorSpeeds(0.004f, 0); 
+                haptics.SetMotorSpeeds(0.5f * GameManager.Instance.hapticsVolume, 0); 
             }
             else if (playerKnotSide < 0)
             {
-                haptics.SetMotorSpeeds(0, 0.004f);  
+                haptics.SetMotorSpeeds(0, 0.5f * GameManager.Instance.hapticsVolume);  
             }
             else
             {
@@ -149,6 +149,11 @@ public class PlayerController : VehicleBehaviour
     {
         _itemUseValue = value.Get<float>();
         UseItem();
+    }
+    
+    public void OnPause()
+    {
+       //Show settings menu and pause screen
     }
 
     public override void MoveLogic()
