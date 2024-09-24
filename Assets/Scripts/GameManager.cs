@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public float musicVolume = 100f;
     public float ttsVolume = 100f;
     public float hapticsVolume = 100f;
+    public bool toggleAccessibility = true;
     
     [SerializeField] public List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] private List<string> trackSceneNames = new List<string>();
@@ -47,6 +48,11 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        if (sceneName is "Main Menu" or "Result Screen")
+        {
+            Time.timeScale = 1;
+            Gamepad.current.SetMotorSpeeds(0, 0); 
+        }
         SceneManager.LoadScene(sceneName);
     }
     

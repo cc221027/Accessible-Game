@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
@@ -14,6 +16,8 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
 
     private Slider _slider;
     private Toggle _toggle;
+
+    private bool _paused;
     
     private enum Type
     {
@@ -23,12 +27,14 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         SliderTts,
         SliderHaptics,
         Toggle,
+        Pause,
     }
 
     [SerializeField] private Type type;
 
     private void Start()
     {
+        
         if (type == Type.SliderSfx || type == Type.SliderMusic || type == Type.SliderTts ||type == Type.SliderHaptics)
         {
             _slider = gameObject.GetComponent<Slider>();
@@ -54,7 +60,22 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         if (type == Type.Toggle)
         {
             _toggle = gameObject.GetComponent<Toggle>();
+            _toggle.isOn = GameManager.Instance.toggleAccessibility;
             _toggle.onValueChanged.AddListener(delegate { ValueChanged(); });
+        }
+    }
+
+    private void Update()
+    {
+        if (!_paused && type == Type.Pause)
+        {
+            EventSystem.current.SetSelectedGameObject(firstElementToHighlight);
+            _paused = true;
+        }
+
+        if (_paused)
+        {
+            Gamepad.current.SetMotorSpeeds(0,0);
         }
     }
 
@@ -67,9 +88,17 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
 
     public void OnCancel(BaseEventData eventData)
     {
-        if (uiToDisable.Length > 0) { foreach (var element in uiToDisable) { element.SetActive(true); } }
+        if (!_paused)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            foreach (var element in uiToDisable) { element.SetActive(true); }
+            EventSystem.current.SetSelectedGameObject(firstElementToHighlight);
+        }
+        
         panelRef.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(firstElementToHighlight);
     }
 
     private void ValueChanged()
@@ -78,7 +107,6 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         {
             case Type.SliderSfx:
                 GameManager.Instance.sfxVolume = _slider.value;
-                
                 break;
             case Type.SliderMusic:
                 GameManager.Instance.musicVolume = _slider.value;
@@ -92,6 +120,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
                 break;
             case Type.Toggle:
                 UAP_AccessibilityManager.PauseAccessibility(!_toggle.isOn);
+                GameManager.Instance.toggleAccessibility = _toggle.isOn;
                 break;
         }
         gameObject.GetComponent<UAP_BaseElement>().SelectItem(true);

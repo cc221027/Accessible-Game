@@ -40,6 +40,8 @@ public class PlayerController : VehicleBehaviour
     private bool _playedFinalAudio = false;
     private float _originalVolume = 1.0f;
 
+    private GameObject _pausePanel;
+
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -48,6 +50,9 @@ public class PlayerController : VehicleBehaviour
         countDownAudio.Play();
 
         _trackManager = TrackManager.Instance;
+        
+        _pausePanel = GameObject.Find("Canvas/PausedPanel");
+        _pausePanel.SetActive(false);
     }
 
     private void Update()
@@ -62,11 +67,11 @@ public class PlayerController : VehicleBehaviour
         {
             if (playerKnotSide > 0)
             {
-                haptics.SetMotorSpeeds(0.5f * GameManager.Instance.hapticsVolume, 0); 
+                haptics.SetMotorSpeeds(0.5f * (GameManager.Instance.hapticsVolume/100), 0); 
             }
             else if (playerKnotSide < 0)
             {
-                haptics.SetMotorSpeeds(0, 0.5f * GameManager.Instance.hapticsVolume);  
+                haptics.SetMotorSpeeds(0, 0.5f * (GameManager.Instance.hapticsVolume/100));  
             }
             else
             {
@@ -153,7 +158,8 @@ public class PlayerController : VehicleBehaviour
     
     public void OnPause()
     {
-       //Show settings menu and pause screen
+        _pausePanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public override void MoveLogic()

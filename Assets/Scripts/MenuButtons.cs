@@ -55,5 +55,4 @@ public class MenuButtons : MonoBehaviour, ISelectHandler
         gameObject.GetComponent<UAP_BaseElement>().SelectItem();
         GameManager.Instance.StopReadingUI();
     }
-
 }
