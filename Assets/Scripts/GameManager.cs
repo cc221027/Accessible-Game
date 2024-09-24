@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
 
     public string winner;
     public string endTime;
+
+    public int ttsVolume;
+    public int sfxVolume;
     
     [SerializeField] public List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] private List<string> trackSceneNames = new List<string>();
