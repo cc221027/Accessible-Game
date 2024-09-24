@@ -83,16 +83,18 @@ public class GameManager : MonoBehaviour
     {
         UAP_BaseElement[] uiElements = FindObjectsOfType<UAP_BaseElement>();
         UAP_BaseElement[] sortedElements = uiElements.OrderBy(element => element.m_ManualPositionOrder).ToArray();
-
+    
         foreach (UAP_BaseElement element in sortedElements)
         {
             if (_stopReading) 
                 yield break; 
-
+    
             element.SelectItem();
             yield return new WaitForSeconds(1.5f); 
         }
     }
+    
+    
 
 
     

@@ -13,6 +13,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
     [SerializeField] private GameObject[] uiToDisable;
 
     private Slider _slider;
+    private Toggle _toggle;
     
     private enum Type
     {
@@ -20,7 +21,8 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         SliderSfx,
         SliderMusic,
         SliderTts,
-        SliderHaptics
+        SliderHaptics,
+        Toggle,
     }
 
     [SerializeField] private Type type;
@@ -35,7 +37,6 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
             {
                 case Type.SliderSfx:
                     _slider.value = GameManager.Instance.sfxVolume;
-                    Debug.Log(_slider.value);
                     break;
                 case Type.SliderMusic:
                     _slider.value = GameManager.Instance.musicVolume;
@@ -47,7 +48,13 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
                     _slider.value = GameManager.Instance.hapticsVolume;
                     break;
             }
-            _slider.onValueChanged.AddListener(delegate {SliderValueChanged();});
+            _slider.onValueChanged.AddListener(delegate {ValueChanged();});
+        }
+
+        if (type == Type.Toggle)
+        {
+            _toggle = gameObject.GetComponent<Toggle>();
+            _toggle.onValueChanged.AddListener(delegate { ValueChanged(); });
         }
     }
 
@@ -65,7 +72,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         EventSystem.current.SetSelectedGameObject(firstElementToHighlight);
     }
 
-    private void SliderValueChanged()
+    private void ValueChanged()
     {
         switch (type)
         {
@@ -82,6 +89,9 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
                 break;
             case Type.SliderHaptics:
                 GameManager.Instance.hapticsVolume = _slider.value;
+                break;
+            case Type.Toggle:
+                UAP_AccessibilityManager.PauseAccessibility(!_toggle.isOn);
                 break;
         }
         gameObject.GetComponent<UAP_BaseElement>().SelectItem(true);

@@ -2403,7 +2403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelRef: {fileID: 2075483187}
-  firstElementToHighlight: {fileID: 427770660}
+  firstElementToHighlight: {fileID: 2113769257}
   uiToDisable:
   - {fileID: 362329969}
   - {fileID: 1011217515}
@@ -4756,14 +4756,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelRef: {fileID: 2075483187}
-  firstElementToHighlight: {fileID: 427770660}
+  firstElementToHighlight: {fileID: 2113769257}
   uiToDisable:
   - {fileID: 362329969}
   - {fileID: 1011217515}
   - {fileID: 1832490727}
   - {fileID: 2113769257}
   - {fileID: 184552167}
-  type: 0
+  type: 5
 --- !u!1 &2002424126
 GameObject:
   m_ObjectHideFlags: 0
