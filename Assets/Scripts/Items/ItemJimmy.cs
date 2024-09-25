@@ -2,17 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemJimmy : MonoBehaviour
+public class ItemJimmy : ItemBase
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        // AudioSource[] audioSources = GetComponents<AudioSource>();
+        // if (audioSources.Length >= 2)
+        // {
+        //     PickupAudioSource = audioSources[0];
+        //     UseItemAudio = audioSources[1];
+        // }  
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
+    {
+        itemName = "Shield";
+    }
+    
+    public override void UseItem(GameObject player)
+    {
+        transform.position = (player.transform.position + transform.up + transform.forward);
+        transform.localScale = new Vector3(4,4,4);
+        StartCoroutine(Shield());
+    }
+
+    private IEnumerator Shield()
     {
         
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
     }
 }

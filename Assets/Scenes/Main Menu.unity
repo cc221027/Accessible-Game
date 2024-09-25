@@ -599,7 +599,7 @@ MonoBehaviour:
   m_TryToReadLabel: 1
   m_ReferenceElement: {fileID: 0}
   m_AllowVoiceOver: 1
-  m_ReadType: 1
+  m_ReadType: 0
   m_WasJustAdded: 1
   m_Type: 1
   m_CustomHint: 1
@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_TryToReadLabel: 1
   m_ReferenceElement: {fileID: 0}
   m_AllowVoiceOver: 0
-  m_ReadType: 1
+  m_ReadType: 0
   m_WasJustAdded: 1
   m_Type: 2
   m_CustomHint: 0
@@ -3477,7 +3477,7 @@ MonoBehaviour:
   m_TryToReadLabel: 1
   m_ReferenceElement: {fileID: 0}
   m_AllowVoiceOver: 0
-  m_ReadType: 1
+  m_ReadType: 0
   m_WasJustAdded: 1
   m_Type: 1
   m_CustomHint: 1
@@ -4393,7 +4393,7 @@ MonoBehaviour:
   m_TryToReadLabel: 1
   m_ReferenceElement: {fileID: 0}
   m_AllowVoiceOver: 1
-  m_ReadType: 1
+  m_ReadType: 0
   m_WasJustAdded: 1
   m_Type: 1
   m_CustomHint: 1
@@ -5647,7 +5647,7 @@ MonoBehaviour:
   m_TryToReadLabel: 1
   m_ReferenceElement: {fileID: 0}
   m_AllowVoiceOver: 0
-  m_ReadType: 1
+  m_ReadType: 0
   m_WasJustAdded: 1
   m_Type: 1
   m_CustomHint: 1

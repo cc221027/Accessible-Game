@@ -17,13 +17,13 @@ public class ItemBase : MonoBehaviour
 
     public void OnPickup()
     {
-        PickupAudioSource.Play();
+        //PickupAudioSource.Play();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        PickupAudioSource.volume = GameManager.Instance.sfxVolume / 100;
-        UseItemAudio.volume = GameManager.Instance.sfxVolume / 100;
+        // PickupAudioSource.volume = GameManager.Instance.sfxVolume / 100;
+        // UseItemAudio.volume = GameManager.Instance.sfxVolume / 100;    
     }
 
     public bool CanUseItem()

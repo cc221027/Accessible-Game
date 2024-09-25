@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class ItemPickupContainer : MonoBehaviour
 {
     [SerializeField] private List<GameObject> items = new List<GameObject>();
+    [SerializeField] private List<GameObject> characterItems = new List<GameObject>();
+
     
     private Renderer[] _renderers;
     private Collider[] _colliders;
@@ -37,7 +40,12 @@ public class ItemPickupContainer : MonoBehaviour
 
     public void GetRandomItem(GameObject player)
     {
-        GameObject item = Instantiate(items[Random.Range(0, items.Count)], player.transform.position + (player.transform.right * 2) + player.transform.up, player.transform.rotation);
+        int randomItemNumb = Random.Range(0, items.Count + 1);
+        Vector3 itemPosition = player.transform.position + (player.transform.right * 2) + player.transform.up;
+
+        Debug.Log(randomItemNumb);
+        var item = Instantiate(randomItemNumb < items.Count ? items[randomItemNumb] : characterItems[player.GetComponent<CharacterData>().index], itemPosition, player.transform.rotation);
+
         item.transform.SetParent(player.transform);
         item.GetComponent<ItemBase>().OnPickup();
         player.GetComponent<VehicleBehaviour>().inventoryItem = item;

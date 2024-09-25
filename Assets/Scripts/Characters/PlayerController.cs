@@ -61,7 +61,7 @@ public class PlayerController : VehicleBehaviour
         
         var gamepad = Gamepad.current;
         
-        Debug.Log(playerKnotSide);
+        //Debug.Log(playerKnotSide);
 
         if (gamepad is IDualMotorRumble haptics)
         {
