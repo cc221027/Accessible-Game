@@ -10,8 +10,6 @@ using UnityEngine.Splines;
 public class ItemOfficerJenkins : ItemBase
 {
     private Rigidbody _rb;
-    private Collider _bulletCollider;
-    private Renderer _bulletRenderer;
     private bool _hasHitTarget;
 
     private int _maxSpeed = 40;
@@ -32,7 +30,6 @@ public class ItemOfficerJenkins : ItemBase
     void Start()
     {
         itemName = "SpecialBullet";
-        _bulletRenderer = transform.GetChild(0).gameObject.GetComponent<Renderer>();    
     }
 
     private void FixedUpdate()
@@ -56,7 +53,7 @@ public class ItemOfficerJenkins : ItemBase
 
             if (_rb.velocity.magnitude <= _maxSpeed)
             {
-                _rb.AddForce(transform.forward, ForceMode.Acceleration);
+                transform.position += transform.forward;
             }
 
             Vector3 flatDirection = new Vector3(direction.x, 0, direction.z);
@@ -64,7 +61,6 @@ public class ItemOfficerJenkins : ItemBase
             if (flatDirection.magnitude > 0)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(flatDirection);
-
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5);
             }
         }
@@ -74,17 +70,15 @@ public class ItemOfficerJenkins : ItemBase
     private int ReturnNextKnot()
     {
         int closestIndex = TrackManager.Instance.spline.Spline.IndexOf(TrackManager.Instance.spline.Spline.OrderBy(p => Vector3.Distance(transform.position, p.Position)).First());
-        return closestIndex + 1 % TrackManager.Instance.spline.Spline.Count;
+        return (closestIndex + 1) % TrackManager.Instance.spline.Spline.Count;
     }
 
     public override void UseItem(GameObject player)
     {
         transform.parent = null;
         transform.position = (player.transform.position + player.transform.forward * 4 + player.transform.up);
-        transform.rotation = Quaternion.Euler(-90, player.transform.eulerAngles.y, player.transform.eulerAngles.z);
         _rb = gameObject.AddComponent<Rigidbody>();
         _rb.useGravity = false;
-        _bulletCollider = gameObject.AddComponent<SphereCollider>();
         StartCoroutine(Shoot(player));
         shot = true;
     }
@@ -95,8 +89,6 @@ public class ItemOfficerJenkins : ItemBase
 
         if (otherCharacter != null && shot && otherCharacter.characterName != "Officer Jenkins")
         {
-            _bulletCollider.enabled = false;
-            _bulletRenderer.enabled = false;
             StartCoroutine(SlowCharacterOnHit(otherCharacter)); 
         }        
     }
@@ -104,8 +96,7 @@ public class ItemOfficerJenkins : ItemBase
 
     private IEnumerator Shoot(GameObject player)
     {
-        _rb.AddForce(player.transform.forward, ForceMode.Impulse); 
-     
+        transform.position += player.transform.forward; 
         float waitTime = 100f;
         float elapsedTime = 0f;
 
