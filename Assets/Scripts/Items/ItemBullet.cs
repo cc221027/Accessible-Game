@@ -2,17 +2,81 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemBullet : MonoBehaviour
+public class ItemBullet : ItemBase
 {
-    // Start is called before the first frame update
-    void Start()
+    private Rigidbody _rb;
+    private Collider _bulletCollider;
+    private Renderer _bulletRenderer;
+    private bool _hasHitTarget;
+    private bool _shot;
+
+    private void Awake()
     {
-        
+        // AudioSource[] audioSources = GetComponents<AudioSource>();
+        // if (audioSources.Length >= 2)
+        // {
+        //     PickupAudioSource = audioSources[0];
+        //     UseItemAudio = audioSources[1];
+        // }  
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
+        itemName = "Bullet";
+        _bulletRenderer = transform.GetChild(0).gameObject.GetComponent<Renderer>();    
+    }
+    
+    public override void UseItem(GameObject player)
+    {
+        transform.parent = null;
+        transform.position = (player.transform.position + player.transform.forward * 4 + player.transform.up);
+        transform.rotation = Quaternion.Euler(-90, player.transform.eulerAngles.y, player.transform.eulerAngles.z);
+        _rb = gameObject.AddComponent<Rigidbody>();
+        _rb.useGravity = false;
+        _bulletCollider = gameObject.AddComponent<SphereCollider>();
+        StartCoroutine(Shoot(player));
+        _shot = true;
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        CharacterData otherCharacter = other.gameObject.GetComponent<CharacterData>();
+
+        if (otherCharacter != null && _shot)
+        {
+            _bulletCollider.enabled = false;
+            _bulletRenderer.enabled = false;
+            StartCoroutine(SlowCharacterOnHit(otherCharacter)); 
+        }        
+    }
+
+
+    private IEnumerator Shoot(GameObject player)
+    {
+        _rb.AddForce(player.transform.forward * 40, ForceMode.Impulse); 
         
+        float waitTime = 5f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < waitTime && !_hasHitTarget)
+        {
+            yield return null; 
+            elapsedTime += Time.deltaTime; 
+        }
+
+        if (!_hasHitTarget)
+        {
+            Destroy(gameObject); 
+        }
+    }
+
+
+
+    private IEnumerator SlowCharacterOnHit(CharacterData otherCharacter)
+    {
+        otherCharacter.characterAcceleration *= 0.5f;
+        yield return new WaitForSeconds(4);
+        otherCharacter.characterAcceleration = otherCharacter.baseCharacterAcceleration;
+        Destroy(gameObject);
     }
 }

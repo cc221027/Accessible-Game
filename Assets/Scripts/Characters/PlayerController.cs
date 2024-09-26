@@ -67,11 +67,11 @@ public class PlayerController : VehicleBehaviour
         {
             if (playerKnotSide > 0)
             {
-                haptics.SetMotorSpeeds(0.5f * (GameManager.Instance.hapticsVolume/100), 0); 
+                //haptics.SetMotorSpeeds(0.5f * (GameManager.Instance.hapticsVolume/100), 0); 
             }
             else if (playerKnotSide < 0)
             {
-                haptics.SetMotorSpeeds(0, 0.5f * (GameManager.Instance.hapticsVolume/100));  
+                //haptics.SetMotorSpeeds(0, 0.5f * (GameManager.Instance.hapticsVolume/100));  
             }
             else
             {

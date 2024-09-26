@@ -15,14 +15,15 @@ TagManager:
   - RightOffroad
   - Spline
   - Opponent
+  - PauseMenu
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Characters
   - Water
   - UI
-  - 
+  - Bullet Item
   - 
   - 
   - 

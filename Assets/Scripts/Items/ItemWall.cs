@@ -25,6 +25,7 @@ public class ItemWall : ItemBase
         transform.parent = null;
         transform.position = (player.transform.position - (player.transform.forward * 5) + (player.transform.up));
         transform.localScale = new Vector3(6, 3, 1);
+        gameObject.AddComponent<BoxCollider>();
         UseItemAudio.Play();
     }
 

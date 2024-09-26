@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,8 +29,18 @@ public class ItemJimmy : ItemBase
 
     private IEnumerator Shield()
     {
-        
         yield return new WaitForSeconds(5);
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        ItemBase otherItem = other.GetComponent<ItemBase>();
+
+        if (otherItem != null && otherItem.itemName == "Wall")
+        {
+           Destroy(other.gameObject);
+           Destroy(gameObject);
+        }
     }
 }
