@@ -14,7 +14,12 @@ public class ItemOfficerJenkinsFOV : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<CharacterData>().characterName != "Officer Jenkins" && (other.CompareTag("Opponent") || other.CompareTag("Player")) && Vector3.Dot(transform.up, (other.transform.position - transform.position).normalized) > 0.7f && _itemOfficerJenkinsRef.characterInSight == null)
+        CharacterData otherCharacter = other.gameObject.GetComponent<CharacterData>();
+
+        Debug.Log(otherCharacter.characterName);
+        Debug.Log(_itemOfficerJenkinsRef.shot);
+        
+        if (_itemOfficerJenkinsRef.shot && otherCharacter.characterName != "Officer Jenkins" && (other.CompareTag("Opponent") || other.CompareTag("Player")) && Vector3.Dot(transform.up, (other.transform.position - transform.position).normalized) > 0.7f && _itemOfficerJenkinsRef.characterInSight == null)
         {
             if (_itemOfficerJenkinsRef.characterInSight == null)
             {

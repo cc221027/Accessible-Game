@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Splines;
 
 public class ItemOfficerJenkins : ItemBase
@@ -16,7 +17,7 @@ public class ItemOfficerJenkins : ItemBase
     private int _maxSpeed = 40;
     public Transform characterInSight = null;
 
-    private bool _shot = false;
+    public bool shot = false;
 
     private void Awake()
     {
@@ -36,7 +37,7 @@ public class ItemOfficerJenkins : ItemBase
 
     private void FixedUpdate()
     {
-        if (_shot)
+        if (shot)
         {
             Vector3 direction;
             
@@ -85,14 +86,14 @@ public class ItemOfficerJenkins : ItemBase
         _rb.useGravity = false;
         _bulletCollider = gameObject.AddComponent<SphereCollider>();
         StartCoroutine(Shoot(player));
-        _shot = true;
+        shot = true;
     }
     
     private void OnTriggerEnter(Collider other)
     {
         CharacterData otherCharacter = other.gameObject.GetComponent<CharacterData>();
 
-        if (otherCharacter != null && _shot && otherCharacter.characterName != "Officer Jenkins")
+        if (otherCharacter != null && shot && otherCharacter.characterName != "Officer Jenkins")
         {
             _bulletCollider.enabled = false;
             _bulletRenderer.enabled = false;
