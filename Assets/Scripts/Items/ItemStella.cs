@@ -21,13 +21,9 @@ public class ItemStella : ItemBase
     
     public override void UseItem(GameObject player)
     {
-        Debug.Log("Used item Wings");
-        StartCoroutine(DoubleJump());
-    }
-
-    private IEnumerator DoubleJump()
-    {
-        yield return new WaitForSeconds(5);
+        player.GetComponent<Rigidbody>().AddForce(player.transform.up * 15, ForceMode.Impulse);
         Destroy(gameObject);
     }
+
+   
 }

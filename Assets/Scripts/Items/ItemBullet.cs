@@ -30,7 +30,6 @@ public class ItemBullet : ItemBase
     {
         transform.parent = null;
         transform.position = (player.transform.position + player.transform.forward * 4 + player.transform.up);
-        transform.rotation = Quaternion.Euler(-90, player.transform.eulerAngles.y, player.transform.eulerAngles.z);
         _rb = gameObject.AddComponent<Rigidbody>();
         _rb.useGravity = false;
         _bulletCollider = gameObject.AddComponent<SphereCollider>();

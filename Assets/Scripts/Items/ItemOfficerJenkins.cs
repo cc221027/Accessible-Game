@@ -12,7 +12,6 @@ public class ItemOfficerJenkins : ItemBase
     private Rigidbody _rb;
     private bool _hasHitTarget;
 
-    private int _maxSpeed = 40;
     public Transform characterInSight = null;
 
     public bool shot = false;
@@ -41,20 +40,16 @@ public class ItemOfficerJenkins : ItemBase
             if (characterInSight != null)
             {
                 direction = (characterInSight.position - transform.position).normalized;
-                Debug.Log("Locked in on character");
             }
             else 
             {
                 Vector3 targetPosition = TrackManager.Instance.spline.Spline[ReturnNextKnot()].Position;
-                
                 direction = (targetPosition - transform.position).normalized;
-                Debug.Log("Locked in on knot: " + ReturnNextKnot());
             }
 
-            if (_rb.velocity.magnitude <= _maxSpeed)
-            {
-                transform.position += transform.forward;
-            }
+           
+            transform.position += transform.forward;
+            
 
             Vector3 flatDirection = new Vector3(direction.x, 0, direction.z);
 
