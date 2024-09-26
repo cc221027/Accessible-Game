@@ -12,20 +12,18 @@ public class ItemOfficerJenkinsFOV : MonoBehaviour
         _itemOfficerJenkinsRef = GetComponentInParent<ItemOfficerJenkins>();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        CharacterData otherCharacter = other.gameObject.GetComponent<CharacterData>();
-
-        Debug.Log(otherCharacter.characterName);
-        Debug.Log(_itemOfficerJenkinsRef.shot);
-        
-        if (_itemOfficerJenkinsRef.shot && otherCharacter.characterName != "Officer Jenkins" && (other.CompareTag("Opponent") || other.CompareTag("Player")) && Vector3.Dot(transform.up, (other.transform.position - transform.position).normalized) > 0.7f && _itemOfficerJenkinsRef.characterInSight == null)
-        {
-            if (_itemOfficerJenkinsRef.characterInSight == null)
-            {
-                _itemOfficerJenkinsRef.characterInSight = other.transform;
-                Debug.Log(other.name);
-            }
-        }
-    }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     CharacterData otherCharacter = other.gameObject.GetComponent<CharacterData>();
+    //     
+    //     Debug.Log("did you shoot? " +_itemOfficerJenkinsRef.shot);
+    //     Debug.Log("is it officer jenkins? "+ otherCharacter.characterName != "Officer Jenkins");
+    //     Debug.Log("is it either opponent or player? " + (other.CompareTag("Opponent") || other.CompareTag("Player")));
+    //     Debug.Log("does the item already have a target? " + (_itemOfficerJenkinsRef.characterInSight == null));
+    //     
+    //     if (_itemOfficerJenkinsRef.shot && otherCharacter.characterName != "Officer Jenkins" && (other.CompareTag("Opponent") || other.CompareTag("Player")) && (_itemOfficerJenkinsRef.characterInSight == null))
+    //     {
+    //         _itemOfficerJenkinsRef.characterInSight = other.transform;
+    //     }
+    // }
 }

@@ -74,7 +74,7 @@ public class ItemOfficerJenkins : ItemBase
     private int ReturnNextKnot()
     {
         int closestIndex = TrackManager.Instance.spline.Spline.IndexOf(TrackManager.Instance.spline.Spline.OrderBy(p => Vector3.Distance(transform.position, p.Position)).First());
-        return closestIndex + 1;
+        return closestIndex + 1 % TrackManager.Instance.spline.Spline.Count;
     }
 
     public override void UseItem(GameObject player)
@@ -104,7 +104,7 @@ public class ItemOfficerJenkins : ItemBase
 
     private IEnumerator Shoot(GameObject player)
     {
-        _rb.AddForce(player.transform.forward * 40, ForceMode.Impulse); 
+        _rb.AddForce(player.transform.forward, ForceMode.Impulse); 
      
         float waitTime = 100f;
         float elapsedTime = 0f;
