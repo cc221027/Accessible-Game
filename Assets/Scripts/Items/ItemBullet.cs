@@ -7,6 +7,7 @@ public class ItemBullet : ItemBase
     private Rigidbody _rb;
     private Collider _bulletCollider;
     private Renderer _bulletRenderer;
+    private Renderer _bulletChildRenderer;
     private bool _hasHitTarget;
     private bool _shot;
 
@@ -23,7 +24,8 @@ public class ItemBullet : ItemBase
     void Start()
     {
         itemName = "Bullet";
-        _bulletRenderer = transform.GetChild(0).gameObject.GetComponent<Renderer>();    
+        _bulletRenderer = transform.GetChild(0).gameObject.GetComponent<Renderer>();
+        _bulletChildRenderer = _bulletRenderer.gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
     }
     
     public override void UseItem(GameObject player)
@@ -40,11 +42,12 @@ public class ItemBullet : ItemBase
     private void OnTriggerEnter(Collider other)
     {
         CharacterData otherCharacter = other.gameObject.GetComponent<CharacterData>();
-
+        
         if (otherCharacter != null && _shot)
         {
             _bulletCollider.enabled = false;
             _bulletRenderer.enabled = false;
+            _bulletChildRenderer.enabled = false;
             StartCoroutine(SlowCharacterOnHit(otherCharacter)); 
         }        
     }

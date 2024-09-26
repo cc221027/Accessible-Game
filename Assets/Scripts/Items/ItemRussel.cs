@@ -14,20 +14,37 @@ public class ItemRussel : ItemBase
         // }  
     }
 
-    void Start()
+    private void Start()
     {
         itemName = "Hourglass";
     }
     
     public override void UseItem(GameObject player)
     {
-        Debug.Log("Used item Hourglass");
-        StartCoroutine(TimeStop());
+        StartCoroutine(TimeStop(player));
     }
 
-    private IEnumerator TimeStop()
+    private IEnumerator TimeStop(GameObject player)
     {
+        CharacterData[] allCharacters = FindObjectsOfType<CharacterData>();
+        foreach (CharacterData character in allCharacters)
+        {
+            if (character.gameObject != player)
+            {
+                character.characterAcceleration *= 0.5f; 
+            }
+        }
+
         yield return new WaitForSeconds(5);
-        Destroy(gameObject);
+
+        foreach (CharacterData character in allCharacters)
+        {
+            if (character.gameObject != player) 
+            {
+                character.characterAcceleration = character.baseCharacterAcceleration; 
+            }
+        }
+
+        Destroy(gameObject); 
     }
 }
