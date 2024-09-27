@@ -18,6 +18,8 @@ public class CharacterData: MonoBehaviour
     
     private TrackManager _trackManager;
     private PlayerController _playerController;
+
+    public string status;
     
     private void Awake()
     {

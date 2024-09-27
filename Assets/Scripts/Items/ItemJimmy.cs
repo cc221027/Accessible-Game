@@ -37,7 +37,7 @@ public class ItemJimmy : ItemBase
     {
         ItemBase otherItem = other.GetComponent<ItemBase>();
 
-        if (otherItem != null && otherItem.itemName == "Wall")
+        if (otherItem != null && (otherItem.itemName is "Wall" or "Bullet" or "SpecialBullet"))
         {
            Destroy(other.gameObject);
            Destroy(gameObject);

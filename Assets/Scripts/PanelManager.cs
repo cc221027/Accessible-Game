@@ -35,7 +35,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
     private void Start()
     {
         
-        if (type == Type.SliderSfx || type == Type.SliderMusic || type == Type.SliderTts ||type == Type.SliderHaptics)
+        if (type is Type.SliderSfx or Type.SliderMusic or Type.SliderTts or Type.SliderHaptics)
         {
             _slider = gameObject.GetComponent<Slider>();
             
@@ -70,13 +70,20 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         if (!_paused && type == Type.Pause)
         {
             EventSystem.current.SetSelectedGameObject(firstElementToHighlight);
+            foreach (var element in uiToDisable)
+            {
+                element.GetComponent<PanelManager>()._paused = true;
+            }
+
             _paused = true;
+
         }
 
         if (_paused)
         {
             Gamepad.current.SetMotorSpeeds(0,0);
         }
+        
     }
 
     public void HandleButtonClick()
@@ -88,7 +95,12 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
 
     public void OnCancel(BaseEventData eventData)
     {
-        if (!_paused)
+        AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Negative");
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(clip);
+        audioSource.volume = 0.5f;
+        
+        if (_paused)
         {
             Time.timeScale = 1;
         }
@@ -129,6 +141,11 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
     
     public void OnSelect(BaseEventData data)
     {
+        AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Interact");
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(clip);
+        audioSource.volume = 0.5f;
+        
         gameObject.GetComponent<UAP_BaseElement>().SelectItem();
         GameManager.Instance.StopReadingUI();
     }

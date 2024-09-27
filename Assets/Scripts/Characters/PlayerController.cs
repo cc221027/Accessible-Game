@@ -158,8 +158,12 @@ public class PlayerController : VehicleBehaviour
     
     public void OnPause()
     {
-        _pausePanel.SetActive(true);
-        Time.timeScale = 0;
+        if (movementEnabled)
+        {
+            _pausePanel.SetActive(true);
+            Time.timeScale = 0;
+        }
+        
     }
 
     public override void MoveLogic()

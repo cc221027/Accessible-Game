@@ -124,6 +124,7 @@ MonoBehaviour:
   - {fileID: 4166893291898747955, guid: 96051cb13acc58b40b6f961a311d6fd3, type: 3}
   - {fileID: 1706426699705862545, guid: dd88d76163d25b8478ea2b9db9430f4f, type: 3}
   - {fileID: 1609426563364382538, guid: 0f45d992f7c2a6c4db2bd790326766e2, type: 3}
+  - {fileID: 19588385245968726, guid: 8ee08d04ad5df46fbb2e97260b63420b, type: 3}
   characterItems:
   - {fileID: 2050587005381539780, guid: fdba808704bd3ab468f5efe5852fbf6b, type: 3}
   - {fileID: 1609426563364382538, guid: 482a23eb854875b4ea0a9d1394443a6b, type: 3}

@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour, ISelectHandler
 {
+    
+    
     private enum ButtonAction
     {
         None,
@@ -26,6 +28,12 @@ public class MenuButtons : MonoBehaviour, ISelectHandler
 
     private void HandleButtonClick()
     {
+        AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Focus Enter");
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(clip);
+        audioSource.volume = 0.5f;
+        
+        
         switch (action)
         {
             case ButtonAction.None:
@@ -52,6 +60,11 @@ public class MenuButtons : MonoBehaviour, ISelectHandler
 
     public void OnSelect(BaseEventData data)
     {
+        AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Interact");
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(clip);
+        audioSource.volume = 0.5f;
+        
         gameObject.GetComponent<UAP_BaseElement>().SelectItem();
         GameManager.Instance.StopReadingUI();
     }

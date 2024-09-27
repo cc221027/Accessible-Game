@@ -17,7 +17,7 @@ public class ItemOfficerJenkinsFOV : MonoBehaviour
         CharacterData otherCharacter = other.gameObject.GetComponent<CharacterData>();
         if (otherCharacter != null)
         {
-            if (_itemOfficerJenkinsRef.shot && otherCharacter.characterName != "Officer Jenkins" && (other.CompareTag("Opponent") || other.CompareTag("Player")) && (_itemOfficerJenkinsRef.characterInSight == null))
+            if (otherCharacter.status != "Invisible" &&_itemOfficerJenkinsRef.shot && otherCharacter.characterName != "Officer Jenkins" && (other.CompareTag("Opponent") || other.CompareTag("Player")) && (_itemOfficerJenkinsRef.characterInSight == null))
             {
                 _itemOfficerJenkinsRef.characterInSight = other.transform;
             }

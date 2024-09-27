@@ -49,7 +49,19 @@ public class ItemBullet : ItemBase
             _bulletRenderer.enabled = false;
             _bulletChildRenderer.enabled = false;
             StartCoroutine(SlowCharacterOnHit(otherCharacter)); 
-        }        
+        }
+        else
+        {
+            ItemBase otherItem = other.GetComponent<ItemBase>();
+
+            if (otherItem != null && (otherItem.itemName is "Wall" or "Bullet" or "SpecialBullet"))
+            {
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
+        }     
+        
+        
     }
 
 
