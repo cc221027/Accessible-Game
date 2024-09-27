@@ -18,12 +18,12 @@ public class ItemOfficerJenkins : ItemBase
 
     private void Awake()
     {
-        // AudioSource[] audioSources = GetComponents<AudioSource>();
-        // if (audioSources.Length >= 2)
-        // {
-        //     PickupAudioSource = audioSources[0];
-        //     UseItemAudio = audioSources[1];
-        // }  
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        if (audioSources.Length >= 2)
+        {
+            PickupAudioSource = audioSources[0];
+            UseItemAudio = audioSources[1];
+        }  
     }
 
     void Start()

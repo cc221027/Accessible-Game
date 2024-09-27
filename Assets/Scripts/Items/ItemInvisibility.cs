@@ -5,17 +5,26 @@ using UnityEngine;
 
 public class ItemInvisibility : ItemBase
 {
-    private List<Renderer> _characterRenderers = new List<Renderer>();
+    private Renderer[] _characterRenderers;
 
     private void Awake()
     {
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        if (audioSources.Length >= 2)
+        {
+            PickupAudioSource = audioSources[0];
+            UseItemAudio = audioSources[1];
+        }  
+    }
+    
+    void Start()
+    {
         itemName = "Invisibility";
-        transform.rotation = quaternion.RotateY(90);
     }
 
     public override void UseItem(GameObject player)
     {
-        _characterRenderers.AddRange(player.GetComponentsInChildren<Renderer>());
+        _characterRenderers = player.GetComponentsInChildren<Renderer>();
         player.GetComponent<CharacterData>().status = "Invisible";
         
         StartCoroutine(MakeCharInvisible(player));
@@ -25,18 +34,24 @@ public class ItemInvisibility : ItemBase
     {
         foreach (var rend in _characterRenderers)
         {
-            rend.enabled = false;
+            if (rend != null) 
+            {
+                rend.enabled = false;
+            }
         }
 
         yield return new WaitForSeconds(5);
 
         foreach (var rend in _characterRenderers)
         {
-            rend.enabled = true;
+            if (rend != null)
+            {
+                rend.enabled = true;
+            }
         }
-        
+
         player.GetComponent<CharacterData>().status = "";
-        
+
         Destroy(gameObject);
     }
 }
