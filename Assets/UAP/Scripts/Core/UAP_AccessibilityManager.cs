@@ -335,6 +335,7 @@ public class UAP_AccessibilityManager : MonoBehaviour
 		}
 
 		instance = this;
+		
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -394,11 +395,14 @@ public class UAP_AccessibilityManager : MonoBehaviour
 		if (PlayerPrefs.HasKey("UAP_Language"))
 		{
 			m_CurrentLanguage = PlayerPrefs.GetString("UAP_Language", Application.systemLanguage.ToString());
+
 		}
 		else
 		{
+
 			// Try to detect system's language
 			m_CurrentLanguage = Application.systemLanguage.ToString();
+            
 		}
 		instance.LoadLocalization();
 

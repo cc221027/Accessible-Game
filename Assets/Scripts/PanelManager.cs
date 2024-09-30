@@ -24,7 +24,8 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         None,
         SliderSfx,
         SliderMusic,
-        SliderTts,
+        SliderTtsVolume,
+        SliderTtsSpeechRate,
         SliderHaptics,
         Toggle,
         Pause,
@@ -35,7 +36,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
     private void Start()
     {
         
-        if (type is Type.SliderSfx or Type.SliderMusic or Type.SliderTts or Type.SliderHaptics)
+        if (type is Type.SliderSfx or Type.SliderMusic or Type.SliderTtsVolume or Type.SliderHaptics or Type.SliderTtsSpeechRate)
         {
             _slider = gameObject.GetComponent<Slider>();
             
@@ -47,8 +48,13 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
                 case Type.SliderMusic:
                     _slider.value = GameManager.Instance.musicVolume;
                     break;
-                case Type.SliderTts:
+                case Type.SliderTtsVolume:
                     _slider.value = GameManager.Instance.ttsVolume;
+                    break;
+                case Type.SliderTtsSpeechRate:
+                    _slider.value = GameManager.Instance.ttsSpeechRate;
+                    Debug.Log(_slider.value);
+                    Debug.Log(GameManager.Instance.ttsSpeechRate);
                     break;
                 case Type.SliderHaptics:
                     _slider.value = GameManager.Instance.hapticsVolume;
@@ -123,9 +129,13 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
             case Type.SliderMusic:
                 GameManager.Instance.musicVolume = _slider.value;
                 break;
-            case Type.SliderTts:
+            case Type.SliderTtsVolume:
                 GameManager.Instance.ttsVolume = _slider.value;
-                FindObjectOfType<UAP_AccessibilityManager>().m_WindowsTTSVolume = (int)_slider.value;
+                WindowsTTS.SetSpeechVolume((int)_slider.value);
+                break;
+            case Type.SliderTtsSpeechRate:
+                GameManager.Instance.ttsSpeechRate = _slider.value;
+                WindowsTTS.SetSpeechRate((int)_slider.value);
                 break;
             case Type.SliderHaptics:
                 GameManager.Instance.hapticsVolume = _slider.value;

@@ -13,10 +13,10 @@ public class WindowsTTS : MonoBehaviour
 	public static extern void StopSpeech();
 	[DllImport("WindowsTTS")]
 	public static extern void AddToSpeechQueue(string s);
-	//[DllImport("WindowsTTS")]
-	//public static extern void SetVolume(int volume);
-	//[DllImport("WindowsTTS")]
-	//public static extern void SetRate(int rate);
+	[DllImport("WindowsTTS")]
+	public static extern void SetVolume(int volume);
+	[DllImport("WindowsTTS")]
+	public static extern void SetRate(int rate);
 	[DllImport("WindowsTTS")]
 	public static extern bool IsVoiceSpeaking();
 
@@ -133,7 +133,7 @@ public class WindowsTTS : MonoBehaviour
 			m_NVDAIsSpeakingTimer -= Time.unscaledDeltaTime;
 	}
 
-/*
+
 	//////////////////////////////////////////////////////////////////////////
 
 	public static void SetSpeechVolume(int volume)
@@ -147,7 +147,7 @@ public class WindowsTTS : MonoBehaviour
 	{
 		SetRate(rate);
 	}
-*/
+
 	
 	//////////////////////////////////////////////////////////////////////////
 

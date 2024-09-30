@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public float sfxVolume = 100f;
     public float musicVolume = 100f;
     public float ttsVolume = 100f;
+    public float ttsSpeechRate = 1f;
     public float hapticsVolume = 100f;
     public bool toggleAccessibility = true;
     
@@ -43,7 +44,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
     }
 
     public void LoadScene(string sceneName)
