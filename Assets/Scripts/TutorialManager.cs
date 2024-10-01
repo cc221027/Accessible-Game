@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-public class TutorialManager : MonoBehaviour
+public class TutorialManager : MonoBehaviour, ISelectHandler
 {
     [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private GameObject page1;
@@ -20,6 +21,9 @@ public class TutorialManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> uiToDisable;
 
+    private bool _testingVibration = false;
+    private float _steerInputValue;
+
     private int _pageCount = 1;
     
     private void Awake()
@@ -28,6 +32,25 @@ public class TutorialManager : MonoBehaviour
         foreach (GameObject uiElement in uiToDisable) { uiElement.SetActive(false); }
         EventSystem.current.SetSelectedGameObject(button1ToFocus);
         Time.timeScale = 0;
+    }
+
+    private void Update()
+    {
+        if (_testingVibration)
+        {
+            if (_steerInputValue < 0.2)
+            {
+                Gamepad.current.SetMotorSpeeds(0.1f, 0);
+            } else if (_steerInputValue > 0.2)
+            {
+                Gamepad.current.SetMotorSpeeds(0, 0.1f);
+            }
+        }
+    }
+    
+    private void OnSteer(InputValue value)
+    {
+        _steerInputValue = value.Get<float>();
     }
 
     public void NextPage()
@@ -62,4 +85,23 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(TrackManager.Instance.CountDownToStart());
         Time.timeScale = 1;
     }
+
+    public void TestR3Button()
+    {
+        foreach (GameObject element in uiToDisable)
+        {
+            element.SetActive(true);
+            element.GetComponent<UAP_BaseElement>().SelectItem();
+        }
+    }
+    public void TestControllerVibration()
+    {
+        _testingVibration = true;
+    }
+    
+    public void OnSelect(BaseEventData data)
+    {
+        _testingVibration = false;
+    }
+    
 }
