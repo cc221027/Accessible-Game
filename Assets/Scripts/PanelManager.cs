@@ -53,8 +53,6 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
                     break;
                 case Type.SliderTtsSpeechRate:
                     _slider.value = GameManager.Instance.ttsSpeechRate;
-                    Debug.Log(_slider.value);
-                    Debug.Log(GameManager.Instance.ttsSpeechRate);
                     break;
                 case Type.SliderHaptics:
                     _slider.value = GameManager.Instance.hapticsVolume;
@@ -62,7 +60,6 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
             }
             _slider.onValueChanged.AddListener(delegate {ValueChanged();});
         }
-
         if (type == Type.Toggle)
         {
             _toggle = gameObject.GetComponent<Toggle>();

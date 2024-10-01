@@ -6,6 +6,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.Splines;
 
@@ -31,12 +32,20 @@ public class TrackManager : MonoBehaviour
     private float _raceTimer = 0f;
     public int currentPlayerSpeed;
     public int currentPlayerLap;
+    
+    private AudioSource _countDownAudio;
+
 
     void Awake()
     {
         Instance = this;
+        _countDownAudio = gameObject.GetComponent<AudioSource>();
+        
         SpawnCarts();
-        StartCoroutine(CountDownToStart());
+        if (!GameManager.Instance.tutorial)
+        {
+            StartCoroutine(CountDownToStart());
+        }
         spline = GameObject.FindGameObjectWithTag("Spline").GetComponent<SplineContainer>();
     }
 
@@ -82,24 +91,26 @@ public class TrackManager : MonoBehaviour
 
     void SpawnCarts()
     {
-            SpawnSelectedCharacter(spawnPoints[0].position, spawnPoints[0].rotation);
+        
+        SpawnSelectedCharacter(spawnPoints[0].position, spawnPoints[0].rotation);
 
-            int opponentIndex = 0;
-            for (int i = 0; i < spawnPoints.Count; i++)
+        int opponentIndex = 0;
+        for (int i = 0; i < spawnPoints.Count; i++)
+        {
+            if (i != GameManager.Instance.selectedCharacterIndex && opponentIndex < spawnPoints.Count - 1)
             {
-                if (i != GameManager.Instance.SelectedCharacterIndex && opponentIndex < spawnPoints.Count - 1)
-                {
-                    SpawnOpponents(i, spawnPoints[opponentIndex + 1].position, spawnPoints[opponentIndex + 1].rotation);
-                    opponentIndex++;
-                }
+                SpawnOpponents(i, spawnPoints[opponentIndex + 1].position, spawnPoints[opponentIndex + 1].rotation);
+                opponentIndex++;
             }
+        }
     }
     
     public void SpawnSelectedCharacter(Vector3 spawnPosition, Quaternion spawnRotation)
     {
-        GameObject player = Instantiate(GameManager.Instance.allCharacters[GameManager.Instance.SelectedCharacterIndex], spawnPosition, spawnRotation);
+        GameObject player = Instantiate(GameManager.Instance.allCharacters[GameManager.Instance.selectedCharacterIndex], spawnPosition, spawnRotation);
 
         player.tag = "Player";
+        
        
         if (Camera.main != null)
         {
@@ -139,8 +150,9 @@ public class TrackManager : MonoBehaviour
         StartCoroutine(DelayStartMovement(5f, opponent));
     }
 
-    private IEnumerator CountDownToStart()
+    public IEnumerator CountDownToStart()
     {
+        _countDownAudio.Play();
         while (_countDownTimer > 0)
         {
             countDownTimerText.text = _countDownTimer.ToString();
@@ -149,6 +161,11 @@ public class TrackManager : MonoBehaviour
         }
 
         countDownTimerText.text = "GO!";
+        foreach (VehicleBehaviour character in FindObjectsOfType<VehicleBehaviour>())
+        {
+            character.GetComponent<VehicleBehaviour>().EnableMovement();
+        }
+
         _raceStarted = true;
         yield return new WaitForSeconds(1);
         countDownTimerText.enabled = false;
@@ -156,7 +173,6 @@ public class TrackManager : MonoBehaviour
     private IEnumerator DelayStartMovement(float delay, GameObject character)
     {
         yield return new WaitForSeconds(delay);
-        character.GetComponent<VehicleBehaviour>().EnableMovement();
     }
     
     public void EndRace(CharacterData winner)

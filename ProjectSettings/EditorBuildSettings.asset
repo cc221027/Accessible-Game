@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Race Tracks/Track 4.unity
     guid: 785f00d823a5cc845b38bacdecff36d1
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 0f6edfa7b35aff742a0d1e32ebd19ec3
   m_configObjects: {}

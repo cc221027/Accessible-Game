@@ -27,7 +27,6 @@ public class VehicleBehaviour : MonoBehaviour
     private AudioSource _teleportBackAudio;
     
     private AudioSource _driftingAudio;
-    public AudioSource countDownAudio;
     private AudioSource _carMotorAudioStill;
     private AudioSource _carMotorAudioStart;
     private AudioSource _carMotorAudioGoing;
@@ -55,26 +54,25 @@ public class VehicleBehaviour : MonoBehaviour
         
         if (_audioSources.Length >= 2)
         {
-            countDownAudio = _audioSources[0];
-            _carMotorAudioStill = _audioSources[1];
-            _carMotorAudioStart = _audioSources[2];
-            _carMotorAudioGoing = _audioSources[3];
-            _driftingAudio = _audioSources[4];
+            _carMotorAudioStill = _audioSources[0];
+            _carMotorAudioStart = _audioSources[1];
+            _carMotorAudioGoing = _audioSources[2];
+            _driftingAudio = _audioSources[3];
             
-            _offroadWarningAudio = _audioSources[5];
-            _teleportBackAudio = _audioSources[6];
+            _offroadWarningAudio = _audioSources[4];
+            _teleportBackAudio = _audioSources[5];
 
-            _jumpAudio = _audioSources[7];
-            _gearShiftAudio = _audioSources[8];
+            _jumpAudio = _audioSources[6];
+            _gearShiftAudio = _audioSources[7];
 
-            FirstPlaceAudio = _audioSources[9];
-            SecondPlaceAudio = _audioSources[10];
-            ThirdPlaceAudio = _audioSources[11];
-            FourthPlaceAudio = _audioSources[12];
-            RoundTwo = _audioSources[13];
-            FinalLapAudio = _audioSources[14];
+            FirstPlaceAudio = _audioSources[8];
+            SecondPlaceAudio = _audioSources[9];
+            ThirdPlaceAudio = _audioSources[10];
+            FourthPlaceAudio = _audioSources[11];
+            RoundTwo = _audioSources[12];
+            FinalLapAudio = _audioSources[13];
 
-            CollisionAudio = _audioSources[15];
+            CollisionAudio = _audioSources[14];
 
         }
         

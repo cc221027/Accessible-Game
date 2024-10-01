@@ -46,9 +46,7 @@ public class PlayerController : VehicleBehaviour
     {
         _playerInput = GetComponent<PlayerInput>();
         _spline = GameObject.FindGameObjectWithTag("Spline").GetComponent<SplineContainer>();
-
-        countDownAudio.Play();
-
+        
         _trackManager = TrackManager.Instance;
         
         _pausePanel = GameObject.Find("Canvas/PausedPanel");

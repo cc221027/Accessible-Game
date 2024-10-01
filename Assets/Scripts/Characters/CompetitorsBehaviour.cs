@@ -30,7 +30,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
         
         Vector3 direction;
 
-        float randomOffset = Random.Range(-5f, 5f);
+        float randomOffset = Random.Range(-10f, 10f);
 
         if (itemInSight != null)
         {
@@ -47,11 +47,11 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
             if (characterCheckpoints >= trackManagerRef.spline.Spline.Count)
             {
-                checkpointTargetPosition = trackManagerRef.lapCheckPoint.position + new Vector3(Random.Range(-randomOffset, randomOffset), 0, Random.Range(-randomOffset, randomOffset));
+                checkpointTargetPosition = trackManagerRef.lapCheckPoint.position + new Vector3(randomOffset, 0, randomOffset);
             }
             else
             {
-                checkpointTargetPosition = trackManagerRef.spline.Spline[characterCheckpoints].Position;
+                checkpointTargetPosition = new Vector3(trackManagerRef.spline.Spline[characterCheckpoints].Position.x, trackManagerRef.spline.Spline[characterCheckpoints].Position.y, trackManagerRef.spline.Spline[characterCheckpoints].Position.z) + new Vector3(Random.Range(-randomOffset, randomOffset), 0, Random.Range(-randomOffset, randomOffset));
             }
 
             direction = (checkpointTargetPosition - transform.position).normalized;

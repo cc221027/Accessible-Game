@@ -2,24 +2,28 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public int SelectedCharacterIndex { get; private set; } = -1;
+    public int selectedCharacterIndex  = -1;
     
     public int SelectedTrackIndex { get; private set; } = -1;
 
     private bool _readScreenPressed;
     private bool _stopReading = false;
 
+    public bool tutorial = false;
     public string winner;
     public string endTime;
     
@@ -58,7 +62,7 @@ public class GameManager : MonoBehaviour
     
     public void SelectCharacter(int index)
     {
-        SelectedCharacterIndex = index;
+        selectedCharacterIndex = index;
         SceneManager.LoadScene(trackSceneNames[SelectedTrackIndex]);
     }
     public void SelectTrack(int index)
@@ -69,7 +73,7 @@ public class GameManager : MonoBehaviour
     }
     public void ResetSelection()
     {
-        SelectedCharacterIndex = -1;
+        selectedCharacterIndex = -1;
         SelectedTrackIndex = -1;
     }
     public void OnReadUI()
@@ -80,9 +84,7 @@ public class GameManager : MonoBehaviour
 
     public void StopReadingUI()
     {
-        _stopReading = true;  
-        StopCoroutine(ReadUIElements());
-        
+        _stopReading = true; 
     }
 
     private IEnumerator ReadUIElements()
@@ -91,14 +93,31 @@ public class GameManager : MonoBehaviour
         UAP_BaseElement[] sortedElements = uiElements.OrderBy(element => element.m_ManualPositionOrder).ToArray();
     
         foreach (UAP_BaseElement element in sortedElements)
-        {
-            if (_stopReading) 
-                yield break; 
-    
+        {   
+            if (_stopReading)
+                yield break;
+
+            
             element.SelectItem();
-            yield return new WaitForSeconds(1.5f); 
+        
+            string content = "";
+            TMP_Text tmpText = element.GetComponentInChildren<TMP_Text>();
+            
+            if (tmpText != null) { content = tmpText.text; }
+
+            if (!string.IsNullOrEmpty(content))
+            {
+                float waitTime = content.Length * 0.1f;
+                Debug.Log(content);
+                yield return new WaitForSecondsRealtime(waitTime);
+            }
+            else
+            {
+                yield return new WaitForSecondsRealtime(1.5f);
+            }
         }
     }
+
     
     
 

@@ -12,6 +12,7 @@ public class MenuButtons : MonoBehaviour, ISelectHandler
     private enum ButtonAction
     {
         None,
+        LoadTutorial,
         LoadMainMenu,
         LoadTrackSelection,
         QuitGame,
@@ -37,6 +38,11 @@ public class MenuButtons : MonoBehaviour, ISelectHandler
         switch (action)
         {
             case ButtonAction.None:
+                break;
+            case ButtonAction.LoadTutorial:
+                GameManager.Instance.selectedCharacterIndex = 0;
+                GameManager.Instance.tutorial = true;
+                LoadScene("Tutorial");
                 break;
             case ButtonAction.LoadMainMenu:
                 LoadScene("Main Menu");
