@@ -51,7 +51,7 @@ public class TrackManager : MonoBehaviour
 
     private void Update()
     {
-        playerSpeedText.text = Mathf.FloorToInt(currentPlayerSpeed).ToString();
+        playerSpeedText.text = Mathf.FloorToInt(currentPlayerSpeed) + " m/h";
         lapText.text = currentPlayerLap + " / " + laps;
 
 

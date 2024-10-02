@@ -38,7 +38,6 @@ public class PlayerController : VehicleBehaviour
 
     private bool _playedRoundTwoAudio = false;
     private bool _playedFinalAudio = false;
-    private float _originalVolume = 1.0f;
 
     private GameObject _pausePanel;
 

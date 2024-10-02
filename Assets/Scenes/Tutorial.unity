@@ -292,7 +292,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: 0
+  m_ManualPositionOrder: 2
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0
@@ -481,7 +481,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 616268592}
         m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: TestR3Button
+        m_MethodName: StartTestR3ButtonCoroutine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1215,11 +1215,6 @@ GameObject:
 --- !u!1 &470949340 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 450487123385293239, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
-  m_PrefabInstance: {fileID: 2013774565}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &470949341 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4102726733147235581, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
   m_PrefabInstance: {fileID: 2013774565}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &470949342 stripped
@@ -2072,7 +2067,6 @@ MonoBehaviour:
   - {fileID: 470949344}
   - {fileID: 470949343}
   - {fileID: 470949342}
-  - {fileID: 470949341}
   - {fileID: 470949340}
   - {fileID: 470949339}
   - {fileID: 470949338}
@@ -7166,7 +7160,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: 0
+  m_ManualPositionOrder: 3
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0
@@ -8005,7 +7999,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: -1
+  m_ManualPositionOrder: 1
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0
@@ -9746,7 +9740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6693645347603006903, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
       propertyPath: m_text
-      value: 20 km/h
+      value: 20 m/h
       objectReference: {fileID: 0}
     - target: {fileID: 7672528636448039149, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9810,7 +9804,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 224149999317639944, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
   m_PrefabInstance: {fileID: 2013774565}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470949341}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}

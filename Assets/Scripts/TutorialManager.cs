@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -86,12 +87,38 @@ public class TutorialManager : MonoBehaviour, ISelectHandler
         Time.timeScale = 1;
     }
 
-    public void TestR3Button()
+    public void StartTestR3ButtonCoroutine()
+    {
+        StopCoroutine(TestR3Button());
+        foreach (GameObject element in uiToDisable)
+        {
+            element.SetActive(false);
+        }
+        StartCoroutine(TestR3Button());
+    }
+
+    private IEnumerator TestR3Button()
     {
         foreach (GameObject element in uiToDisable)
         {
             element.SetActive(true);
             element.GetComponent<UAP_BaseElement>().SelectItem();
+            string content = "";
+            TMP_Text tmpText = element.GetComponentInChildren<TMP_Text>();
+            
+            if (tmpText != null) { content = tmpText.text; }
+
+            if (!string.IsNullOrEmpty(content))
+            {
+                float waitTime = content.Length * 0.2f;
+                yield return new WaitForSecondsRealtime(waitTime);
+                element.SetActive(false);
+            } 
+            else
+            {
+                yield return new WaitForSecondsRealtime(1.5f);
+                element.SetActive(false);
+            }
         }
     }
     public void TestControllerVibration()
