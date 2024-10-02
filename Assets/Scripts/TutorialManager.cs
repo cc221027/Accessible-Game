@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-public class TutorialManager : MonoBehaviour, ISelectHandler
+public class TutorialManager : MonoBehaviour
 {
     [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private GameObject page1;
@@ -21,9 +21,22 @@ public class TutorialManager : MonoBehaviour, ISelectHandler
     [SerializeField] private GameObject button4ToFocus;
 
     [SerializeField] private List<GameObject> uiToDisable;
+    [SerializeField] private GameObject secondUIToDisable;
 
-    private bool _testingVibration = false;
-    private float _steerInputValue;
+    [SerializeField] private AudioSource accelerateAudio0;
+    [SerializeField] private AudioSource accelerateAudio1;
+    [SerializeField] private AudioSource accelerateAudio2;
+    [SerializeField] private AudioSource decelerateAudio;
+    [SerializeField] private AudioSource jumpAudio;
+    [SerializeField] private AudioSource landingAudio;
+    
+    private float _accelerationInputValue;
+
+    private bool _testingAcceleration;
+    private bool _testingJumping;
+    private bool _testingDeceleration;
+
+    
 
     private int _pageCount = 1;
     
@@ -35,27 +48,14 @@ public class TutorialManager : MonoBehaviour, ISelectHandler
         Time.timeScale = 0;
     }
 
-    private void Update()
+    public void StartPageTurnCoroutine()
     {
-        if (_testingVibration)
-        {
-            if (_steerInputValue < 0.2)
-            {
-                Gamepad.current.SetMotorSpeeds(0.1f, 0);
-            } else if (_steerInputValue > 0.2)
-            {
-                Gamepad.current.SetMotorSpeeds(0, 0.1f);
-            }
-        }
-    }
-    
-    private void OnSteer(InputValue value)
-    {
-        _steerInputValue = value.Get<float>();
+        StartCoroutine(NextPage());
     }
 
-    public void NextPage()
+    private IEnumerator NextPage()
     {
+        yield return new WaitForSecondsRealtime(0.1f);
         _pageCount++;
 
         switch (_pageCount)
@@ -76,6 +76,75 @@ public class TutorialManager : MonoBehaviour, ISelectHandler
                 EventSystem.current.SetSelectedGameObject(button4ToFocus);
                 break;
         }
+        
+
+    }
+
+    private void OnAccelerate(InputValue value)
+    {
+       
+        if (_testingAcceleration)
+        {
+            _accelerationInputValue = value.Get<float>();
+            if (_accelerationInputValue == 0)
+            {
+                accelerateAudio0.Play();
+            }
+            else if (_accelerationInputValue >= 0.5 && _accelerationInputValue <= 0.8)
+            {
+                accelerateAudio1.Play();
+            }
+            else if (_accelerationInputValue >= 0.8)
+            {
+                accelerateAudio2.Play();
+                _testingAcceleration = false;
+            }
+        }
+    }
+
+    private void OnDecelerate(InputValue value)
+    {
+        
+        if (_testingDeceleration)
+        {
+            decelerateAudio.Play();
+            _testingDeceleration = false;
+        }
+    }
+    
+    private void OnJump(InputValue value)
+    {
+        if (_testingJumping)
+        {
+            StartCoroutine(TestJumpCoroutine());
+            _testingJumping = false;
+        }
+        
+    }
+    public void TestAcceleration()
+    {
+        _testingAcceleration = true;
+    }
+    
+    public void TestDeceleration()
+    {
+        _testingDeceleration = true;
+    }
+    
+    public void TestJump()
+    {
+        _testingJumping = true;
+    }
+
+    private IEnumerator TestJumpCoroutine()
+    {
+        jumpAudio.Play();
+        while (jumpAudio.isPlaying)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds( + 0.2f);
+        landingAudio.Play();
     }
 
     public void TutorialPanelFinished()
@@ -99,36 +168,21 @@ public class TutorialManager : MonoBehaviour, ISelectHandler
 
     private IEnumerator TestR3Button()
     {
+        secondUIToDisable.SetActive(false);
         foreach (GameObject element in uiToDisable)
         {
             element.SetActive(true);
             element.GetComponent<UAP_BaseElement>().SelectItem();
             string content = "";
             TMP_Text tmpText = element.GetComponentInChildren<TMP_Text>();
+            content = tmpText.text;
             
-            if (tmpText != null) { content = tmpText.text; }
-
-            if (!string.IsNullOrEmpty(content))
-            {
-                float waitTime = content.Length * 0.2f;
-                yield return new WaitForSecondsRealtime(waitTime);
-                element.SetActive(false);
-            } 
-            else
-            {
-                yield return new WaitForSecondsRealtime(1.5f);
-                element.SetActive(false);
-            }
+            float waitTime = content.Length * 0.2f;
+            yield return new WaitForSecondsRealtime(waitTime);
+            element.SetActive(false);
         }
-    }
-    public void TestControllerVibration()
-    {
-        _testingVibration = true;
-    }
-    
-    public void OnSelect(BaseEventData data)
-    {
-        _testingVibration = false;
+        secondUIToDisable.SetActive(true);
+
     }
     
 }
