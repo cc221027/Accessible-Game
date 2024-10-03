@@ -29,6 +29,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private AudioSource decelerateAudio;
     [SerializeField] private AudioSource jumpAudio;
     [SerializeField] private AudioSource landingAudio;
+    [SerializeField] private GameObject jumpButton;
     
     private float _accelerationInputValue;
 
@@ -73,6 +74,9 @@ public class TutorialManager : MonoBehaviour
             case 4:
                 page3.SetActive(false);
                 page4.SetActive(true);
+                _testingAcceleration = false;
+                _testingDeceleration = false;
+                _testingJumping = false;
                 EventSystem.current.SetSelectedGameObject(button4ToFocus);
                 break;
         }
@@ -86,18 +90,27 @@ public class TutorialManager : MonoBehaviour
         if (_testingAcceleration)
         {
             _accelerationInputValue = value.Get<float>();
+            Debug.Log(_accelerationInputValue);
             if (_accelerationInputValue == 0)
             {
+                accelerateAudio1.Stop();
+                accelerateAudio2.Stop();
+                
                 accelerateAudio0.Play();
             }
             else if (_accelerationInputValue >= 0.5 && _accelerationInputValue <= 0.8)
             {
+                accelerateAudio0.Stop();
+                accelerateAudio2.Stop();
+                
                 accelerateAudio1.Play();
             }
             else if (_accelerationInputValue >= 0.8)
             {
+                accelerateAudio0.Stop();
+                accelerateAudio1.Stop();
+                
                 accelerateAudio2.Play();
-                _testingAcceleration = false;
             }
         }
     }
@@ -124,16 +137,23 @@ public class TutorialManager : MonoBehaviour
     public void TestAcceleration()
     {
         _testingAcceleration = true;
+        _testingDeceleration = false;
+        _testingJumping = false;
     }
     
     public void TestDeceleration()
     {
         _testingDeceleration = true;
+        _testingAcceleration = false;
+        _testingJumping = false;
     }
     
     public void TestJump()
     {
+        StartCoroutine(TestJumpDisableButton());
         _testingJumping = true;
+        _testingAcceleration = false;
+        _testingDeceleration = false;
     }
 
     private IEnumerator TestJumpCoroutine()
@@ -143,8 +163,15 @@ public class TutorialManager : MonoBehaviour
         {
             yield return null;
         }
-        yield return new WaitForSeconds( + 0.2f);
+        yield return new WaitForSecondsRealtime( + 0.2f);
         landingAudio.Play();
+        jumpButton.SetActive(true);
+    }
+
+    private IEnumerator TestJumpDisableButton()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        jumpButton.SetActive(false);
     }
 
     public void TutorialPanelFinished()
@@ -154,6 +181,10 @@ public class TutorialManager : MonoBehaviour
         GameManager.Instance.tutorial = false;
         StartCoroutine(TrackManager.Instance.CountDownToStart());
         Time.timeScale = 1;
+        
+        _testingAcceleration = false;
+        _testingDeceleration = false;
+        _testingJumping = false;
     }
 
     public void StartTestR3ButtonCoroutine()

@@ -31,6 +31,8 @@ public class VehicleBehaviour : MonoBehaviour
     private AudioSource _carMotorAudioStart;
     private AudioSource _carMotorAudioGoing;
     private AudioSource _jumpAudio;
+    private AudioSource _landingAudio;
+    protected AudioSource BrakingAudio;
     private AudioSource _gearShiftAudio;
     
     protected AudioSource FirstPlaceAudio;
@@ -74,6 +76,9 @@ public class VehicleBehaviour : MonoBehaviour
 
             CollisionAudio = _audioSources[14];
 
+            _landingAudio = _audioSources[15];
+            BrakingAudio = _audioSources[16];
+
         }
         
     }
@@ -86,6 +91,10 @@ public class VehicleBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Road"))
         {
+            if (_isJumping)
+            {
+                _landingAudio.Play();
+            }
             _isGrounded = true;
             _isJumping = false;
             if (speedReduced)
@@ -97,6 +106,11 @@ public class VehicleBehaviour : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Offroad"))
         {
+            if (_isJumping)
+            {
+                _landingAudio.Play();
+            }
+            
             _isGrounded = true;
             _isJumping = false;
 

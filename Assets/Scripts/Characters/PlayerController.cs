@@ -131,7 +131,12 @@ public class PlayerController : VehicleBehaviour
 
     private void OnDecelerate(InputValue value)
     {
-        _decelerateValue = value.Get<float>();
+        if (movementEnabled)
+        {
+            _decelerateValue = value.Get<float>();
+            BrakingAudio.Play();
+        }
+       
     }
 
     private void OnDrift(InputValue value)
