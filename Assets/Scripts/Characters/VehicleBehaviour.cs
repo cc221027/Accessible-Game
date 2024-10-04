@@ -193,11 +193,6 @@ public class VehicleBehaviour : MonoBehaviour
             _carMotorAudioGoing.Play();
             
         }
-        
-        foreach (var audioSource in _audioSources)
-        {
-            audioSource.volume = GameManager.Instance.sfxVolume/100;
-        }
     }
 
     public void Jump()

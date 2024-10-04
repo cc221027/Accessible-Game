@@ -29,6 +29,8 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         SliderHaptics,
         Toggle,
         Pause,
+        SliderUI,
+        AllVolume,
     }
 
     [SerializeField] private Type type;
@@ -36,7 +38,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
     private void Start()
     {
         
-        if (type is Type.SliderSfx or Type.SliderMusic or Type.SliderTtsVolume or Type.SliderHaptics or Type.SliderTtsSpeechRate)
+        if (type is Type.SliderSfx or Type.SliderMusic or Type.SliderTtsVolume or Type.SliderHaptics or Type.SliderTtsSpeechRate or Type.SliderUI or Type.AllVolume)
         {
             _slider = gameObject.GetComponent<Slider>();
             
@@ -56,6 +58,12 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
                     break;
                 case Type.SliderHaptics:
                     _slider.value = GameManager.Instance.hapticsVolume;
+                    break;
+                case Type.SliderUI:
+                    _slider.value = GameManager.Instance.uiVolume;
+                    break;
+                case Type.AllVolume:
+                    _slider.value = GameManager.Instance.allVolume;
                     break;
             }
             _slider.onValueChanged.AddListener(delegate {ValueChanged();});
@@ -121,30 +129,37 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         switch (type)
         {
             case Type.SliderSfx:
-                GameManager.Instance.sfxVolume = _slider.value;
+                GameManager.Instance.SetSfxVolume(_slider.value); 
                 break;
             case Type.SliderMusic:
-                GameManager.Instance.musicVolume = _slider.value;
+                GameManager.Instance.SetMusicVolume(_slider.value);  
                 break;
             case Type.SliderTtsVolume:
-                GameManager.Instance.ttsVolume = _slider.value;
-                WindowsTTS.SetSpeechVolume((int)_slider.value);
+                
+                GameManager.Instance.SetTtsVolume(_slider.value); 
                 break;
             case Type.SliderTtsSpeechRate:
-                GameManager.Instance.ttsSpeechRate = _slider.value;
-                WindowsTTS.SetSpeechRate((int)_slider.value);
+                GameManager.Instance.SetTtsSpeechRate(_slider.value); 
                 break;
             case Type.SliderHaptics:
-                GameManager.Instance.hapticsVolume = _slider.value;
+                GameManager.Instance.SetHapticsVolume(_slider.value); 
                 break;
             case Type.Toggle:
                 UAP_AccessibilityManager.PauseAccessibility(!_toggle.isOn);
                 GameManager.Instance.toggleAccessibility = _toggle.isOn;
                 break;
+            case Type.SliderUI:
+                GameManager.Instance.SetUIVolume(_slider.value); 
+                break;
+            case Type.AllVolume:
+                GameManager.Instance.SetAllVolume(_slider.value); 
+                break;
         }
+    
         gameObject.GetComponent<UAP_BaseElement>().SelectItem(true);
         GameManager.Instance.StopReadingUI();
     }
+
     
     public void OnSelect(BaseEventData data)
     {

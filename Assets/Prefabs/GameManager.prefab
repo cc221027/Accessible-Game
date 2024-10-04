@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-7853786643920417592
 MonoBehaviour:
@@ -44,7 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4c7823ddd64ec4a9aae58c573ce874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCharacterIndex: -1
+  tutorial: 0
   winner: 
+  endTime: 
+  sfxVolume: 100
+  musicVolume: 100
+  ttsVolume: 100
+  ttsSpeechRate: 10
+  hapticsVolume: 100
+  toggleAccessibility: 1
+  masterMixer: {fileID: 24100000, guid: 351a4138a6611b34aadadd8e3e203cfb, type: 2}
   allCharacters:
   - {fileID: 7018370963361157390, guid: 33ff06ac95644de41a5242db1ac5071b, type: 3}
   - {fileID: 5195130143873652074, guid: 2d2e665bbcaa41a409962e91bcdb0f10, type: 3}

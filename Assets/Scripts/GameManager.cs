@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -26,13 +27,17 @@ public class GameManager : MonoBehaviour
     public bool tutorial = false;
     public string winner;
     public string endTime;
-    
+
+    public float allVolume = 100f;
+    public float uiVolume = 100f;
     public float sfxVolume = 100f;
     public float musicVolume = 100f;
     public float ttsVolume = 100f;
-    public float ttsSpeechRate = 1f;
+    public float ttsSpeechRate = 10f;
     public float hapticsVolume = 100f;
     public bool toggleAccessibility = true;
+
+    [SerializeField] private AudioMixer masterMixer;
     
     [SerializeField] public List<GameObject> allCharacters = new List<GameObject>();
     [SerializeField] private List<string> trackSceneNames = new List<string>();
@@ -49,6 +54,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
 
     public void LoadScene(string sceneName)
     {
@@ -118,6 +124,52 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetAllVolume(float allV)
+    {
+        float dbValue = Mathf.Log10(allV / 100f) * 20f;
+        masterMixer.SetFloat("masterVolume", dbValue);
+        allVolume = allV;
+    }
+    public void SetSfxVolume(float sfxV)
+    {
+        float dbValue = Mathf.Log10(sfxV / 100f) * 20f;
+        masterMixer.SetFloat("sfxVolume", dbValue);
+        sfxVolume = sfxV;
+    }
+
+    public void SetUIVolume(float uiV)
+    {
+        float dbValue = Mathf.Log10(uiV / 100f) * 20f;
+        masterMixer.SetFloat("uiVolume", dbValue);
+        uiVolume = uiV;
+    }
+
+    public void SetMusicVolume(float musicV)
+    {
+        float dbValue = Mathf.Log10(musicV / 100f) * 20f;
+        masterMixer.SetFloat("musicVolume", dbValue);
+        musicVolume = musicV;
+    }
+
+    public void SetTtsVolume(float ttsV)
+    {
+        float dbValue = Mathf.Log10(ttsV / 100f) * 20f;
+        masterMixer.SetFloat("ttsVolume", dbValue);
+        ttsVolume = ttsV;
+    }
+
+    public void SetTtsSpeechRate(float ttsRate)
+    {
+        ttsSpeechRate = ttsRate;
+        WindowsTTS.SetSpeechRate((int)ttsRate);
+
+    }
+
+    public void SetHapticsVolume(float hapticsV)
+    {
+        hapticsVolume = hapticsV;
+        WindowsTTS.SetSpeechVolume((int)hapticsV);  
+    }
     
     
 
