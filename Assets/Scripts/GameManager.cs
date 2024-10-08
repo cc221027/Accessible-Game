@@ -113,8 +113,8 @@ public class GameManager : MonoBehaviour
 
             if (!string.IsNullOrEmpty(content))
             {
-                float waitTime = content.Length * 0.1f;
-                Debug.Log(content);
+                float waitTime = content.Length * 0.2f / ttsSpeechRate;
+                Debug.Log(content.Length);
                 yield return new WaitForSecondsRealtime(waitTime);
             }
             else

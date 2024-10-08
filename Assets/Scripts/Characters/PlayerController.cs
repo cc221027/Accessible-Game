@@ -50,6 +50,7 @@ public class PlayerController : VehicleBehaviour
         
         _pausePanel = GameObject.Find("Canvas/PausedPanel");
         _pausePanel.SetActive(false);
+        
     }
 
     private void Update()
@@ -58,17 +59,16 @@ public class PlayerController : VehicleBehaviour
         
         var gamepad = Gamepad.current;
         
-        //Debug.Log(playerKnotSide);
 
-        if (gamepad is IDualMotorRumble haptics)
+        if (gamepad is IDualMotorRumble haptics && movementEnabled)
         {
-            if (playerKnotSide > 0)
+            if (playerKnotSide >= 0.2)
             {
-                //haptics.SetMotorSpeeds(0.5f * (GameManager.Instance.hapticsVolume/100), 0); 
+                haptics.SetMotorSpeeds(0.2f * (GameManager.Instance.hapticsVolume/100), 0); 
             }
-            else if (playerKnotSide < 0)
+            else if (playerKnotSide <= -0.2)
             {
-                //haptics.SetMotorSpeeds(0, 0.5f * (GameManager.Instance.hapticsVolume/100));  
+                haptics.SetMotorSpeeds(0, 0.2f * (GameManager.Instance.hapticsVolume/100));  
             }
             else
             {
@@ -94,28 +94,29 @@ public class PlayerController : VehicleBehaviour
         }
     }
 
-    private Vector3 GetClosestKnotPosition()
+    private int GetClosestKnotIndex()
     {
-        return _spline.Spline.OrderBy(p => Vector3.Distance(transform.position, p.Position)).First().Position;
+        return _spline.Spline.IndexOf(_spline.Spline.OrderBy(p => Vector3.Distance(transform.position, p.Position)).First());
     }
 
-    private Vector3 GetKnotOfInterest(Vector3 closestKnot)
+    private Vector3 GetNextKnotPosition(int closestIndex)
     {
-        int closestIndex = _spline.Spline.IndexOf(_spline.Spline.OrderBy(p => Vector3.Distance(transform.position, p.Position)).First());
         BezierKnot nextKnot = _spline.Spline[(closestIndex + 1) % _spline.Spline.Count];
-
-        Vector3 nextKnotPosition = new Vector3(nextKnot.Position.x, nextKnot.Position.y, nextKnot.Position.z);
-        
-        return (closestKnot - nextKnotPosition);
+        return nextKnot.Position;
     }
 
+    
     private float GetKnotSide()
     {
-        Vector3 closestKnot = GetClosestKnotPosition();
-        Vector3 knotOfInterest = GetKnotOfInterest(closestKnot);
+        int closestIndex = GetClosestKnotIndex();
+        Vector3 nextKnot = GetNextKnotPosition(closestIndex);
         
-        return Vector3.Dot( knotOfInterest.normalized,  transform.right);
+        Vector3 directionToNextKnot = (nextKnot - transform.position).normalized;
+        Vector3 cross = Vector3.Cross(directionToNextKnot, transform.forward);
+
+        return cross.y; 
     }
+
 
 
 
