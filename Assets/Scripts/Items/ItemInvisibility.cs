@@ -28,6 +28,8 @@ public class ItemInvisibility : ItemBase
         player.GetComponent<CharacterData>().status = "Invisible";
         
         StartCoroutine(MakeCharInvisible(player));
+        
+        UseItemAudio.Play();
     }
 
     private IEnumerator MakeCharInvisible(GameObject player)

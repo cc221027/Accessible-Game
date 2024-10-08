@@ -22,6 +22,8 @@ public class ItemRussel : ItemBase
     public override void UseItem(GameObject player)
     {
         StartCoroutine(TimeStop(player));
+        UseItemAudio.Play();
+
     }
 
     private IEnumerator TimeStop(GameObject player)

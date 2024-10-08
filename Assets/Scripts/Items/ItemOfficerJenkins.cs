@@ -76,6 +76,9 @@ public class ItemOfficerJenkins : ItemBase
         _rb.useGravity = false;
         StartCoroutine(Shoot(player));
         shot = true;
+        
+        UseItemAudio.Play();
+
     }
     
     private void OnTriggerEnter(Collider other)

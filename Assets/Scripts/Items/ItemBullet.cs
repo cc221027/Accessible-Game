@@ -37,6 +37,8 @@ public class ItemBullet : ItemBase
         _bulletCollider = gameObject.AddComponent<SphereCollider>();
         StartCoroutine(Shoot(player));
         _shot = true;
+        
+        UseItemAudio.Play();
     }
     
     private void OnTriggerEnter(Collider other)

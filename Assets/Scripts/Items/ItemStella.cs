@@ -21,8 +21,11 @@ public class ItemStella : ItemBase
     
     public override void UseItem(GameObject player)
     {
+        UseItemAudio.Play();
+
         player.GetComponent<Rigidbody>().AddForce(player.transform.up * 15, ForceMode.Impulse);
         Destroy(gameObject);
+        
     }
 
    

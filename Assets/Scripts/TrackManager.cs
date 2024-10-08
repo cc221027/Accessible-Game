@@ -13,6 +13,8 @@ using UnityEngine.Splines;
 public class TrackManager : MonoBehaviour
 {
     public static TrackManager Instance;
+
+    private GameObject _player;
     
     [SerializeField] private TextMeshProUGUI lapText;
     [SerializeField] private TextMeshProUGUI lapTextHeader;
@@ -24,6 +26,8 @@ public class TrackManager : MonoBehaviour
     [SerializeField] private List<Transform> spawnPoints;
 
     public SplineContainer spline;
+    public List<int> curveKnots;
+
 
     public Transform lapCheckPoint;
     public int laps;
@@ -34,6 +38,7 @@ public class TrackManager : MonoBehaviour
     public int currentPlayerLap;
     
     private AudioSource _countDownAudio;
+    public AudioSource heartbeatSource;
 
 
     void Awake()
@@ -76,7 +81,7 @@ public class TrackManager : MonoBehaviour
         }
 
 
-        placementText.text = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterData>().placement + ".";
+        placementText.text = _player.GetComponent<CharacterData>().placement + ".";
         
         if (_raceStarted)
         {
@@ -87,6 +92,8 @@ public class TrackManager : MonoBehaviour
             string timeFormatted = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
             timeText.text = timeFormatted;
         }
+        
+        GetClosestCurveKnot();
     }
 
     void SpawnCarts()
@@ -107,29 +114,29 @@ public class TrackManager : MonoBehaviour
     
     public void SpawnSelectedCharacter(Vector3 spawnPosition, Quaternion spawnRotation)
     {
-        GameObject player = Instantiate(GameManager.Instance.allCharacters[GameManager.Instance.selectedCharacterIndex], spawnPosition, spawnRotation);
+        _player = Instantiate(GameManager.Instance.allCharacters[GameManager.Instance.selectedCharacterIndex], spawnPosition, spawnRotation);
 
-        player.tag = "Player";
+        _player.tag = "Player";
         
        
         if (Camera.main != null)
         {
-            Camera.main.transform.SetParent(player.transform);
+            Camera.main.transform.SetParent(_player.transform);
 
             Camera.main.transform.localPosition = new Vector3(0, 5, -10); // Example offset
             Camera.main.transform.localRotation = Quaternion.identity;
         }
        
-        CompetitorsBehaviour competitorsBehaviour = player.GetComponent<CompetitorsBehaviour>();
+        CompetitorsBehaviour competitorsBehaviour = _player.GetComponent<CompetitorsBehaviour>();
         Destroy(competitorsBehaviour);
 
-        EnemyFOV enemyFOV = player.GetComponent<EnemyFOV>();
+        EnemyFOV enemyFOV = _player.GetComponent<EnemyFOV>();
         Destroy(enemyFOV);
 
-        Transform fieldOfViewTransform = player.transform.Find("FieldOfView");
+        Transform fieldOfViewTransform = _player.transform.Find("FieldOfView");
         Destroy(fieldOfViewTransform.gameObject);
         
-        StartCoroutine(DelayStartMovement(5f, player));
+        StartCoroutine(DelayStartMovement(5f, _player));
 
     }
     
@@ -139,11 +146,9 @@ public class TrackManager : MonoBehaviour
 
         opponent.tag = "Opponent";
         
-        // Disable the PlayerInput component if it exists
         PlayerInput playerInput = opponent.GetComponent<PlayerInput>();
         Destroy(playerInput);
 
-        // Disable the PlayerController script if it exists
         PlayerController playerController = opponent.GetComponent<PlayerController>();
         Destroy(playerController);
 
@@ -186,6 +191,43 @@ public class TrackManager : MonoBehaviour
         GameManager.Instance.endTime = timeFormatted;
         GameManager.Instance.winner = winner.characterName;
         GameManager.Instance.LoadScene("Result Scene");
+    }
+    
+
+    private void GetClosestCurveKnot()
+    {
+        float closestDistance = Mathf.Infinity;
+        int closestIndex = -1;
+
+        for (int i = 0; i < curveKnots.Count; i++)
+        {
+            float distance = Vector3.Distance(_player.transform.position, spline.Spline[i].Position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestIndex = i;
+            }
+        }
+
+        TriggerCurveFeedback(spline.Spline[closestIndex]);
+
+       
+    }
+
+    private void TriggerCurveFeedback(BezierKnot closestCurveKnot)
+    {
+        Vector3 closestCurvePosition = new Vector3(closestCurveKnot.Position.x, closestCurveKnot.Position.y, closestCurveKnot.Position.z);
+        float distanceToCurve = Vector3.Distance(_player.transform.position, closestCurvePosition);
+        float proximityFactor = Mathf.InverseLerp(100f, 10f, distanceToCurve); 
+        float speedFactor = _player.GetComponent<Rigidbody>().velocity.magnitude / 50;
+        float heartbeatRate = Mathf.Lerp(0.5f, 2f, proximityFactor * speedFactor);
+        
+        heartbeatSource.pitch = heartbeatRate;
+        
+        if (!heartbeatSource.isPlaying)
+        {
+            heartbeatSource.Play();
+        }
     }
     
    

@@ -25,6 +25,8 @@ public class ItemJimmy : ItemBase
         transform.position = (player.transform.position + transform.up + transform.forward);
         transform.localScale = new Vector3(4,4,4);
         StartCoroutine(Shield());
+        
+        UseItemAudio.Play();
     }
 
     private IEnumerator Shield()
