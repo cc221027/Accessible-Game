@@ -11,8 +11,6 @@ TagManager:
   - Item Wall
   - Road Corner
   - Obstacle
-  - LeftOffroad
-  - RightOffroad
   - Spline
   - Opponent
   - PauseMenu
