@@ -23,9 +23,14 @@ public class CompetitorsBehaviour : VehicleBehaviour
     {
         characterCheckpoints = characterRef.checkPointsReached;
         
+        Debug.Log(transform.position);
+        Debug.Log(trackManagerRef.spline.Spline[characterCheckpoints % trackManagerRef.spline.Spline.Count].Position);
+        Debug.Log(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[characterCheckpoints % trackManagerRef.spline.Spline.Count].Position));
+        
         if(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[characterCheckpoints % trackManagerRef.spline.Spline.Count].Position) < 25)
         {   
             characterRef.ReachedCheckPoint();
+            Debug.Log("Enemy reached next knot");
         }
         
         Vector3 direction;
@@ -51,7 +56,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
             }
             else
             {
-                checkpointTargetPosition = new Vector3(trackManagerRef.spline.Spline[characterCheckpoints].Position.x, trackManagerRef.spline.Spline[characterCheckpoints].Position.y, trackManagerRef.spline.Spline[characterCheckpoints].Position.z) + new Vector3(Random.Range(-randomOffset, randomOffset), 0, Random.Range(-randomOffset, randomOffset));
+                checkpointTargetPosition = new Vector3(trackManagerRef.spline.Spline[characterCheckpoints].Position.x, trackManagerRef.spline.Spline[characterCheckpoints].Position.y, trackManagerRef.spline.Spline[characterCheckpoints].Position.z);
             }
 
             direction = (checkpointTargetPosition - transform.position).normalized;

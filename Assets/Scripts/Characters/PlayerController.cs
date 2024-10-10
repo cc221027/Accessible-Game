@@ -93,6 +93,8 @@ public class PlayerController : VehicleBehaviour
             FinalLapAudio.Play();
         }
     }
+    
+    
 
     private int GetClosestKnotIndex()
     {

@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 110202639}
   m_Layer: 0
   m_Name: Spline
-  m_TagString: Untagged
+  m_TagString: Spline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,135 +180,117 @@ MonoBehaviour:
   - m_EditModeType: 1
     m_Knots:
     - Position:
-        x: 0
-        y: 0
-        z: 0
+        x: 27.457317
+        y: 0.4289761
+        z: 56.017204
       TangentIn:
         x: -0
         y: -0
-        z: -13.954531
+        z: -14.896118
       TangentOut:
         x: 0
         y: 0
-        z: 17.084606
+        z: 9.635634
       Rotation:
         value:
-          x: -0.000000038277676
-          y: -0.008704257
-          z: 0.0000000757757
-          w: 0.99996215
+          x: 0.0065671355
+          y: -0.030613082
+          z: -0.066755384
+          w: 0.99727803
     - Position:
-        x: 0.26897812
-        y: 0
-        z: 57.015385
-      TangentIn:
-        x: -0
-        y: -0
-        z: -14.895984
-      TangentOut:
-        x: 0
-        y: 0
-        z: 9.634767
-      Rotation:
-        value:
-          x: 0.000000141222
-          y: -0.030986989
-          z: -0.000000029272138
-          w: 0.9995197
-    - Position:
-        x: -2.792076
+        x: 24.396263
         y: -0.00001335144
-        z: 80.67104
+        z: 79.67287
       TangentIn:
         x: -0
         y: -0
-        z: -7.1574492
+        z: -7.1580415
       TangentOut:
         x: 0
         y: 0
-        z: 6.414731
+        z: 6.4147444
       Rotation:
         value:
-          x: -0.00000015505343
-          y: -0.21762124
-          z: -0.000000070445594
-          w: 0.97603333
+          x: 0.0046078353
+          y: -0.21763147
+          z: 0.0010251419
+          w: 0.9760195
     - Position:
-        x: -15.835316
+        x: 11.35302
         y: 0.000009536743
-        z: 94.70513
+        z: 93.706955
       TangentIn:
         x: -0
         y: -0
-        z: -6.956945
+        z: -6.9569454
       TangentOut:
         x: 0
         y: 0
-        z: 9.643986
+        z: 9.643984
       Rotation:
         value:
-          x: -0.000000050195023
+          x: -0.00000006991363
           y: -0.5244072
-          z: -0.000000104467354
-          w: 0.85146767
+          z: -0.00000007245049
+          w: 0.85146755
     - Position:
-        x: -52.424274
+        x: -25.23593
         y: -0.000020980835
-        z: 98.80337
+        z: 97.80519
       TangentIn:
         x: -0
         y: -0
-        z: -11.815007
+        z: -11.815005
       TangentOut:
         x: 0
         y: 0
         z: 11.077894
       Rotation:
         value:
-          x: -0.00000016948931
+          x: -0.00000016350407
           y: -0.70392716
-          z: -0.00000020630102
+          z: -0.00000021234007
           w: 0.71027213
     - Position:
-        x: -84.649704
+        x: -57.46136
         y: 0.00004005432
-        z: 95.77835
+        z: 94.780174
       TangentIn:
         x: -0
         y: -0
-        z: -9.382717
+        z: -9.382719
       TangentOut:
         x: 0
         y: 0
-        z: 8.031726
+        z: 8.031728
       Rotation:
         value:
-          x: 0.00000006733099
+          x: 0.00000012990704
           y: 0.8426238
-          z: 0.00000014546951
+          z: 0.000000105478485
           w: -0.5385027
     - Position:
-        x: -101.621
+        x: -74.43266
         y: 0.000009536743
-        z: 79.21082
+        z: 78.21265
       TangentIn:
         x: -0
         y: -0
-        z: -8.643978
+        z: -8.643977
       TangentOut:
         x: 0
         y: 0
-        z: 12.532831
+        z: 12.532827
       Rotation:
         value:
-          x: -0.000000109554584
-          y: 0.9796287
-          z: -0.00000033301973
-          w: -0.20081748
+          x: -0.000000110312996
+          y: 0.97962874
+          z: -0.00000033286432
+          w: -0.2008174
     - Position:
-        x: -102.18602
+        x: -74.99766
         y: 0.000009536743
-        z: 29.355967
+        z: 28.357794
       TangentIn:
         x: -0
         y: -0
@@ -316,35 +298,35 @@ MonoBehaviour:
       TangentOut:
         x: 0
         y: 0
-        z: 20.20884
+        z: 20.208836
       Rotation:
         value:
-          x: -0.00000007612461
+          x: -0.000000072251474
           y: 0.999997
-          z: 1.881346e-10
-          w: -0.0024713662
+          z: 1.7856404e-10
+          w: -0.0024713858
     - Position:
-        x: -102.09209
+        x: -74.90376
         y: 0.000009536743
-        z: -35.543335
+        z: -36.541508
       TangentIn:
         x: -0
         y: -0
-        z: -16.336271
+        z: -16.33627
       TangentOut:
         x: 0
         y: 0
-        z: 9.960313
+        z: 9.960315
       Rotation:
         value:
-          x: -0.00000004987045
+          x: -0.000000087033655
           y: 0.9991834
-          z: 0.0000006329695
-          w: 0.040406685
+          z: 0.00000063146655
+          w: 0.040406805
     - Position:
-        x: -98.24309
+        x: -71.05475
         y: 0.0000705719
-        z: -59.36006
+        z: -60.35824
       TangentIn:
         x: -0
         y: -0
@@ -352,35 +334,35 @@ MonoBehaviour:
       TangentOut:
         x: 0
         y: 0
-        z: 6.8135386
+        z: 6.8135376
       Rotation:
         value:
-          x: 0.00000020600949
-          y: 0.95907295
-          z: -0.0000006160292
-          w: 0.2831591
+          x: -0.00000022284506
+          y: 0.9590728
+          z: -0.00000074264574
+          w: 0.28315932
     - Position:
-        x: -80.06825
+        x: -52.87991
         y: -0.000036239624
-        z: -71.337234
+        z: -72.3354
       TangentIn:
         x: -0
         y: -0
-        z: -8.408927
+        z: -8.408926
       TangentOut:
         x: 0
         y: 0
         z: 12.761577
       Rotation:
         value:
-          x: 0.0000005073376
+          x: -0.0000009038137
           y: 0.80592066
-          z: -0.0000007196945
-          w: 0.5920235
+          z: -0.0000017563162
+          w: 0.5920236
     - Position:
-        x: -29.951525
+        x: -2.76318
         y: 0.00004005432
-        z: -72.572815
+        z: -73.570984
       TangentIn:
         x: -0
         y: -0
@@ -388,118 +370,73 @@ MonoBehaviour:
       TangentOut:
         x: 0
         y: 0
-        z: 9.222787
+        z: 9.222784
       Rotation:
         value:
-          x: 0.00000029297956
-          y: 0.6232382
-          z: -0.00000030771375
+          x: 0.0000013217557
+          y: 0.6232384
+          z: 0.0000009831815
           w: 0.782032
     - Position:
-        x: -8.431824
+        x: 18.756516
         y: -0.000036239624
-        z: -61.513046
+        z: -62.511227
       TangentIn:
         x: -0
         y: -0
-        z: -7.6823635
+        z: -7.5627646
       TangentOut:
         x: 0
         y: 0
-        z: 7.8895955
+        z: 7.685121
       Rotation:
         value:
-          x: 0.0000005068639
-          y: 0.36533603
-          z: -0.00000013336661
-          w: 0.93087566
+          x: -0.0040001934
+          y: 0.35248026
+          z: 0.0015850669
+          w: 0.9358093
     - Position:
-        x: 1.5034428
-        y: -0.000005722046
-        z: -38.00826
+        x: 27.199997
+        y: 0.40000004
+        z: -38.999996
       TangentIn:
         x: -0
         y: -0
-        z: -9.1273365
+        z: -9.061339
       TangentOut:
         x: 0
         y: 0
-        z: 11.143631
+        z: 11.175282
       Rotation:
         value:
-          x: -0.00000032559421
-          y: 0.08997274
-          z: 0.00000022898666
-          w: 0.99594426
+          x: -0.0042400737
+          y: 0.08600592
+          z: 0.00037732732
+          w: 0.99628556
+    - Position:
+        x: 27.18834
+        y: 0.4289761
+        z: -0.9981766
+      TangentIn:
+        x: -0
+        y: -0
+        z: -13.9476185
+      TangentOut:
+        x: 0
+        y: 0
+        z: 17.08426
+      Rotation:
+        value:
+          x: -0.00019062012
+          y: 0.0011027058
+          z: 0.0000029055423
+          w: 0.99999946
     m_MetaData:
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
-      - Distance: 1.7950082
-        T: 0.03448276
-      - Distance: 3.6423802
-        T: 0.06896552
-      - Distance: 5.5377235
-        T: 0.10344828
-      - Distance: 7.47662
-        T: 0.13793103
-      - Distance: 9.454638
-        T: 0.1724138
-      - Distance: 11.467322
-        T: 0.20689656
-      - Distance: 13.510212
-        T: 0.2413793
-      - Distance: 15.578836
-        T: 0.27586207
-      - Distance: 17.668715
-        T: 0.31034482
-      - Distance: 19.77536
-        T: 0.3448276
-      - Distance: 21.894285
-        T: 0.37931034
-      - Distance: 24.020996
-        T: 0.41379312
-      - Distance: 26.150993
-        T: 0.44827586
-      - Distance: 28.279785
-        T: 0.4827586
-      - Distance: 30.402878
-        T: 0.51724136
-      - Distance: 32.515785
-        T: 0.55172414
-      - Distance: 34.61401
-        T: 0.5862069
-      - Distance: 36.69306
-        T: 0.62068963
-      - Distance: 38.74848
-        T: 0.6551724
-      - Distance: 40.775787
-        T: 0.6896552
-      - Distance: 42.770523
-        T: 0.7241379
-      - Distance: 44.72824
-        T: 0.7586207
-      - Distance: 46.64452
-        T: 0.79310346
-      - Distance: 48.51494
-        T: 0.82758623
-      - Distance: 50.33511
-        T: 0.86206895
-      - Distance: 52.10068
-        T: 0.8965517
-      - Distance: 53.80733
-        T: 0.9310345
-      - Distance: 55.450783
-        T: 0.9655172
-      - Distance: 57.026825
-        T: 1
-    - Mode: 0
-      Tension: 0.5
-      m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
+      - Distance: -1
+        T: -1
       - Distance: 0.9891751
         T: 0.03448276
       - Distance: 1.9635484
@@ -561,8 +498,8 @@ MonoBehaviour:
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
+      - Distance: -1
+        T: -1
       - Distance: 0.6633791
         T: 0.03448276
       - Distance: 1.326342
@@ -624,8 +561,8 @@ MonoBehaviour:
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
+      - Distance: -1
+        T: -1
       - Distance: 1.0141882
         T: 0.03448276
       - Distance: 2.0619683
@@ -687,8 +624,8 @@ MonoBehaviour:
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
+      - Distance: -1
+        T: -1
       - Distance: 1.1513257
         T: 0.03448276
       - Distance: 2.312406
@@ -750,8 +687,8 @@ MonoBehaviour:
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
+      - Distance: -1
+        T: -1
       - Distance: 0.8303863
         T: 0.03448276
       - Distance: 1.6598312
@@ -813,8 +750,8 @@ MonoBehaviour:
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
+      - Distance: -1
+        T: -1
       - Distance: 1.3136414
         T: 0.03448276
       - Distance: 2.6643908
@@ -876,8 +813,8 @@ MonoBehaviour:
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
+      - Distance: -1
+        T: -1
       - Distance: 2.1190026
         T: 0.03448276
       - Distance: 4.2915564
@@ -939,8 +876,8 @@ MonoBehaviour:
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
+      - Distance: -1
+        T: -1
       - Distance: 1.0226103
         T: 0.03448276
       - Distance: 2.0298746
@@ -1002,8 +939,8 @@ MonoBehaviour:
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
+      - Distance: -1
+        T: -1
       - Distance: 0.7043494
         T: 0.03448276
       - Distance: 1.4083035
@@ -1065,8 +1002,8 @@ MonoBehaviour:
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
+      - Distance: -1
+        T: -1
       - Distance: 1.3593962
         T: 0.03448276
       - Distance: 2.7945957
@@ -1128,191 +1065,254 @@ MonoBehaviour:
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
-      - Distance: 0.94927907
+      - Distance: -1
+        T: -1
+      - Distance: 0.950028
         T: 0.03448276
-      - Distance: 1.8890216
+      - Distance: 1.8919055
         T: 0.06896552
-      - Distance: 2.8193736
+      - Distance: 2.8255925
         T: 0.10344828
-      - Distance: 3.7404685
+      - Distance: 3.7510488
         T: 0.13793103
-      - Distance: 4.652457
+      - Distance: 4.668254
         T: 0.1724138
-      - Distance: 5.5555167
+      - Distance: 5.5772114
         T: 0.20689656
-      - Distance: 6.4498353
+      - Distance: 6.477941
         T: 0.2413793
-      - Distance: 7.3356314
+      - Distance: 7.370492
         T: 0.27586207
-      - Distance: 8.213123
+      - Distance: 8.254921
         T: 0.31034482
-      - Distance: 9.082564
+      - Distance: 9.131318
         T: 0.3448276
-      - Distance: 9.94422
+      - Distance: 9.9998
         T: 0.37931034
-      - Distance: 10.798381
+      - Distance: 10.860506
         T: 0.41379312
-      - Distance: 11.64536
+      - Distance: 11.713601
         T: 0.44827586
-      - Distance: 12.485491
+      - Distance: 12.55929
         T: 0.4827586
-      - Distance: 13.31913
+      - Distance: 13.397792
         T: 0.51724136
-      - Distance: 14.146665
+      - Distance: 14.229373
         T: 0.55172414
-      - Distance: 14.968496
+      - Distance: 15.054333
         T: 0.5862069
-      - Distance: 15.785058
+      - Distance: 15.872992
         T: 0.62068963
-      - Distance: 16.596804
+      - Distance: 16.685719
         T: 0.6551724
-      - Distance: 17.404211
+      - Distance: 17.49292
         T: 0.6896552
-      - Distance: 18.207792
+      - Distance: 18.295036
         T: 0.7241379
-      - Distance: 19.00807
+      - Distance: 19.092548
         T: 0.7586207
-      - Distance: 19.805607
+      - Distance: 19.885973
         T: 0.79310346
-      - Distance: 20.60097
+      - Distance: 20.67588
         T: 0.82758623
-      - Distance: 21.394762
+      - Distance: 21.462862
         T: 0.86206895
-      - Distance: 22.187613
+      - Distance: 22.247568
         T: 0.8965517
-      - Distance: 22.980158
+      - Distance: 23.030676
         T: 0.9310345
-      - Distance: 23.773067
+      - Distance: 23.812908
         T: 0.9655172
-      - Distance: 24.567017
+      - Distance: 24.595024
         T: 1
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
-      - Distance: 0.81805754
+      - Distance: -1
+        T: -1
+      - Distance: 0.79559773
         T: 0.03448276
-      - Distance: 1.6403354
+      - Distance: 1.5933015
         T: 0.06896552
-      - Distance: 2.4673154
+      - Distance: 2.394145
         T: 0.10344828
-      - Distance: 3.2994137
+      - Distance: 3.1990209
         T: 0.13793103
-      - Distance: 4.136966
+      - Distance: 4.008691
         T: 0.1724138
-      - Distance: 4.9802556
+      - Distance: 4.8238077
         T: 0.20689656
-      - Distance: 5.8294744
+      - Distance: 5.6449203
         T: 0.2413793
-      - Distance: 6.684803
+      - Distance: 6.4724536
         T: 0.27586207
-      - Distance: 7.5463104
+      - Distance: 7.3067403
         T: 0.31034482
-      - Distance: 8.414051
+      - Distance: 8.148026
         T: 0.3448276
-      - Distance: 9.288018
+      - Distance: 8.996457
         T: 0.37931034
-      - Distance: 10.168148
+      - Distance: 9.852106
         T: 0.41379312
-      - Distance: 11.054355
+      - Distance: 10.714962
         T: 0.44827586
-      - Distance: 11.946491
+      - Distance: 11.584961
         T: 0.4827586
-      - Distance: 12.844382
+      - Distance: 12.461964
         T: 0.51724136
-      - Distance: 13.747819
+      - Distance: 13.345774
         T: 0.55172414
-      - Distance: 14.656558
+      - Distance: 14.236152
         T: 0.5862069
-      - Distance: 15.570326
+      - Distance: 15.132806
         T: 0.62068963
-      - Distance: 16.488811
+      - Distance: 16.035406
         T: 0.6551724
-      - Distance: 17.411694
+      - Distance: 16.943565
         T: 0.6896552
-      - Distance: 18.338614
+      - Distance: 17.85689
         T: 0.7241379
-      - Distance: 19.269203
+      - Distance: 18.774937
         T: 0.7586207
-      - Distance: 20.203054
+      - Distance: 19.697247
         T: 0.79310346
-      - Distance: 21.139757
+      - Distance: 20.623327
         T: 0.82758623
-      - Distance: 22.07888
+      - Distance: 21.552666
         T: 0.86206895
-      - Distance: 23.019964
+      - Distance: 22.48474
         T: 0.8965517
-      - Distance: 23.962543
+      - Distance: 23.419004
         T: 0.9310345
-      - Distance: 24.906134
+      - Distance: 24.354904
         T: 0.9655172
-      - Distance: 25.850248
+      - Distance: 25.291872
         T: 1
     - Mode: 0
       Tension: 0.5
       m_DistanceToInterpolation:
-      - Distance: 0
-        T: 0
-      - Distance: 1.1570808
+      - Distance: -1
+        T: -1
+      - Distance: 1.160924
         T: 0.03448276
-      - Distance: 2.3236704
+      - Distance: 2.3320813
         T: 0.06896552
-      - Distance: 3.500845
+      - Distance: 3.5140133
         T: 0.10344828
-      - Distance: 4.689477
+      - Distance: 4.707162
         T: 0.13793103
-      - Distance: 5.8902206
+      - Distance: 5.9118524
         T: 0.1724138
-      - Distance: 7.103564
+      - Distance: 7.128318
         T: 0.20689656
-      - Distance: 8.3298435
+      - Distance: 8.356704
         T: 0.2413793
-      - Distance: 9.569231
+      - Distance: 9.597079
         T: 0.27586207
-      - Distance: 10.821785
+      - Distance: 10.849435
         T: 0.31034482
-      - Distance: 12.087439
+      - Distance: 12.1137085
         T: 0.3448276
-      - Distance: 13.366042
+      - Distance: 13.389776
         T: 0.37931034
-      - Distance: 14.657343
+      - Distance: 14.677463
         T: 0.41379312
-      - Distance: 15.96103
+      - Distance: 15.976556
         T: 0.44827586
-      - Distance: 17.276722
+      - Distance: 17.286806
         T: 0.4827586
-      - Distance: 18.604
+      - Distance: 18.607935
         T: 0.51724136
-      - Distance: 19.942398
+      - Distance: 19.93964
         T: 0.55172414
-      - Distance: 21.29143
+      - Distance: 21.281599
         T: 0.5862069
-      - Distance: 22.650585
+      - Distance: 22.633476
         T: 0.62068963
-      - Distance: 24.01935
+      - Distance: 23.994928
         T: 0.6551724
-      - Distance: 25.397207
+      - Distance: 25.365608
         T: 0.6896552
-      - Distance: 26.78365
+      - Distance: 26.745167
         T: 0.7241379
-      - Distance: 28.178192
+      - Distance: 28.133266
         T: 0.7586207
-      - Distance: 29.58037
+      - Distance: 29.529573
         T: 0.79310346
-      - Distance: 30.989754
+      - Distance: 30.933765
         T: 0.82758623
-      - Distance: 32.40595
+      - Distance: 32.345543
         T: 0.86206895
-      - Distance: 33.828625
+      - Distance: 33.764626
         T: 0.8965517
-      - Distance: 35.257492
+      - Distance: 35.190758
         T: 0.9310345
-      - Distance: 36.692333
+      - Distance: 36.623714
         T: 0.9655172
-      - Distance: 38.133007
+      - Distance: 38.063305
+        T: 1
+    - Mode: 0
+      Tension: 0.5
+      m_DistanceToInterpolation:
+      - Distance: -1
+        T: -1
+      - Distance: 1.7950693
+        T: 0.03448276
+      - Distance: 3.6426399
+        T: 0.06896552
+      - Distance: 5.5382566
+        T: 0.10344828
+      - Distance: 7.477454
+        T: 0.13793103
+      - Distance: 9.455763
+        T: 0.1724138
+      - Distance: 11.468706
+        T: 0.20689656
+      - Distance: 13.511804
+        T: 0.2413793
+      - Distance: 15.580574
+        T: 0.27586207
+      - Distance: 17.670528
+        T: 0.31034482
+      - Distance: 19.777187
+        T: 0.3448276
+      - Distance: 21.89606
+        T: 0.37931034
+      - Distance: 24.022657
+        T: 0.41379312
+      - Distance: 26.152496
+        T: 0.44827586
+      - Distance: 28.28109
+        T: 0.4827586
+      - Distance: 30.40396
+        T: 0.51724136
+      - Distance: 32.516624
+        T: 0.55172414
+      - Distance: 34.61461
+        T: 0.5862069
+      - Distance: 36.69343
+        T: 0.62068963
+      - Distance: 38.748653
+        T: 0.6551724
+      - Distance: 40.77579
+        T: 0.6896552
+      - Distance: 42.77041
+        T: 0.7241379
+      - Distance: 44.728065
+        T: 0.7586207
+      - Distance: 46.64433
+        T: 0.79310346
+      - Distance: 48.514793
+        T: 0.82758623
+      - Distance: 50.335056
+        T: 0.86206895
+      - Distance: 52.10076
+        T: 0.8965517
+      - Distance: 53.807552
+        T: 0.9310345
+      - Distance: 55.451134
+        T: 0.9655172
+      - Distance: 57.027233
         T: 1
     m_Closed: 1
     m_IntData:
@@ -1333,7 +1333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110202638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.188343, y: 0.42897606, z: -0.9981766}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1703,6 +1703,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Offroad
       objectReference: {fileID: 0}
+    - target: {fileID: 2339344626871302743, guid: af11e280ef934de49ba0daf62879a21c, type: 3}
+      propertyPath: m_TagString
+      value: Offroad
+      objectReference: {fileID: 0}
     - target: {fileID: 4607626418061178074, guid: af11e280ef934de49ba0daf62879a21c, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1759,11 +1763,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8004854692951312077, guid: af11e280ef934de49ba0daf62879a21c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1352538679516678052, guid: af11e280ef934de49ba0daf62879a21c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1161858269}
   m_SourcePrefab: {fileID: 100100000, guid: af11e280ef934de49ba0daf62879a21c, type: 3}
+--- !u!1 &1161858268 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1352538679516678052, guid: af11e280ef934de49ba0daf62879a21c, type: 3}
+  m_PrefabInstance: {fileID: 1161858267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1161858269
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161858268}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1249371716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1835,7 +1870,10 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7650241808426422876, guid: 5c2865e3035e33e4bab13c36bbc0ae2e, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4768559749352888409, guid: 5c2865e3035e33e4bab13c36bbc0ae2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1490363555}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5836184920441460991, guid: 5c2865e3035e33e4bab13c36bbc0ae2e, type: 3}
       insertIndex: -1
@@ -1886,7 +1924,7 @@ PrefabInstance:
     - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
       propertyPath: lapCheckPoint
       value: 
-      objectReference: {fileID: 1249371719}
+      objectReference: {fileID: 1490363555}
     - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
       propertyPath: lapTextHeader
       value: 
@@ -2063,6 +2101,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1490363554
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1249371719}
+    m_Modifications:
+    - target: {fileID: 2843924048315106774, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+      propertyPath: m_RootOrder
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843924048315106774, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843924048315106774, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843924048315106774, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843924048315106774, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843924048315106774, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843924048315106774, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843924048315106774, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843924048315106774, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843924048315106774, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843924048315106774, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305651281502702625, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+      propertyPath: m_Name
+      value: LapCheck
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+--- !u!4 &1490363555 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2843924048315106774, guid: 9e0e9e8ebb6872f4080318652402a0c5, type: 3}
+  m_PrefabInstance: {fileID: 1490363554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1820690315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3907523129350173746, guid: 4242115d2ad1c9a42a1b41c6a4495c85, type: 3}
@@ -2081,6 +2185,118 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 240617683264569338, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 240617683264922586, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 240617683266654552, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 340639806949331588, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 340639806949494436, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 340639806955790342, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 540658859677228357, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 540658859679331303, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 540658859679494087, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 821739166473380267, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 821739166473420171, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 821739166475506473, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396573425825799102, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396573425832097052, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396573425832519996, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444684896019776529, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444684896020076593, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444684896021883571, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1746468665393981860, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1746468665396070150, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 1746468665396501286, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157125255674866655, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157125255680858461, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157125255681148285, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538523034141314631, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538523034141348455, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538523034143456453, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065800431294244268, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3065800431298598342, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2089,6 +2305,86 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 88db2bb274b401f40885524c1c30da6e, type: 2}
+    - target: {fileID: 3065800431300528910, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065800431301023534, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658583016315271261, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658583016316865247, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658583016317359871, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206456643278224721, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206456643280015315, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206456643280311283, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216481860571199635, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216481860577315345, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216481860577482289, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 5948386955238776067, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 5948386955238867235, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5948386955245073313, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218264161447686594, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218264161447980514, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218264161450066752, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312969857796987044, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312969857798990374, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312969857799091718, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
     - target: {fileID: 6327308551134716573, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -2144,6 +2440,54 @@ PrefabInstance:
     - target: {fileID: 6327308551134716573, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028059375478488786, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028059375480081488, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028059375480574064, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 7100529868769643678, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7100529868770070718, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 7100529868776373788, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800728545319435428, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800728545325715974, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800728545325747750, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319102155699183833, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319102155701276283, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_TagString
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319102155701441115, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: 8345948032282510257, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
       propertyPath: m_Name

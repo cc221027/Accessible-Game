@@ -209,7 +209,7 @@ public class TrackManager : MonoBehaviour
             }
         }
 
-        TriggerCurveFeedback(spline.Spline[closestIndex]);
+        //TriggerCurveFeedback(spline.Spline[closestIndex]);    
 
        
     }
