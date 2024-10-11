@@ -55,26 +55,30 @@ public class PlayerController : VehicleBehaviour
 
     private void Update()
     {
-        float playerKnotSide = GetKnotSide();
+        if (GameManager.Instance.toggleAccessibility)
+        {
+            float playerKnotSide = GetKnotSide();
         
-        var gamepad = Gamepad.current;
+            var gamepad = Gamepad.current;
         
 
-        if (gamepad is IDualMotorRumble haptics && movementEnabled)
-        {
-            if (playerKnotSide >= 0.2)
+            if (gamepad is IDualMotorRumble haptics && movementEnabled)
             {
-                haptics.SetMotorSpeeds(0.2f * (GameManager.Instance.hapticsVolume/100), 0); 
-            }
-            else if (playerKnotSide <= -0.2)
-            {
-                haptics.SetMotorSpeeds(0, 0.2f * (GameManager.Instance.hapticsVolume/100));  
-            }
-            else
-            {
-                haptics.SetMotorSpeeds(0, 0); 
+                if (playerKnotSide >= 0.2)
+                {
+                    haptics.SetMotorSpeeds(0.2f * (GameManager.Instance.hapticsVolume/100), 0); 
+                }
+                else if (playerKnotSide <= -0.2)
+                {
+                    haptics.SetMotorSpeeds(0, 0.2f * (GameManager.Instance.hapticsVolume/100));  
+                }
+                else
+                {
+                    haptics.SetMotorSpeeds(0, 0); 
+                }
             }
         }
+        
 
         if (characterRef.placement != _previousPlacement && movementEnabled)
         {

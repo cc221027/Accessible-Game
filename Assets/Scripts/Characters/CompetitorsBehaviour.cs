@@ -23,10 +23,6 @@ public class CompetitorsBehaviour : VehicleBehaviour
     {
         characterCheckpoints = characterRef.checkPointsReached;
         
-        Debug.Log(transform.position);
-        Debug.Log(trackManagerRef.spline.Spline[characterCheckpoints % trackManagerRef.spline.Spline.Count].Position);
-        Debug.Log(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[characterCheckpoints % trackManagerRef.spline.Spline.Count].Position));
-        
         if(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[characterCheckpoints % trackManagerRef.spline.Spline.Count].Position) < 25)
         {   
             characterRef.ReachedCheckPoint();

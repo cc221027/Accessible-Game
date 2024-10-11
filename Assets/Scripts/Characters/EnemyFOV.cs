@@ -14,14 +14,12 @@ public class EnemyFOV : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Item") && Vector3.Dot(transform.forward, (other.transform.position - transform.position).normalized) > 0.7f && _compBehaviourRef.inventoryItem == null)
+        if (other.CompareTag("Item") && Vector3.Dot(transform.forward, (other.transform.position - transform.position).normalized) > 0.9f && _compBehaviourRef.inventoryItem == null)
         {
-           
                 if (_compBehaviourRef.itemInSight == null)
                 {
                     _compBehaviourRef.itemInSight = other.transform;
                 }
-            
         }
     }
 
