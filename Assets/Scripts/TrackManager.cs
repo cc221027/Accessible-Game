@@ -28,6 +28,8 @@ public class TrackManager : MonoBehaviour
     public SplineContainer spline;
     public List<int> curveKnots;
 
+    public List<Transform> itemBoxPositions;
+
 
     public Transform lapCheckPoint;
     public int laps;
@@ -52,6 +54,8 @@ public class TrackManager : MonoBehaviour
             StartCoroutine(CountDownToStart());
         }
         spline = GameObject.FindGameObjectWithTag("Spline").GetComponent<SplineContainer>();
+
+        itemBoxPositions = FindObjectsOfType<ItemPickupContainer>().Select(item => item.transform).ToList();
     }
 
     private void Update()
@@ -209,7 +213,7 @@ public class TrackManager : MonoBehaviour
             }
         }
 
-        //TriggerCurveFeedback(spline.Spline[closestIndex]);    
+        TriggerCurveFeedback(spline.Spline[closestIndex]);    
 
        
     }

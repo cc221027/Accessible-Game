@@ -1,15 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class CompetitorsBehaviour : VehicleBehaviour
 {
-    private float _aiSpeed; // Speed of the AI
+    private float _aiSpeed;
     private Vector3 _direction;
-    public int characterCheckpoints;
+
+    private Vector3 _knotTargetPosition;
 
     public bool isNearCorner;
     
@@ -17,26 +20,26 @@ public class CompetitorsBehaviour : VehicleBehaviour
     private void Start()
     {
         _aiSpeed = Random.Range(18, 23);
+
+        GetNewKnotPosition();
     }
 
     public override void MoveLogic()
     {
-        characterCheckpoints = characterRef.checkPointsReached;
         
-        if(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[characterCheckpoints % trackManagerRef.spline.Spline.Count].Position) < 25)
+        if(Vector3.Distance(transform.position,trackManagerRef.spline.Spline[characterRef.checkPointsReached % trackManagerRef.spline.Spline.Count].Position) < 25)
         {   
             characterRef.ReachedCheckPoint();
-            Debug.Log("Enemy reached next knot");
+            GetNewKnotPosition();
         }
         
         Vector3 direction;
 
-        float randomOffset = Random.Range(-10f, 10f);
-
         if (itemInSight != null)
         {
             direction = (itemInSight.position - transform.position).normalized;
-            if (Vector3.Distance(transform.position, itemInSight.position) <= 20)
+
+            if (Vector3.Distance(transform.position, itemInSight.position) <= 5)
             {
                 itemInSight = null;
             }
@@ -44,18 +47,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
         else
         {
             itemInSight = null;
-            Vector3 checkpointTargetPosition;
-
-            if (characterCheckpoints >= trackManagerRef.spline.Spline.Count)
-            {
-                checkpointTargetPosition = trackManagerRef.lapCheckPoint.position + new Vector3(randomOffset, 0, randomOffset);
-            }
-            else
-            {
-                checkpointTargetPosition = new Vector3(trackManagerRef.spline.Spline[characterCheckpoints].Position.x, trackManagerRef.spline.Spline[characterCheckpoints].Position.y, trackManagerRef.spline.Spline[characterCheckpoints].Position.z);
-            }
-
-            direction = (checkpointTargetPosition - transform.position).normalized;
+            direction = (_knotTargetPosition - transform.position).normalized;
         }
 
         if (_rb.velocity.magnitude <= maxSpeed)
@@ -79,6 +71,22 @@ public class CompetitorsBehaviour : VehicleBehaviour
         {
             UseItem();
         }
+        
+        GetClosestCurveKnot();
+        GetClosestItemBox();
+    }
+
+    public void GetNewKnotPosition()
+    {
+        if (characterRef.checkPointsReached >= trackManagerRef.spline.Spline.Count)
+        {
+            _knotTargetPosition = trackManagerRef.lapCheckPoint.position;
+        }
+        else
+        {
+            _knotTargetPosition = new Vector3(trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.x,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.y,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.z) + transform.right * Random.Range(-10,10);
+        }
+
     }
 
     public override void UseItem()
@@ -105,6 +113,31 @@ public class CompetitorsBehaviour : VehicleBehaviour
         }
         return false;
     }
+
+    private void GetClosestItemBox()
+    {
+        if (inventoryItem != null) return;
+
+        itemInSight = trackManagerRef.itemBoxPositions
+            .Where(item =>
+                Vector3.Distance(transform.position, item.position) >= 5 &&
+                Vector3.Distance(transform.position, item.position) <= 70 &&
+                Vector3.Dot(transform.forward, (item.position - transform.position).normalized) > 0.9)
+            .OrderBy(item => Vector3.Distance(transform.position, item.position))
+            .FirstOrDefault();
+    }
+
+
+    
+    private void GetClosestCurveKnot()
+    {
+        var closestKnot = trackManagerRef.spline.Spline
+            .OrderBy(knot => Vector3.Distance(transform.position, knot.Position))
+            .FirstOrDefault();
+
+        isNearCorner = Vector3.Distance(transform.position, closestKnot.Position) < 20;
+    }
+
     
 }
         

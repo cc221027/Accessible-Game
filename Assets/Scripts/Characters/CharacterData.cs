@@ -40,6 +40,9 @@ public class CharacterData: MonoBehaviour
                 TrackManager.Instance.currentPlayerLap++;
                 _playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
                 _playerController.checkedSplines.Clear();
+            } else if (CompareTag("Opponent"))
+            {
+                gameObject.GetComponent<CompetitorsBehaviour>().GetNewKnotPosition();
             }
         }
         if (completedLaps >= _trackManager.laps)
