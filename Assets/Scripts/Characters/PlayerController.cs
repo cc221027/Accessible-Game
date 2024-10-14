@@ -96,6 +96,8 @@ public class PlayerController : VehicleBehaviour
             _playedFinalAudio = true;
             FinalLapAudio.Play();
         }
+        
+        GetClosestObstacleOnTrack();
     }
     
     
@@ -289,5 +291,20 @@ public class PlayerController : VehicleBehaviour
                 return;
         }
         
+    }
+    
+    private void GetClosestObstacleOnTrack()
+    {
+        bool shouldJump = trackManagerRef.obstaclesOnTrackPositions
+            .Where(item =>
+                Vector3.Distance(transform.position, item.position) <= 40 &&
+                Vector3.Dot(transform.forward, (item.position - transform.position).normalized) > 0.7)
+            .OrderBy(item => Vector3.Distance(transform.position, item.position))
+            .FirstOrDefault();
+
+        if (shouldJump && !CollisionWarningAudio.isPlaying)
+        {
+            CollisionWarningAudio.Play();
+        }
     }
 }

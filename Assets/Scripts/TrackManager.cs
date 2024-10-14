@@ -29,6 +29,7 @@ public class TrackManager : MonoBehaviour
     public List<int> curveKnots;
 
     public List<Transform> itemBoxPositions;
+    public List<Transform> obstaclesOnTrackPositions;
 
 
     public Transform lapCheckPoint;
@@ -133,12 +134,6 @@ public class TrackManager : MonoBehaviour
        
         CompetitorsBehaviour competitorsBehaviour = _player.GetComponent<CompetitorsBehaviour>();
         Destroy(competitorsBehaviour);
-
-        EnemyFOV enemyFOV = _player.GetComponent<EnemyFOV>();
-        Destroy(enemyFOV);
-
-        Transform fieldOfViewTransform = _player.transform.Find("FieldOfView");
-        Destroy(fieldOfViewTransform.gameObject);
         
         StartCoroutine(DelayStartMovement(5f, _player));
 

@@ -74,6 +74,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
         
         GetClosestCurveKnot();
         GetClosestItemBox();
+        GetClosestObstacleOnTrack();
     }
 
     public void GetNewKnotPosition()
@@ -84,7 +85,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
         }
         else
         {
-            _knotTargetPosition = new Vector3(trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.x,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.y,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.z) + transform.right * Random.Range(-10,10);
+            _knotTargetPosition = new Vector3(trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.x,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.y,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.z) + transform.right * Random.Range(-5,5);
         }
 
     }
@@ -126,7 +127,21 @@ public class CompetitorsBehaviour : VehicleBehaviour
             .OrderBy(item => Vector3.Distance(transform.position, item.position))
             .FirstOrDefault();
     }
+    
+    private void GetClosestObstacleOnTrack()
+    {
+        bool shouldJump = trackManagerRef.obstaclesOnTrackPositions
+            .Where(item =>
+                Vector3.Distance(transform.position, item.position) <= 20 &&
+                Vector3.Dot(transform.forward, (item.position - transform.position).normalized) > 0.7)
+            .OrderBy(item => Vector3.Distance(transform.position, item.position))
+            .FirstOrDefault();
 
+        if (shouldJump)
+        {
+            Jump();
+        }
+    }
 
     
     private void GetClosestCurveKnot()

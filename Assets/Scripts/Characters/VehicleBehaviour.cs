@@ -42,7 +42,10 @@ public class VehicleBehaviour : MonoBehaviour
 
     protected AudioSource RoundTwo;
     protected AudioSource FinalLapAudio;
-    protected AudioSource CollisionAudio;
+    private AudioSource _collisionAudio;
+    protected AudioSource CollisionWarningAudio;
+    
+    
     private AudioSource[] _audioSources;
 
     public void Awake()
@@ -74,10 +77,12 @@ public class VehicleBehaviour : MonoBehaviour
             RoundTwo = _audioSources[12];
             FinalLapAudio = _audioSources[13];
 
-            CollisionAudio = _audioSources[14];
+            _collisionAudio = _audioSources[14];
 
             _landingAudio = _audioSources[15];
             BrakingAudio = _audioSources[16];
+
+            CollisionWarningAudio = _audioSources[17];
 
         }
         
@@ -123,7 +128,7 @@ public class VehicleBehaviour : MonoBehaviour
             }
         } else if (other.gameObject.CompareTag("Obstacle") || other.gameObject.CompareTag("Item Wall") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Opponent"))
         {
-            CollisionAudio.Play();
+            _collisionAudio.Play();
         }
     }
 
