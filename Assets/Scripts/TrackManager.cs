@@ -67,19 +67,13 @@ public class TrackManager : MonoBehaviour
 
         List<CharacterData> racers = FindObjectsOfType<CharacterData>().ToList();
 
-        racers.Sort((r1, r2) => 
-        {
-            int lapComparison = r2.completedLaps.CompareTo(r1.completedLaps);
-            if (lapComparison != 0) return lapComparison;
-            
-            Vector3 nextCheckpointPosition = spline.Spline[Math.Max(r1.checkPointsReached, r2.checkPointsReached) % spline.Spline.Count].Position;
-            
-            float r1DistanceToNextCheckpoint = Vector3.Distance(r1.transform.position, nextCheckpointPosition);
-            float r2DistanceToNextCheckpoint = Vector3.Distance(r2.transform.position, nextCheckpointPosition);
-            
-            return r1DistanceToNextCheckpoint.CompareTo(r2DistanceToNextCheckpoint);
-        });
-
+        racers = racers
+            .OrderByDescending(racer => racer.completedLaps) 
+            .ThenByDescending(racer => racer.checkPointsReached) 
+            .ThenBy(racer => Vector3.Distance(racer.transform.position, 
+                spline.Spline[racer.checkPointsReached % spline.Spline.Count].Position)) 
+            .ToList();
+        
         for (int i = 0; i < racers.Count; i++)
         {
             racers[i].placement = i + 1;
@@ -197,9 +191,9 @@ public class TrackManager : MonoBehaviour
     {
         float closestDistance = Mathf.Infinity;
         int closestIndex = -1;
-
+        
         for (int i = 0; i < curveKnots.Count; i++)
-        {
+        { 
             float distance = Vector3.Distance(_player.transform.position, spline.Spline[i].Position);
             if (distance < closestDistance)
             {
@@ -207,7 +201,7 @@ public class TrackManager : MonoBehaviour
                 closestIndex = i;
             }
         }
-
+        
         TriggerCurveFeedback(spline.Spline[closestIndex]);    
 
        
