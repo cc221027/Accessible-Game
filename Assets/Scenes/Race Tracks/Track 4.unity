@@ -9286,7 +9286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 468086, guid: 950f8b7b75b0e45949ba0a337607535c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 532
+      value: 418
       objectReference: {fileID: 0}
     - target: {fileID: 468086, guid: 950f8b7b75b0e45949ba0a337607535c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9322,7 +9322,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 468086, guid: 950f8b7b75b0e45949ba0a337607535c, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19889002, guid: 950f8b7b75b0e45949ba0a337607535c, type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19889002, guid: 950f8b7b75b0e45949ba0a337607535c, type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19889002, guid: 950f8b7b75b0e45949ba0a337607535c, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

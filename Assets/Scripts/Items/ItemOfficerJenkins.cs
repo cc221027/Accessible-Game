@@ -15,6 +15,9 @@ public class ItemOfficerJenkins : ItemBase
     public Transform characterInSight = null;
 
     public bool shot = false;
+    
+    private Transform _targetPlayer;
+    private AudioSource _bulletTravelAudio;
 
     private void Awake()
     {
@@ -23,6 +26,7 @@ public class ItemOfficerJenkins : ItemBase
         {
             PickupAudioSource = audioSources[0];
             UseItemAudio = audioSources[1];
+            _bulletTravelAudio = audioSources[2];
         }  
     }
 
@@ -101,7 +105,8 @@ public class ItemOfficerJenkins : ItemBase
         while (elapsedTime < waitTime && !_hasHitTarget)
         {
             yield return null; 
-            elapsedTime += Time.deltaTime; 
+            elapsedTime += Time.deltaTime;
+            FindClosestPlayer();
         }
 
         if (!_hasHitTarget)
@@ -114,9 +119,39 @@ public class ItemOfficerJenkins : ItemBase
 
     private IEnumerator SlowCharacterOnHit(CharacterData otherCharacter)
     {
+        _hasHitTarget = true;
         otherCharacter.characterAcceleration *= 0.5f;
         yield return new WaitForSeconds(4);
         otherCharacter.characterAcceleration = otherCharacter.baseCharacterAcceleration;
         Destroy(gameObject);
+    }
+    
+    private Transform FindClosestPlayer()
+    {
+        CharacterData[] players = FindObjectsOfType<CharacterData>();
+        Transform closestPlayer = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (CharacterData player in players)
+        {
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestPlayer = player.transform;
+            }
+        }
+        return closestPlayer;
+    }
+    
+    private void AdjustPitchBasedOnDistance()
+    {
+        if (_targetPlayer == null) return;
+
+        float distance = Vector3.Distance(transform.position, _targetPlayer.position);
+
+        float pitch = Mathf.Lerp(1.5f, 0.5f, distance / 50f);
+
+        _bulletTravelAudio.pitch = pitch;
     }
 }

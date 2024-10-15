@@ -132,8 +132,8 @@ public class CompetitorsBehaviour : VehicleBehaviour
     {
         bool shouldJump = trackManagerRef.obstaclesOnTrackPositions
             .Where(item =>
-                Vector3.Distance(transform.position, item.position) <= 20 &&
-                Vector3.Dot(transform.forward, (item.position - transform.position).normalized) > 0.7)
+                Vector3.Distance(transform.position, item.position) <= 10 &&
+                Vector3.Dot(transform.forward, (item.position - transform.position).normalized) > 0.9)
             .OrderBy(item => Vector3.Distance(transform.position, item.position))
             .FirstOrDefault();
 

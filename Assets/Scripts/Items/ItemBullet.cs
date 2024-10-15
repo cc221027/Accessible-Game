@@ -10,6 +10,9 @@ public class ItemBullet : ItemBase
     private Renderer _bulletChildRenderer;
     private bool _hasHitTarget;
     private bool _shot;
+    
+    private Transform _targetPlayer;
+    private AudioSource _bulletTravelAudio;
 
     private void Awake()
     {
@@ -18,6 +21,7 @@ public class ItemBullet : ItemBase
         {
             PickupAudioSource = audioSources[0];
             UseItemAudio = audioSources[1];
+            _bulletTravelAudio = audioSources[2];
         }  
     }
 
@@ -39,6 +43,7 @@ public class ItemBullet : ItemBase
         _shot = true;
         
         UseItemAudio.Play();
+        _bulletTravelAudio.Play();
     }
     
     private void OnTriggerEnter(Collider other)
@@ -47,10 +52,12 @@ public class ItemBullet : ItemBase
         
         if (otherCharacter != null && _shot)
         {
+            _hasHitTarget = true;
+
             _bulletCollider.enabled = false;
             _bulletRenderer.enabled = false;
             _bulletChildRenderer.enabled = false;
-            StartCoroutine(SlowCharacterOnHit(otherCharacter)); 
+            StartCoroutine(SlowCharacterOnHit(otherCharacter));
         }
         else
         {
@@ -58,12 +65,12 @@ public class ItemBullet : ItemBase
 
             if (otherItem != null && (otherItem.itemName is "Wall" or "Bullet" or "SpecialBullet"))
             {
+                _hasHitTarget = true;
+                
                 Destroy(other.gameObject);
                 Destroy(gameObject);
             }
         }     
-        
-        
     }
 
 
@@ -78,6 +85,8 @@ public class ItemBullet : ItemBase
         {
             yield return null; 
             elapsedTime += Time.deltaTime; 
+            _targetPlayer = FindClosestPlayer();
+            AdjustPitchBasedOnDistance();
         }
 
         if (!_hasHitTarget)
@@ -94,5 +103,34 @@ public class ItemBullet : ItemBase
         yield return new WaitForSeconds(4);
         otherCharacter.characterAcceleration = otherCharacter.baseCharacterAcceleration;
         Destroy(gameObject);
+    }
+    
+    private Transform FindClosestPlayer()
+    {
+        CharacterData[] players = FindObjectsOfType<CharacterData>();
+        Transform closestPlayer = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (CharacterData player in players)
+        {
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestPlayer = player.transform;
+            }
+        }
+        return closestPlayer;
+    }
+    
+    private void AdjustPitchBasedOnDistance()
+    {
+        if (_targetPlayer == null) return;
+
+        float distance = Vector3.Distance(transform.position, _targetPlayer.position);
+
+        float pitch = Mathf.Lerp(1.5f, 0.5f, distance / 50f);
+
+        _bulletTravelAudio.pitch = pitch;
     }
 }
