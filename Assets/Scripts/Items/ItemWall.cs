@@ -30,7 +30,7 @@ public class ItemWall : ItemBase
         UseItemAudio.Play();
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter()
     {
         TrackManager.Instance.obstaclesOnTrackPositions.Remove(gameObject.transform);
         Destroy(gameObject);

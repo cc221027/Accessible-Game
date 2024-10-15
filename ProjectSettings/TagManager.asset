@@ -8,10 +8,10 @@ TagManager:
   - Offroad
   - Item
   - Item Wall
-  - Obstacle
   - Spline
   - Opponent
   - PauseMenu
+  - ShortCutSpline
   layers:
   - Default
   - TransparentFX

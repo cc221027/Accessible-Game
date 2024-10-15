@@ -26,7 +26,9 @@ public class TrackManager : MonoBehaviour
     [SerializeField] private List<Transform> spawnPoints;
 
     public SplineContainer spline;
+    public SplineContainer shortcutSpline;
     public List<int> curveKnots;
+
 
     public List<Transform> itemBoxPositions;
     public List<Transform> obstaclesOnTrackPositions;
@@ -55,6 +57,8 @@ public class TrackManager : MonoBehaviour
             StartCoroutine(CountDownToStart());
         }
         spline = GameObject.FindGameObjectWithTag("Spline").GetComponent<SplineContainer>();
+        shortcutSpline = GameObject.FindGameObjectWithTag("ShortCutSpline")?.GetComponent<SplineContainer>();
+
 
         itemBoxPositions = FindObjectsOfType<ItemPickupContainer>().Select(item => item.transform).ToList();
     }

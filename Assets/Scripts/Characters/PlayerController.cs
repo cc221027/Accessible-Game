@@ -28,7 +28,9 @@ public class PlayerController : VehicleBehaviour
 
     private PlayerInput _playerInput;
 
-    private SplineContainer _spline;
+    private bool _isPulsing;
+
+    private SplineContainer _currentSpline;
     public List<BezierKnot> checkedSplines;
 
     private float _rangeToLeftOffroad;
@@ -36,15 +38,15 @@ public class PlayerController : VehicleBehaviour
     
     private int _previousPlacement = -1;
 
-    private bool _playedRoundTwoAudio = false;
-    private bool _playedFinalAudio = false;
+    private bool _playedRoundTwoAudio;
+    private bool _playedFinalAudio;
 
     private GameObject _pausePanel;
 
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
-        _spline = GameObject.FindGameObjectWithTag("Spline").GetComponent<SplineContainer>();
+        _currentSpline = trackManagerRef.spline;
         
         _trackManager = TrackManager.Instance;
         
@@ -64,11 +66,11 @@ public class PlayerController : VehicleBehaviour
 
             if (gamepad is IDualMotorRumble haptics && movementEnabled)
             {
-                if (playerKnotSide >= 0.2)
+                if (playerKnotSide >= 0.1)
                 {
                     haptics.SetMotorSpeeds(0.2f * (GameManager.Instance.hapticsVolume/100), 0); 
                 }
-                else if (playerKnotSide <= -0.2)
+                else if (playerKnotSide <= -0.1)
                 {
                     haptics.SetMotorSpeeds(0, 0.2f * (GameManager.Instance.hapticsVolume/100));  
                 }
@@ -98,25 +100,26 @@ public class PlayerController : VehicleBehaviour
         }
         
         GetClosestObstacleOnTrack();
+        CheckForShortCut();
     }
-    
-    
 
-    private int GetClosestKnotIndex()
+   
+
+    private int GetClosestKnotIndex(SplineContainer spline)
     {
-        return _spline.Spline.IndexOf(_spline.Spline.OrderBy(p => Vector3.Distance(transform.position, p.Position)).First());
+        return spline.Spline.IndexOf(spline.Spline.OrderBy(p => Vector3.Distance(transform.position, p.Position)).First());
     }
 
     private Vector3 GetNextKnotPosition(int closestIndex)
     {
-        BezierKnot nextKnot = _spline.Spline[(closestIndex + 1) % _spline.Spline.Count];
+        BezierKnot nextKnot = _currentSpline.Spline[(closestIndex + 1) % _currentSpline.Spline.Count];
         return nextKnot.Position;
     }
 
     
     private float GetKnotSide()
     {
-        int closestIndex = GetClosestKnotIndex();
+        int closestIndex = GetClosestKnotIndex(_currentSpline);
         Vector3 nextKnot = GetNextKnotPosition(closestIndex);
         
         Vector3 directionToNextKnot = (nextKnot - transform.position).normalized;
@@ -188,7 +191,7 @@ public class PlayerController : VehicleBehaviour
 
 
 
-        foreach (var spline in _spline.Spline)
+        foreach (var spline in _currentSpline.Spline)
         {
             if (Vector3.Distance(transform.position, spline.Position) < 20 && !checkedSplines.Contains(spline))
             {
@@ -305,6 +308,66 @@ public class PlayerController : VehicleBehaviour
         if (shouldJump && !CollisionWarningAudio.isPlaying)
         {
             CollisionWarningAudio.Play();
+        }
+    }
+
+    private void CheckForShortCut()
+    {
+        if (trackManagerRef.shortcutSpline != null)
+        {
+            float distanceToShortcut = Vector3.Distance(transform.position, trackManagerRef.shortcutSpline.Spline[0].Position);
+
+            if (distanceToShortcut < 70)
+            {
+                if (!_isPulsing)
+                {
+                    Vector3 nextKnot = trackManagerRef.shortcutSpline.Spline[0].Position;
+                    Vector3 directionToNextKnot = (nextKnot - transform.position).normalized;
+                    Vector3 cross = Vector3.Cross(directionToNextKnot, transform.forward);
+
+                    StartCoroutine(PulseMotorForShortCut(cross.y));
+                }
+            }
+            else
+            {
+                _isPulsing = false;
+                Gamepad.current.SetMotorSpeeds(0, 0);
+                
+            }
+
+            if (distanceToShortcut < 5)
+            {
+                _currentSpline = trackManagerRef.shortcutSpline;
+            }
+            else if (Vector3.Distance(transform.position, 
+                         trackManagerRef.spline.Spline[GetClosestKnotIndex(trackManagerRef.spline)].Position) < 25)
+            {
+                _currentSpline = trackManagerRef.spline;
+            }
+        }
+    }
+
+    private IEnumerator PulseMotorForShortCut(float side)
+    {
+        _isPulsing = true;
+
+        while (_isPulsing)
+        {
+            
+            if (side > 0)
+            {
+                Gamepad.current.SetMotorSpeeds(1f * (GameManager.Instance.hapticsVolume / 100), 0);
+            }
+            else if (side < 0)
+            {
+                Gamepad.current.SetMotorSpeeds(0, 1f * (GameManager.Instance.hapticsVolume / 100));
+            }
+
+            yield return new WaitForSeconds(0.1f);
+
+            Gamepad.current.SetMotorSpeeds(0, 0);
+
+            yield return new WaitForSeconds(0.1f);  
         }
     }
 }
