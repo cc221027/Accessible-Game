@@ -6447,7 +6447,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -10963,12 +10963,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2013774569}
     - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
       propertyPath: checkPoints.Array.size
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
       propertyPath: spawnPoints.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[3]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[4]
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
       propertyPath: checkPoints.Array.data[0]
@@ -11268,6 +11292,10 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 3062588204891160473, guid: 351a4138a6611b34aadadd8e3e203cfb, type: 2}
+    - target: {fileID: 1636140863723772281, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2303001387285434576, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -11396,6 +11424,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -163
       objectReference: {fileID: 0}
+    - target: {fileID: 6470411643359558316, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6477220910642160332, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6535033118155933604, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -11425,6 +11461,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3062588204891160473, guid: 351a4138a6611b34aadadd8e3e203cfb, type: 2}
     - target: {fileID: 8692326331283975535, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703134904298562547, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}

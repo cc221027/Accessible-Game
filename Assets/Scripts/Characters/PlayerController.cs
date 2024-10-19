@@ -63,11 +63,11 @@ public class PlayerController : VehicleBehaviour
 
             if (movementEnabled && !_shortCutPulseEnabled)
             {
-                if (playerKnotSide >= 0.1)
+                if (playerKnotSide >0)
                 {
                     Gamepad.current.SetMotorSpeeds(0.2f * (GameManager.Instance.hapticsVolume/100), 0); 
                 }
-                else if (playerKnotSide <= -0.1)
+                else if (playerKnotSide < -0)
                 {
                     Gamepad.current.SetMotorSpeeds(0, 0.2f * (GameManager.Instance.hapticsVolume/100));  
                 }

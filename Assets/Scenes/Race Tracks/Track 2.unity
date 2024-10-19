@@ -167,8 +167,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -261,8 +261,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 58877991}
   - component: {fileID: 58877990}
   - component: {fileID: 58877989}
-  - component: {fileID: 58877988}
+  - component: {fileID: 58877992}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -407,27 +407,6 @@ Transform:
   m_Father: {fileID: 1485147847}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &58877988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58877986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 58877991}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &58877989
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -477,7 +456,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58877986}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: ac5b3a96627fa4d40b784b1f0a0eb24b, type: 2}
 --- !u!114 &58877991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,6 +821,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &58877992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58877986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 58877991}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &60482411 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4491976748569638640, guid: caca259340eb940edb2da589d6f04a90, type: 3}
@@ -891,8 +891,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -1049,8 +1049,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -1145,7 +1145,7 @@ GameObject:
   - component: {fileID: 171174675}
   - component: {fileID: 171174674}
   - component: {fileID: 171174673}
-  - component: {fileID: 171174672}
+  - component: {fileID: 171174676}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -1168,27 +1168,6 @@ Transform:
   m_Father: {fileID: 725097110}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &171174672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171174670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 171174675}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &171174673
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1238,7 +1217,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171174670}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: c48d47e554d124446a4fa030541a5d67, type: 2}
 --- !u!114 &171174675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1603,6 +1582,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &171174676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171174670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 171174675}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &178970877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,7 +1934,7 @@ GameObject:
   - component: {fileID: 255223256}
   - component: {fileID: 255223255}
   - component: {fileID: 255223254}
-  - component: {fileID: 255223253}
+  - component: {fileID: 255223258}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -1942,27 +1942,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &255223253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255223252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 255223256}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &255223254
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2012,7 +1991,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255223252}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b110971c17ef17a4caeab78c39962730, type: 2}
 --- !u!114 &255223256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2392,6 +2371,27 @@ Transform:
   m_Father: {fileID: 1915915427}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &255223258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255223252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 255223256}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.25
+  m_Range: {x: 0, y: 1}
 --- !u!1001 &258232051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2917,8 +2917,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -2979,7 +2979,7 @@ GameObject:
   - component: {fileID: 363818490}
   - component: {fileID: 363818489}
   - component: {fileID: 363818488}
-  - component: {fileID: 363818487}
+  - component: {fileID: 363818491}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -3002,27 +3002,6 @@ Transform:
   m_Father: {fileID: 289738278}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &363818487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363818485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 363818490}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &363818488
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3072,7 +3051,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363818485}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a41109a035c259246a5fc8f89fa6a3ca, type: 2}
 --- !u!114 &363818490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3437,6 +3416,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &363818491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363818485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 363818490}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &399087714
 GameObject:
   m_ObjectHideFlags: 0
@@ -6083,7 +6083,7 @@ GameObject:
   - component: {fileID: 427794383}
   - component: {fileID: 427794382}
   - component: {fileID: 427794381}
-  - component: {fileID: 427794380}
+  - component: {fileID: 427794384}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -6106,27 +6106,6 @@ Transform:
   m_Father: {fileID: 338794104}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &427794380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427794378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 427794383}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &427794381
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6176,7 +6155,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427794378}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: ba489371ab6615546895eb572d7b013f, type: 2}
 --- !u!114 &427794383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6541,6 +6520,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &427794384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427794378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 427794383}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1001 &442275548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6662,8 +6662,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -10168,7 +10168,7 @@ GameObject:
   - component: {fileID: 448206277}
   - component: {fileID: 448206276}
   - component: {fileID: 448206275}
-  - component: {fileID: 448206274}
+  - component: {fileID: 448206278}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -10191,27 +10191,6 @@ Transform:
   m_Father: {fileID: 1657639368}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &448206274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448206272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 448206277}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &448206275
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10261,7 +10240,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448206272}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a6a109ac25acbb644b02190d571193fb, type: 2}
 --- !u!114 &448206277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10626,6 +10605,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &448206278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448206272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 448206277}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &472917240
 GameObject:
   m_ObjectHideFlags: 0
@@ -12560,7 +12560,7 @@ GameObject:
   - component: {fileID: 481435063}
   - component: {fileID: 481435062}
   - component: {fileID: 481435061}
-  - component: {fileID: 481435060}
+  - component: {fileID: 481435064}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -12583,27 +12583,6 @@ Transform:
   m_Father: {fileID: 2115036883}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &481435060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481435058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 481435063}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &481435061
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12653,7 +12632,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481435058}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: bc6641eaabb4f4140a2f930477024bfc, type: 2}
 --- !u!114 &481435063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13018,6 +12997,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &481435064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481435058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 481435063}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1001 &554557384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13360,7 +13360,7 @@ GameObject:
   - component: {fileID: 590420902}
   - component: {fileID: 590420901}
   - component: {fileID: 590420900}
-  - component: {fileID: 590420899}
+  - component: {fileID: 590420903}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -13383,27 +13383,6 @@ Transform:
   m_Father: {fileID: 1237159437}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &590420899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590420897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 590420902}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &590420900
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13453,7 +13432,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590420897}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: ebcef836ecbc2a2448657ce5f169434c, type: 2}
 --- !u!114 &590420902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13818,6 +13797,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &590420903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590420897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 590420902}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &592854286
 GameObject:
   m_ObjectHideFlags: 0
@@ -13862,8 +13862,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -14023,7 +14023,7 @@ GameObject:
   - component: {fileID: 607022268}
   - component: {fileID: 607022267}
   - component: {fileID: 607022266}
-  - component: {fileID: 607022265}
+  - component: {fileID: 607022269}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -14046,27 +14046,6 @@ Transform:
   m_Father: {fileID: 1664537267}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &607022265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607022263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 607022268}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &607022266
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14116,7 +14095,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 607022263}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 0253822e5daf96342916f6caf1d77afc, type: 2}
 --- !u!114 &607022268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14481,6 +14460,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &607022269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607022263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 607022268}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &614901099
 GameObject:
   m_ObjectHideFlags: 0
@@ -14525,8 +14525,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -14664,7 +14664,7 @@ GameObject:
   - component: {fileID: 632200263}
   - component: {fileID: 632200262}
   - component: {fileID: 632200261}
-  - component: {fileID: 632200260}
+  - component: {fileID: 632200264}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -14687,27 +14687,6 @@ Transform:
   m_Father: {fileID: 1888464359}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &632200260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 632200258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 632200263}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &632200261
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14757,7 +14736,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632200258}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 10d78db1297b42941b41d81c866e2534, type: 2}
 --- !u!114 &632200263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15122,6 +15101,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &632200264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632200258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 632200263}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &635741822
 GameObject:
   m_ObjectHideFlags: 0
@@ -17187,8 +17187,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -17502,7 +17502,7 @@ GameObject:
   - component: {fileID: 713999902}
   - component: {fileID: 713999901}
   - component: {fileID: 713999900}
-  - component: {fileID: 713999899}
+  - component: {fileID: 713999903}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -17525,27 +17525,6 @@ Transform:
   m_Father: {fileID: 874310078}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &713999899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713999897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 713999902}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &713999900
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17595,7 +17574,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713999897}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 95ac3b1811e645a42bf41fec2604322e, type: 2}
 --- !u!114 &713999902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17960,6 +17939,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &713999903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713999897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 713999902}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &725097109
 GameObject:
   m_ObjectHideFlags: 0
@@ -18137,8 +18137,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -18199,7 +18199,7 @@ GameObject:
   - component: {fileID: 730497874}
   - component: {fileID: 730497873}
   - component: {fileID: 730497872}
-  - component: {fileID: 730497871}
+  - component: {fileID: 730497875}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -18222,27 +18222,6 @@ Transform:
   m_Father: {fileID: 167251936}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &730497871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730497869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 730497874}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &730497872
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18292,7 +18271,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730497869}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 84ed8a39f355b7a4daab63463daf3eb0, type: 2}
 --- !u!114 &730497874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18657,6 +18636,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &730497875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730497869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 730497874}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &731088675
 GameObject:
   m_ObjectHideFlags: 0
@@ -18701,8 +18701,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -18897,7 +18897,7 @@ GameObject:
   - component: {fileID: 779826820}
   - component: {fileID: 779826819}
   - component: {fileID: 779826818}
-  - component: {fileID: 779826817}
+  - component: {fileID: 779826821}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -18920,27 +18920,6 @@ Transform:
   m_Father: {fileID: 1620235042}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &779826817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779826815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 779826820}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &779826818
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18990,7 +18969,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779826815}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: d8818fa6bea0ca342b945182de0b26e0, type: 2}
 --- !u!114 &779826820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19355,6 +19334,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &779826821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779826815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 779826820}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &790886823
 GameObject:
   m_ObjectHideFlags: 0
@@ -19399,8 +19399,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -19461,7 +19461,7 @@ GameObject:
   - component: {fileID: 797780280}
   - component: {fileID: 797780279}
   - component: {fileID: 797780278}
-  - component: {fileID: 797780277}
+  - component: {fileID: 797780281}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -19484,27 +19484,6 @@ Transform:
   m_Father: {fileID: 1374325829}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &797780277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 797780275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 797780280}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &797780278
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19554,7 +19533,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797780275}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 0cad5a8ae489d7843be1617e0237f864, type: 2}
 --- !u!114 &797780280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19919,6 +19898,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &797780281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797780275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 797780280}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &856626768
 GameObject:
   m_ObjectHideFlags: 0
@@ -19931,7 +19931,7 @@ GameObject:
   - component: {fileID: 856626773}
   - component: {fileID: 856626772}
   - component: {fileID: 856626771}
-  - component: {fileID: 856626770}
+  - component: {fileID: 856626774}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -19954,27 +19954,6 @@ Transform:
   m_Father: {fileID: 1012514831}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &856626770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856626768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 856626773}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &856626771
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20024,7 +20003,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856626768}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e1e08cf1d1673084a88b5b243d2dadd7, type: 2}
 --- !u!114 &856626773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20389,6 +20368,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &856626774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856626768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 856626773}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &861997415
 GameObject:
   m_ObjectHideFlags: 0
@@ -20579,8 +20579,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -20641,7 +20641,7 @@ GameObject:
   - component: {fileID: 881318678}
   - component: {fileID: 881318677}
   - component: {fileID: 881318676}
-  - component: {fileID: 881318675}
+  - component: {fileID: 881318679}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -20664,27 +20664,6 @@ Transform:
   m_Father: {fileID: 654245675}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &881318675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881318673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 881318678}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &881318676
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20734,7 +20713,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881318673}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: d588798c42a630b45b3652cf90067429, type: 2}
 --- !u!114 &881318678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21099,6 +21078,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &881318679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881318673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 881318678}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &882250047
 GameObject:
   m_ObjectHideFlags: 0
@@ -24557,8 +24557,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -24651,8 +24651,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -25664,8 +25664,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -25758,8 +25758,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -26530,8 +26530,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -26718,7 +26718,7 @@ GameObject:
   - component: {fileID: 1321639305}
   - component: {fileID: 1321639304}
   - component: {fileID: 1321639303}
-  - component: {fileID: 1321639302}
+  - component: {fileID: 1321639306}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -26741,27 +26741,6 @@ Transform:
   m_Father: {fileID: 882250048}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1321639302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321639300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 1321639305}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &1321639303
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26811,7 +26790,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321639300}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: ea627c9e0f5a4704ebe2a5b848bb99bf, type: 2}
 --- !u!114 &1321639305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27176,6 +27155,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &1321639306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321639300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 1321639305}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1001 &1360654496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27221,8 +27221,48 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1348695320310405171}
     - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
       propertyPath: spawnPoints.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[3]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[4]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[5]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[6]
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[7]
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
+      propertyPath: curveKnots.Array.data[8]
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -3788205554955616388, guid: 207980141d748ee4dad1b4e48ce3bac6, type: 3}
       propertyPath: spawnPoints.Array.data[0]
@@ -27812,7 +27852,7 @@ GameObject:
   - component: {fileID: 1436637764}
   - component: {fileID: 1436637763}
   - component: {fileID: 1436637762}
-  - component: {fileID: 1436637761}
+  - component: {fileID: 1436637765}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -27835,27 +27875,6 @@ Transform:
   m_Father: {fileID: 1187680453}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1436637761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436637759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 1436637764}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &1436637762
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27905,7 +27924,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436637759}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 3ecc139237c035b4e9836948cf662aca, type: 2}
 --- !u!114 &1436637764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28270,6 +28289,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &1436637765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436637759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 1436637764}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &1438353935 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9158575124850825215, guid: e9fdb27010175478b8491c22e63b4cb3, type: 3}
@@ -30367,7 +30407,7 @@ GameObject:
   - component: {fileID: 1516900120}
   - component: {fileID: 1516900119}
   - component: {fileID: 1516900118}
-  - component: {fileID: 1516900117}
+  - component: {fileID: 1516900121}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -30390,27 +30430,6 @@ Transform:
   m_Father: {fileID: 228508324}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1516900117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516900115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 1516900120}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &1516900118
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30460,7 +30479,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516900115}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 89fa28e7ffb27514d8581ad6796b72ad, type: 2}
 --- !u!114 &1516900120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30825,6 +30844,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &1516900121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516900115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 1516900120}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &1549695884
 GameObject:
   m_ObjectHideFlags: 0
@@ -35638,7 +35678,7 @@ GameObject:
   - component: {fileID: 1704506263}
   - component: {fileID: 1704506262}
   - component: {fileID: 1704506261}
-  - component: {fileID: 1704506260}
+  - component: {fileID: 1704506264}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -35661,27 +35701,6 @@ Transform:
   m_Father: {fileID: 1904785467}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1704506260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1704506258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 1704506263}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &1704506261
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35731,7 +35750,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704506258}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a4b888f32b30cce438c06469fb33512c, type: 2}
 --- !u!114 &1704506263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36096,6 +36115,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &1704506264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704506258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 1704506263}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &1723099258 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9158575124850825215, guid: e9fdb27010175478b8491c22e63b4cb3, type: 3}
@@ -36135,7 +36175,7 @@ GameObject:
   - component: {fileID: 1729166561}
   - component: {fileID: 1729166560}
   - component: {fileID: 1729166559}
-  - component: {fileID: 1729166558}
+  - component: {fileID: 1729166562}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -36158,27 +36198,6 @@ Transform:
   m_Father: {fileID: 1557384992}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1729166558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729166556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 1729166561}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &1729166559
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -36228,7 +36247,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729166556}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 286ef9c71d3026b49824fb0888494cc8, type: 2}
 --- !u!114 &1729166561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36593,6 +36612,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &1729166562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729166556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 1729166561}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &1739231583
 GameObject:
   m_ObjectHideFlags: 0
@@ -36637,8 +36677,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -36838,8 +36878,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -36961,7 +37001,7 @@ GameObject:
   - component: {fileID: 1829575845}
   - component: {fileID: 1829575844}
   - component: {fileID: 1829575843}
-  - component: {fileID: 1829575842}
+  - component: {fileID: 1829575846}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -36984,27 +37024,6 @@ Transform:
   m_Father: {fileID: 1389121740}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1829575842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829575840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 1829575845}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &1829575843
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -37054,7 +37073,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829575840}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 0655d0adad187c042b6755d40c87d498, type: 2}
 --- !u!114 &1829575845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37419,6 +37438,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &1829575846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829575840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 1829575845}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &1830208096 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6059656253461116989, guid: aba160fdd486f40219c9dbdcf2d935f3, type: 3}
@@ -37551,8 +37591,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -38159,7 +38199,7 @@ GameObject:
   - component: {fileID: 1991704356}
   - component: {fileID: 1991704355}
   - component: {fileID: 1991704354}
-  - component: {fileID: 1991704353}
+  - component: {fileID: 1991704357}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -38182,27 +38222,6 @@ Transform:
   m_Father: {fileID: 2007294276}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1991704353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991704351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 1991704356}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &1991704354
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38252,7 +38271,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991704351}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 062d086c384b5ca4eae4b1e25299a74c, type: 2}
 --- !u!114 &1991704356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38617,6 +38636,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &1991704357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991704351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 1991704356}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1001 &1994851769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39167,8 +39207,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -39261,8 +39301,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -39458,8 +39498,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 68.85
+  m_Intensity: 1.5
+  m_Range: 73.7
   m_SpotAngle: 61
   m_InnerSpotAngle: 7
   m_CookieSize: 10
@@ -39653,7 +39693,7 @@ GameObject:
   - component: {fileID: 2119519766}
   - component: {fileID: 2119519765}
   - component: {fileID: 2119519764}
-  - component: {fileID: 2119519763}
+  - component: {fileID: 2119519767}
   m_Layer: 0
   m_Name: Spline (6)
   m_TagString: Untagged
@@ -39676,27 +39716,6 @@ Transform:
   m_Father: {fileID: 936692241}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2119519763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119519761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Container: {fileID: 2119519766}
-  m_RebuildOnSplineChange: 0
-  m_RebuildFrequency: 30
-  m_UpdateColliders: 1
-  m_Sides: 100
-  m_SegmentsPerUnit: 4
-  m_Capped: 1
-  m_Radius: 0.08
-  m_Range: {x: 0, y: 1}
 --- !u!23 &2119519764
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -39746,7 +39765,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119519761}
-  m_Mesh: {fileID: 4300000, guid: 35d5af962b216b04382d24ed3b340276, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 1fc9fe120a06d534f8de9132ecb5d840, type: 2}
 --- !u!114 &2119519766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40111,6 +40130,27 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &2119519767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119519761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222dc08d484f16869bdd89edd9d368fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Container: {fileID: 2119519766}
+  m_RebuildOnSplineChange: 0
+  m_RebuildFrequency: 30
+  m_UpdateColliders: 1
+  m_Sides: 8
+  m_SegmentsPerUnit: 4
+  m_Capped: 1
+  m_Radius: 0.075
+  m_Range: {x: 0, y: 1}
 --- !u!1 &2120527138 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9158575124850825215, guid: e9fdb27010175478b8491c22e63b4cb3, type: 3}

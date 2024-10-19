@@ -153,6 +153,7 @@ public class VehicleBehaviour : MonoBehaviour
         yield return new WaitForSeconds(5);
         if (speedReduced)
         {
+            transform.position = new Vector3(trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.x, trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.y, trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.z);
             //Teleport vehicle back to last checkpoint
             //_teleportBackAudio.Play();
         }

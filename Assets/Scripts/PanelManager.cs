@@ -93,6 +93,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         if (_paused)
         {
             Gamepad.current.SetMotorSpeeds(0,0);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>().enabled = false;
         }
         
     }
@@ -120,7 +121,6 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
             foreach (var element in uiToDisable) { element.SetActive(true); }
             EventSystem.current.SetSelectedGameObject(firstElementToHighlight);
         }
-        
         panelRef.SetActive(false);
     }
 
