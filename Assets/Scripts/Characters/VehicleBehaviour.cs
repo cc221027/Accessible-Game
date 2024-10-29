@@ -62,25 +62,25 @@ public class VehicleBehaviour : MonoBehaviour
             _carMotorAudioStart = AudioSources[1];
             _carMotorAudioGoing = AudioSources[2];
             
-            _offroadWarningAudio = AudioSources[4];
-            _teleportBackAudio = AudioSources[5];
+            _offroadWarningAudio = AudioSources[3];
+            _teleportBackAudio = AudioSources[4];
 
-            _jumpAudio = AudioSources[6];
-            _gearShiftAudio = AudioSources[7];
+            _jumpAudio = AudioSources[5];
+            _gearShiftAudio = AudioSources[6];
 
-            FirstPlaceAudio = AudioSources[8];
-            SecondPlaceAudio = AudioSources[9];
-            ThirdPlaceAudio = AudioSources[10];
-            FourthPlaceAudio = AudioSources[11];
-            RoundTwo = AudioSources[12];
-            FinalLapAudio = AudioSources[13];
+            FirstPlaceAudio = AudioSources[7];
+            SecondPlaceAudio = AudioSources[8];
+            ThirdPlaceAudio = AudioSources[9];
+            FourthPlaceAudio = AudioSources[10];
+            RoundTwo = AudioSources[11];
+            FinalLapAudio = AudioSources[12];
 
-            _collisionAudio = AudioSources[14];
+            _collisionAudio = AudioSources[13];
 
-            _landingAudio = AudioSources[15];
-            BrakingAudio = AudioSources[16];
+            _landingAudio = AudioSources[14];
+            BrakingAudio = AudioSources[15];
 
-            CollisionWarningAudio = AudioSources[17];
+            CollisionWarningAudio = AudioSources[16];
 
         }
         
@@ -125,6 +125,23 @@ public class VehicleBehaviour : MonoBehaviour
                 StartCoroutine(ReturnToCheckPoint());
             }
         } 
+        else if (other.gameObject.CompareTag("ShortCut"))
+        {
+            if (_isJumping)
+            {
+                _landingAudio.Play();
+            }
+            
+            _isGrounded = true;
+            _isJumping = false;
+
+            if (!speedReduced)
+            {
+                characterRef.characterAcceleration *= 0.8f;
+                speedReduced = true;
+                maxSpeed = 25;
+            }
+        } 
         else if (other.gameObject.CompareTag("Item Wall") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Opponent"))
         {
             _collisionAudio.Play();
@@ -147,13 +164,12 @@ public class VehicleBehaviour : MonoBehaviour
 
     private IEnumerator ReturnToCheckPoint()
     {
-        //_offroadWarningAudio.Play();
+        _offroadWarningAudio.Play();
         yield return new WaitForSeconds(5);
         if (speedReduced)
         {
             transform.position = new Vector3(trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.x, trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.y, trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.z);
-            //Teleport vehicle back to last checkpoint
-            //_teleportBackAudio.Play();
+            _teleportBackAudio.Play();
         }
     }
    

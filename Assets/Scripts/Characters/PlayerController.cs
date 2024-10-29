@@ -27,13 +27,15 @@ public class PlayerController : VehicleBehaviour
 
     private bool _shortCutPulseEnabled;
     private bool _enteredShortcut;
+
+    private float _distanceToShortcut;
     
     private int _previousPlacement = -1;
 
     private bool _playedRoundTwoAudio;
     private bool _playedFinalAudio;
     
-    private float _audioRayLength = 5f;
+    private float _rayLength = 2f;
     private float _leftMotorStrength = 0.1f;
     private float _rightMotorStrength = 0.2f;
 
@@ -54,10 +56,19 @@ public class PlayerController : VehicleBehaviour
     {
         if (GameManager.Instance.toggleAccessibility)
         {
-            float playerKnotSide = GetKnotSide();
-
-            if (movementEnabled && !_shortCutPulseEnabled)
+            if (trackManagerRef.shortcutSpline != null)
             {
+                _distanceToShortcut = Vector3.Distance(transform.position, trackManagerRef.shortcutSpline.Spline[0].Position);
+            }
+            else
+            {
+                _distanceToShortcut = float.MaxValue;
+            }
+            
+            if (movementEnabled && !_shortCutPulseEnabled && _distanceToShortcut >= 70)
+            {
+                float playerKnotSide = GetKnotSide();
+                
                 if (playerKnotSide >0)
                 {
                     Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0); 
@@ -70,9 +81,8 @@ public class PlayerController : VehicleBehaviour
                 {
                     Gamepad.current.SetMotorSpeeds(0, 0); 
                 }
-            }
-        
-        
+            } 
+            
 
             if (characterRef.placement != _previousPlacement && movementEnabled)
             {
@@ -93,7 +103,7 @@ public class PlayerController : VehicleBehaviour
             
             GetClosestObstacleOnTrack();
             CheckForShortCut();
-            AdjustAudioBasedOnObstacles();
+            AdjustHapticsBasedOnObstacles();
         }
     }
 
@@ -121,9 +131,6 @@ public class PlayerController : VehicleBehaviour
 
         return cross.y; 
     }
-
-
-
 
     private void OnSteer(InputValue value)
     {
@@ -175,11 +182,7 @@ public class PlayerController : VehicleBehaviour
         float decelerationForce = _decelerateValue * 20;
         float accelerationForce = _accelerationInputValue * 20 * characterRef.characterAcceleration;
         float currentSpeed = _rb.velocity.magnitude;
-
-
-
-
-
+        
         foreach (var spline in _currentSpline.Spline)
         {
             if (Vector3.Distance(transform.position, spline.Position) < 20 && !checkedSplines.Contains(spline))
@@ -190,10 +193,6 @@ public class PlayerController : VehicleBehaviour
         }
 
         _trackManager.currentPlayerSpeed = Mathf.RoundToInt(currentSpeed);
-        
-        
-        
-           
 
         if (_decelerateValue > 0 && currentSpeed <= maxSpeed)
         {
@@ -201,7 +200,7 @@ public class PlayerController : VehicleBehaviour
         }
         else if (currentSpeed <= maxSpeed) 
         { 
-            _rb.AddForce(transform.forward * accelerationForce, ForceMode.Acceleration);
+            _rb.velocity = Vector3.Lerp(_rb.velocity, transform.forward * Mathf.Clamp(accelerationForce * 2 * Mathf.Clamp01(1 - (_rb.velocity.magnitude / 1000)), 0, maxSpeed), Time.fixedDeltaTime);
         }
         
 
@@ -209,6 +208,8 @@ public class PlayerController : VehicleBehaviour
         float rotationAmount = _steerInputValue * 80f * rotationMultiplier * Time.fixedDeltaTime;
 
         transform.Rotate(0, rotationAmount, 0);
+
+
     }
 
     public override void UseItem()
@@ -274,23 +275,25 @@ public class PlayerController : VehicleBehaviour
     {
         if (trackManagerRef.shortcutSpline != null)
         {
-            float distanceToShortcut = Vector3.Distance(transform.position, trackManagerRef.shortcutSpline.Spline[0].Position);
 
-            if (distanceToShortcut is > 5 and < 70 && !_shortCutPulseEnabled && !_enteredShortcut)
+            if (_distanceToShortcut is > 5 and < 70 && !_enteredShortcut)
             {
                 
                 Vector3 nextKnot = trackManagerRef.shortcutSpline.Spline[0].Position;
                 Vector3 directionToNextKnot = (nextKnot - transform.position).normalized;
                 Vector3 cross = Vector3.Cross(directionToNextKnot, transform.forward);
-
-                StartCoroutine(PulseMotorForShortCut(cross.y));
+                
+                if(!_shortCutPulseEnabled)
+                {
+                    StartCoroutine(PulseMotorForShortCut(cross.y));
+                }
             }
-            if (distanceToShortcut < 5)
+            if (_distanceToShortcut < 5)
             {
                 _currentSpline = trackManagerRef.shortcutSpline;
                 _enteredShortcut = true;
             }
-            else if (Vector3.Distance(transform.position,trackManagerRef.spline.Spline[GetClosestKnotIndex(trackManagerRef.spline)].Position) < 20 && _enteredShortcut && !_shortCutPulseEnabled)
+            else if (Vector3.Distance(transform.position,trackManagerRef.spline.Spline[GetClosestKnotIndex(trackManagerRef.spline)].Position) < 30 && _enteredShortcut)
             {
                 _currentSpline = trackManagerRef.spline;
                 _enteredShortcut = false;
@@ -302,28 +305,53 @@ public class PlayerController : VehicleBehaviour
     {
         _shortCutPulseEnabled = true;
         
-        if (side > 0)
+        float proximityFactor = Mathf.InverseLerp(70f, 5f, _distanceToShortcut);
+
+        float motorStrength = Mathf.Lerp(0.1f, 1f, proximityFactor);
+        
+        for (int i = 0; i < 5; i++)
         {
-            Gamepad.current.SetMotorSpeeds(1f * (GameManager.Instance.hapticsVolume / 100), 0);
+            if (side > 0)
+            {
+                Gamepad.current.SetMotorSpeeds(motorStrength * (GameManager.Instance.hapticsVolume / 100), 0);
+            }
+            else if (side < 0)
+            {
+                Gamepad.current.SetMotorSpeeds(0, motorStrength * (GameManager.Instance.hapticsVolume / 100));
+            }
+
+            yield return new WaitForSeconds(0.2f);
+
+            Gamepad.current.SetMotorSpeeds(0, 0);
+
+            yield return new WaitForSeconds(0.2f);
         }
-        else if (side < 0) 
+        
+        float playerKnotSide = GetKnotSide();
+                
+        if (playerKnotSide >0)
         {
-            Gamepad.current.SetMotorSpeeds(0, 1f * (GameManager.Instance.hapticsVolume / 100));
+            Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0); 
         }
-
-        yield return new WaitForSecondsRealtime(1f);
-
-        Gamepad.current.SetMotorSpeeds(0, 0);
-
-        yield return new WaitForSecondsRealtime(1f);
+        else if (playerKnotSide < -0)
+        {
+            Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));  
+        }
+        else
+        {
+            Gamepad.current.SetMotorSpeeds(0, 0); 
+        }
+        
+        yield return new WaitForSeconds(1f);
         
         _shortCutPulseEnabled = false;
     }
     
-    private void AdjustAudioBasedOnObstacles()
+    
+    private void AdjustHapticsBasedOnObstacles()
     {
-        bool leftBlocked = Physics.Raycast(transform.position, -transform.right, _audioRayLength);
-        bool rightBlocked = Physics.Raycast(transform.position, transform.right, _audioRayLength);
+        bool leftBlocked = Physics.Raycast(transform.position, -transform.right, _rayLength);
+        bool rightBlocked = Physics.Raycast(transform.position, transform.right, _rayLength);
 
         if (leftBlocked)
         {

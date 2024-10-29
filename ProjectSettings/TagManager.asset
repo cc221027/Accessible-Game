@@ -12,6 +12,7 @@ TagManager:
   - Opponent
   - PauseMenu
   - ShortCutSpline
+  - ShortCut
   layers:
   - Default
   - TransparentFX

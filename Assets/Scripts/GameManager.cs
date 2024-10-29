@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     public bool tutorial = false;
     public string winner;
+    public string playerCharacter;
     public string endTime;
 
     public float allVolume = 100f;
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
     public void SelectCharacter(int index)
     {
         selectedCharacterIndex = index;
+        playerCharacter = allCharacters[index].GetComponent<CharacterData>().characterName;
         SceneManager.LoadScene(trackSceneNames[SelectedTrackIndex]);
     }
     public void SelectTrack(int index)
