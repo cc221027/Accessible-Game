@@ -2577,7 +2577,6 @@ MonoBehaviour:
   uiToDisable:
   - {fileID: 362329969}
   - {fileID: 1011217515}
-  - {fileID: 0}
   - {fileID: 2113769257}
   - {fileID: 184552167}
   - {fileID: 1527367617}
@@ -2834,7 +2833,6 @@ MonoBehaviour:
   uiToDisable:
   - {fileID: 362329969}
   - {fileID: 1011217515}
-  - {fileID: 0}
   - {fileID: 2113769257}
   - {fileID: 184552167}
   - {fileID: 1527367617}
@@ -3115,7 +3113,6 @@ MonoBehaviour:
   uiToDisable:
   - {fileID: 362329969}
   - {fileID: 1011217515}
-  - {fileID: 0}
   - {fileID: 2113769257}
   - {fileID: 184552167}
   - {fileID: 1527367617}
@@ -3903,7 +3900,6 @@ MonoBehaviour:
   uiToDisable:
   - {fileID: 362329969}
   - {fileID: 1011217515}
-  - {fileID: 0}
   - {fileID: 2113769257}
   - {fileID: 184552167}
   - {fileID: 1527367617}
@@ -5885,7 +5881,6 @@ MonoBehaviour:
   uiToDisable:
   - {fileID: 362329969}
   - {fileID: 1011217515}
-  - {fileID: 0}
   - {fileID: 2113769257}
   - {fileID: 184552167}
   - {fileID: 1527367617}
@@ -6534,7 +6529,6 @@ MonoBehaviour:
   uiToDisable:
   - {fileID: 362329969}
   - {fileID: 1011217515}
-  - {fileID: 0}
   - {fileID: 2113769257}
   - {fileID: 184552167}
   - {fileID: 1527367617}
@@ -6856,7 +6850,6 @@ MonoBehaviour:
   uiToDisable:
   - {fileID: 362329969}
   - {fileID: 1011217515}
-  - {fileID: 0}
   - {fileID: 2113769257}
   - {fileID: 184552167}
   - {fileID: 1527367617}
@@ -7189,7 +7182,6 @@ MonoBehaviour:
   uiToDisable:
   - {fileID: 362329969}
   - {fileID: 1011217515}
-  - {fileID: 0}
   - {fileID: 2113769257}
   - {fileID: 184552167}
   - {fileID: 1527367617}
@@ -7470,7 +7462,6 @@ MonoBehaviour:
   uiToDisable:
   - {fileID: 362329969}
   - {fileID: 1011217515}
-  - {fileID: 0}
   - {fileID: 2113769257}
   - {fileID: 184552167}
   - {fileID: 1527367617}
@@ -7948,7 +7939,6 @@ GameObject:
   - component: {fileID: 2075483191}
   - component: {fileID: 2075483190}
   - component: {fileID: 2075483189}
-  - component: {fileID: 2075483192}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -8048,22 +8038,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075483187}
   m_CullTransparentMesh: 1
---- !u!114 &2075483192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2075483187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 609593eaa268b4144b958b9e88dc447f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panelRef: {fileID: 2075483187}
-  firstElementToHighlight: {fileID: 661680478}
-  uiToDisable: []
-  type: 0
 --- !u!1 &2106947305
 GameObject:
   m_ObjectHideFlags: 0

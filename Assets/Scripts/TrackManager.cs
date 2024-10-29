@@ -220,6 +220,7 @@ public class TrackManager : MonoBehaviour
         float heartbeatRate = Mathf.Lerp(0.5f, 2f, proximityFactor * speedFactor);
         
         heartbeatSource.pitch = heartbeatRate;
+        heartbeatSource.volume = 1.5f;
         
         if (!heartbeatSource.isPlaying)
         {

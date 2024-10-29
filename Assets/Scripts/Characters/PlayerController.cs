@@ -69,11 +69,11 @@ public class PlayerController : VehicleBehaviour
             {
                 float playerKnotSide = GetKnotSide();
                 
-                if (playerKnotSide >0)
+                if (playerKnotSide > 0)
                 {
                     Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0); 
                 }
-                else if (playerKnotSide < -0)
+                else if (playerKnotSide < 0)
                 {
                     Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));  
                 }

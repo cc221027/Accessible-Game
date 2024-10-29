@@ -74,6 +74,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
             _toggle.isOn = GameManager.Instance.toggleAccessibility;
             _toggle.onValueChanged.AddListener(delegate { ValueChanged(); });
         }
+        
     }
 
     private void Update()

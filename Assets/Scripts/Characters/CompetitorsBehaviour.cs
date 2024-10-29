@@ -19,7 +19,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
     public Transform itemInSight = null;
     private void Start()
     {
-        _aiSpeed = Random.Range(18, 23);
+        _aiSpeed = Random.Range(10, 15);
 
         GetNewKnotPosition();
     }

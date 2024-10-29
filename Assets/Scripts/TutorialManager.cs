@@ -208,12 +208,10 @@ public class TutorialManager : MonoBehaviour
             TMP_Text tmpText = element.GetComponentInChildren<TMP_Text>();
             content = tmpText.text;
             
-            float waitTime = content.Length * 0.2f;
+            float waitTime = content.Length * 0.15f;
             yield return new WaitForSecondsRealtime(waitTime);
             element.SetActive(false);
         }
         secondUIToDisable.SetActive(true);
-
     }
-    
 }

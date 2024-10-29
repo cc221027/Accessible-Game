@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     public void SelectCharacter(int index)
     {
         selectedCharacterIndex = index;
-        playerCharacter = allCharacters[index].GetComponent<CharacterData>().characterName;
+        playerCharacter = allCharacters[index].name;
         SceneManager.LoadScene(trackSceneNames[SelectedTrackIndex]);
     }
     public void SelectTrack(int index)
@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
     }
     public void OnReadUI()
     {
+        StopReadingUI();
         _stopReading = false;
         StartCoroutine(ReadUIElements());
     }
@@ -107,7 +108,7 @@ public class GameManager : MonoBehaviour
 
             
             element.SelectItem();
-        
+            
             string content = "";
             TMP_Text tmpText = element.GetComponentInChildren<TMP_Text>();
             
@@ -115,7 +116,7 @@ public class GameManager : MonoBehaviour
 
             if (!string.IsNullOrEmpty(content))
             {
-                float waitTime = content.Length * 0.2f / ttsSpeechRate;
+                float waitTime = content.Length * 0.1f / ttsSpeechRate;
                 Debug.Log(content.Length);
                 yield return new WaitForSecondsRealtime(waitTime);
             }
