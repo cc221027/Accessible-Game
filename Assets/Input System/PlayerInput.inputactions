@@ -42,15 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Drift",
-                    "type": "Value",
-                    "id": "53a604c7-cdaa-4f9d-965b-6e320320d93a",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "ItemUse",
                     "type": "Value",
                     "id": "06b7d310-67bd-4dde-ab34-300cea3f753c",
@@ -72,8 +63,8 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "eb51b75f-7fa0-4122-8175-ff97f03a3184",
-                    "path": "<DualSenseGamepadHID>/leftStick/x",
+                    "id": "de66014e-26b7-417f-831c-f3776e9543e0",
+                    "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -83,8 +74,8 @@
                 },
                 {
                     "name": "",
-                    "id": "b73b0034-a4cf-4236-93f7-5627946c6c33",
-                    "path": "<DualSenseGamepadHID>/rightTrigger",
+                    "id": "340312ff-5549-412e-bcb9-2873c9aa930b",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -95,7 +86,7 @@
                 {
                     "name": "",
                     "id": "21152c0d-6e72-4190-9d2f-0908b1525809",
-                    "path": "<DualSenseGamepadHID>/buttonEast",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -106,7 +97,7 @@
                 {
                     "name": "",
                     "id": "426fcb2a-53ab-4952-ab65-1a7709639d0c",
-                    "path": "<DualSenseGamepadHID>/buttonSouth",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -116,19 +107,8 @@
                 },
                 {
                     "name": "",
-                    "id": "967dba87-561f-48a8-bf02-26e2577132e2",
-                    "path": "<DualSenseGamepadHID>/buttonSouth",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Drift",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "67e3a747-7098-4cca-b62b-d63a47c53c34",
-                    "path": "<DualSenseGamepadHID>/leftTrigger",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -139,7 +119,7 @@
                 {
                     "name": "",
                     "id": "10049a88-0d8c-4e19-999c-e8bf7a4b8e6f",
-                    "path": "<DualSenseGamepadHID>/systemButton",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

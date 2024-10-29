@@ -19,33 +19,28 @@ public class PlayerController : VehicleBehaviour
     private float _steerInputValue;
     private float _accelerationInputValue;
     private float _decelerateValue;
-    private float _driftValue;
     private float _itemUseValue;
 
-    private bool _isDrifting;
-    private bool _driftEnded;
-    private float _driftSteerLock;
-
-    private PlayerInput _playerInput;
     
     private SplineContainer _currentSpline;
     public List<BezierKnot> checkedSplines;
 
     private bool _shortCutPulseEnabled;
-
-    private float _rangeToLeftOffroad;
-    private float _rangeToRightOffroad;
+    private bool _enteredShortcut;
     
     private int _previousPlacement = -1;
 
     private bool _playedRoundTwoAudio;
     private bool _playedFinalAudio;
+    
+    private float _audioRayLength = 5f;
+    private float _leftMotorStrength = 0.1f;
+    private float _rightMotorStrength = 0.2f;
 
     private GameObject _pausePanel;
 
     private void Start()
     {
-        _playerInput = GetComponent<PlayerInput>();
         _currentSpline = trackManagerRef.spline;
         
         _trackManager = TrackManager.Instance;
@@ -65,11 +60,11 @@ public class PlayerController : VehicleBehaviour
             {
                 if (playerKnotSide >0)
                 {
-                    Gamepad.current.SetMotorSpeeds(0.2f * (GameManager.Instance.hapticsVolume/100), 0); 
+                    Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0); 
                 }
                 else if (playerKnotSide < -0)
                 {
-                    Gamepad.current.SetMotorSpeeds(0, 0.2f * (GameManager.Instance.hapticsVolume/100));  
+                    Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));  
                 }
                 else
                 {
@@ -98,7 +93,7 @@ public class PlayerController : VehicleBehaviour
             
             GetClosestObstacleOnTrack();
             CheckForShortCut();
-        
+            AdjustAudioBasedOnObstacles();
         }
     }
 
@@ -149,11 +144,7 @@ public class PlayerController : VehicleBehaviour
         }
        
     }
-
-    private void OnDrift(InputValue value)
-    {
-        _driftValue = value.Get<float>();
-    }
+    
 
     private void OnJump(InputValue value)
     {
@@ -184,7 +175,6 @@ public class PlayerController : VehicleBehaviour
         float decelerationForce = _decelerateValue * 20;
         float accelerationForce = _accelerationInputValue * 20 * characterRef.characterAcceleration;
         float currentSpeed = _rb.velocity.magnitude;
-        _isDrifting = _driftValue > 0;
 
 
 
@@ -200,52 +190,22 @@ public class PlayerController : VehicleBehaviour
         }
 
         _trackManager.currentPlayerSpeed = Mathf.RoundToInt(currentSpeed);
+        
+        
+        
+           
 
-        if (_isDrifting && _isGrounded && currentSpeed >= 10 && !speedReduced)
+        if (_decelerateValue > 0 && currentSpeed <= maxSpeed)
         {
-            if (_steerInputValue != 0)
-            {
-                Vector3 targetVelocity = transform.forward * accelerationForce;
-                _rb.velocity = Vector3.Lerp(_rb.velocity, targetVelocity * 5, Time.fixedDeltaTime);
-            }
-
-
-            if (_driftSteerLock == 0)
-            {
-                _driftSteerLock = _steerInputValue;
-            }
-
-            if (_driftSteerLock < 0)
-            {
-                _steerInputValue = Mathf.Lerp(_steerInputValue, Mathf.Clamp(_steerInputValue, -1f, -0.3f), 0.7f);
-
-            }
-            else if (_driftSteerLock > 0)
-            {
-                _steerInputValue = Mathf.Lerp(_steerInputValue, Mathf.Clamp(_steerInputValue, 0.3f, 1f), 0.7f);
-            }
+            _rb.AddForce(-_rb.velocity.normalized * Mathf.Min(decelerationForce, currentSpeed), ForceMode.Acceleration);
         }
-        else
-        {
-            if (_driftSteerLock != 0)
-            {
-                _steerInputValue = _playerInput.actions["Steer"].ReadValue<float>();
-            }
-
-            _driftSteerLock = 0;
-
-            if (_decelerateValue > 0 && currentSpeed <= maxSpeed)
-            {
-                _rb.AddForce(-_rb.velocity.normalized * Mathf.Min(decelerationForce, currentSpeed),
-                    ForceMode.Acceleration);
-            }
-            else if (currentSpeed <= maxSpeed)
-            {
-                _rb.AddForce(transform.forward * accelerationForce, ForceMode.Acceleration);
-            }
+        else if (currentSpeed <= maxSpeed) 
+        { 
+            _rb.AddForce(transform.forward * accelerationForce, ForceMode.Acceleration);
         }
+        
 
-        float rotationMultiplier = _isDrifting && _isGrounded && !speedReduced ? 1.4f : 0.7f;
+        float rotationMultiplier = _isGrounded && !speedReduced ? 1.4f : 0.7f;
         float rotationAmount = _steerInputValue * 80f * rotationMultiplier * Time.fixedDeltaTime;
 
         transform.Rotate(0, rotationAmount, 0);
@@ -316,7 +276,7 @@ public class PlayerController : VehicleBehaviour
         {
             float distanceToShortcut = Vector3.Distance(transform.position, trackManagerRef.shortcutSpline.Spline[0].Position);
 
-            if (distanceToShortcut is > 5 and < 70 && !_shortCutPulseEnabled)
+            if (distanceToShortcut is > 5 and < 70 && !_shortCutPulseEnabled && !_enteredShortcut)
             {
                 
                 Vector3 nextKnot = trackManagerRef.shortcutSpline.Spline[0].Position;
@@ -328,10 +288,12 @@ public class PlayerController : VehicleBehaviour
             if (distanceToShortcut < 5)
             {
                 _currentSpline = trackManagerRef.shortcutSpline;
+                _enteredShortcut = true;
             }
-            else if (Vector3.Distance(transform.position,trackManagerRef.spline.Spline[GetClosestKnotIndex(trackManagerRef.spline)].Position) < 25)
+            else if (Vector3.Distance(transform.position,trackManagerRef.spline.Spline[GetClosestKnotIndex(trackManagerRef.spline)].Position) < 20 && _enteredShortcut && !_shortCutPulseEnabled)
             {
                 _currentSpline = trackManagerRef.spline;
+                _enteredShortcut = false;
             }
         }
     }
@@ -356,5 +318,28 @@ public class PlayerController : VehicleBehaviour
         yield return new WaitForSecondsRealtime(1f);
         
         _shortCutPulseEnabled = false;
+    }
+    
+    private void AdjustAudioBasedOnObstacles()
+    {
+        bool leftBlocked = Physics.Raycast(transform.position, -transform.right, _audioRayLength);
+        bool rightBlocked = Physics.Raycast(transform.position, transform.right, _audioRayLength);
+
+        if (leftBlocked)
+        {
+            _rightMotorStrength = 1f;
+            _leftMotorStrength = 0.1f;
+        }
+        else if (rightBlocked)
+        {
+            _leftMotorStrength = 1f;
+            _rightMotorStrength = 0.2f;
+        }
+        else
+        {
+            _leftMotorStrength = 0.1f;
+            _rightMotorStrength = 0.2f;
+        }
+        
     }
 }

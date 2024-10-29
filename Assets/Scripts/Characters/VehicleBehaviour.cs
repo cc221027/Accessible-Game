@@ -26,7 +26,6 @@ public class VehicleBehaviour : MonoBehaviour
     private AudioSource _offroadWarningAudio;
     private AudioSource _teleportBackAudio;
     
-    private AudioSource _driftingAudio;
     private AudioSource _carMotorAudioStill;
     private AudioSource _carMotorAudioStart;
     private AudioSource _carMotorAudioGoing;
@@ -46,7 +45,7 @@ public class VehicleBehaviour : MonoBehaviour
     protected AudioSource CollisionWarningAudio;
     
     
-    private AudioSource[] _audioSources;
+    protected AudioSource[] AudioSources;
 
     public void Awake()
     {
@@ -55,34 +54,33 @@ public class VehicleBehaviour : MonoBehaviour
         characterRef = GetComponent<CharacterData>();
         movementEnabled = false;
         
-        _audioSources = GetComponents<AudioSource>();
+        AudioSources = GetComponents<AudioSource>();
         
-        if (_audioSources.Length >= 2)
+        if (AudioSources.Length >= 2)
         {
-            _carMotorAudioStill = _audioSources[0];
-            _carMotorAudioStart = _audioSources[1];
-            _carMotorAudioGoing = _audioSources[2];
-            _driftingAudio = _audioSources[3];
+            _carMotorAudioStill = AudioSources[0];
+            _carMotorAudioStart = AudioSources[1];
+            _carMotorAudioGoing = AudioSources[2];
             
-            _offroadWarningAudio = _audioSources[4];
-            _teleportBackAudio = _audioSources[5];
+            _offroadWarningAudio = AudioSources[4];
+            _teleportBackAudio = AudioSources[5];
 
-            _jumpAudio = _audioSources[6];
-            _gearShiftAudio = _audioSources[7];
+            _jumpAudio = AudioSources[6];
+            _gearShiftAudio = AudioSources[7];
 
-            FirstPlaceAudio = _audioSources[8];
-            SecondPlaceAudio = _audioSources[9];
-            ThirdPlaceAudio = _audioSources[10];
-            FourthPlaceAudio = _audioSources[11];
-            RoundTwo = _audioSources[12];
-            FinalLapAudio = _audioSources[13];
+            FirstPlaceAudio = AudioSources[8];
+            SecondPlaceAudio = AudioSources[9];
+            ThirdPlaceAudio = AudioSources[10];
+            FourthPlaceAudio = AudioSources[11];
+            RoundTwo = AudioSources[12];
+            FinalLapAudio = AudioSources[13];
 
-            _collisionAudio = _audioSources[14];
+            _collisionAudio = AudioSources[14];
 
-            _landingAudio = _audioSources[15];
-            BrakingAudio = _audioSources[16];
+            _landingAudio = AudioSources[15];
+            BrakingAudio = AudioSources[16];
 
-            CollisionWarningAudio = _audioSources[17];
+            CollisionWarningAudio = AudioSources[17];
 
         }
         
