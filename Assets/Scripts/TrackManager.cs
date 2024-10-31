@@ -15,6 +15,8 @@ public class TrackManager : MonoBehaviour
     public static TrackManager Instance;
 
     private GameObject _player;
+
+    public bool paused;
     
     [SerializeField] private TextMeshProUGUI lapText;
     [SerializeField] private TextMeshProUGUI lapTextHeader;

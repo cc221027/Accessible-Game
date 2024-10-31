@@ -65,7 +65,7 @@ public class PlayerController : VehicleBehaviour
                 _distanceToShortcut = float.MaxValue;
             }
             
-            if (movementEnabled && !_shortCutPulseEnabled && _distanceToShortcut >= 70)
+            if (movementEnabled && !_shortCutPulseEnabled && _distanceToShortcut >= 70 && !trackManagerRef.paused)
             {
                 float playerKnotSide = GetKnotSide();
                 

@@ -93,6 +93,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
 
         if (_paused)
         {
+            TrackManager.Instance.paused = true;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>().enabled = false;
         }
         
@@ -124,6 +125,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
             EventSystem.current.SetSelectedGameObject(firstElementToHighlight);
         }
         panelRef.SetActive(false);
+        TrackManager.Instance.paused = false;
     }
 
     private void ValueChanged()
