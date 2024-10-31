@@ -1,13 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.Splines;
 
 public class TrackManager : MonoBehaviour
@@ -103,7 +100,9 @@ public class TrackManager : MonoBehaviour
 
     void SpawnCarts()
     {
-        
+        // Shuffle the spawnPoints list
+        spawnPoints = spawnPoints.OrderBy(x => UnityEngine.Random.value).ToList();
+
         SpawnSelectedCharacter(spawnPoints[0].position, spawnPoints[0].rotation);
 
         int opponentIndex = 0;

@@ -127,6 +127,19 @@ public class PlayerController : VehicleBehaviour
         Vector3 nextKnot = GetNextKnotPosition(closestIndex);
         
         Vector3 directionToNextKnot = (nextKnot - transform.position).normalized;
+        
+        float dotProduct = Vector3.Dot(transform.forward, directionToNextKnot);
+
+        // If the dot product is negative, the player is facing away from the next knot
+        if (dotProduct < 0 && !WrongDirectionAudio.isPlaying && !_enteredShortcut)
+        {
+            WrongDirectionAudio.Play(); 
+        }
+        else if(dotProduct >= 0)
+        {
+            WrongDirectionAudio.Stop(); 
+        }
+        
         Vector3 cross = Vector3.Cross(directionToNextKnot, transform.forward);
 
         return cross.y; 
@@ -289,7 +302,7 @@ public class PlayerController : VehicleBehaviour
                     StartCoroutine(PulseMotorForShortCut(cross.y));
                 }
             }
-            if (_distanceToShortcut < 5)
+            if (_distanceToShortcut < 10)
             {
                 _currentSpline = trackManagerRef.shortcutSpline;
                 _enteredShortcut = true;

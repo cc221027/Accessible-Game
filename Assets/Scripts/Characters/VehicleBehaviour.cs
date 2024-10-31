@@ -41,8 +41,10 @@ public class VehicleBehaviour : MonoBehaviour
 
     protected AudioSource RoundTwo;
     protected AudioSource FinalLapAudio;
+    
     private AudioSource _collisionAudio;
     protected AudioSource CollisionWarningAudio;
+    protected AudioSource WrongDirectionAudio;
     
     
     protected AudioSource[] AudioSources;
@@ -81,6 +83,8 @@ public class VehicleBehaviour : MonoBehaviour
             BrakingAudio = AudioSources[15];
 
             CollisionWarningAudio = AudioSources[16];
+
+            WrongDirectionAudio = AudioSources[17];
 
         }
         
