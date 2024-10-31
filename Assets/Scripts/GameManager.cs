@@ -17,6 +17,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    public bool beatenTrack1;
+    public bool beatenTrack2;
+    public bool beatenTrack3;
+    public bool beatenTrack4;
+    
     public int selectedCharacterIndex  = -1;
     
     public int SelectedTrackIndex { get; private set; } = -1;

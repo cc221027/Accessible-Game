@@ -33,10 +33,36 @@ public class RaceSelection : MonoBehaviour, ICancelHandler, ISelectHandler
             case Type.Track:
                 _trackIndex = transform.GetSiblingIndex();
                 GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Track));
+                switch (gameObject.name)
+                {
+                    case "Track4":
+                        if (GameManager.Instance.beatenTrack1 && GameManager.Instance.beatenTrack2 &&
+                            GameManager.Instance.beatenTrack3)
+                        {
+                            GetComponent<Button>().interactable = true;
+                        }
+                        else
+                        {
+                            GetComponent<Button>().interactable = false;
+                        }
+                        break;
+                }
                 break;
             case Type.Character:
                 _characterIndex = transform.GetSiblingIndex();
                 GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Character));
+                switch (gameObject.name)
+                {
+                    case "Officer Jenkins":
+                        GetComponent<Button>().interactable = GameManager.Instance.beatenTrack1;
+                        break;
+                    case "Russel":
+                        GetComponent<Button>().interactable = GameManager.Instance.beatenTrack2;
+                        break;
+                    case "Stella":
+                        GetComponent<Button>().interactable = GameManager.Instance.beatenTrack3;
+                        break;
+                }
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
