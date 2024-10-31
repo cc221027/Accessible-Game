@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour
     public int SelectedTrackIndex { get; private set; } = -1;
 
     private bool _readScreenPressed;
-    private bool _stopReading = false;
+    private bool _stopReading;
 
-    public bool tutorial = false;
+    public bool tutorial;
     public string winner;
     public string playerCharacter;
     public string endTime;

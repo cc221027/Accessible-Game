@@ -171,6 +171,7 @@ public class PlayerController : VehicleBehaviour
     {
         if (movementEnabled)
         {
+            Gamepad.current.SetMotorSpeeds(0,0);
             _pausePanel.SetActive(true);
             Time.timeScale = 0;
         }

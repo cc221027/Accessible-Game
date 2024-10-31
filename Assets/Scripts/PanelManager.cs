@@ -93,7 +93,6 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
 
         if (_paused)
         {
-            Gamepad.current.SetMotorSpeeds(0,0);
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>().enabled = false;
         }
         
@@ -108,6 +107,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
 
     public void OnCancel(BaseEventData eventData)
     {
+        
         AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Negative");
         AudioSource audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(clip);
@@ -116,6 +116,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         if (_paused)
         {
             Time.timeScale = 1;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>().enabled = true;
         }
         else
         {
