@@ -2496,10 +2496,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1037842596}
   m_HandleRect: {fileID: 794991108}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2938,10 +2938,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1966162297}
   m_HandleRect: {fileID: 894200985}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3515,23 +3515,23 @@ PrefabInstance:
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_UIInteract
       value: 
-      objectReference: {fileID: 8300000, guid: 228efacca0f36e446ae59b7e7d63130b, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_UIPopUpOpen
       value: 
-      objectReference: {fileID: 8300000, guid: b891607285afae746af02b8fbe796eab, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_UIFocusEnter
       value: 
-      objectReference: {fileID: 8300000, guid: b600d616dafd8754fa0411b32b896dee, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_UIFocusLeave
       value: 
-      objectReference: {fileID: 8300000, guid: ebbb690dfdc304a498a0b01e80019c34, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_UIPopUpClose
       value: 
-      objectReference: {fileID: 8300000, guid: 2f54e98b49b6d854994749fd6facb731, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_EditorOverride
       value: 1
@@ -3543,7 +3543,7 @@ PrefabInstance:
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_UIBoundsReached
       value: 
-      objectReference: {fileID: 8300000, guid: bc2878c91d381e348b6123c492b37355, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_UINavigationClick
       value: 
@@ -5986,10 +5986,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1561461731}
   m_HandleRect: {fileID: 259360778}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7381,10 +7381,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 2014341292}
   m_HandleRect: {fileID: 1112763102}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

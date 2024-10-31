@@ -313,10 +313,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1636140863723772281}
   m_HandleRect: {fileID: 6477220910642160332}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -392,12 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelRef: {fileID: 1052319996289821560}
   firstElementToHighlight: {fileID: 0}
-  uiToDisable:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  uiToDisable: []
   type: 8
 --- !u!82 &6885348295284598398
 AudioSource:
@@ -1688,12 +1683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelRef: {fileID: 1052319996289821560}
   firstElementToHighlight: {fileID: 0}
-  uiToDisable:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  uiToDisable: []
   type: 5
 --- !u!82 &3605542781671354482
 AudioSource:
@@ -2754,10 +2744,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 7672528636448039149}
   m_HandleRect: {fileID: 6551064505360635500}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2832,12 +2822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelRef: {fileID: 1052319996289821560}
   firstElementToHighlight: {fileID: 0}
-  uiToDisable:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  uiToDisable: []
   type: 2
 --- !u!82 &8122947501417815611
 AudioSource:
@@ -3383,10 +3368,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 6535033118155933604}
   m_HandleRect: {fileID: 494032433627884599}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3461,12 +3446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelRef: {fileID: 1052319996289821560}
   firstElementToHighlight: {fileID: 0}
-  uiToDisable:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  uiToDisable: []
   type: 1
 --- !u!82 &1502262482674270252
 AudioSource:
@@ -3651,10 +3631,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 6470411643359558316}
   m_HandleRect: {fileID: 8703134904298562547}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3729,12 +3709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelRef: {fileID: 1052319996289821560}
   firstElementToHighlight: {fileID: 0}
-  uiToDisable:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  uiToDisable: []
   type: 9
 --- !u!82 &3696201063494172433
 AudioSource:
@@ -6077,7 +6052,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -6590,12 +6565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelRef: {fileID: 1052319996289821560}
   firstElementToHighlight: {fileID: 0}
-  uiToDisable:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  uiToDisable: []
   type: 4
 --- !u!82 &6586227786359131940
 AudioSource:
@@ -6972,7 +6942,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7047,12 +7017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelRef: {fileID: 1052319996289821560}
   firstElementToHighlight: {fileID: 0}
-  uiToDisable:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  uiToDisable: []
   type: 3
 --- !u!82 &4899038024754195027
 AudioSource:

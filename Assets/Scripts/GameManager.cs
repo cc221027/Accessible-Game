@@ -132,6 +132,11 @@ public class GameManager : MonoBehaviour
         float dbValue = Mathf.Log10(allV / 100f) * 20f;
         masterMixer.SetFloat("masterVolume", dbValue);
         allVolume = allV;
+        
+        if (masterMixer.GetFloat("masterVolume", out float currentVolume))
+        {
+            Debug.Log("Current Master Volume (dB): " + currentVolume);
+        }
     }
     public void SetSfxVolume(float sfxV)
     {

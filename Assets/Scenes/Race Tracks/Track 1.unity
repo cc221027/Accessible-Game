@@ -3240,28 +3240,12 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2783874400632272157, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
-      propertyPath: uiToDisable.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3221568419980792926, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
-      propertyPath: uiToDisable.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3236737472212981854, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
-      propertyPath: uiToDisable.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3362001212330038507, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282491576811255830, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4315735337178681671, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
-      propertyPath: uiToDisable.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5723349486935053526, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
@@ -3271,10 +3255,6 @@ PrefabInstance:
     - target: {fileID: 5797375610150515116, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6086606826824915835, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
-      propertyPath: uiToDisable.Array.size
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6470411643359558316, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3296,10 +3276,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8526535620640618674, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
-      propertyPath: uiToDisable.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8692326331283975535, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3310,10 +3286,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8900113306866444193, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9217914657229661425, guid: f7a7fa4d02cc13a4486d9465dc7fba48, type: 3}
-      propertyPath: uiToDisable.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
