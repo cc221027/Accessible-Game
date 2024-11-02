@@ -24,6 +24,7 @@ public class RaceSelection : MonoBehaviour, ICancelHandler, ISelectHandler
 
     [Header("UI Elements")] 
     [SerializeField] private GameObject infoPanel;
+    [SerializeField] private GameObject notYetUnlockedPanel;
     [SerializeField] private GameObject[] disabledObjects;
     
     void Start()
@@ -32,40 +33,48 @@ public class RaceSelection : MonoBehaviour, ICancelHandler, ISelectHandler
         {
             case Type.Track:
                 _trackIndex = transform.GetSiblingIndex();
-                GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Track));
                 switch (gameObject.name)
                 {
                     case "Track4":
                         if (GameManager.Instance.beatenTrack1 && GameManager.Instance.beatenTrack2 &&
                             GameManager.Instance.beatenTrack3)
                         {
-                            GetComponent<Button>().interactable = true;
+                            GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Track));
                         }
-                        else
-                        {
-                            GetComponent<Button>().interactable = false;
-                        }
+                        break;
+                    default:
+                        GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Track));
                         break;
                 }
                 break;
             case Type.Character:
                 _characterIndex = transform.GetSiblingIndex();
-                GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Character));
                 switch (gameObject.name)
                 {
                     case "Officer Jenkins":
-                        GetComponent<Button>().interactable = GameManager.Instance.beatenTrack1;
+                        if (GameManager.Instance.beatenTrack1)
+                        {
+                            GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Track));
+                        }
+                                          
                         break;
                     case "Russel":
-                        GetComponent<Button>().interactable = GameManager.Instance.beatenTrack2;
+                        if (GameManager.Instance.beatenTrack2)
+                        {
+                            GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Track));
+                        }
                         break;
                     case "Stella":
-                        GetComponent<Button>().interactable = GameManager.Instance.beatenTrack3;
+                        if (GameManager.Instance.beatenTrack3)
+                        {
+                            GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Track));
+                        }
                         break;
                 }
                 break;
             default:
-                throw new ArgumentOutOfRangeException();
+                GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Character));
+                break;
         }
     }
 
@@ -88,7 +97,64 @@ public class RaceSelection : MonoBehaviour, ICancelHandler, ISelectHandler
     
     private void ShowInfoPanel()
     {
-        infoPanel.SetActive(true);
+
+        switch (gameObject.name)
+        {
+            case "Officer Jenkins":
+                if (GameManager.Instance.beatenTrack1)
+                {
+                    notYetUnlockedPanel.SetActive(false);
+                    infoPanel.SetActive(true);
+                }
+                else
+                {
+                    notYetUnlockedPanel.SetActive(true);
+                    infoPanel.SetActive(false);
+                }
+
+                break;
+            case "Russel":
+                if (GameManager.Instance.beatenTrack2)
+                {
+                    notYetUnlockedPanel.SetActive(false);
+                    infoPanel.SetActive(true);
+                }
+                else
+                {
+                    notYetUnlockedPanel.SetActive(true);
+                    infoPanel.SetActive(false);
+                }
+
+                break;
+            case "Stella":
+                if (GameManager.Instance.beatenTrack3)
+                {
+                    notYetUnlockedPanel.SetActive(false);
+                    infoPanel.SetActive(true);
+                }
+                else
+                {
+                    notYetUnlockedPanel.SetActive(true);
+                    infoPanel.SetActive(false);
+                }
+                break;
+            case "Track4":
+                if (GameManager.Instance.beatenTrack1 && GameManager.Instance.beatenTrack2 && GameManager.Instance.beatenTrack3)
+                {
+                    notYetUnlockedPanel.SetActive(false);
+                    infoPanel.SetActive(true);
+                }
+                else
+                {
+                    notYetUnlockedPanel.SetActive(true);
+                    infoPanel.SetActive(false);
+                }
+                break;
+            default:
+                infoPanel.SetActive(true);
+                break;
+        }
+        
         foreach (var element in disabledObjects)
         {
             element.SetActive(false);
