@@ -54,26 +54,26 @@ public class RaceSelection : MonoBehaviour, ICancelHandler, ISelectHandler
                     case "Officer Jenkins":
                         if (GameManager.Instance.beatenTrack1)
                         {
-                            GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Track));
+                            GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Character));
                         }
                                           
                         break;
                     case "Russel":
                         if (GameManager.Instance.beatenTrack2)
                         {
-                            GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Track));
+                            GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Character));
                         }
                         break;
                     case "Stella":
                         if (GameManager.Instance.beatenTrack3)
                         {
-                            GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Track));
+                            GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Character));
                         }
                         break;
+                    default:
+                        GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Character));
+                        break;
                 }
-                break;
-            default:
-                GetComponent<Button>().onClick.AddListener(() => HandleSelection(Type.Character));
                 break;
         }
     }

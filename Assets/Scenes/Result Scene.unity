@@ -1042,7 +1042,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2059,7 +2059,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.5568628, g: 0.5568628, b: 0.5568628, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2739,6 +2739,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1454416642}
     - target: {fileID: -4735414494002027917, guid: 8675f1420839fa5429cfc1af78de3686, type: 3}
+      propertyPath: confirmBtn
+      value: 
+      objectReference: {fileID: 156620061}
+    - target: {fileID: -4735414494002027917, guid: 8675f1420839fa5429cfc1af78de3686, type: 3}
       propertyPath: resultText
       value: 
       objectReference: {fileID: 1568106847}
@@ -2746,6 +2750,22 @@ PrefabInstance:
       propertyPath: winnerText
       value: 
       objectReference: {fileID: 770472759}
+    - target: {fileID: -4735414494002027917, guid: 8675f1420839fa5429cfc1af78de3686, type: 3}
+      propertyPath: unlockedRusselPanel
+      value: 
+      objectReference: {fileID: 1473772443}
+    - target: {fileID: -4735414494002027917, guid: 8675f1420839fa5429cfc1af78de3686, type: 3}
+      propertyPath: unlockedStellaPanel
+      value: 
+      objectReference: {fileID: 1851104537}
+    - target: {fileID: -4735414494002027917, guid: 8675f1420839fa5429cfc1af78de3686, type: 3}
+      propertyPath: unlockedTrack4Panel
+      value: 
+      objectReference: {fileID: 1684196519}
+    - target: {fileID: -4735414494002027917, guid: 8675f1420839fa5429cfc1af78de3686, type: 3}
+      propertyPath: unlockedOfficerJenkinsPanel
+      value: 
+      objectReference: {fileID: 1352726204}
     - target: {fileID: 4538702171757846940, guid: 8675f1420839fa5429cfc1af78de3686, type: 3}
       propertyPath: m_Name
       value: ResultManager
@@ -3033,7 +3053,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.5568628, g: 0.5568628, b: 0.5568628, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3221,7 +3241,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.5568628, g: 0.5568628, b: 0.5568628, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

@@ -29,54 +29,61 @@ public class MenuButtons : MonoBehaviour, ISelectHandler
 
     private void HandleButtonClick()
     {
-        // switch (gameObject.name)
-        // {
-        //     case "Officer Jenkins":
-        //         if (!GameManager.Instance.beatenTrack1)
-        //         {
-        //             AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Bounds Reached");
-        //             AudioSource audioSource = GetComponent<AudioSource>();
-        //             audioSource.PlayOneShot(clip);
-        //             audioSource.volume = 0.5f;
-        //         }
-        //         break;
-        //     case "Russel":
-        //         if (!GameManager.Instance.beatenTrack2)
-        //         {
-        //             AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Bounds Reached");
-        //             AudioSource audioSource = GetComponent<AudioSource>();
-        //             audioSource.PlayOneShot(clip);
-        //             audioSource.volume = 0.5f;
-        //         }
-        //         break;
-        //     case "Stella":
-        //         if (!GameManager.Instance.beatenTrack3)
-        //         {
-        //             AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Bounds Reached");
-        //             AudioSource audioSource = GetComponent<AudioSource>();
-        //             audioSource.PlayOneShot(clip);
-        //             audioSource.volume = 0.5f;
-        //         }
-        //         break;
-        //     case "Track4":
-        //         if (!GameManager.Instance.beatenTrack1 || !GameManager.Instance.beatenTrack2 || !GameManager.Instance.beatenTrack3)
-        //         {
-        //             AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Bounds Reached");
-        //             AudioSource audioSource = GetComponent<AudioSource>();
-        //             audioSource.PlayOneShot(clip);
-        //             audioSource.volume = 0.5f;
-        //         }
-        //         break;
-        //     default:
-        //             AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Focus Enter");
-        //             AudioSource audioSource = GetComponent<AudioSource>();
-        //             audioSource.PlayOneShot(clip);
-        //             audioSource.volume = 0.5f;
-        //         break;
-        // }
-        
-        
-        
+        AudioClip clip = null;  // Declare the AudioClip once
+        AudioSource audioSource = GetComponent<AudioSource>();
+
+        switch (gameObject.name)
+        {
+            case "Officer Jenkins":
+                if (!GameManager.Instance.beatenTrack1)
+                {
+                    clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Bounds Reached");
+                }
+                else
+                {
+                    clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Focus Enter");
+                }
+                break;
+            case "Russel":
+                if (!GameManager.Instance.beatenTrack2)
+                {
+                    clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Bounds Reached");
+                }
+                else
+                {
+                    clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Focus Enter");
+                }
+                break;
+            case "Stella":
+                if (!GameManager.Instance.beatenTrack3)
+                {
+                    clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Bounds Reached");
+                }
+                else
+                {
+                    clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Focus Enter");
+                }
+                break;
+            case "Track4":
+                if (!GameManager.Instance.beatenTrack1 || !GameManager.Instance.beatenTrack2 || !GameManager.Instance.beatenTrack3)
+                {
+                    clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Bounds Reached");
+                }
+                else
+                {
+                    clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Focus Enter");
+                }
+                break;
+            default:
+                clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Focus Enter");
+                break;
+        }
+
+        if (clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+            audioSource.volume = 0.5f;
+        }
         
         switch (action)
         {
