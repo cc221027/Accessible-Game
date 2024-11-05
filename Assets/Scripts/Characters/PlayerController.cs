@@ -69,11 +69,11 @@ public class PlayerController : VehicleBehaviour
             {
                 float playerKnotSide = GetKnotSide();
                 
-                if (playerKnotSide > 0)
+                if (playerKnotSide > 0 && _rb.velocity.magnitude > 1)
                 {
                     Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0); 
                 }
-                else if (playerKnotSide < 0)
+                else if (playerKnotSide < 0 && _rb.velocity.magnitude > 1)
                 {
                     Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));  
                 }
@@ -325,11 +325,11 @@ public class PlayerController : VehicleBehaviour
         
         for (int i = 0; i < 5; i++)
         {
-            if (side > 0)
+            if (side > 0 && _rb.velocity.magnitude > 1)
             {
                 Gamepad.current.SetMotorSpeeds(motorStrength * (GameManager.Instance.hapticsVolume / 100), 0);
             }
-            else if (side < 0)
+            else if (side < 0 && _rb.velocity.magnitude > 1)
             {
                 Gamepad.current.SetMotorSpeeds(0, motorStrength * (GameManager.Instance.hapticsVolume / 100));
             }
@@ -343,11 +343,11 @@ public class PlayerController : VehicleBehaviour
         
         float playerKnotSide = GetKnotSide();
                 
-        if (playerKnotSide >0)
+        if (playerKnotSide > 0 && _rb.velocity.magnitude > 1)
         {
             Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0); 
         }
-        else if (playerKnotSide < -0)
+        else if (playerKnotSide < 0 && _rb.velocity.magnitude > 1)
         {
             Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));  
         }
