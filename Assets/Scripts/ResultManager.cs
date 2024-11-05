@@ -80,6 +80,8 @@ public class ResultManager : MonoBehaviour
         winnerText.text = GameManager.Instance.winner;
         timeText.text = GameManager.Instance.endTime;
         Gamepad.current.SetMotorSpeeds(0,0);
+        
+        SaveSystem.SavePlayer(GameManager.Instance);
     }
 
     public void ConfirmUnlock()

@@ -60,7 +60,17 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    private void Start()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        beatenTrack1 = data.beatenTrack1;
+        beatenTrack2 = data.beatenTrack2;
+        beatenTrack3 = data.beatenTrack3;
+        beatenTrack4 = data.beatenTrack4;
+    }
+
 
     public void LoadScene(string sceneName)
     {
