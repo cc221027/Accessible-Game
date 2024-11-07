@@ -125,7 +125,10 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
             EventSystem.current.SetSelectedGameObject(firstElementToHighlight);
         }
         panelRef.SetActive(false);
-        TrackManager.Instance.paused = false;
+        if (TrackManager.Instance != null)
+        {
+            TrackManager.Instance.paused = false;
+        }
     }
 
     private void ValueChanged()

@@ -126,6 +126,7 @@ public class GameManager : MonoBehaviour
 
             
             element.SelectItem();
+            EventSystem.current.SetSelectedGameObject(element.gameObject);
             
             string content = "";
             TMP_Text tmpText = element.GetComponentInChildren<TMP_Text>();

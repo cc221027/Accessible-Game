@@ -19,7 +19,7 @@ public class VehicleBehaviour : MonoBehaviour
     [HideInInspector] public bool movementEnabled;
 
     
-    [HideInInspector] public int maxSpeed = 50;
+    [HideInInspector] public int maxSpeed = 30;
     private  int _jumpingPower = 15;
     [HideInInspector] public GameObject inventoryItem;
 
@@ -108,7 +108,7 @@ public class VehicleBehaviour : MonoBehaviour
             {
                 characterRef.characterAcceleration = characterRef.baseCharacterAcceleration;
                 speedReduced = false;
-                maxSpeed = 50;
+                maxSpeed = 30;
             }
         }
         else if (other.gameObject.CompareTag("Offroad"))
@@ -125,7 +125,7 @@ public class VehicleBehaviour : MonoBehaviour
             {
                 characterRef.characterAcceleration *= 0.8f;
                 speedReduced = true;
-                maxSpeed = 25;
+                maxSpeed = 15;
                 StartCoroutine(ReturnToCheckPoint());
             }
         } 
@@ -143,7 +143,7 @@ public class VehicleBehaviour : MonoBehaviour
             {
                 characterRef.characterAcceleration *= 0.8f;
                 speedReduced = true;
-                maxSpeed = 25;
+                maxSpeed = 15;
             }
         } 
         else if (other.gameObject.CompareTag("Item Wall") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Opponent"))

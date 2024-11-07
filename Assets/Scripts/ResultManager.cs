@@ -30,6 +30,10 @@ public class ResultManager : MonoBehaviour
     void Start()
     {
         resultText.text = GameManager.Instance.playerCharacter == GameManager.Instance.winner ? "You WON" : "You LOST";
+        
+        Debug.Log(GameManager.Instance.playerCharacter);
+        Debug.Log(GameManager.Instance.winner);
+        
         if (GameManager.Instance.playerCharacter == GameManager.Instance.winner)
         {
             switch (GameManager.Instance.SelectedTrackIndex)
@@ -38,7 +42,6 @@ public class ResultManager : MonoBehaviour
                     if (!GameManager.Instance.beatenTrack1)
                     {
                         GameManager.Instance.beatenTrack1 = true;
-                        //Save game data
                         unlockedOfficerJenkinsPanel.SetActive(true);
                         EventSystem.current.SetSelectedGameObject(unlockedOfficerJenkinsPanel
                             .GetComponentInChildren<Button>().gameObject);
@@ -48,7 +51,6 @@ public class ResultManager : MonoBehaviour
                     if (!GameManager.Instance.beatenTrack2)
                     {
                         GameManager.Instance.beatenTrack2 = true;
-                        //Save game data
                         unlockedRusselPanel.SetActive(true);
                         EventSystem.current.SetSelectedGameObject(unlockedRusselPanel
                             .GetComponentInChildren<Button>().gameObject);
@@ -58,7 +60,6 @@ public class ResultManager : MonoBehaviour
                     if (!GameManager.Instance.beatenTrack3)
                     {
                         GameManager.Instance.beatenTrack3 = true;
-                        //Save game data
                         unlockedStellaPanel.SetActive(true);
                         EventSystem.current.SetSelectedGameObject(unlockedStellaPanel
                             .GetComponentInChildren<Button>().gameObject);
@@ -68,7 +69,6 @@ public class ResultManager : MonoBehaviour
                     if(GameManager.Instance.beatenTrack1 && GameManager.Instance.beatenTrack2 && GameManager.Instance.beatenTrack3 && !_unlockedAll)
                     {
                         GameManager.Instance.beatenTrack4 = true;
-                        //Save game data
                         unlockedTrack4Panel.SetActive(true);
                         EventSystem.current.SetSelectedGameObject(unlockedTrack4Panel
                             .GetComponentInChildren<Button>().gameObject);

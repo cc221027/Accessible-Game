@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MenuButtons : MonoBehaviour, ISelectHandler
+public class MenuButtons : MonoBehaviour
 {
     
     
@@ -25,6 +27,17 @@ public class MenuButtons : MonoBehaviour, ISelectHandler
         Button button = GetComponent<Button>();
         
         button.onClick.AddListener(HandleButtonClick);
+    }
+
+    private void Update()
+    {
+        if (Gamepad.current != null)
+        {
+            if (Mathf.Abs(Gamepad.current.leftStick.ReadValue().y) > 0.1f)
+            {
+                GameManager.Instance.StopReadingUI();  
+            }
+        }
     }
 
     private void HandleButtonClick()
@@ -91,6 +104,7 @@ public class MenuButtons : MonoBehaviour, ISelectHandler
                 break;
             case ButtonAction.LoadTutorial:
                 GameManager.Instance.selectedCharacterIndex = 0;
+                GameManager.Instance.playerCharacter = "Jimmy";
                 GameManager.Instance.tutorial = true;
                 LoadScene("Tutorial");
                 break;
@@ -114,14 +128,5 @@ public class MenuButtons : MonoBehaviour, ISelectHandler
         }
     }
 
-    public void OnSelect(BaseEventData data)
-    {
-        AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Interact");
-        AudioSource audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(clip);
-        audioSource.volume = 0.5f;
-        
-        gameObject.GetComponent<UAP_BaseElement>().SelectItem();
-        GameManager.Instance.StopReadingUI();
-    }
+   
 }

@@ -130,7 +130,6 @@ public class PlayerController : VehicleBehaviour
         
         float dotProduct = Vector3.Dot(transform.forward, directionToNextKnot);
 
-        // If the dot product is negative, the player is facing away from the next knot
         if (dotProduct < 0 && !WrongDirectionAudio.isPlaying && !_enteredShortcut)
         {
             WrongDirectionAudio.Play(); 
@@ -214,7 +213,7 @@ public class PlayerController : VehicleBehaviour
         }
         else if (currentSpeed <= maxSpeed) 
         { 
-            _rb.velocity = Vector3.Lerp(_rb.velocity, transform.forward * Mathf.Clamp(accelerationForce * 2 * Mathf.Clamp01(1 - (_rb.velocity.magnitude / 1000)), 0, maxSpeed), Time.fixedDeltaTime);
+            _rb.velocity = Vector3.Lerp(_rb.velocity, transform.forward * (maxSpeed * accelerationForce), Time.fixedDeltaTime * 0.05f);
         }
         
 
@@ -364,9 +363,20 @@ public class PlayerController : VehicleBehaviour
     
     private void AdjustHapticsBasedOnObstacles()
     {
+        bool frontBlocked = Physics.Raycast(transform.position, transform.forward, _rayLength);
+        bool backBlocked = Physics.Raycast(transform.position, -transform.right, _rayLength);
         bool leftBlocked = Physics.Raycast(transform.position, -transform.right, _rayLength);
         bool rightBlocked = Physics.Raycast(transform.position, transform.right, _rayLength);
 
+        if (frontBlocked || backBlocked)
+        {
+            _rayLength = 4;
+        }
+        else
+        {
+            _rayLength = 2;
+        }
+        
         if (leftBlocked)
         {
             _rightMotorStrength = 1f;
@@ -382,6 +392,5 @@ public class PlayerController : VehicleBehaviour
             _leftMotorStrength = 0.1f;
             _rightMotorStrength = 0.2f;
         }
-        
     }
 }

@@ -19,7 +19,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
     public Transform itemInSight = null;
     private void Start()
     {
-        _aiSpeed = Random.Range(10, 15);
+        _aiSpeed = Random.Range(20, 25);
 
         GetNewKnotPosition();
     }
@@ -85,7 +85,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
         }
         else
         {
-            _knotTargetPosition = new Vector3(trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.x,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.y,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.z) + transform.right * Random.Range(-5,5);
+            _knotTargetPosition = new Vector3(trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.x,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.y,trackManagerRef.spline.Spline[characterRef.checkPointsReached].Position.z) + transform.right * Random.Range(-3,3);
         }
 
     }

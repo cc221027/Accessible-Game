@@ -158,7 +158,7 @@ MonoBehaviour:
   trackManagerRef: {fileID: 0}
   characterRef: {fileID: 0}
   movementEnabled: 0
-  maxSpeed: 50
+  maxSpeed: 30
   inventoryItem: {fileID: 0}
   checkedSplines: []
 --- !u!114 &-7717413742205276582
@@ -230,7 +230,7 @@ MonoBehaviour:
   trackManagerRef: {fileID: 0}
   characterRef: {fileID: 0}
   movementEnabled: 0
-  maxSpeed: 50
+  maxSpeed: 30
   inventoryItem: {fileID: 0}
   isNearCorner: 0
   itemInSight: {fileID: 0}

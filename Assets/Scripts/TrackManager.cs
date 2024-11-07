@@ -100,7 +100,6 @@ public class TrackManager : MonoBehaviour
 
     void SpawnCarts()
     {
-        // Shuffle the spawnPoints list
         spawnPoints = spawnPoints.OrderBy(x => UnityEngine.Random.value).ToList();
 
         SpawnSelectedCharacter(spawnPoints[0].position, spawnPoints[0].rotation);

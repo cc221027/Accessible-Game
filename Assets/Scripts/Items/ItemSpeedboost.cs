@@ -35,7 +35,7 @@ public class ItemSpeedboost : ItemBase
         _vehicleRef.maxSpeed = 60;
         _characterRef.characterAcceleration *= 2;
         yield return new WaitForSeconds(1.5f);
-        _vehicleRef.maxSpeed = 50;
+        _vehicleRef.maxSpeed = 30;
         _characterRef.characterAcceleration = _characterRef.baseCharacterAcceleration;
         Destroy(gameObject);
     }

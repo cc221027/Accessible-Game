@@ -30,6 +30,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private AudioSource jumpAudio;
     [SerializeField] private AudioSource landingAudio;
     [SerializeField] private GameObject jumpButton;
+
+    private GameObject _competitorRef;
     
     private float _accelerationInputValue;
 
@@ -47,6 +49,12 @@ public class TutorialManager : MonoBehaviour
         foreach (GameObject uiElement in uiToDisable) { uiElement.SetActive(false); }
         EventSystem.current.SetSelectedGameObject(button1ToFocus);
         Time.timeScale = 0;
+    }
+
+    private void Start()
+    {
+        _competitorRef = FindObjectOfType<CompetitorsBehaviour>().gameObject;
+        _competitorRef.GetComponent<CompetitorsBehaviour>().maxSpeed = 26;
     }
 
     public void StartPageTurnCoroutine()
