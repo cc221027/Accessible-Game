@@ -97,6 +97,14 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>().enabled = false;
         }
         
+        if (Gamepad.current != null)
+        {
+            if (Mathf.Abs(Gamepad.current.leftStick.ReadValue().y) > 0.1f)
+            {
+                GameManager.Instance.StopReadingUI();  
+            }
+        }
+        
     }
 
     public void HandleButtonClick()
@@ -176,7 +184,6 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         audioSource.volume = 0.5f;
         
         gameObject.GetComponent<UAP_BaseElement>().SelectItem();
-        GameManager.Instance.StopReadingUI();
     }
 
 }

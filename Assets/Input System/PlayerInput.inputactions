@@ -154,6 +154,17 @@
                     "action": "ReadUI",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2536fe2-cfe3-4c25-a245-88f75660659b",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ReadUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

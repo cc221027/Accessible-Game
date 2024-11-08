@@ -15,10 +15,9 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject page3;
     [SerializeField] private GameObject page4;
     
-    [SerializeField] private GameObject button1ToFocus;
-    [SerializeField] private GameObject button2ToFocus;
-    [SerializeField] private GameObject button3ToFocus;
-    [SerializeField] private GameObject button4ToFocus;
+    [SerializeField] private GameObject page2ToFocus;
+    [SerializeField] private GameObject page3ToFocus;
+    [SerializeField] private GameObject page4ToFocus;
 
     [SerializeField] private List<GameObject> uiToDisable;
     [SerializeField] private GameObject secondUIToDisable;
@@ -47,7 +46,6 @@ public class TutorialManager : MonoBehaviour
     {
         tutorialPanel.SetActive(true);
         foreach (GameObject uiElement in uiToDisable) { uiElement.SetActive(false); }
-        EventSystem.current.SetSelectedGameObject(button1ToFocus);
         Time.timeScale = 0;
     }
 
@@ -66,18 +64,21 @@ public class TutorialManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.1f);
         _pageCount++;
-
+        
         switch (_pageCount)
         {
             case 2:
                 page1.SetActive(false);
                 page2.SetActive(true);
-                EventSystem.current.SetSelectedGameObject(button2ToFocus);
+                EventSystem.current.SetSelectedGameObject(page2ToFocus);
+                yield return new WaitForSecondsRealtime(0.2f);
+                page2ToFocus.GetComponent<UAP_BaseElement>().SelectItem();
                 break;
             case 3:
                 page2.SetActive(false);
                 page3.SetActive(true);
-                EventSystem.current.SetSelectedGameObject(button3ToFocus);
+                EventSystem.current.SetSelectedGameObject(page3ToFocus);
+                page3ToFocus.GetComponent<UAP_BaseElement>().SelectItem();
                 break;
             case 4:
                 page3.SetActive(false);
@@ -85,7 +86,8 @@ public class TutorialManager : MonoBehaviour
                 _testingAcceleration = false;
                 _testingDeceleration = false;
                 _testingJumping = false;
-                EventSystem.current.SetSelectedGameObject(button4ToFocus);
+                EventSystem.current.SetSelectedGameObject(page4ToFocus);
+                page4ToFocus.GetComponent<UAP_BaseElement>().SelectItem();
                 break;
         }
         

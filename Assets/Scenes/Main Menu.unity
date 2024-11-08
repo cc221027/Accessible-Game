@@ -943,7 +943,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: 3
+  m_ManualPositionOrder: 2
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0
@@ -2842,7 +2842,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: -1
+  m_ManualPositionOrder: 1
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0
@@ -3176,7 +3176,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: -1
+  m_ManualPositionOrder: 2
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0
@@ -3378,7 +3378,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: -1
+  m_ManualPositionOrder: 6
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0
@@ -4165,7 +4165,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: -1
+  m_ManualPositionOrder: 4
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0
@@ -4979,7 +4979,7 @@ MonoBehaviour:
   m_PrefixIsLocalizationKey: 0
   m_PrefixIsPostFix: 0
   m_FilterText: 1
-  m_Text: Single Mode
+  m_Text: Race Mode
   m_NameLabel: {fileID: 413191875}
   m_AdditionalNameLabels: []
   m_TestList: []
@@ -6237,7 +6237,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: -1
+  m_ManualPositionOrder: 0
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0
@@ -7139,7 +7139,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: -1
+  m_ManualPositionOrder: 7
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0
@@ -7551,7 +7551,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: -1
+  m_ManualPositionOrder: 5
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0
@@ -7753,7 +7753,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: -1
+  m_ManualPositionOrder: 3
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0
@@ -8583,7 +8583,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ForceStartHere: 0
-  m_ManualPositionOrder: 2
+  m_ManualPositionOrder: 1
   m_ManualPositionParent: {fileID: 0}
   m_UseTargetForOutline: 0
   m_PositionOrder: 0

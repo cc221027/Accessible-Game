@@ -846,7 +846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PopUp: 1
   m_AllowExternalJoining: 0
-  m_AutoRead: 1
+  m_AutoRead: 0
   m_Priority: 0
   m_ContainerName: 
   m_IsLocalizationKey: 0
@@ -3289,10 +3289,9 @@ MonoBehaviour:
   page2: {fileID: 665019610}
   page3: {fileID: 1421076969}
   page4: {fileID: 1791472182}
-  button1ToFocus: {fileID: 497008432}
-  button2ToFocus: {fileID: 1688393815}
-  button3ToFocus: {fileID: 858327409}
-  button4ToFocus: {fileID: 1343438181}
+  page2ToFocus: {fileID: 1429302859}
+  page3ToFocus: {fileID: 1228945394}
+  page4ToFocus: {fileID: 594955048}
   uiToDisable:
   - {fileID: 470949345}
   - {fileID: 470949344}

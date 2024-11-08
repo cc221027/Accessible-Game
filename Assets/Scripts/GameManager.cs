@@ -128,21 +128,14 @@ public class GameManager : MonoBehaviour
             element.SelectItem();
             EventSystem.current.SetSelectedGameObject(element.gameObject);
             
-            string content = "";
-            TMP_Text tmpText = element.GetComponentInChildren<TMP_Text>();
+         
+            yield return new WaitForSecondsRealtime(2f); // Wait for a short time before checking and for some reason, this works
             
-            if (tmpText != null) { content = tmpText.text; }
-
-            if (!string.IsNullOrEmpty(content))
+            while (UAP_AccessibilityManager.IsSpeaking()) // Check if speech is still playing
             {
-                float waitTime = content.Length * 0.1f / ttsSpeechRate;
-                Debug.Log(content.Length);
-                yield return new WaitForSecondsRealtime(waitTime);
+                yield return null;
             }
-            else
-            {
-                yield return new WaitForSecondsRealtime(1.5f);
-            }
+         
         }
     }
 
