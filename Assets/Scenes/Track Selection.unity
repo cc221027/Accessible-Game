@@ -181,12 +181,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1336809670}
+    m_SelectOnDown: {fileID: 704350557}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 391179317}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_PrefixIsLocalizationKey: 0
   m_PrefixIsPostFix: 0
   m_FilterText: 1
-  m_Text: Midnight Madness
+  m_Text: Select Midnight Madness
   m_NameLabel: {fileID: 1598662520}
   m_AdditionalNameLabels: []
   m_TestList: []
@@ -329,8 +329,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press down button to select. Press right button to cancel. Press in right
-    stick for info.
+  m_Hint: Press down face button to select. Press right face button to cancel. Move
+    left stick to the right for track info. Press in right stick for info.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -606,7 +606,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -834,11 +834,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 749036627}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 268050825}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -1180,7 +1180,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -1308,11 +1308,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnDown: {fileID: 1659950366}
+    m_SelectOnLeft: {fileID: 268050825}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -1394,12 +1394,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 704350557}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 193361881}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1528,7 +1528,7 @@ MonoBehaviour:
   m_PrefixIsLocalizationKey: 0
   m_PrefixIsPostFix: 0
   m_FilterText: 1
-  m_Text: Winter Wonderforest
+  m_Text: Select Winter Wonderforest
   m_NameLabel: {fileID: 704374755}
   m_AdditionalNameLabels: []
   m_TestList: []
@@ -1541,8 +1541,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press down button to select. Press right button to cancel. Press in right
-    stick for info.
+  m_Hint: Press down face button to select. Press right face button to cancel. Move
+    left stick to the right for track info. Press in right stick for info.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -1915,7 +1915,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -2043,11 +2043,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnDown: {fileID: 1911510484}
+    m_SelectOnLeft: {fileID: 31544081}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -2530,12 +2530,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 31544081}
+    m_SelectOnDown: {fileID: 268050825}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 1631751033}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2665,7 +2665,7 @@ MonoBehaviour:
   m_PrefixIsLocalizationKey: 0
   m_PrefixIsPostFix: 0
   m_FilterText: 1
-  m_Text: Tropical Beach
+  m_Text: Select Tropical Beach
   m_NameLabel: {fileID: 810642492}
   m_AdditionalNameLabels: []
   m_TestList: []
@@ -2678,8 +2678,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press down button to select. Press right button to cancel. Press in right
-    stick for info.
+  m_Hint: Press down face button to select. Press right face button to cancel. Move
+    left stick to the right for track info. Press in right stick for info.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -3017,7 +3017,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -3242,11 +3242,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnDown: {fileID: 104399138}
+    m_SelectOnLeft: {fileID: 268050825}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -3718,10 +3718,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 1336809670}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -4390,7 +4390,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -4518,11 +4518,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 1462754361}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 1336809670}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -4677,12 +4677,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 828537291}
+    m_SelectOnDown: {fileID: 31544081}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 1462754361}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4812,7 +4812,7 @@ MonoBehaviour:
   m_PrefixIsLocalizationKey: 0
   m_PrefixIsPostFix: 0
   m_FilterText: 1
-  m_Text: Sunset Sands
+  m_Text: Select Sunset Sands
   m_NameLabel: {fileID: 980090755}
   m_AdditionalNameLabels: []
   m_TestList: []
@@ -4825,8 +4825,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press down button to select. Press right button to cancel. Press in right
-    stick for info.
+  m_Hint: Press down face button to select. Press right face button to cancel. Move
+    left stick to the right for track info. Press in right stick for info.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -5364,7 +5364,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -5492,11 +5492,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnDown: {fileID: 1200519544}
+    m_SelectOnLeft: {fileID: 1336809670}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -5705,7 +5705,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -5833,11 +5833,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 1631751033}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 704350557}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -6257,7 +6257,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -6385,11 +6385,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnDown: {fileID: 1497517942}
+    m_SelectOnLeft: {fileID: 704350557}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -6598,7 +6598,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -6726,11 +6726,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 193361881}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 268050825}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -6939,7 +6939,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -7067,11 +7067,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 391179317}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 31544081}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:

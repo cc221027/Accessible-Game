@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -1240,7 +1240,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -1587,8 +1587,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press down button to select. Press right button to cancel. Press in right
-    stick for info.
+  m_Hint: Press down face button to select. Press right face button to cancel. Move
+    left stick to the right for character info. Press in right stick for info.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -2138,7 +2138,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -2912,7 +2912,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -3488,8 +3488,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press down button to select. Press right button to cancel. Press in right
-    stick for info.
+  m_Hint: Press down face button to select. Press right face button to cancel. Move
+    left stick to the right for character info. Press in right stick for info.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -4189,7 +4189,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -4536,8 +4536,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press down button to select. Press right button to cancel. Press in right
-    stick for info.
+  m_Hint: Press down face button to select. Press right face button to cancel. Move
+    left stick to the right for character info. Press in right stick for info.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -5090,7 +5090,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -5646,7 +5646,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -6067,7 +6067,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -6481,7 +6481,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -6825,7 +6825,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -7166,7 +7166,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -7867,7 +7867,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -8209,7 +8209,7 @@ MonoBehaviour:
   m_Type: 2
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Text.
+  m_Hint: Text. Move left stick to the left to return to selection.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -8553,8 +8553,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press down button to select. Press right button to cancel. Press in right
-    stick for info.
+  m_Hint: Press down face button to select. Press right face button to cancel. Move
+    left stick to the right for character info. Press in right stick for info.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
