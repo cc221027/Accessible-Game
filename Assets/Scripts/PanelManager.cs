@@ -139,6 +139,32 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         }
     }
 
+    public void ResumeGame()
+    {
+        AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Negative");
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(clip);
+        audioSource.volume = 0.5f;
+        
+        Time.timeScale = 1;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>().enabled = true;
+        panelRef.SetActive(false);
+        TrackManager.Instance.paused = false;
+    }
+
+    public void ExitSettings()
+    {
+        AudioClip clip = (AudioClip)Resources.Load("Audio/Menu/Navigation/Negative");
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(clip);
+        audioSource.volume = 0.5f;
+        
+        foreach (var element in uiToDisable) { element.SetActive(true); }
+        EventSystem.current.SetSelectedGameObject(firstElementToHighlight);
+        
+        panelRef.SetActive(false);
+    }
+
     private void ValueChanged()
     {
         switch (type)

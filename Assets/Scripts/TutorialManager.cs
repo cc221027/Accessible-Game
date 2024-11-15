@@ -15,6 +15,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject page3;
     [SerializeField] private GameObject page4;
     
+    [SerializeField] private GameObject page1ToFocus;
     [SerializeField] private GameObject page2ToFocus;
     [SerializeField] private GameObject page3ToFocus;
     [SerializeField] private GameObject page4ToFocus;
@@ -55,21 +56,37 @@ public class TutorialManager : MonoBehaviour
         _competitorRef.GetComponent<CompetitorsBehaviour>().maxSpeed = 26;
     }
 
-    public void StartPageTurnCoroutine()
+    public void NextPage()
     {
-        StartCoroutine(NextPage());
+        _pageCount++;
+    }
+    public void PreviousPage()
+    {
+        _pageCount--;
     }
 
-    private IEnumerator NextPage()
+    public void StartPageTurnCoroutine()
+    {
+        StartCoroutine(ChangePage());
+    }
+
+    private IEnumerator ChangePage()
     {
         yield return new WaitForSecondsRealtime(0.1f);
-        _pageCount++;
         
         switch (_pageCount)
         {
+            case 1:
+                page1.SetActive(true);
+                page2.SetActive(false);
+                EventSystem.current.SetSelectedGameObject(page1ToFocus);
+                yield return new WaitForSecondsRealtime(0.2f);
+                page1ToFocus.GetComponent<UAP_BaseElement>().SelectItem();
+                break;
             case 2:
                 page1.SetActive(false);
                 page2.SetActive(true);
+                page3.SetActive(false);
                 EventSystem.current.SetSelectedGameObject(page2ToFocus);
                 yield return new WaitForSecondsRealtime(0.2f);
                 page2ToFocus.GetComponent<UAP_BaseElement>().SelectItem();
@@ -77,6 +94,7 @@ public class TutorialManager : MonoBehaviour
             case 3:
                 page2.SetActive(false);
                 page3.SetActive(true);
+                page4.SetActive(false);
                 EventSystem.current.SetSelectedGameObject(page3ToFocus);
                 page3ToFocus.GetComponent<UAP_BaseElement>().SelectItem();
                 break;

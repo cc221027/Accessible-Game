@@ -15,17 +15,7 @@ public class ResultManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI winnerText;
 
     [SerializeField] private TextMeshProUGUI timeText;
-
-    [SerializeField] private Button confirmBtn;
-
-    [SerializeField] private GameObject unlockedOfficerJenkinsPanel;
-    [SerializeField] private GameObject unlockedRusselPanel;
-    [SerializeField] private GameObject unlockedStellaPanel;
-    [SerializeField] private GameObject unlockedTrack4Panel;
-
-    private bool _unlockedAll;
-
-
+    
     
     void Start()
     {
@@ -42,37 +32,24 @@ public class ResultManager : MonoBehaviour
                     if (!GameManager.Instance.beatenTrack1)
                     {
                         GameManager.Instance.beatenTrack1 = true;
-                        unlockedOfficerJenkinsPanel.SetActive(true);
-                        EventSystem.current.SetSelectedGameObject(unlockedOfficerJenkinsPanel
-                            .GetComponentInChildren<Button>().gameObject);
                     }
                     break;
                 case 1:
                     if (!GameManager.Instance.beatenTrack2)
                     {
                         GameManager.Instance.beatenTrack2 = true;
-                        unlockedRusselPanel.SetActive(true);
-                        EventSystem.current.SetSelectedGameObject(unlockedRusselPanel
-                            .GetComponentInChildren<Button>().gameObject);
                     }
                     break;
                 case 2:
                     if (!GameManager.Instance.beatenTrack3)
                     {
                         GameManager.Instance.beatenTrack3 = true;
-                        unlockedStellaPanel.SetActive(true);
-                        EventSystem.current.SetSelectedGameObject(unlockedStellaPanel
-                            .GetComponentInChildren<Button>().gameObject);
                     }
                     break;
                 case 3:
-                    if(GameManager.Instance.beatenTrack1 && GameManager.Instance.beatenTrack2 && GameManager.Instance.beatenTrack3 && !_unlockedAll)
+                    if(GameManager.Instance.beatenTrack1 && GameManager.Instance.beatenTrack2 && GameManager.Instance.beatenTrack3 && !GameManager.Instance.beatenTrack4)
                     {
                         GameManager.Instance.beatenTrack4 = true;
-                        unlockedTrack4Panel.SetActive(true);
-                        EventSystem.current.SetSelectedGameObject(unlockedTrack4Panel
-                            .GetComponentInChildren<Button>().gameObject);
-                        _unlockedAll = true;
                     }
                     break;
             }
@@ -84,14 +61,6 @@ public class ResultManager : MonoBehaviour
         SaveSystem.SavePlayer(GameManager.Instance);
     }
 
-    public void ConfirmUnlock()
-    {
-        unlockedOfficerJenkinsPanel.SetActive(false);
-        unlockedRusselPanel.SetActive(false);
-        unlockedStellaPanel.SetActive(false);
-        unlockedTrack4Panel.SetActive(false);
-        
-        EventSystem.current.SetSelectedGameObject(confirmBtn.gameObject);
-    }
+    
     
 }
