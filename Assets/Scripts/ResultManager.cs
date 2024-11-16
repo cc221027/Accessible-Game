@@ -21,9 +21,6 @@ public class ResultManager : MonoBehaviour
     {
         resultText.text = GameManager.Instance.playerCharacter == GameManager.Instance.winner ? "You WON" : "You LOST";
         
-        Debug.Log(GameManager.Instance.playerCharacter);
-        Debug.Log(GameManager.Instance.winner);
-        
         if (GameManager.Instance.playerCharacter == GameManager.Instance.winner)
         {
             switch (GameManager.Instance.SelectedTrackIndex)

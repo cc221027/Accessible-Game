@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     public bool beatenTrack2;
     public bool beatenTrack3;
     public bool beatenTrack4;
+    public bool unlockedJenkins;
+    public bool unlockedRussel;
+    public bool unlockedStella;
+    public bool unlockedT4;
     
     public int selectedCharacterIndex  = -1;
     

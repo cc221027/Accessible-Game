@@ -12,6 +12,8 @@ public class MainMenuUnlocksManager : MonoBehaviour
     [SerializeField] private GameObject unlockedTrack4Panel;
     
     [SerializeField] private GameObject nextSelectedObject;
+
+    [SerializeField] private GameObject[] uiToDisable;
     
     void Start()
     {
@@ -20,38 +22,55 @@ public class MainMenuUnlocksManager : MonoBehaviour
             switch (GameManager.Instance.SelectedTrackIndex)
             {
                 case 0:
-                    if (!GameManager.Instance.beatenTrack1)
+                    if (GameManager.Instance.beatenTrack1 && !GameManager.Instance.unlockedJenkins)
                     {
+                        foreach (GameObject element in uiToDisable) {element.SetActive(false); }
+                        
+                        GameManager.Instance.unlockedJenkins = true;
+                        
                         unlockedOfficerJenkinsPanel.SetActive(true);
                         EventSystem.current.SetSelectedGameObject(unlockedOfficerJenkinsPanel
                             .GetComponentInChildren<Button>().gameObject);
                     }
                     break;
                 case 1:
-                    if (!GameManager.Instance.beatenTrack2)
+                    if (GameManager.Instance.beatenTrack2 && !GameManager.Instance.unlockedRussel)
                     {
+                        foreach (GameObject element in uiToDisable) {element.SetActive(false); }
+                        
+                        GameManager.Instance.unlockedRussel = true;
+                        
                         unlockedRusselPanel.SetActive(true);
                         EventSystem.current.SetSelectedGameObject(unlockedRusselPanel
                             .GetComponentInChildren<Button>().gameObject);
                     }
                     break;
                 case 2:
-                    if (!GameManager.Instance.beatenTrack3)
+                    if (GameManager.Instance.beatenTrack3 && !GameManager.Instance.unlockedStella)
                     {
+                        foreach (GameObject element in uiToDisable) {element.SetActive(false); }
+
+                        GameManager.Instance.unlockedStella = true;
+
                         unlockedStellaPanel.SetActive(true);
                         EventSystem.current.SetSelectedGameObject(unlockedStellaPanel
                             .GetComponentInChildren<Button>().gameObject);
                     }
                     break;
                 case 3:
-                    if(GameManager.Instance.beatenTrack1 && GameManager.Instance.beatenTrack2 && GameManager.Instance.beatenTrack3 && !GameManager.Instance.beatenTrack4)
+                    if(GameManager.Instance.beatenTrack4 && !GameManager.Instance.unlockedT4)
                     {
+                        foreach (GameObject element in uiToDisable) {element.SetActive(false); }
+
+                        GameManager.Instance.unlockedT4 = true;
+                        
                         unlockedTrack4Panel.SetActive(true);
                         EventSystem.current.SetSelectedGameObject(unlockedTrack4Panel
                             .GetComponentInChildren<Button>().gameObject);
                     }
                     break;
             }
+            SaveSystem.SavePlayer(GameManager.Instance);
         }
     }
     
@@ -63,6 +82,8 @@ public class MainMenuUnlocksManager : MonoBehaviour
         unlockedTrack4Panel.SetActive(false);
         
         EventSystem.current.SetSelectedGameObject(nextSelectedObject);
+
+        foreach (GameObject element in uiToDisable) { element.SetActive(true); }
     }
     
 }
