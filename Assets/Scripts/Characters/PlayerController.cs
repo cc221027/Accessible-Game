@@ -72,12 +72,10 @@ public class PlayerController : VehicleBehaviour
                 if (playerKnotSide > 0 && _rb.velocity.magnitude > 1)
                 {
                     Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0);
-                    CarMotorAudioGoing.panStereo = -1;
                 }
                 else if (playerKnotSide < 0 && _rb.velocity.magnitude > 1)
                 {
                     Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));
-                    CarMotorAudioGoing.panStereo = 1;
                 }
                 else
                 {
@@ -107,6 +105,7 @@ public class PlayerController : VehicleBehaviour
             GetClosestObstacleOnTrack();
             CheckForShortCut();
             AdjustHapticsBasedOnObstacles();
+            PanToClosestItemBox();
         }
     }
 
@@ -394,6 +393,40 @@ public class PlayerController : VehicleBehaviour
         {
             _leftMotorStrength = 0.1f;
             _rightMotorStrength = 0.2f;
+        }
+    }
+    
+    private void PanToClosestItemBox()
+    {
+        if (GameManager.Instance.toggleAccessibility)
+        {
+            Transform closestItemBox = trackManagerRef.itemBoxPositions
+                .Where(itemBox =>
+                    Vector3.Distance(transform.position, itemBox.position) >= 5 &&
+                    Vector3.Distance(transform.position, itemBox.position) <= 70 &&
+                    Vector3.Dot(transform.forward, (itemBox.position - transform.position).normalized) > 0.5)
+                .OrderBy(item => Vector3.Distance(transform.position, item.position))
+                .FirstOrDefault();
+
+
+            if (closestItemBox != null)
+            {
+                Vector3 directionToNextKnot = (new Vector3(closestItemBox.position.x, closestItemBox.position.y, closestItemBox.position.z) - transform.position).normalized;
+                Vector3 cross = Vector3.Cross(directionToNextKnot, transform.forward);
+
+                if(cross.y > 0 && !trackManagerRef.paused)
+                {
+                    CarMotorAudioGoing.panStereo = 1;
+                } 
+                else if(cross.y < 0 && !trackManagerRef.paused)
+                {
+                    CarMotorAudioGoing.panStereo = -1;
+                }
+            }
+            else
+            {
+                CarMotorAudioGoing.panStereo = 0;
+            }
         }
     }
 }

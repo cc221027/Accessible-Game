@@ -32,7 +32,7 @@ public class ItemBullet : ItemBase
         
         if (GameManager.Instance.toggleAccessibility)
         {
-            UAP_AccessibilityManager.Say(gameObject.GetComponentInParent<CharacterData>().characterName + PickUpTts);
+            UAP_AccessibilityManager.Say(gameObject.GetComponentInParent<CharacterData>().characterName + " " + PickUpTts);
         }
         
         _bulletRenderer = transform.GetChild(0).gameObject.GetComponent<Renderer>();
@@ -59,6 +59,8 @@ public class ItemBullet : ItemBase
         
         if (otherCharacter != null && _shot)
         {
+            otherCharacter.GetComponent<VehicleBehaviour>().bulletHitAudio.Play();
+            
             _hasHitTarget = true;
 
             _bulletCollider.enabled = false;

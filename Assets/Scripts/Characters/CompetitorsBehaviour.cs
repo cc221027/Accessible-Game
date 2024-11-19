@@ -28,8 +28,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
         foreach (AudioSource audioSource in carAudioSources)
         {
-            audioSource.volume *= 0.5f;
-            audioSource.pitch *= 0.5f;
+            audioSource.volume *= 0.2f;
         }
     }
 
@@ -129,10 +128,10 @@ public class CompetitorsBehaviour : VehicleBehaviour
         if (inventoryItem != null) return;
 
         itemInSight = trackManagerRef.itemBoxPositions
-            .Where(item =>
-                Vector3.Distance(transform.position, item.position) >= 5 &&
-                Vector3.Distance(transform.position, item.position) <= 70 &&
-                Vector3.Dot(transform.forward, (item.position - transform.position).normalized) > 0.9)
+            .Where(itemBox =>
+                Vector3.Distance(transform.position, itemBox.position) >= 5 &&
+                Vector3.Distance(transform.position, itemBox.position) <= 70 &&
+                Vector3.Dot(transform.forward, (itemBox.position - transform.position).normalized) > 0.9)
             .OrderBy(item => Vector3.Distance(transform.position, item.position))
             .FirstOrDefault();
     }

@@ -37,7 +37,7 @@ public class ItemOfficerJenkins : ItemBase
         
         if (GameManager.Instance.toggleAccessibility)
         {
-            UAP_AccessibilityManager.Say(gameObject.GetComponentInParent<CharacterData>().characterName + PickUpTts);
+            UAP_AccessibilityManager.Say(gameObject.GetComponentInParent<CharacterData>().characterName + " " + PickUpTts);
         }
     }
 
@@ -97,6 +97,7 @@ public class ItemOfficerJenkins : ItemBase
 
         if (otherCharacter != null && shot && otherCharacter.characterName != "Officer Jenkins")
         {
+            otherCharacter.GetComponent<VehicleBehaviour>().bulletHitAudio.Play();
             StartCoroutine(SlowCharacterOnHit(otherCharacter)); 
         }        
     }
@@ -112,7 +113,7 @@ public class ItemOfficerJenkins : ItemBase
         {
             yield return null; 
             elapsedTime += Time.deltaTime;
-            FindClosestPlayer();
+            //FindClosestPlayer();
             AdjustPitchBasedOnDistance();
         }
 
@@ -133,23 +134,22 @@ public class ItemOfficerJenkins : ItemBase
         Destroy(gameObject);
     }
     
-    private Transform FindClosestPlayer()
-    {
-        CharacterData[] players = FindObjectsOfType<CharacterData>();
-        Transform closestPlayer = null;
-        float minDistance = Mathf.Infinity;
-
-        foreach (CharacterData player in players)
-        {
-            float distance = Vector3.Distance(transform.position, player.transform.position);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                closestPlayer = player.transform;
-            }
-        }
-        return closestPlayer;
-    }
+    // private Transform FindClosestPlayer()
+    // {
+    //     CharacterData[] players = FindObjectsOfType<CharacterData>();
+    //     
+    //     Transform closestPlayer = players
+    //         .Where(player =>
+    //             Vector3.Distance(transform.position, player.transform.position) >= 5 &&
+    //             Vector3.Distance(transform.position, player.transform.position) <= 70 &&
+    //             Vector3.Dot(transform.forward, (player.transform.position - transform.position).normalized) > 0.9)
+    //         .OrderBy(player => Vector3.Distance(transform.position, player.transform.position))
+    //         .Select(player => player.transform) // Extract the Transform
+    //         .FirstOrDefault();
+    //     
+    //     
+    //     return closestPlayer;
+    // }
     
     private void AdjustPitchBasedOnDistance()
     {

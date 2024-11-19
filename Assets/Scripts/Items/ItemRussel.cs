@@ -20,7 +20,7 @@ public class ItemRussel : ItemBase
         
         if (GameManager.Instance.toggleAccessibility)
         {
-            UAP_AccessibilityManager.Say(gameObject.GetComponentInParent<CharacterData>().characterName + PickUpTts);
+            UAP_AccessibilityManager.Say(gameObject.GetComponentInParent<CharacterData>().characterName + " " + PickUpTts);
         }
     }
     

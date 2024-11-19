@@ -2516,6 +2516,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2.9
       objectReference: {fileID: 0}
+    - target: {fileID: 340639806949331588, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.02
+      objectReference: {fileID: 0}
     - target: {fileID: 340639806949494436, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
       propertyPath: m_TagString
       value: Road
@@ -2568,6 +2572,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2.9
       objectReference: {fileID: 0}
+    - target: {fileID: 1444684896020076593, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.02
+      objectReference: {fileID: 0}
     - target: {fileID: 1444684896021883571, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
       propertyPath: m_Material
       value: 
@@ -2607,6 +2615,10 @@ PrefabInstance:
     - target: {fileID: 2538523034141314631, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
       propertyPath: m_LocalScale.y
       value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538523034141314631, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.01
       objectReference: {fileID: 0}
     - target: {fileID: 2538523034141348455, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
       propertyPath: m_TagString
@@ -2687,6 +2699,14 @@ PrefabInstance:
     - target: {fileID: 6218264161447686594, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
       propertyPath: m_LocalScale.y
       value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218264161447686594, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218264161447686594, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -24.01
       objectReference: {fileID: 0}
     - target: {fileID: 6218264161447980514, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
       propertyPath: m_TagString
@@ -2821,7 +2841,19 @@ PrefabInstance:
       value: Road
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7100529868770070718, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+    - {fileID: 3658583016317359871, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+    - {fileID: 2157125255681148285, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+    - {fileID: 1746468665396070150, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+    - {fileID: 540658859679331303, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+    - {fileID: 8319102155701276283, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+    - {fileID: 821739166473420171, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+    - {fileID: 5216481860577482289, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+    - {fileID: 5948386955238776067, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+    - {fileID: 7800728545325715974, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+    - {fileID: 240617683264569338, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
+    - {fileID: 4206456643280311283, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27d6e014437bc2f43875c8ab3c00bfd1, type: 3}

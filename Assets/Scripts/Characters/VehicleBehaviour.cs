@@ -44,6 +44,8 @@ public class VehicleBehaviour : MonoBehaviour
     private AudioSource _collisionAudio;
     protected AudioSource CollisionWarningAudio;
     protected AudioSource WrongDirectionAudio;
+
+    public AudioSource bulletHitAudio;
     
     
     protected AudioSource[] AudioSources;
@@ -83,6 +85,8 @@ public class VehicleBehaviour : MonoBehaviour
             CollisionWarningAudio = AudioSources[15];
 
             WrongDirectionAudio = AudioSources[16];
+
+            bulletHitAudio = AudioSources[17];
 
         }
         

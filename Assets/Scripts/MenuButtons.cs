@@ -35,7 +35,7 @@ public class MenuButtons : MonoBehaviour
         {
             if (Mathf.Abs(Gamepad.current.leftStick.ReadValue().y) > 0.1f)
             {
-                GameManager.Instance.StopReadingUI();  
+                GameManager.Instance.StopReadingUI(); 
             }
         }
     }
