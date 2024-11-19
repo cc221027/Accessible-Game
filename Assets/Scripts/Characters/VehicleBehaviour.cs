@@ -27,8 +27,7 @@ public class VehicleBehaviour : MonoBehaviour
     private AudioSource _teleportBackAudio;
     
     private AudioSource _carMotorAudioStill;
-    private AudioSource _carMotorAudioStart;
-    private AudioSource _carMotorAudioGoing;
+    protected AudioSource CarMotorAudioGoing;
     private AudioSource _jumpAudio;
     private AudioSource _landingAudio;
     protected AudioSource BrakingAudio;
@@ -61,30 +60,29 @@ public class VehicleBehaviour : MonoBehaviour
         if (AudioSources.Length >= 2)
         {
             _carMotorAudioStill = AudioSources[0];
-            _carMotorAudioStart = AudioSources[1];
-            _carMotorAudioGoing = AudioSources[2];
+            CarMotorAudioGoing = AudioSources[1];
             
-            _offroadWarningAudio = AudioSources[3];
-            _teleportBackAudio = AudioSources[4];
+            _offroadWarningAudio = AudioSources[2];
+            _teleportBackAudio = AudioSources[3];
 
-            _jumpAudio = AudioSources[5];
-            _gearShiftAudio = AudioSources[6];
+            _jumpAudio = AudioSources[4];
+            _gearShiftAudio = AudioSources[5];
 
-            FirstPlaceAudio = AudioSources[7];
-            SecondPlaceAudio = AudioSources[8];
-            ThirdPlaceAudio = AudioSources[9];
-            FourthPlaceAudio = AudioSources[10];
-            RoundTwo = AudioSources[11];
-            FinalLapAudio = AudioSources[12];
+            FirstPlaceAudio = AudioSources[6];
+            SecondPlaceAudio = AudioSources[7];
+            ThirdPlaceAudio = AudioSources[8];
+            FourthPlaceAudio = AudioSources[9];
+            RoundTwo = AudioSources[10];
+            FinalLapAudio = AudioSources[11];
 
-            _collisionAudio = AudioSources[13];
+            _collisionAudio = AudioSources[12];
 
-            _landingAudio = AudioSources[14];
-            BrakingAudio = AudioSources[15];
+            _landingAudio = AudioSources[13];
+            BrakingAudio = AudioSources[14];
 
-            CollisionWarningAudio = AudioSources[16];
+            CollisionWarningAudio = AudioSources[15];
 
-            WrongDirectionAudio = AudioSources[17];
+            WrongDirectionAudio = AudioSources[16];
 
         }
         
@@ -200,29 +198,20 @@ public class VehicleBehaviour : MonoBehaviour
             _rb.AddForce(Vector3.down * 20f, ForceMode.Acceleration);
         }
         
+        
         if (_rb.velocity.magnitude == 0 && !_carMotorAudioStill.isPlaying && !_gearShiftAudio.isPlaying)
         {
-            _carMotorAudioGoing.Stop();
-            _carMotorAudioStart.Stop();
+            CarMotorAudioGoing.Stop();
             _gearShiftAudio.Play();
             _carMotorAudioStill.Play();
             
         }
-        else if(_rb.velocity.magnitude !=0 && _rb.velocity.magnitude <= 25 && !_carMotorAudioStart.isPlaying && !_gearShiftAudio.isPlaying)
-        {
-            _carMotorAudioGoing.Stop();
-            _carMotorAudioStill.Stop();
-            _gearShiftAudio.Play();
-            _carMotorAudioStart.Play();
-        }
-        else if (_rb.velocity.magnitude > 25 && !_carMotorAudioGoing.isPlaying && !_gearShiftAudio.isPlaying)
+        else if(_rb.velocity.magnitude !=0 && !CarMotorAudioGoing.isPlaying)
         {
             _carMotorAudioStill.Stop();
-            _carMotorAudioStart.Stop();
-            _gearShiftAudio.Play(); 
-            _carMotorAudioGoing.Play();
-            
+            CarMotorAudioGoing.Play();
         }
+        CarMotorAudioGoing.pitch = Mathf.Lerp(0.8f, 2f, _rb.velocity.magnitude / maxSpeed);
     }
 
     public void Jump()

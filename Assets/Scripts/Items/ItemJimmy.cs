@@ -7,6 +7,9 @@ public class ItemJimmy : ItemBase
 {
     private void Awake()
     {
+      
+        
+
         AudioSource[] audioSources = GetComponents<AudioSource>();
         if (audioSources.Length >= 2)
         {
@@ -15,11 +18,17 @@ public class ItemJimmy : ItemBase
         }  
     }
 
-    void Start()
+    private void Start()
     {
         itemName = "Shield";
+        PickUpTts = itemName;
+        
+        if (GameManager.Instance.toggleAccessibility)
+        {
+            UAP_AccessibilityManager.Say(gameObject.GetComponentInParent<CharacterData>().characterName + PickUpTts);
+        }
     }
-    
+
     public override void UseItem(GameObject player)
     {
         transform.position = (player.transform.position + transform.up + transform.forward);

@@ -17,11 +17,20 @@ public class CompetitorsBehaviour : VehicleBehaviour
     public bool isNearCorner;
     
     public Transform itemInSight = null;
+    
     private void Start()
     {
         _aiSpeed = Random.Range(20, 25);
 
         GetNewKnotPosition();
+        
+        AudioSource[] carAudioSources = GetComponents<AudioSource>();
+
+        foreach (AudioSource audioSource in carAudioSources)
+        {
+            audioSource.volume *= 0.5f;
+            audioSource.pitch *= 0.5f;
+        }
     }
 
     public override void MoveLogic()

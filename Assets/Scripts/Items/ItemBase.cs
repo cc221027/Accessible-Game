@@ -15,6 +15,8 @@ public class ItemBase : MonoBehaviour
     protected AudioSource PickupAudioSource;
     protected AudioSource UseItemAudio;
 
+    protected string PickUpTts;
+
     public void OnPickup()
     {
         PickupAudioSource.Play();

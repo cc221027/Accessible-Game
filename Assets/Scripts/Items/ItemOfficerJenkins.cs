@@ -30,9 +30,15 @@ public class ItemOfficerJenkins : ItemBase
         }  
     }
 
-    void Start()
+    private void Start()
     {
         itemName = "SpecialBullet";
+        PickUpTts = itemName;
+        
+        if (GameManager.Instance.toggleAccessibility)
+        {
+            UAP_AccessibilityManager.Say(gameObject.GetComponentInParent<CharacterData>().characterName + PickUpTts);
+        }
     }
 
     private void FixedUpdate()
@@ -107,6 +113,7 @@ public class ItemOfficerJenkins : ItemBase
             yield return null; 
             elapsedTime += Time.deltaTime;
             FindClosestPlayer();
+            AdjustPitchBasedOnDistance();
         }
 
         if (!_hasHitTarget)

@@ -28,6 +28,13 @@ public class ItemBullet : ItemBase
     void Start()
     {
         itemName = "Bullet";
+        PickUpTts = itemName;
+        
+        if (GameManager.Instance.toggleAccessibility)
+        {
+            UAP_AccessibilityManager.Say(gameObject.GetComponentInParent<CharacterData>().characterName + PickUpTts);
+        }
+        
         _bulletRenderer = transform.GetChild(0).gameObject.GetComponent<Renderer>();
         _bulletChildRenderer = _bulletRenderer.gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
     }

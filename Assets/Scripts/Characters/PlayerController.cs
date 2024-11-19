@@ -71,15 +71,18 @@ public class PlayerController : VehicleBehaviour
                 
                 if (playerKnotSide > 0 && _rb.velocity.magnitude > 1)
                 {
-                    Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0); 
+                    Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0);
+                    CarMotorAudioGoing.panStereo = -1;
                 }
                 else if (playerKnotSide < 0 && _rb.velocity.magnitude > 1)
                 {
-                    Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));  
+                    Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));
+                    CarMotorAudioGoing.panStereo = 1;
                 }
                 else
                 {
                     Gamepad.current.SetMotorSpeeds(0, 0); 
+                    CarMotorAudioGoing.panStereo = 0;
                 }
             } 
             

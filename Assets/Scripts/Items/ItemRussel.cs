@@ -13,10 +13,15 @@ public class ItemRussel : ItemBase
             UseItemAudio = audioSources[1];
         }  
     }
-
     private void Start()
     {
         itemName = "Hourglass";
+        PickUpTts = itemName;
+        
+        if (GameManager.Instance.toggleAccessibility)
+        {
+            UAP_AccessibilityManager.Say(gameObject.GetComponentInParent<CharacterData>().characterName + PickUpTts);
+        }
     }
     
     public override void UseItem(GameObject player)

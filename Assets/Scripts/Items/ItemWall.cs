@@ -15,10 +15,16 @@ public class ItemWall : ItemBase
         }
         
     }
-
-    void Start()
-    {
+    
+    private void Start()
+    {        
         itemName = "Wall";
+        PickUpTts = itemName;
+        
+        if (GameManager.Instance.toggleAccessibility)
+        {
+            UAP_AccessibilityManager.Say(gameObject.GetComponentInParent<CharacterData>().characterName + PickUpTts);
+        }
     }
     public override void UseItem(GameObject player)
     {
