@@ -203,14 +203,14 @@ public class VehicleBehaviour : MonoBehaviour
         }
         
         
-        if (_rb.velocity.magnitude == 0 && !_carMotorAudioStill.isPlaying && !_gearShiftAudio.isPlaying)
+        if (_rb.velocity.magnitude <= 1 && !_carMotorAudioStill.isPlaying)
         {
             CarMotorAudioGoing.Stop();
             _gearShiftAudio.Play();
             _carMotorAudioStill.Play();
             
         }
-        else if(_rb.velocity.magnitude !=0 && !CarMotorAudioGoing.isPlaying)
+        else if(_rb.velocity.magnitude > 1 && !CarMotorAudioGoing.isPlaying)
         {
             _carMotorAudioStill.Stop();
             CarMotorAudioGoing.Play();

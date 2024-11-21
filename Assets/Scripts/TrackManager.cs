@@ -42,8 +42,6 @@ public class TrackManager : MonoBehaviour
     public int currentPlayerLap;
     
     private AudioSource _countDownAudio;
-    public AudioSource heartbeatSource;
-
 
     void Awake()
     {
@@ -94,8 +92,6 @@ public class TrackManager : MonoBehaviour
             string timeFormatted = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
             timeText.text = timeFormatted;
         }
-        
-        GetClosestCurveKnot();
     }
 
     void SpawnCarts()
@@ -190,43 +186,7 @@ public class TrackManager : MonoBehaviour
         GameManager.Instance.LoadScene("Result Scene");
     }
     
-
-    private void GetClosestCurveKnot()
-    {
-        float closestDistance = Mathf.Infinity;
-        int closestIndex = -1;
-        
-        for (int i = 0; i < curveKnots.Count; i++)
-        { 
-            float distance = Vector3.Distance(_player.transform.position, spline.Spline[i].Position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestIndex = i;
-            }
-        }
-        
-        TriggerCurveFeedback(spline.Spline[closestIndex]);    
-
-       
-    }
-
-    private void TriggerCurveFeedback(BezierKnot closestCurveKnot)
-    {
-        Vector3 closestCurvePosition = new Vector3(closestCurveKnot.Position.x, closestCurveKnot.Position.y, closestCurveKnot.Position.z);
-        float distanceToCurve = Vector3.Distance(_player.transform.position, closestCurvePosition);
-        float proximityFactor = Mathf.InverseLerp(100f, 10f, distanceToCurve); 
-        float speedFactor = _player.GetComponent<Rigidbody>().velocity.magnitude / 50;
-        float heartbeatRate = Mathf.Lerp(0.5f, 2f, proximityFactor * speedFactor);
-        
-        heartbeatSource.pitch = heartbeatRate;
-        heartbeatSource.volume = 1.5f;
-        
-        if (!heartbeatSource.isPlaying)
-        {
-            heartbeatSource.Play();
-        }
-    }
+    
     
    
 }
