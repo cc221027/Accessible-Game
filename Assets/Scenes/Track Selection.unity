@@ -6527,10 +6527,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The image shows a green compact car with a boxy, retro design, p. The car
-    on the left is shown from the back, displaying its rear lights and bumper. The
-    car on the right is shown from the front, highlighting its headlights and grille.
-    Both cars have four doors, visible windows, and small white tires with gray rims.
+  m_text: The image depicts a stylized racetrack in a vibrant, low-poly environment
+    during a sunset. The track is a dark, winding road with white lane markings,
+    surrounded by whimsical, simplified green trees with round and rectangular foliage.
+    The landscape features soft, pastel-colored hills and scattered rocks. The sky
+    is a gradient of warm hues, transitioning from yellow to pink and purple, with
+    puffy, rounded clouds adding depth to the scene. The overall atmosphere is serene
+    and artistic, evoking a playful and dreamy vibe.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8399,10 +8402,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The image shows a green compact car with a boxy, retro design, p. The car
-    on the left is shown from the back, displaying its rear lights and bumper. The
-    car on the right is shown from the front, highlighting its headlights and grille.
-    Both cars have four doors, visible windows, and small white tires with gray rims.
+  m_text: The image showcases a nighttime scene of a stylized highway racetrack.
+    The track consists of multiple lanes with clearly marked white dashed lines,
+    designed to evoke the feel of a high-speed highway. Overhead streetlights cast
+    circular pools of light at regular intervals along the dark asphalt road, illuminating
+    specific portions of the track. The surrounding environment is covered in dense
+    green foliage, with clusters of simplified trees and bushes extending into the
+    background, giving the area a forest-like ambiance. The overall mood is mysterious
+    and focused, with a dramatic contrast between the lit track and the dim, shadowy
+    surroundings.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

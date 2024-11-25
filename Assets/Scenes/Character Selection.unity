@@ -9417,11 +9417,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The image shows a blue and white police car with a boxy, retro design,
-    shown from the front and back. The back displays its rear lights, bumper, and
-    part of the light bar on the roof. The front highlights its grille, headlights,
-    and the red and blue lights on the roof. The car has four doors, visible windows,
-    and small white tires with gray rims.
+  m_text: The image shows a blue pickup truck with a boxy design, viewed from the
+    front and back. The back features an open cargo bed, rear lights, and a bumper.
+    The front highlights its headlights, grille, and a sturdy bumper. The truck has
+    two doors, visible windows, and small white tires with gray rims.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11298,10 +11297,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The image shows a green compact car with a boxy, retro design, p. The car
-    on the left is shown from the back, displaying its rear lights and bumper. The
-    car on the right is shown from the front, highlighting its headlights and grille.
-    Both cars have four doors, visible windows, and small white tires with gray rims.
+  m_text: The image shows a blue pickup truck with a boxy design, viewed from the
+    front and back. The back features an open cargo bed, rear lights, and a bumper.
+    The front highlights its headlights, grille, and a sturdy bumper. The truck has
+    two doors, visible windows, and small white tires with gray rims.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
