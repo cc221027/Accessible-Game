@@ -7782,7 +7782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7853786643920417592, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
       propertyPath: ttsSpeechRate
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -7853786643920417592, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
       propertyPath: inputActionsAsset
@@ -12610,7 +12610,7 @@ MonoBehaviour:
   m_MinValue: 1
   m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 3
+  m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

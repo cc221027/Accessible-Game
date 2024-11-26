@@ -25,6 +25,7 @@ public static class SaveSystem
                      FileStream stream = new FileStream(path, FileMode.Open);
 
                      PlayerData data = formatter.Deserialize(stream) as PlayerData;
+                     Debug.Log(data.ttsSpeechRate);
                      stream.Close();
 
                      return data;

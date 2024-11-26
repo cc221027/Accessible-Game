@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     public float sfxVolume = 100f;
     public float musicVolume = 100f;
     public float ttsVolume = 100f;
-    public float ttsSpeechRate = 10f;
+    public float ttsSpeechRate = 1;
     public float hapticsVolume = 100f;
     public bool toggleAccessibility = true;
 
@@ -66,16 +66,22 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {
+    { 
         PlayerData data = SaveSystem.LoadPlayer();
-        if (data != null)
-        {
-            beatenTrack1 = data.beatenTrack1;
-            beatenTrack2 = data.beatenTrack2;
-            beatenTrack3 = data.beatenTrack3;
-            beatenTrack4 = data.beatenTrack4;
-        }
-       
+     
+        beatenTrack1 = data.beatenTrack1;
+        beatenTrack2 = data.beatenTrack2;
+        beatenTrack3 = data.beatenTrack3;
+        beatenTrack4 = data.beatenTrack4;
+            
+        allVolume = data.allVolume;
+        uiVolume = data.uiVolume;
+        sfxVolume = data.sfxVolume;
+        musicVolume = data.musicVolume;
+        ttsVolume = data.ttsVolume;
+        ttsSpeechRate = data.ttsSpeechRate;
+        hapticsVolume = data.hapticsVolume;
+        toggleAccessibility = data.toggleAccessibility;
     }
 
 
@@ -148,11 +154,12 @@ public class GameManager : MonoBehaviour
         float dbValue = Mathf.Log10(allV / 100f) * 20f;
         masterMixer.SetFloat("masterVolume", dbValue);
         allVolume = allV;
-        
-        if (masterMixer.GetFloat("masterVolume", out float currentVolume))
-        {
-            Debug.Log("Current Master Volume (dB): " + currentVolume);
-        }
+        SetSfxVolume(allV);
+        SetUIVolume(allV);
+        SetMusicVolume(allV);
+        SetTtsVolume(allV);
+        SetTtsSpeechRate(allV/10);
+        SetHapticsVolume(allV);
     }
     public void SetSfxVolume(float sfxV)
     {
@@ -186,17 +193,11 @@ public class GameManager : MonoBehaviour
     {
         ttsSpeechRate = ttsRate;
         WindowsTTS.SetSpeechRate((int)ttsRate);
-
     }
 
     public void SetHapticsVolume(float hapticsV)
     {
         hapticsVolume = hapticsV;
-        WindowsTTS.SetSpeechVolume((int)hapticsV);  
     }
-    
-    
-
-
     
 }

@@ -44,10 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4c7823ddd64ec4a9aae58c573ce874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beatenTrack1: 0
+  beatenTrack2: 0
+  beatenTrack3: 0
+  beatenTrack4: 0
+  unlockedJenkins: 0
+  unlockedRussel: 0
+  unlockedStella: 0
+  unlockedT4: 0
   selectedCharacterIndex: -1
   tutorial: 0
   winner: 
+  playerCharacter: 
   endTime: 
+  allVolume: 100
+  uiVolume: 100
   sfxVolume: 100
   musicVolume: 100
   ttsVolume: 100

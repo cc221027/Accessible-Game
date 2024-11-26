@@ -129,8 +129,8 @@ public class TrackManager : MonoBehaviour
 
         CompetitorsBehaviour competitorsBehaviour = _player.GetComponent<CompetitorsBehaviour>();
         Destroy(competitorsBehaviour);
-        
-        AudioSource[] audioSources = _player.GetComponentsInChildren<AudioSource>();
+            
+        AudioSource[] audioSources = _player.GetComponents<AudioSource>();
         foreach (AudioSource audioSource in audioSources)
         {
             audioSource.spatialBlend = 0f;
@@ -152,13 +152,6 @@ public class TrackManager : MonoBehaviour
         PlayerController playerController = opponent.GetComponent<PlayerController>();
         Destroy(playerController);
         
-        AudioSource[] carAudioSources = GetComponents<AudioSource>();
-
-        foreach (AudioSource audioSource in carAudioSources)
-        {
-            audioSource.volume *= 0.2f;
-        }
-
         StartCoroutine(DelayStartMovement(5f, opponent));
     }
 

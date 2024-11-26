@@ -41,7 +41,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         if (type is Type.SliderSfx or Type.SliderMusic or Type.SliderTtsVolume or Type.SliderHaptics or Type.SliderTtsSpeechRate or Type.SliderUI or Type.AllVolume)
         {
             _slider = gameObject.GetComponent<Slider>();
-            
+ 
             switch (type)
             {
                 case Type.SliderSfx:
@@ -54,6 +54,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
                     _slider.value = GameManager.Instance.ttsVolume;
                     break;
                 case Type.SliderTtsSpeechRate:
+                    Debug.Log(GameManager.Instance.ttsSpeechRate);
                     _slider.value = GameManager.Instance.ttsSpeechRate;
                     break;
                 case Type.SliderHaptics:
@@ -137,6 +138,8 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         {
             TrackManager.Instance.paused = false;
         }
+        
+        SaveSystem.SavePlayer(GameManager.Instance);
     }
 
     public void ResumeGame()
@@ -150,6 +153,8 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>().enabled = true;
         panelRef.SetActive(false);
         TrackManager.Instance.paused = false;
+        
+        SaveSystem.SavePlayer(GameManager.Instance);
     }
 
     public void ExitSettings()
@@ -163,6 +168,10 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         EventSystem.current.SetSelectedGameObject(firstElementToHighlight);
         
         panelRef.SetActive(false);
+        
+        SaveSystem.SavePlayer(GameManager.Instance);
+        
+        Debug.Log("HHHHHHHHHHH");
     }
 
     private void ValueChanged()
