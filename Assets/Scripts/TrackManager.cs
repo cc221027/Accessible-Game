@@ -116,18 +116,25 @@ public class TrackManager : MonoBehaviour
         _player = Instantiate(GameManager.Instance.allCharacters[GameManager.Instance.selectedCharacterIndex], spawnPosition, spawnRotation);
 
         _player.tag = "Player";
-        
-       
+
+
         if (Camera.main != null)
         {
             Camera.main.transform.SetParent(_player.transform);
 
-            Camera.main.transform.localPosition = new Vector3(0, 5, -10); // Example offset
+            Camera.main.transform.localPosition = new Vector3(0, 5, -10);
             Camera.main.transform.localRotation = Quaternion.identity;
         }
-       
+
+
         CompetitorsBehaviour competitorsBehaviour = _player.GetComponent<CompetitorsBehaviour>();
         Destroy(competitorsBehaviour);
+        
+        AudioSource[] audioSources = _player.GetComponentsInChildren<AudioSource>();
+        foreach (AudioSource audioSource in audioSources)
+        {
+            audioSource.spatialBlend = 0f;
+        }
         
         StartCoroutine(DelayStartMovement(5f, _player));
 
@@ -144,6 +151,13 @@ public class TrackManager : MonoBehaviour
 
         PlayerController playerController = opponent.GetComponent<PlayerController>();
         Destroy(playerController);
+        
+        AudioSource[] carAudioSources = GetComponents<AudioSource>();
+
+        foreach (AudioSource audioSource in carAudioSources)
+        {
+            audioSource.volume *= 0.2f;
+        }
 
         StartCoroutine(DelayStartMovement(5f, opponent));
     }

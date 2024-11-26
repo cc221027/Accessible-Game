@@ -23,13 +23,8 @@ public class CompetitorsBehaviour : VehicleBehaviour
         _aiSpeed = Random.Range(20, 25);
 
         GetNewKnotPosition();
-        
-        AudioSource[] carAudioSources = GetComponents<AudioSource>();
 
-        foreach (AudioSource audioSource in carAudioSources)
-        {
-            audioSource.volume *= 0.2f;
-        }
+        CarMotorAudioGoing.pitch *= 0.5f;
     }
 
     public override void MoveLogic()

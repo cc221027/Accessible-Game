@@ -6708,11 +6708,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The image shows a blue and white police car with a boxy, retro design,
-    shown from the front and back. The back displays its rear lights, bumper, and
-    part of the light bar on the roof. The front highlights its grille, headlights,
-    and the red and blue lights on the roof. The car has four doors, visible windows,
-    and small white tires with gray rims.
+  m_text: This image depicts a winter-themed racetrack set in a snowy forest environment.
+    The scene features a winding track elevated on a bridge, surrounded by tall evergreen
+    trees dusted with snow. The snowy terrain is accented by icy blue rocks and a
+    frozen stream passing through an arched tunnel, adding a touch of detail to the
+    environment. In the background, rows of snow-covered trees and distant mountains
+    create depth, enhancing the wintry atmosphere. The lighting is soft and cold,
+    emphasizing the chilly ambiance of the setting. This track appears ideal for
+    a racing game focused on navigating challenging turns in a serene, frosty landscape.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

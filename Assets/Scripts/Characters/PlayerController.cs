@@ -403,7 +403,7 @@ public class PlayerController : VehicleBehaviour
             Transform closestItemBox = trackManagerRef.itemBoxPositions
                 .Where(itemBox =>
                     Vector3.Distance(transform.position, itemBox.position) >= 5 &&
-                    Vector3.Distance(transform.position, itemBox.position) <= 70 &&
+                    Vector3.Distance(transform.position, itemBox.position) <= 140 &&
                     Vector3.Dot(transform.forward, (itemBox.position - transform.position).normalized) > 0.5)
                 .OrderBy(item => Vector3.Distance(transform.position, item.position))
                 .FirstOrDefault();
@@ -416,11 +416,11 @@ public class PlayerController : VehicleBehaviour
 
                 if(cross.y > 0 && !trackManagerRef.paused)
                 {
-                    CarMotorAudioGoing.panStereo = 1;
+                    CarMotorAudioGoing.panStereo = -1;
                 } 
                 else if(cross.y < 0 && !trackManagerRef.paused)
                 {
-                    CarMotorAudioGoing.panStereo = -1;
+                    CarMotorAudioGoing.panStereo = 1;
                 }
             }
             else

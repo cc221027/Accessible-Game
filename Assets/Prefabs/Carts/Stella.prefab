@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -7717413742205276582}
   - component: {fileID: -6905238097229395997}
   - component: {fileID: -4388402074939097094}
+  - component: {fileID: 7783516983484241348}
   - component: {fileID: -7328478686012519782}
   - component: {fileID: -6197616974306465212}
   - component: {fileID: 2685590638334680129}
@@ -32,7 +33,6 @@ GameObject:
   - component: {fileID: -8755477569243658527}
   - component: {fileID: -8533804726681391684}
   - component: {fileID: -2500687640829887443}
-  - component: {fileID: 7783516983484241348}
   - component: {fileID: -8137153086088218969}
   - component: {fileID: 9131878339632131906}
   m_Layer: 3
@@ -138,7 +138,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!114 &-8263038887649688522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +236,28 @@ MonoBehaviour:
   bulletHitAudio: {fileID: 0}
   isNearCorner: 0
   itemInSight: {fileID: 0}
+--- !u!64 &7783516983484241348
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019704794437721390}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3252554165392306359, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
 --- !u!82 &-7328478686012519782
 AudioSource:
   m_ObjectHideFlags: 0
@@ -345,17 +367,17 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 70ddc5bd740ab7f4980881d9bbab765c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
-  m_Pitch: 1.2
+  m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 70
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 100
+  MinDistance: 5
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -448,10 +470,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 70
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 100
+  MinDistance: 5
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -544,10 +566,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 70
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 100
+  MinDistance: 5
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -640,10 +662,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 70
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 100
+  MinDistance: 5
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -736,10 +758,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 70
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 100
+  MinDistance: 5
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1408,10 +1430,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 70
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 100
+  MinDistance: 5
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1504,10 +1526,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 70
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 100
+  MinDistance: 5
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1600,10 +1622,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 25
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 100
+  MinDistance: 5
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1772,28 +1794,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!64 &7783516983484241348
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019704794437721390}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3252554165392306359, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
 --- !u!82 &-8137153086088218969
 AudioSource:
   m_ObjectHideFlags: 0
