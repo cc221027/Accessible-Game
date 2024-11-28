@@ -170,8 +170,6 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         panelRef.SetActive(false);
         
         SaveSystem.SavePlayer(GameManager.Instance);
-        
-        Debug.Log("HHHHHHHHHHH");
     }
 
     private void ValueChanged()

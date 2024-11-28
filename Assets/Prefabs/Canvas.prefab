@@ -176,11 +176,11 @@ MonoBehaviour:
   m_IsLocalizationKey: 0
   m_TryToReadLabel: 1
   m_ReferenceElement: {fileID: 0}
-  m_AllowVoiceOver: 1
-  m_ReadType: 1
+  m_AllowVoiceOver: 0
+  m_ReadType: 0
   m_WasJustAdded: 1
   m_Type: 2
-  m_CustomHint: 1
+  m_CustomHint: 0
   m_HintAsAudio: {fileID: 0}
   m_Hint: Text.
   m_HintIsLocalizationKey: 0
@@ -666,11 +666,11 @@ MonoBehaviour:
   m_IsLocalizationKey: 0
   m_TryToReadLabel: 1
   m_ReferenceElement: {fileID: 0}
-  m_AllowVoiceOver: 1
-  m_ReadType: 1
+  m_AllowVoiceOver: 0
+  m_ReadType: 0
   m_WasJustAdded: 1
   m_Type: 2
-  m_CustomHint: 1
+  m_CustomHint: 0
   m_HintAsAudio: {fileID: 0}
   m_Hint: Text.
   m_HintIsLocalizationKey: 0
@@ -1396,11 +1396,11 @@ MonoBehaviour:
   m_IsLocalizationKey: 0
   m_TryToReadLabel: 1
   m_ReferenceElement: {fileID: 0}
-  m_AllowVoiceOver: 1
-  m_ReadType: 1
+  m_AllowVoiceOver: 0
+  m_ReadType: 0
   m_WasJustAdded: 1
   m_Type: 2
-  m_CustomHint: 1
+  m_CustomHint: 0
   m_HintAsAudio: {fileID: 0}
   m_Hint: Text.
   m_HintIsLocalizationKey: 0
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   m_Type: 4
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Turn left stick to the left and right to change sound volume.
+  m_Hint: Turn left stick to the left and right to change volume.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -2287,11 +2287,11 @@ MonoBehaviour:
   m_IsLocalizationKey: 0
   m_TryToReadLabel: 1
   m_ReferenceElement: {fileID: 0}
-  m_AllowVoiceOver: 1
-  m_ReadType: 1
+  m_AllowVoiceOver: 0
+  m_ReadType: 0
   m_WasJustAdded: 1
   m_Type: 2
-  m_CustomHint: 1
+  m_CustomHint: 0
   m_HintAsAudio: {fileID: 0}
   m_Hint: Text.
   m_HintIsLocalizationKey: 0
@@ -2801,11 +2801,11 @@ MonoBehaviour:
   m_IsLocalizationKey: 0
   m_TryToReadLabel: 1
   m_ReferenceElement: {fileID: 0}
-  m_AllowVoiceOver: 1
-  m_ReadType: 1
+  m_AllowVoiceOver: 0
+  m_ReadType: 0
   m_WasJustAdded: 1
   m_Type: 2
-  m_CustomHint: 1
+  m_CustomHint: 0
   m_HintAsAudio: {fileID: 0}
   m_Hint: Text.
   m_HintIsLocalizationKey: 0
@@ -3426,11 +3426,11 @@ MonoBehaviour:
   m_IsLocalizationKey: 0
   m_TryToReadLabel: 1
   m_ReferenceElement: {fileID: 0}
-  m_AllowVoiceOver: 1
-  m_ReadType: 1
+  m_AllowVoiceOver: 0
+  m_ReadType: 0
   m_WasJustAdded: 1
   m_Type: 2
-  m_CustomHint: 1
+  m_CustomHint: 0
   m_HintAsAudio: {fileID: 0}
   m_Hint: Text.
   m_HintIsLocalizationKey: 0
@@ -5402,11 +5402,11 @@ MonoBehaviour:
   m_IsLocalizationKey: 0
   m_TryToReadLabel: 1
   m_ReferenceElement: {fileID: 0}
-  m_AllowVoiceOver: 1
-  m_ReadType: 1
+  m_AllowVoiceOver: 0
+  m_ReadType: 0
   m_WasJustAdded: 1
   m_Type: 2
-  m_CustomHint: 1
+  m_CustomHint: 0
   m_HintAsAudio: {fileID: 0}
   m_Hint: Text.
   m_HintIsLocalizationKey: 0
@@ -7170,7 +7170,8 @@ MonoBehaviour:
   m_Type: 4
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Turn left stick to the left and right to change speech rate.
+  m_Hint: Turn left stick to the left and right to change speech rate. You will have
+    to restart the game for this to apply.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -7622,7 +7623,8 @@ MonoBehaviour:
   m_Type: 4
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Turn left stick to the left and right to change sound volume.
+  m_Hint: Turn left stick to the left and right to change sound volume. You will
+    have to restart the game for this to apply.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1

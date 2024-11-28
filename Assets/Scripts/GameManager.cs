@@ -139,9 +139,9 @@ public class GameManager : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(element.gameObject);
             
          
-            yield return new WaitForSecondsRealtime(2f); // Wait for a short time before checking and for some reason, this works
+            yield return new WaitForSecondsRealtime(2f);
             
-            while (UAP_AccessibilityManager.IsSpeaking()) // Check if speech is still playing
+            while (UAP_AccessibilityManager.IsSpeaking())
             {
                 yield return null;
             }

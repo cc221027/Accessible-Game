@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -45,7 +46,6 @@ public class TutorialManager : MonoBehaviour
     
     private void Awake()
     {
-        tutorialPanel.SetActive(true);
         foreach (GameObject uiElement in uiToDisable) { uiElement.SetActive(false); }
         Time.timeScale = 0;
     }
@@ -80,15 +80,16 @@ public class TutorialManager : MonoBehaviour
                 page1.SetActive(true);
                 page2.SetActive(false);
                 EventSystem.current.SetSelectedGameObject(page1ToFocus);
-                yield return new WaitForSecondsRealtime(0.2f);
                 page1ToFocus.GetComponent<UAP_BaseElement>().SelectItem();
                 break;
             case 2:
                 page1.SetActive(false);
                 page2.SetActive(true);
                 page3.SetActive(false);
+                _testingAcceleration = false;
+                _testingDeceleration = false;
+                _testingJumping = false;
                 EventSystem.current.SetSelectedGameObject(page2ToFocus);
-                yield return new WaitForSecondsRealtime(0.2f);
                 page2ToFocus.GetComponent<UAP_BaseElement>().SelectItem();
                 break;
             case 3:
@@ -231,15 +232,18 @@ public class TutorialManager : MonoBehaviour
         foreach (GameObject element in uiToDisable)
         {
             element.SetActive(true);
-            element.GetComponent<UAP_BaseElement>().SelectItem();
-            string content = "";
-            TMP_Text tmpText = element.GetComponentInChildren<TMP_Text>();
-            content = tmpText.text;
+            element.gameObject.GetComponent<UAP_BaseElement>().SelectItem();
+                
+            yield return new WaitForSecondsRealtime(2f);
             
-            float waitTime = content.Length * 0.15f;
-            yield return new WaitForSecondsRealtime(waitTime);
+            while (UAP_AccessibilityManager.IsSpeaking())
+            { 
+                yield return null;
+            }
+            
             element.SetActive(false);
         }
         secondUIToDisable.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(page4ToFocus);
     }
 }

@@ -1548,7 +1548,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press Down Button to Select
+  m_Hint: Press right side down face button to select. Press in right stick to read
+    all.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -5516,7 +5517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_ExploreByTouch
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_UIBoundsReached
@@ -5532,7 +5533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_AllowVoiceOverGlobal
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_WindowsUseMouseSwipes
@@ -5599,41 +5600,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
---- !u!1 &872467590 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2507964943347164474, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
-  m_PrefabInstance: {fileID: 1069028748}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &872467593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872467590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 9744f7b517dbb1641869f8c00e525132, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerUI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &884624802
 GameObject:
   m_ObjectHideFlags: 0
@@ -5989,7 +5955,8 @@ MonoBehaviour:
   m_Type: 4
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Turn left stick to the left and right to change sound volume.
+  m_Hint: Turn left stick to the left and right to change sound volume. You will
+    have to restart the game for this to apply.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -7073,8 +7040,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press down button to select. Press right button to cancel. Press in right
-    stick for info.
+  m_Hint: Press right side down face button to select. Press in right stick to read
+    all.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -7764,30 +7731,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -7853786643920417592, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
-      propertyPath: sfxVolume
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -7853786643920417592, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
-      propertyPath: ttsVolume
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -7853786643920417592, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
-      propertyPath: musicVolume
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -7853786643920417592, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
-      propertyPath: hapticsVolume
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -7853786643920417592, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
-      propertyPath: ttsSpeechRate
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -7853786643920417592, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
-      propertyPath: inputActionsAsset
-      value: 
-      objectReference: {fileID: -944628639613478452, guid: 9744f7b517dbb1641869f8c00e525132, type: 3}
     - target: {fileID: 2467415147434818606, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -7839,10 +7782,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2507964943347164474, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 872467593}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
 --- !u!1 &1081266602
 GameObject:
@@ -10351,8 +10291,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press down button to select. Press right button to cancel. Press in right
-    stick to read all.
+  m_Hint: Press right side down face button to select. Press in right stick to read
+    all.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -12552,7 +12492,8 @@ MonoBehaviour:
   m_Type: 4
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Turn left stick to the left and right to change speech rate.
+  m_Hint: Turn left stick to the left and right to change speech rate. You will have
+    to restart the game for this to apply.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1
@@ -14202,7 +14143,8 @@ MonoBehaviour:
   m_Type: 1
   m_CustomHint: 1
   m_HintAsAudio: {fileID: 0}
-  m_Hint: Press down button to show Settings menu.
+  m_Hint: Press right side down face button to select. Press in right stick to read
+    all.
   m_HintIsLocalizationKey: 0
   m_IsInsideScrollView: 0
   m_IsInitialized: 1

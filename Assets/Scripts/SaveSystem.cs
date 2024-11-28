@@ -8,6 +8,7 @@ public static class SaveSystem
        {
               BinaryFormatter formatter = new BinaryFormatter();
               string path = Application.persistentDataPath + "/player.save";
+              Debug.Log("saved to :" + path);
               FileStream stream = new FileStream(path, FileMode.Create);
 
               PlayerData data = new PlayerData(gameManagerRef);
@@ -19,13 +20,13 @@ public static class SaveSystem
        public static PlayerData LoadPlayer()
        { 
               string path = Application.persistentDataPath + "/player.save";
+              Debug.Log("loaded from :" + path);
               if (File.Exists(path))
               {
                      BinaryFormatter formatter = new BinaryFormatter();
                      FileStream stream = new FileStream(path, FileMode.Open);
 
                      PlayerData data = formatter.Deserialize(stream) as PlayerData;
-                     Debug.Log(data.ttsSpeechRate);
                      stream.Close();
 
                      return data;
