@@ -54,7 +54,6 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
                     _slider.value = GameManager.Instance.ttsVolume;
                     break;
                 case Type.SliderTtsSpeechRate:
-                    Debug.Log(GameManager.Instance.ttsSpeechRate);
                     _slider.value = GameManager.Instance.ttsSpeechRate;
                     break;
                 case Type.SliderHaptics:

@@ -5,6 +5,7 @@ using System.Net;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.Splines;
 using Random = UnityEngine.Random;
 
 public class CompetitorsBehaviour : VehicleBehaviour
@@ -23,8 +24,6 @@ public class CompetitorsBehaviour : VehicleBehaviour
         _aiSpeed = Random.Range(20, 25);
 
         GetNewKnotPosition();
-
-        CarMotorAudioGoing.pitch *= Random.Range(0.1f, 0.4f);
     }
 
     public override void MoveLogic()

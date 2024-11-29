@@ -215,7 +215,10 @@ public class VehicleBehaviour : MonoBehaviour
             _carMotorAudioStill.Stop();
             CarMotorAudioGoing.Play();
         }
-        CarMotorAudioGoing.pitch = Mathf.Lerp(0.8f, 2f, _rb.velocity.magnitude / maxSpeed);
+
+        CarMotorAudioGoing.pitch = gameObject.CompareTag("Player") 
+            ? Mathf.Lerp(0.8f, 2f, _rb.velocity.magnitude / maxSpeed)  // Player pitch
+            : Mathf.Lerp(0.4f, 1f, _rb.velocity.magnitude / maxSpeed); // Enemy pitch
     }
 
     public void Jump()

@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class ItemJimmy : ItemBase
 {
+
+    private AudioSource _absorbItemAudio;
     private void Awake()
     {
-      
-        
-
         AudioSource[] audioSources = GetComponents<AudioSource>();
         if (audioSources.Length >= 2)
         {
             PickupAudioSource = audioSources[0];
             UseItemAudio = audioSources[1];
+            _absorbItemAudio = audioSources[2];
         }  
     }
 
@@ -50,8 +50,16 @@ public class ItemJimmy : ItemBase
 
         if (otherItem != null && (otherItem.itemName is "Wall" or "Bullet" or "SpecialBullet"))
         {
+            _absorbItemAudio.Play();
            Destroy(other.gameObject);
-           Destroy(gameObject);
+           StartCoroutine(AbsorbItem());
         }
     }
+
+    private IEnumerator AbsorbItem()
+    {
+        yield return new WaitWhile(() => _absorbItemAudio.isPlaying);
+        Destroy(gameObject);
+    }
+
 }

@@ -63,25 +63,38 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     private void Start()
     { 
+
         PlayerData data = SaveSystem.LoadPlayer();
-     
-        beatenTrack1 = data.beatenTrack1;
-        beatenTrack2 = data.beatenTrack2;
-        beatenTrack3 = data.beatenTrack3;
-        beatenTrack4 = data.beatenTrack4;
+        if (data != null)
+        {
+            beatenTrack1 = data.beatenTrack1;
+            beatenTrack2 = data.beatenTrack2;
+            beatenTrack3 = data.beatenTrack3;
+            beatenTrack4 = data.beatenTrack4;
             
-        allVolume = data.allVolume;
-        uiVolume = data.uiVolume;
-        sfxVolume = data.sfxVolume;
-        musicVolume = data.musicVolume;
-        ttsVolume = data.ttsVolume;
-        ttsSpeechRate = data.ttsSpeechRate;
-        hapticsVolume = data.hapticsVolume;
-        toggleAccessibility = data.toggleAccessibility;
+            allVolume = data.allVolume;
+            uiVolume = data.uiVolume;
+            sfxVolume = data.sfxVolume;
+            musicVolume = data.musicVolume;
+            ttsVolume = data.ttsVolume;
+            ttsSpeechRate = data.ttsSpeechRate;
+            hapticsVolume = data.hapticsVolume;
+            toggleAccessibility = data.toggleAccessibility;
+            
+            SetSfxVolume(sfxVolume);
+            SetUIVolume(uiVolume);
+            SetMusicVolume(musicVolume);
+            SetTtsVolume(ttsVolume);
+            SetTtsSpeechRate(ttsSpeechRate);
+            SetHapticsVolume(hapticsVolume);
+
+        }
+
     }
 
 
@@ -184,8 +197,7 @@ public class GameManager : MonoBehaviour
 
     public void SetTtsVolume(float ttsV)
     {
-        float dbValue = Mathf.Log10(ttsV / 100f) * 20f;
-        masterMixer.SetFloat("ttsVolume", dbValue);
+        WindowsTTS.SetVolume((int)ttsV);
         ttsVolume = ttsV;
     }
 

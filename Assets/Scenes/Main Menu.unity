@@ -5492,6 +5492,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
+      propertyPath: m_DebugOutput
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_UIPopUpOpen
       value: 
       objectReference: {fileID: 0}
@@ -7731,6 +7735,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7853786643920417592, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
+      propertyPath: ttsSpeechRate
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2467415147434818606, guid: ec01038bc65fbb047bd23dc8958f0591, type: 3}
       propertyPath: m_RootOrder
       value: 4

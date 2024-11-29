@@ -200,12 +200,20 @@ public class PlayerController : VehicleBehaviour
         
         foreach (var spline in _currentSpline.Spline)
         {
-            if (Vector3.Distance(transform.position, spline.Position) < 20 && !checkedSplines.Contains(spline))
+            Vector3 directionToSpline = (Vector3)spline.Position - transform.position;
+            
+            if (Vector3.Distance(transform.position, spline.Position) < 25 && !checkedSplines.Contains(spline))
             {
-                characterRef.ReachedCheckPoint();
-                checkedSplines.Add(spline);
+                float dotProduct = Vector3.Dot(transform.forward, directionToSpline.normalized);
+        
+                if (dotProduct > 0f)
+                {
+                    characterRef.ReachedCheckPoint();
+                    checkedSplines.Add(spline);
+                }
             }
         }
+
 
         _trackManager.currentPlayerSpeed = Mathf.RoundToInt(currentSpeed);
 
