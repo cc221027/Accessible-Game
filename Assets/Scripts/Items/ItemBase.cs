@@ -27,11 +27,6 @@ public class ItemBase : MonoBehaviour
          PickupAudioSource.volume = GameManager.Instance.sfxVolume / 100;
          UseItemAudio.volume = GameManager.Instance.sfxVolume / 100;    
     }
-
-    public bool CanUseItem()
-    {
-        return Time.time >= _lastUsedTime + CooldownTime;
-    }
     
     public virtual void UseItem(GameObject player)
     {

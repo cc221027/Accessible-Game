@@ -24,7 +24,7 @@ public class CompetitorsBehaviour : VehicleBehaviour
 
         GetNewKnotPosition();
 
-        CarMotorAudioGoing.pitch *= Random.Range(0.1f, 0.5f);
+        CarMotorAudioGoing.pitch *= Random.Range(0.1f, 0.4f);
     }
 
     public override void MoveLogic()

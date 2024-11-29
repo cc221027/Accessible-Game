@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class ItemBullet : ItemBase
     
     private Transform _targetPlayer;
     private AudioSource _bulletTravelAudio;
+    private AudioSource _alarmPlayerAudio;
+    private AudioSource _shootIndicatorAudio;
 
     private void Awake()
     {
@@ -22,6 +25,8 @@ public class ItemBullet : ItemBase
             PickupAudioSource = audioSources[0];
             UseItemAudio = audioSources[1];
             _bulletTravelAudio = audioSources[2];
+            _alarmPlayerAudio = audioSources[3];
+            _shootIndicatorAudio = audioSources[4];
         }  
     }
 
@@ -38,7 +43,36 @@ public class ItemBullet : ItemBase
         _bulletRenderer = transform.GetChild(0).gameObject.GetComponent<Renderer>();
         _bulletChildRenderer = _bulletRenderer.gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
     }
-    
+
+    private void Update()
+    {
+        if (_shot && 
+            FindClosestPlayer().gameObject.CompareTag("Player") && 
+            Vector3.Distance(transform.position, FindClosestPlayer().position) < 10 && 
+            !_alarmPlayerAudio.isPlaying)
+        {
+            Vector3 toPlayer = (FindClosestPlayer().position - transform.position).normalized;
+
+            if (Vector3.Dot(transform.forward, toPlayer) > 0.5)
+            {
+                _alarmPlayerAudio.Play();
+            }
+        }
+
+        if (Vector3.Distance(transform.position, FindClosestOpponent().position) < 20 && 
+            !_shootIndicatorAudio.isPlaying)
+        {
+            Vector3 toOpponent = (FindClosestOpponent().position - transform.position).normalized;
+            if (Vector3.Dot(transform.forward, toOpponent) > 0.5)
+            {
+                if (transform.parent != null && transform.parent.CompareTag("Player"))
+                {
+                    _shootIndicatorAudio.Play();
+                }
+            }
+        }
+    }
+
     public override void UseItem(GameObject player)
     {
         transform.parent = null;
@@ -130,6 +164,24 @@ public class ItemBullet : ItemBase
             }
         }
         return closestPlayer;
+    }
+    
+    private Transform FindClosestOpponent()
+    {
+        CompetitorsBehaviour[] opponents = FindObjectsOfType<CompetitorsBehaviour>();
+        Transform closestOpponent = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (CompetitorsBehaviour opponent in opponents)
+        {
+            float distance = Vector3.Distance(transform.position, opponent.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestOpponent = opponent.transform;
+            }
+        }
+        return closestOpponent;
     }
     
     private void AdjustPitchBasedOnDistance()

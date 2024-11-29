@@ -19,6 +19,8 @@ public class ItemOfficerJenkins : ItemBase
     
     private Transform _targetPlayer;
     private AudioSource _bulletTravelAudio;
+    private AudioSource _alarmPlayerAudio;
+    private AudioSource _shootIndicatorAudio;
 
     private void Awake()
     {
@@ -28,6 +30,8 @@ public class ItemOfficerJenkins : ItemBase
             PickupAudioSource = audioSources[0];
             UseItemAudio = audioSources[1];
             _bulletTravelAudio = audioSources[2];
+            _alarmPlayerAudio = audioSources[3];
+            _shootIndicatorAudio = audioSources[4];
         }  
     }
 
@@ -39,6 +43,35 @@ public class ItemOfficerJenkins : ItemBase
         if (GameManager.Instance.toggleAccessibility)
         {
             UAP_AccessibilityManager.Say(gameObject.GetComponentInParent<CharacterData>().characterName + " " + PickUpTts);
+        }
+    }
+    
+    private void Update()
+    {
+        if (shot && 
+            FindClosestPlayerPosition().gameObject.CompareTag("Player") && 
+            Vector3.Distance(transform.position, FindClosestPlayerPosition().position) < 10 && 
+            !_alarmPlayerAudio.isPlaying)
+        {
+            Vector3 toPlayer = (FindClosestPlayerPosition().position - transform.position).normalized;
+
+            if (Vector3.Dot(transform.forward, toPlayer) > 0.5)
+            {
+                _alarmPlayerAudio.Play();
+            }
+        }
+
+        if (Vector3.Distance(transform.position, FindClosestOpponent().position) < 20 && 
+            !_shootIndicatorAudio.isPlaying)
+        {
+            Vector3 toOpponent = (FindClosestOpponent().position - transform.position).normalized;
+            if (Vector3.Dot(transform.forward, toOpponent) > 0.5)
+            {
+                if (transform.parent != null && transform.parent.CompareTag("Player"))
+                {
+                    _shootIndicatorAudio.Play();
+                }
+            }
         }
     }
 
@@ -158,7 +191,42 @@ public class ItemOfficerJenkins : ItemBase
                 characterInSight = closestPlayer;
             }
         }
-        
+    }
+    
+    private Transform FindClosestPlayerPosition()
+    {
+        CharacterData[] players = FindObjectsOfType<CharacterData>();
+        Transform closestPlayer = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (CharacterData player in players)
+        {
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestPlayer = player.transform;
+            }
+        }
+        return closestPlayer;
+    }
+    
+    private Transform FindClosestOpponent()
+    {
+        CompetitorsBehaviour[] opponents = FindObjectsOfType<CompetitorsBehaviour>();
+        Transform closestOpponent = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (CompetitorsBehaviour opponent in opponents)
+        {
+            float distance = Vector3.Distance(transform.position, opponent.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestOpponent = opponent.transform;
+            }
+        }
+        return closestOpponent;
     }
     
     private void AdjustPitchBasedOnDistance()
