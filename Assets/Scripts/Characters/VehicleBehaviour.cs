@@ -154,17 +154,23 @@ public class VehicleBehaviour : MonoBehaviour
             
             if (gameObject.CompareTag("Player"))
             {
-                UAP_AccessibilityManager.Say(other.gameObject.CompareTag("Opponent")
-                    ? other.gameObject.GetComponent<CharacterData>().characterName
-                    : other.gameObject.tag);
+                StartCoroutine(TtsHitObject(other.gameObject));
             }
             
-            if(gameObject.transform.position.y - other.transform.position.y > 1)
+            if(gameObject.transform.position.y - other.transform.position.y > 1 && other.gameObject.CompareTag("Opponent") || other.gameObject.CompareTag("Player"))
             {
                 _rb.AddForce(transform.up*_jumpingPower, ForceMode.Impulse);        
             }
         } 
      
+    }
+
+    private IEnumerator TtsHitObject(GameObject other)
+    {
+        UAP_AccessibilityManager.Say(other.gameObject.CompareTag("Opponent")
+            ? other.gameObject.GetComponent<CharacterData>().characterName
+            : other.gameObject.tag);
+        yield return new WaitForSeconds(1);
     }
 
     private void OnTriggerEnter(Collider other)
