@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     public float ttsSpeechRate = 1;
     public float hapticsVolume = 100f;
     public bool toggleAccessibility = true;
+    public bool toggleSteering = false;
 
     [SerializeField] private AudioMixer masterMixer;
     
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
             ttsSpeechRate = data.ttsSpeechRate;
             hapticsVolume = data.hapticsVolume;
             toggleAccessibility = data.toggleAccessibility;
+            toggleSteering = data.toggleSteering;
             
             SetSfxVolume(sfxVolume);
             SetUIVolume(uiVolume);

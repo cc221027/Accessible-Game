@@ -148,9 +148,17 @@ public class VehicleBehaviour : MonoBehaviour
                 maxSpeed = 15;
             }
         } 
-        else if (other.gameObject.CompareTag("Item Wall") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Opponent"))
+        else if (other.gameObject.CompareTag("Item Wall") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Opponent") || other.gameObject.CompareTag("Wall"))
         {
             _collisionAudio.Play();
+            
+            if (gameObject.CompareTag("Player"))
+            {
+                UAP_AccessibilityManager.Say(other.gameObject.CompareTag("Opponent")
+                    ? other.gameObject.GetComponent<CharacterData>().characterName
+                    : other.gameObject.tag);
+            }
+            
             if(gameObject.transform.position.y - other.transform.position.y > 1)
             {
                 _rb.AddForce(transform.up*_jumpingPower, ForceMode.Impulse);        

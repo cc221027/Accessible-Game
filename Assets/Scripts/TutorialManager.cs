@@ -246,4 +246,30 @@ public class TutorialManager : MonoBehaviour
         secondUIToDisable.SetActive(true);
         EventSystem.current.SetSelectedGameObject(page4ToFocus);
     }
+
+    public void StartTestLeftVibration()
+    {
+        StartCoroutine(TestLeftVibration());
+    }
+    private IEnumerator TestLeftVibration()
+    {
+        Debug.Log("LEFT");
+        Gamepad.current.SetMotorSpeeds(0.1f  * (GameManager.Instance.hapticsVolume/100), 0);
+        yield return new WaitForSecondsRealtime(4);
+        Gamepad.current.SetMotorSpeeds(0, 0);
+    }
+    
+    public void StartTestRightVibration()
+    {
+        StartCoroutine(TestRightVibration());
+    }
+    private IEnumerator TestRightVibration()
+    {
+        Debug.Log("RIGHT");
+        Gamepad.current.SetMotorSpeeds(0, 0.2f * (GameManager.Instance.hapticsVolume/100));
+        yield return new WaitForSecondsRealtime(4);
+        Gamepad.current.SetMotorSpeeds(0, 0);
+    }
+    
+    
 }

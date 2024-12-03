@@ -71,16 +71,37 @@ public class PlayerController : VehicleBehaviour
                 
                 if (playerKnotSide > 0 && _rb.velocity.magnitude > 1)
                 {
-                    Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0);
+                    if (!GameManager.Instance.toggleSteering)
+                    {
+                        Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0);
+                    }
+                    else
+                    {
+                        CarMotorAudioGoing.panStereo = -1;
+                        Debug.Log("Else reached");
+                    }
                 }
                 else if (playerKnotSide < 0 && _rb.velocity.magnitude > 1)
                 {
-                    Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));
+                    if (!GameManager.Instance.toggleSteering)
+                    {
+                        Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));
+                    }
+                    else
+                    {
+                        CarMotorAudioGoing.panStereo = 1;
+                    }
                 }
                 else
                 {
-                    Gamepad.current.SetMotorSpeeds(0, 0); 
-                    CarMotorAudioGoing.panStereo = 0;
+                    if (!GameManager.Instance.toggleSteering)
+                    {
+                        Gamepad.current.SetMotorSpeeds(0, 0); 
+                    }
+                    else
+                    {
+                        CarMotorAudioGoing.panStereo = 0;
+                    }
                 }
             } 
             
@@ -135,6 +156,7 @@ public class PlayerController : VehicleBehaviour
         if (dotProduct < 0 && !WrongDirectionAudio.isPlaying && !_enteredShortcut)
         {
             WrongDirectionAudio.Play(); 
+            UAP_AccessibilityManager.Say("Wrong Direction");
         }
         else if(dotProduct >= 0)
         {
@@ -250,28 +272,16 @@ public class PlayerController : VehicleBehaviour
         switch (placement)
         {
             case 1:
-                SecondPlaceAudio.Stop();
-                ThirdPlaceAudio.Stop();
-                FourthPlaceAudio.Stop();
-                FirstPlaceAudio.Play();
+                UAP_AccessibilityManager.Say("First Place");
                 break;
             case 2:
-                FirstPlaceAudio.Stop();
-                ThirdPlaceAudio.Stop();
-                FourthPlaceAudio.Stop();
-                SecondPlaceAudio.Play();
+                UAP_AccessibilityManager.Say("Second Place");
                 break;
             case 3:
-                FirstPlaceAudio.Stop();
-                SecondPlaceAudio.Stop();
-                FourthPlaceAudio.Stop();
-                ThirdPlaceAudio.Play();
+                UAP_AccessibilityManager.Say("Third Place");
                 break;
             case 4:
-                FirstPlaceAudio.Stop();
-                SecondPlaceAudio.Stop();
-                ThirdPlaceAudio.Stop();
-                FourthPlaceAudio.Play();
+                UAP_AccessibilityManager.Say("Fourth Place");
                 break;
             default:
                 return;
@@ -336,11 +346,38 @@ public class PlayerController : VehicleBehaviour
         {
             if (side > 0 && _rb.velocity.magnitude > 1)
             {
-                Gamepad.current.SetMotorSpeeds(motorStrength * (GameManager.Instance.hapticsVolume / 100), 0);
+                if (!GameManager.Instance.toggleSteering)
+                {
+                    Gamepad.current.SetMotorSpeeds(motorStrength * (GameManager.Instance.hapticsVolume / 100), 0);
+                }
+                else
+                {
+                    CarMotorAudioGoing.panStereo = -1;
+                    UAP_AccessibilityManager.Say("Shortcut Left Side");
+                }
             }
             else if (side < 0 && _rb.velocity.magnitude > 1)
             {
-                Gamepad.current.SetMotorSpeeds(0, motorStrength * (GameManager.Instance.hapticsVolume / 100));
+                if (!GameManager.Instance.toggleSteering)
+                {
+                    Gamepad.current.SetMotorSpeeds(0, motorStrength * (GameManager.Instance.hapticsVolume / 100));
+                }
+                else
+                {
+                    CarMotorAudioGoing.panStereo = 1;
+                    UAP_AccessibilityManager.Say("Shortcut Right Side");
+                }
+            }
+            else
+            {
+                if (!GameManager.Instance.toggleSteering)
+                {
+                    Gamepad.current.SetMotorSpeeds(0, 0); 
+                }
+                else
+                {
+                    CarMotorAudioGoing.panStereo = 0;
+                }
             }
 
             yield return new WaitForSeconds(0.2f);
@@ -354,15 +391,38 @@ public class PlayerController : VehicleBehaviour
                 
         if (playerKnotSide > 0 && _rb.velocity.magnitude > 1)
         {
-            Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0); 
+            if (!GameManager.Instance.toggleSteering)
+            {
+                Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0); 
+            }
+            else
+            {
+                CarMotorAudioGoing.panStereo = -1;
+                UAP_AccessibilityManager.Say("Shortcut Left Side");
+            }
         }
         else if (playerKnotSide < 0 && _rb.velocity.magnitude > 1)
         {
-            Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));  
+            if (!GameManager.Instance.toggleSteering)
+            {
+                Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));  
+            }
+            else
+            {
+                CarMotorAudioGoing.panStereo = 1;
+                UAP_AccessibilityManager.Say("Shortcut Right Side");
+            }
         }
         else
         {
-            Gamepad.current.SetMotorSpeeds(0, 0); 
+            if (!GameManager.Instance.toggleSteering)
+            {
+                Gamepad.current.SetMotorSpeeds(0, 0); 
+            }
+            else
+            {
+                CarMotorAudioGoing.panStereo = 0;
+            }
         }
         
         yield return new WaitForSeconds(1f);
@@ -424,16 +484,38 @@ public class PlayerController : VehicleBehaviour
 
                 if(cross.y > 0 && !trackManagerRef.paused)
                 {
-                    CarMotorAudioGoing.panStereo = -1;
+                    if (!GameManager.Instance.toggleSteering)
+                    {
+                        CarMotorAudioGoing.panStereo = -1;
+                    }
+                    else
+                    {
+                        Gamepad.current.SetMotorSpeeds(_leftMotorStrength * (GameManager.Instance.hapticsVolume/100), 0); 
+                    }
                 } 
                 else if(cross.y < 0 && !trackManagerRef.paused)
                 {
-                    CarMotorAudioGoing.panStereo = 1;
+                    if (!GameManager.Instance.toggleSteering)
+                    {
+                        CarMotorAudioGoing.panStereo = 1;
+                    }
+                    else
+                    {
+                        Gamepad.current.SetMotorSpeeds(0, _rightMotorStrength * (GameManager.Instance.hapticsVolume/100));  
+                    }
                 }
             }
             else
             {
-                CarMotorAudioGoing.panStereo = 0;
+                if (!GameManager.Instance.toggleSteering)
+                {
+                    CarMotorAudioGoing.panStereo = 0;
+                }                   
+                else
+                {
+                    Gamepad.current.SetMotorSpeeds(0, 0);  
+
+                }
             }
         }
     }

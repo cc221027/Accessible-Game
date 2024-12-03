@@ -13,6 +13,7 @@ TagManager:
   - PauseMenu
   - ShortCutSpline
   - ShortCut
+  - Wall
   layers:
   - Default
   - TransparentFX

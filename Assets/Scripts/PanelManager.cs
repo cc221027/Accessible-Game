@@ -17,6 +17,8 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
     private Slider _slider;
     private Toggle _toggle;
 
+    private Toggle _steeringToggle;
+
     private bool _paused;
     
     private enum Type
@@ -31,6 +33,7 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
         Pause,
         SliderUI,
         AllVolume,
+        ToggleSteering,
     }
 
     [SerializeField] private Type type;
@@ -73,6 +76,13 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
             _toggle = gameObject.GetComponent<Toggle>();
             _toggle.isOn = GameManager.Instance.toggleAccessibility;
             _toggle.onValueChanged.AddListener(delegate { ValueChanged(); });
+        }
+
+        if (type == Type.ToggleSteering)
+        {
+            _steeringToggle = gameObject.GetComponent<Toggle>();
+            _steeringToggle.isOn = GameManager.Instance.toggleSteering;
+            _steeringToggle.onValueChanged.AddListener(delegate { ValueChanged(); });
         }
         
     }
@@ -200,6 +210,9 @@ public class PanelManager : MonoBehaviour, ICancelHandler, ISelectHandler
                 break;
             case Type.AllVolume:
                 GameManager.Instance.SetAllVolume(_slider.value); 
+                break;
+            case Type.ToggleSteering:
+                GameManager.Instance.toggleSteering = _steeringToggle.isOn;
                 break;
         }
     

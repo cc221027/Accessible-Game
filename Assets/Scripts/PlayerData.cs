@@ -19,6 +19,7 @@ public class PlayerData
     public float ttsSpeechRate;
     public float hapticsVolume;
     public bool toggleAccessibility;
+    public bool toggleSteering;
 
     public PlayerData(GameManager gameManagerRef)
     {
@@ -35,6 +36,7 @@ public class PlayerData
         ttsSpeechRate = gameManagerRef.ttsSpeechRate;
         hapticsVolume = gameManagerRef.hapticsVolume;
         toggleAccessibility = gameManagerRef.toggleAccessibility;
+        toggleSteering = gameManagerRef.toggleSteering;
     }
     
 }

@@ -59,7 +59,7 @@ public class ItemBullet : ItemBase
             }
         }
 
-        if (Vector3.Distance(transform.position, FindClosestOpponent().position) < 20 && 
+        if (FindClosestOpponent() != null && Vector3.Distance(transform.position, FindClosestOpponent().position) < 20 && 
             !_shootIndicatorAudio.isPlaying)
         {
             Vector3 toOpponent = (FindClosestOpponent().position - transform.position).normalized;
@@ -169,19 +169,24 @@ public class ItemBullet : ItemBase
     private Transform FindClosestOpponent()
     {
         CompetitorsBehaviour[] opponents = FindObjectsOfType<CompetitorsBehaviour>();
-        Transform closestOpponent = null;
-        float minDistance = Mathf.Infinity;
-
-        foreach (CompetitorsBehaviour opponent in opponents)
+        if (opponents != null)
         {
-            float distance = Vector3.Distance(transform.position, opponent.transform.position);
-            if (distance < minDistance)
+            Transform closestOpponent = null;
+            float minDistance = Mathf.Infinity;
+
+            foreach (CompetitorsBehaviour opponent in opponents)
             {
-                minDistance = distance;
-                closestOpponent = opponent.transform;
+                float distance = Vector3.Distance(transform.position, opponent.transform.position);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestOpponent = opponent.transform;
+                }
             }
+            return closestOpponent;
         }
-        return closestOpponent;
+
+        return null;
     }
     
     private void AdjustPitchBasedOnDistance()

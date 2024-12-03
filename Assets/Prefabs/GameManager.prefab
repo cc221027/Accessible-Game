@@ -63,9 +63,10 @@ MonoBehaviour:
   sfxVolume: 100
   musicVolume: 100
   ttsVolume: 100
-  ttsSpeechRate: 10
+  ttsSpeechRate: 7
   hapticsVolume: 100
   toggleAccessibility: 1
+  toggleSteering: 0
   masterMixer: {fileID: 24100000, guid: 351a4138a6611b34aadadd8e3e203cfb, type: 2}
   allCharacters:
   - {fileID: 7018370963361157390, guid: 33ff06ac95644de41a5242db1ac5071b, type: 3}
