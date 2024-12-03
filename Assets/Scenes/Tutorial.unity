@@ -3980,10 +3980,10 @@ MonoBehaviour:
   page2: {fileID: 665019610}
   page3: {fileID: 1421076969}
   page4: {fileID: 1791472182}
-  page1ToFocus: {fileID: 893670222}
-  page2ToFocus: {fileID: 1429302859}
-  page3ToFocus: {fileID: 1228945394}
-  page4ToFocus: {fileID: 594955048}
+  page1ToFocus: {fileID: 1502737213}
+  page2ToFocus: {fileID: 781169849}
+  page3ToFocus: {fileID: 1614933910}
+  page4ToFocus: {fileID: 903852430}
   uiToDisable:
   - {fileID: 470949345}
   - {fileID: 470949344}
